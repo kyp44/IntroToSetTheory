@@ -1,0 +1,72 @@
+% Common sets
+\def\nats{\mathbb{N}}
+\def\ints{\mathbb{Z}}
+\def\rats{\mathbb{Q}}
+\def\prats{\rats^+}
+\def\reals{\mathbb{R}}
+\def\cpxs{\mathbb{C}}
+\def\pints{\ints^+}
+\def\preals{\reals^+}
+\def\nreals{\reals^-}
+\def\es{\varnothing}
+
+% Common variables/symbols
+\def\vphi{\varphi}
+\def\a{\alpha}
+\def\b{\beta}
+\def\g{\gamma}
+\def\d{\delta}
+\def\e{\varepsilon}
+\def\z{\zeta}
+\def\k{\kappa}
+\def\l{\lambda}
+\def\n{\nu}
+\def\r{\rho}
+\def\s{\sigma}
+\def\t{\tau}
+\def\x{\xi}
+\def\w{\omega}
+\def\W{\Omega}
+
+% For set-buider notation
+\def\where{\,|\,}
+
+% Other stuff
+\def\dom{\mathrm{dom}}
+\def\ran{\mathrm{ran}}
+\def\N{{\aleph_0}}
+\def\NI{{2^\N}}
+\def\NII{{2^\NI}}
+
+% Shortcuts that make writing easier
+\newcommand\parens[1]{\left( #1 \right)}
+\newcommand\squares[1]{\left[ #1 \right]}
+\newcommand\braces[1]{\left\{ #1 \right\}}
+\newcommand\angles[1]{\left\langle #1 \right\rangle}
+\newcommand\ceil[1]{\left\lceil #1 \right\rceil}
+\newcommand\floor[1]{\left\lfloor #1 \right\rfloor}
+\newcommand\abs[1]{\left| #1 \right|}
+\newcommand\dabs[1]{\left\| #1 \right\|}
+\newcommand\vect[1]{\mathrm{\mathbf{#1}}}
+\newcommand\conj[1]{\overline{#1}}
+\newcommand\pset[1]{\mathcal{P}\left(#1\right)}
+\newcommand\inv[1]{#1^{-1}}
+\newcommand\prop[1]{\mathbf{#1}}
+\def\rest{\restriction}
+\newcommand\tet[2]{{^{#1}#2}}
+
+\def\ss{\subseteq}
+\def\pss{\subset}
+\def\Seq{\mathrm{Seq}}
+
+\newcommand\gath[1]{\begin{gather*} #1 \end{gather*}}
+\newcommand\ali[1]{\begin{align*} #1 \end{align*}}
+
+% Environment for definitions/theorem/lemma statements
+\newenvironment{statement}[1]
+{
+    \color{blue}
+    \emph{#1.}
+}{
+}
+    

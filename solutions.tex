@@ -1,0 +1,39 @@
+% A (minimal) template for problem sets and solutions using the exam document class
+
+% Organization:
+%% Define new commands, macros, etc. in macros.tex
+%% Anything that you would put before \begin{document} should go in prelude.tex
+
+%% For multiple psets, each should get its own file to \input into main with a \section{}
+
+\input{prelude}
+\title{Introduction to Set Theory Solutions}
+\begin{document}
+
+\input{macros}
+
+\qformat{}
+
+% This counter is used for items in solutions
+\newcounter{itm}
+\newcommand{\itm}[1]{\refstepcounter{itm}\label{#1}\arabic{itm}}
+
+
+%% Content goes here
+\begin{questions}
+
+% Disable section numbers
+%\renewcommand\thesection{}
+
+\setcounter{section}{4}
+\section{Cardinal Numbers}
+\input{Ch5}
+
+\section{Ordinal Numbers}
+\input{Ch6}
+
+\section{Alephs}
+\input{Ch7}
+
+\end{questions}
+\end{document}
