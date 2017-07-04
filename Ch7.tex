@@ -383,5 +383,47 @@
 
     First we show that $\a$ is indeed an ordinal number.
     Since $\a$ is a set of ordinals clearly it is well-ordered by Theorem~6.2.6d.
-    We also must show that $\a$ is transitive, so consider any $\b \in \a$ 
+    We also must show that $\a$ is transitive, so consider any $\b \in \a$.
+    Then either $\b = 0$ or $\b \in H$.
+    If $\b = 0 = \es$ then clearly $\b \ss \a$.
+    On the other hand if $\b \in H$ then there is a partition $P$ of $A$ and a well-ordering $R$ of $P$ such that $(P, R)$ is isomorphic to $(\b, <)$.
+    Now consider any $\g \in \b$ so that $\g < \b$.
+    It then follows that $\g$ is isomorphic to an intial segment of $\b$ and therefore also to an initial segment $P'$ of $P$ ordered by $R$.
+    Let $L$ be the least element of $P$ (which is also the least element of $P'$), which exists since $R$ is a well-ordering.
+    Then let
+    $$
+    L' = L \cup \parens{A - \bigcup P'} \,,
+    $$
+    i.e. $L'$ is the set containing the elements of $L$ and any elements of $A$ that are not covered in the initial segment $P'$.
+    Then let
+    $$
+    P'' = \braces{L'} \cup \parens{P' - \braces{L}} \,,
+    $$
+    i.e. $P''$ is $P'$ but with $L$ replaced with $L'$.
+    It is easy to show that $P''$ is a partition of $A$ and that it is isomorphic to $\g$ with the same ordering as $R$ except with $L$ replaced by $L'$.
+    Hence by definition we have that $\g \in \a$.
+    Since $\g \in \b$ was arbitrary this shows that $\b \ss \a$, and since $\b \in \a$ was arbitrary this shows that $\a$ is transitive and hence an ordinal number.
+
+    Now we show that there is no function from $A$ onto $\a$.
+    So suppose to the contrary that there is such a function $f$.
+    We then define the set
+    $$
+    E = \braces{(a,b) \in A \times A \where f(a) = f(b)} \,.
+    $$
+    It is trivial to show that this is an equivalence relation on $A$ so that $A/E$ is a partition of $A$ by Theorem~4.4.7.
+    Moreover let $g$ be the mapping from $A/E$ to $\a$ defined as follows: for any $B \in A/E$ let $g(B)$ be the least element of $\braces{f(x) \where x \in B}$, noting that $\braces{f(x) \where x \in B}$ contains only a single element since $B$ is an equivalence class where $f(x) = f(y)$ for any $x$ and $y$ in $B$.
+    It is trivial to show that $g$ is a bijective function so that we can well-order $A/E$ according to the ordinal $\a$ since $\a$ is the range of $g$.
+    However, it then follows by definition that $\a \in \a$, which contradicts Lemma~6.2.7.
+    Hence it must be that there is no function from $A$ onto $\a$.
+
+    Lastly we show that there is a function from $A$ onto $\b$ for every nonzero $\b < \a$.
+    So consider any such $\b$ so that $\b \in \a$.
+    Then either $\b = 0$ or $\b \in H$, but since $\b$ is nonzero it must be that $\b \in H$.
+    Then by definition there is is a partition $P$ of $A$ and well-ordering $R$ of $P$ such that $(P,R)$ is isomorphic to $(\b,<)$.
+    Let $f$ then be the isomorphism from $P$ to $\b$.
+    We then define the mapping $g : A \to \b$ as follows: for any $a \in A$ there is a unique $B \in P$ such that $a \in B$ since $P$ is a partition of $A$.
+    We then set $g(a) = f(B)$.
+    It is easy to show that $g$ is onto.
+
+    It follows from what has been shown that indeed $\a = \hs(A)$. \qedsymbol
 \end{solution}
