@@ -427,3 +427,228 @@
 
     It follows from what has been shown that indeed $\a = \hs(A)$. \qedsymbol
 \end{solution}
+
+\def\ex{7.2.1}
+\setcounter{itm}{0}
+\question{\ex}
+\begin{solution}
+    \begin{statement}{Lemma~\ex.\itm{lem:alephadd:ordgt}}
+        If $\a$ and $\b$ are ordinals and $\a > \b$ then there is a $\g  <\a$ such that $\abs{\b} \leq \abs{\g}$.
+    \end{statement}
+
+    \proof{
+        Clearly for $\g = \b$ we have $\g = \b < \a$ and $\abs{\b} = \abs{\g}$ so that $\abs{\b} \leq \abs{\g}$ is true. \qedsymbol
+    }
+
+    \begin{statement}{Corollary~\ex.\itm{cor:alephadd:setgt}}
+        If a set $(A, \prec)$ is isomorphic to ordinal $\a$ and $\a > \b$ for another ordinal $\b$ then there is an $a \in A$ such that $\abs{\b} \leq \abs{X}$ for the set
+        $$
+        X = \braces{x \in A \where x \prec a} \,.
+        $$
+    \end{statement}
+    \proof{
+        First let $f$ be the isomorphism from $\a$ to $A$.
+        Clearly by Lemma~\ex.\ref{lem:alephadd:ordgt} there is an ordinal $\g < \a$ such that $\abs{\b} \leq \abs{\g}$.
+        Now let $a = f(\g)$ so that clearly $a \in A$, and let
+        $$
+        X = \braces{x \in A \where x \prec a} \,.
+        $$
+        Now, we claim that $X = f[\g]$.
+        So consider any $x \in X$ so that $x \prec a$.
+        It then follows that $\inv{f}(x) < \inv{f}(a) = \g$ since $\inv{f}$ is an isomorphism since $f$ is.
+        Hence $\inv{f}(x) \in \g$ so that clearly $x = f(\inv{f}(x)) \in f[\g]$.
+        Since $x$ was arbitrary it follows that $X \ss f[\g]$.
+        Now consider any $x \in f[\g]$ so that there is a $\d \in \g$ such that $x = f(\d)$.
+        Then $\d < \g$ so that $x = f(\d) \prec f(\g) = a$ since $f$ is an isomorphism so that by definition $x \in X$.
+        Hence $f[\g] \ss X$.
+        This shows that $X = f[\g]$.
+        Then, since $f$ is bijective, it follows that $\abs{\b} \leq \abs{\g} = \abs{f[\g]} = \abs{X}$. \qedsymbol
+    }
+
+    \begin{statement}{Lemma~\ex.\itm{lem:alephadd:alephlt}}
+        For ordinal $\a > 0$ and an ordinal $\b < \w_\a$ there is an ordinal $\g < \a$ such that $\abs{\b} \leq \al_\g$.
+    \end{statement}
+    \proof{
+        First, if $\b$ is finite then clearly $\b < \w$ so that $\b \in \w$.
+        Then $\b \ss \w$ since $\w$ is transitive (since it is an ordinal number).
+        Hence $\abs{\b} \leq \abs{\w} = \al_0$ (i.e. $\g = 0$ so that $\g < \a$).
+        On the other hand if $\b$ is infinite then by Theorem~7.1.3 $\b$ is equipotent to some initial ordinal $\W$.
+        Clearly $\W$ is infinite since $\b$ is and clearly $\W < \w_\a$ since $\b < \w_\a$ and $\w_\a$ is an initial ordinal.
+        It then follows from Lemma~7.1.9.4.T that there is a $\g < \a$ such that $\W = \w_\g$.
+        Then we have $\abs{\b} = \abs{\W} = \abs{\w_\g} = \al_\g$ so that $\abs{\b} \leq \al_\g$ is true. \qedsymbol
+    }
+
+    \emph{Main Problem.}
+
+    This proof is similar to the proof of Theorem~7.2.1.
+
+	Suppose that $A_1$ and $A_2$ are disjoint sets that are both equipotent to $\w_\a$ for some ordinal $\a$.
+    Then there are bijections $f_1$ and $f_2$ from $A_1$ and $A_2$, respectively, to $\w_\a$.
+    We define a well-ordering $\prec$ of $A = A_1 \cup A_2$ as follows: for $a$ and $b$ in $A$ we let $a \prec b$ if and only if
+    \begin{itemize}
+        \item $a$ and $b$ are in $A_1$ and $f_1(a) < f_1(b)$, or
+        \item $a$ and $b$ are in $A_2$ and $f_2(a) < f_2(b)$, or
+        \item $a \in A_1$ and $b \in A_2$ and $f_1(a) \leq f_2(b)$, or
+        \item $a \in A_2$ and $b \in A_1$ and $f_2(a) < f_1(b)$.
+    \end{itemize}
+
+    First we show that $\prec$ is transitive.
+    So consider $a$, $b$, and $c$ in $A$ such that $a \prec b$ and $b \prec c$.
+
+    Case: $a \in A_1$
+    \begin{indpar}
+        Case: $b \in A_1$
+        \begin{indpar}
+            Case: $c \in A_1$.
+            Then $f_1(a) < f_1(b) < f_1(c)$ so that $f_1(a) < f_1(c)$ and hence $a \prec c$.
+
+            Case: $c \in A_2$.
+            Then $f_1(a) < f_1(b) \leq f_2(c)$ so that $f_1(a) \leq f_2(c)$ is true and hence $a \prec c$.
+        \end{indpar}
+
+        Case: $b \in A_2$
+        \begin{indpar}
+            Case: $c \in A_1$.
+            Then $f_1(a) \leq f_2(b) < f_1(c)$ so that $f_1(a) < f_1(c)$ and hence $a \prec c$.
+
+            Case: $c \in A_2$.
+            Then $f_1(a) \leq f_2(b) < f_2(c)$ so that $f_1(a) \leq f_2(c)$ is true and hence $a \prec c$.
+        \end{indpar}
+    \end{indpar}
+
+    Case: $a \in A_2$
+    \begin{indpar}
+        Case: $b \in A_1$
+        \begin{indpar}
+            Case: $c \in A_1$.
+            Then $f_2(a) < f_1(b) < f_1(c)$ so that $f_2(a) < f_1(c)$ and hence $a \prec c$.
+
+            Case: $c \in A_2$.
+            Then $f_2(a) < f_1(b) \leq f_2(c)$ so that $f_2(a) < f_2(c)$ and hence $a \prec c$.
+        \end{indpar}
+
+        Case: $b \in A_2$
+        \begin{indpar}
+            Case: $c \in A_1$.
+            Then $f_2(a) < f_2(b) < f_1(c)$ so that $f_2(a) < f_1(c)$ and hence $a \prec c$.
+
+            Case: $c \in A_2$.
+            Then $f_2(a) < f_2(b) < f_2(c)$ so that $f_2(a) < f_2(c)$ and hence $a \prec c$.
+        \end{indpar}
+    \end{indpar}
+    Since all cases imply that $a \prec c$ and $a$, $b$, and $c$ were arbitrary this shows that $\prec$ is transitive.
+
+    Now we show that for any $a$ and $b$ in $A$, that either $a \prec b$, $a = b$, or $b \prec a$ and that only one of these is true.
+    So consider any $a$ and $b$ in $A$.
+    Then we have
+
+    Case: $a \in A_1$
+    \begin{indpar}
+        Case: $b \in A_1$.
+        Then clearly exactly one of the following is true: $a \prec b$ if $f_1(a) < f_1(b)$, $a = b$ if $f_1(a) = f_1(b)$ since $f_1$ is a bijection, and $b \prec a$ if $f_1(b) < f_1(a)$.
+
+        Case: $b \in A_2$.
+        Clearly $a = b$ is not possible since $A_1$ and $A_2$ are disjoint.
+        Then if $f_1(a) \leq f_2(b)$ then $a \prec b$ and if $f_1(a) > f_2(b)$ then $b \prec a$, noting that these are mutually exclusive.
+    \end{indpar}
+
+    Case: $a \in A_2$
+    \begin{indpar}
+        Case: $b \in A_1$.
+        Then again clearly $a = b$ is not possible since $A_1$ and $A_2$ are disjoint.
+        Then if $f_2(a) < f_1(b)$ then $a \prec b$ and if $f_2(a) \geq f_1(b)$ then $b \prec a$, noting that these are mutually exclusive.
+
+        Case: $b \in A_2$.
+        Then clearly exactly one of the following is true: $a \prec b$ if $f_2(a) < f_2(b)$, $a = b$ if $f_2(a) = f_2(b)$ since $f_2$ is a bijection, and $b \prec a$ if $f_2(b) < f_2(a)$.
+    \end{indpar}
+    Thus we have shown that $\prec$ is a total (strict) order on $A$.
+
+    Now we show that $\prec$ is also a well-ordering.
+    So let $X$ be a nonempty subset of $A$.
+    Let $B = f_1[X \cap A_1] \cup f_2[X \cap A_2]$, noting that this is a nonempty set of ordinals.
+    Then let $B$ has a least element $\a$.
+
+    Case: $\a \in f_1[X \cap A_1]$.
+    Then we claim that $x = \inv{f_1}(\a)$ is the $\prec$-least element of $X$, noting that $x \in A_1$.
+    Note also that clearly then $f_1(x) = f_1(\inv{f_1}(\a)) = \a$.
+    So consider any $y \in X$.
+    \begin{indpar}
+        Case: $y \in A_1$.
+        Then $y \in X \cap A_1$ so that $f_1(y) \in f_1[X \cap A_1]$ so $f_1(y) \in B$.
+        Thus $f_1(x) = \a \leq f_1(y)$ since $\a$ is the least element of $B$.
+        Clearly if $f_1(x) = f_1(y)$ then $x = y$ since $f_1$ is bijective.
+        On the other hand if $f_1(x) < f_1(y)$ then by definition $x \prec y$.
+        Hence in either case we have $x \preceq y$.
+
+        Case: $y \in A_2$.
+        Then $y \in X \cap A_2$ so that $f_2(y) \in f_2[X \cap A_2]$ so that $f_2(y) \in B$.
+        Thus $f_1(x) = \a \leq f_2(y)$ so that by definition $x \prec y$.
+        Hence again $x \preceq y$ is true.
+    \end{indpar}
+
+    Case: $\a \notin f_1[X \cap A_1]$.
+    Then it has to be that $\a \in f_2[X \cap A_2]$.
+    Then we claim that $x = \inv{f_2}(\a)$ is the $\prec$-least element of $X$, noting that $x \in A_2$.
+    Note also that clearly then $f_2(x) = f_2(\inv{f_2}(\a)) = \a$.
+    So consider any $y \in X$.
+    \begin{indpar}
+        Case: $y \in A_1$.
+        Then $y \in X \cap A_1$ so that $f_1(y) \in f_1[X \cap A_1]$ so $f_1(y) \in B$.
+        Thus $f_2(x) = \a \leq f_1(y)$ since $\a$ is the least element of $B$.
+        Now, it cannot be that $f_2(x) = \a = f_1(y)$ for then $\a$ would be in $f_1[X \cap A_1]$.
+        So it must be that $f_2(x) = \a < f_1(y)$ so that by definition $x \prec y$ so that $x \preceq y$ is true.
+
+        Case: $y \in A_2$.
+        Then $y \in X \cap A_2$ so that $f_2(y) \in f_2[X \cap A_2]$ so that $f_2(y) \in B$.
+        Thus $f_2(x) = \a \leq f_2(y)$.
+        Then if $f_2(x) = \a = f_2(y)$ then $x = y$ since $f_2$ is bijective.
+        On the other hand if $f_2(x) = \a < f_2(y)$ then $x \prec y$ by definition.
+        In either case we have $x \preceq y$.
+    \end{indpar}
+    Hence in all cases we have shown that $X$ has a $\prec$-least element so that $\prec$ is a well-ordering of $A$.
+
+    Now we show by transfinite induction that $\al_\a + \al_\a = \al_\a$ for all ordinals $\a$.
+    First it was already shown in a previous chapter that $\al_0 + \al_0 = \al_0$.
+    So now consider any $\a > 0$ and suppose $\al_\g + \al_\g = \al_\g$ for all $\g < \a$.
+
+    Then consider two disjoint sets $A_1$ and $A_2$ that are both equipotent to $\w_\a$ and the well-ordering $\prec$ on $A = A_1 \cup A_2$ as defined above, also again letting $f_1$ and $f_2$ be the isomophisms from $A_1$ and $A_2$, respectively, to $\w_\a$.
+    Now let $a$ be any element of $A$ and define
+    $$
+    X = \braces{x \in A \where x \prec a} \,.
+    $$
+    Let $X_1 = X \cap A_1$ and $X_2 = X \cap A_2$ so that clearly $X_1$ and $X_2$ are disjoint and $X = X_1 \cup X_2$.
+    From this it follows from the definition of cardinal addition that $\abs{X} = \abs{X_1} + \abs{X_2}$.
+
+    If $a \in A_1$ then define $\b = f_1(a) \in \w_\a$ so that $\b < \w_\a$.
+    It follows from this and Lemma~\ex.\ref{lem:alephadd:alephlt} that there is a $\g < \a$ such that $\abs{\b} \leq \al_\g$ since $\a > 0$, noting also that $\al_\g < \al_\a$ by the remarks following Definition~7.1.8.
+    Now consider any $x_1 \in X_1$ so that also $x_1 \in X$.
+    Then by definition $x_1 \prec a$ so that by the definition of $\prec$ we have $f_1(x_1) < f_1(a) = \b$ since $x_1 \in A_1$ and $a \in A_1$.
+    Hence $f_1(x_1) \in \b$ so that $f_1[X_1] \ss \b$ since $x_1$ was arbitrary.
+    Hence, since $f_1$ is bijective, we have $\abs{X_1} = \abs{f_1[X_1]} \leq \abs{\b} \leq \al_\g$.
+    Next, consider any $x_2 \in X_2$ so that $x_2 \in X$ and hence $x_2 \prec a$.
+    Then, again by the definition of $\prec$, we have that $f_2(x_2) < f_1(a) = \b$ since $x_2 \in A_2$ and $a \in A_1$.
+    Hence $f_2(x_2) \in \b$ so that $f_2[X_2] \ss \b$ since $x_2$ was arbitrary.
+    Thus we have $\abs{X_2} = \abs{f_2[X_2]} \leq \abs{\b} \leq \al_\g$ since $f_2$ is bijective.
+
+    A similar argument shows that $\abs{X_1} \leq \al_\g$ and $\abs{X_2} \leq \al_\g$ for some $\g < \a$ in the case when $a \in A_2$.
+    However, in this case we must set $\b = f_2(a) + 1$, noting that $\b \in \w_\a$ since $f_2(a) \in \w_\a$ and $\w_\a$ is a limit ordinal by Lemma~7.1.9.1.T.
+
+    Thus in all cases we have
+    \ali{
+        \abs{X} &= \abs{X_1} + \abs{X_2} \\
+        &\leq \al_\g + \al_\g & \text{(by property (d) of cardinal numbers in section~5.1)} \\
+        &= \al_\g & \text{(by the induction hypothesis since $\g < \a$)} \\
+        &< \al_\a \,.
+    }
+    Thus we have shown that $\abs{X} < \al_\a = \abs{\w_\a}$ for any $a \in A$, and hence $\abs{\w_\a} \not\leq \abs{X}$ by Corollary~7.1.8.2.T since $\w_\a$ and $X$ are both well-ordered.
+    If $\d$ is the ordinal isomorphic to $(A, \prec)$ (which exists by Theorem~6.3.1 since we have shown that $\prec$ is a well-ordering), then it follows from the contrapositive of Lemma~\ex.\ref{cor:alephadd:setgt} that $\d \leq \w_\a$ and hence $\abs{A} = \abs{\d} \leq \abs{\w_\a} = \al_\a$.
+    Thus we have
+    $$
+    \al_\a + \al_\a = \abs{A_1} + \abs{A_2} = \abs{A} \leq \al_\a \,.
+    $$
+    Since obviously $0 \leq \al_\a$ it follows again from property (d) in section~5.1 that
+    $$
+    \al_\a = \al_\a + 0 \leq \al_\a + \al_\a \,.
+    $$
+    Hence, by the Cantor-Bernstein Theorem we have that $\al_\a = \al_\a + \al_\a$, which completes the inductive step. \qedsymbol
+\end{solution}

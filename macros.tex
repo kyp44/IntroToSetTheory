@@ -27,6 +27,7 @@
 \def\x{\xi}
 \def\w{\omega}
 \def\W{\Omega}
+\def\al{\aleph}
 
 % For set-buider notation
 \def\where{\,|\,}
@@ -68,5 +69,13 @@
     \color{blue}
     \emph{#1.}
 }{
+}
+    
+% Environment for indenting nested paragraphs (useful in case trees)
+\newenvironment{indpar}
+{
+    \begin{adjustwidth}{1cm}{}
+}{
+    \end{adjustwidth}
 }
     

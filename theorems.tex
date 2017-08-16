@@ -482,17 +482,30 @@
     }
 
     \begin{statement}{Corollary~7.1.8.2.T}
-        If $A$ and $B$ are well ordered sets and $\aA \nleq \aB$ then $\aB < \aA$.
+        If $A$ and $B$ are well ordered sets then $\aA \nleq \aB$ if and only if $\aB < \aA$.
     \end{statement}
 
     \proof{
-        Since $\aA \nleq \aB$ it follows from Lemma~7.1.8.1.T above that $\aB \leq \aA$.
+        ($\to$) Suppose that $\aA \nleq \aB$.
+        Then it follows from Lemma~7.1.8.1.T above that $\aB \leq \aA$.
         Suppose that $\aB = \aA$.
         Then there is a bijection $f$ from $B$ to $A$.
         But then clearly $\inv{f}$ is also a bijection and therefore injective.
         Hence by definition $\aA \leq \aB$, a contradiction.
         So it cannot be that $\aB = \aA$.
-        Hence $\aB < \aA$ by definition as desired. \qedsymbol
+        Hence $\aB < \aA$ by definition as desired.
+
+        ($\leftarrow$) We show this by proving the contrapositive.
+        So suppose that $\aA \leq \aB$.
+        Also suppose that $\aB \leq \aA$ so that by Lemma~7.1.8.1.T above $\aA = \aB$.
+        Thus we have shown that
+        \gath{
+            \aB \leq \aA \to \aA = \aB \\
+            \aB \nleq \aA \lor \aA = \aB \\
+            \lnot \parens{\aB \leq \aA \land \aA \neq \aB} \\
+            \lnot (\aB < \aA) \,,
+        }
+        thereby showing the contrapositive. \qedsymbol
     }
 
     \emph{Main Problem.}
