@@ -1654,7 +1654,7 @@
     \emph{Main Problem.}
 
 	($\to$) Suppose to the contrary that not every limit ordinal is equal to $\w \cdot \b$ for some $\b$.
-    Then let $\a$ be the such a limit ordinal so that $\a \neq \w \cdot \g$ for every ordinal $\g$.
+    Then let $\a$ be a limit ordinal such that $\a \neq \w \cdot \g$ for every ordinal $\g$.
     Now let $\b$ be the set of ordinals $\d$ such that $\w \cdot \d < \a$, noting that it could potentially be the empty set.
     We claim that $\b$ is an ordinal number and that moreover it is a limit ordinal.
 
@@ -1678,6 +1678,10 @@
     Now since $\d < \b$ means that $\d \in \b$ so that $\w \cdot \d < \a$ by the definition of $\b$, clearly $\a$ is an upper bound of $A$ so that $\w \cdot \b = \sup{A} \leq \a$.
     However, if it were the case that $\w \cdot \b < \a$ then we would have by definition that $\b \in \b$ which contradicts Lemma~6.2.7 since we have shown that $\b$ is an ordinal.
     Thus the only possibility is that $\w \cdot \b = \a$, which gives rise to the contradiction.
+
+    Moreover, we can show that $\b$ is unique.
+    To see this, consider $\b_1$ and $\b_2$ where $\a = \w \cdot \b_1$ and $\a = \w \cdot \b_2$.
+    Then clearly $\w \cdot \b_1 = \w \cdot \b_2$ so that $\b_1 = \b_2$ by Exercise~6.5.7b since clearly $\w \neq 0$.
 
     ($\leftarrow$) Suppose that $\a = \w \cdot \b$ for some ordinal $\b$.
     Then the result that $\a$ is a limit ordinal follows immediately from Lemma~6.5.10.1 above since $\w$ is a limit ordinal. \qedsymbol
@@ -2348,7 +2352,7 @@
         $$
         \a = \sup_{\d < \g} \a_\d \,.
         $$
-        Also suppose that ${\b_\d}$ is a non-decreasing another transfinite sequence indexed by $\a$.
+        Also suppose that ${\b_\d}$ is another non-decreasing transfinite sequence indexed by $\a$.
         Then
         $$
         \sup_{\d < \a} \b_\d = \sup_{\d < \g} \b_{\a_\d} \,.
@@ -2371,6 +2375,8 @@
         Since we have that $\d < \b_{\a_\x}$ this show that $\d$ is not an upper bound of $B$.
         Hence since $\d$ was arbitrary this concludes the proof that $\sup{B} = \sup{C}$ by the least upper bound property. \qedsymbol
     }
+
+    \emph{Main Problem.}
 
     (a) We claim that the least such ordinal here is $\x = \w^2$.
     That this has the desired property (i.e. that $\w + \x = \x$) was shown in Exercise~6.5.3b.

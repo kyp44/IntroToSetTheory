@@ -652,3 +652,327 @@
     $$
     Hence, by the Cantor-Bernstein Theorem we have that $\al_\a = \al_\a + \al_\a$, which completes the inductive step. \qedsymbol
 \end{solution}
+
+\def\ex{7.2.2}
+\setcounter{itm}{0}
+\question{\ex}
+\begin{solution}
+    \begin{statement}{Lemma~\ex.\itm{lem:natal:natlim}}
+        If $\a$ is a limit ordinal and $n$ is a natural number then $n \cdot \a = \a$.
+    \end{statement}
+    \proof{
+        First, clearly we have by definition that $n \cdot \w = \sup \braces{n \cdot k \where k < \w} = \w$.
+        Then, since $\a$ is a limit ordinal, we have from Exercise~6.5.10 that $\a = \w \cdot \b$ for some ordinal $\beta$.
+        Thus we have
+        $$
+        n \cdot \a = n \cdot (\w \cdot \b) = (n \cdot \w) \cdot \b = \w \cdot \b = \a \,.
+        $$
+    }
+
+    \emph{Main Problem.}
+
+    Consider any natural number $n > 0$ and any ordinal number $\a$.
+    We then show that $n \cdot \al_\a = \al_\a$ by constructing a bijective $f: \w_\a \to n \times \w_\a$, which clearly shows the result by the definition of cardinal multiplication.
+
+    So consider any $\b \in \w_\a$.
+    Then, since $n > 0$, we have by Theorem~6.6.3 that there is a unique ordinal $\g$ and unique natural number $k < n$ such that
+    $$
+    \b = n \cdot \g + k \,,
+    $$
+    where $k < n$ and clearly
+    $$
+    \g = 1 \cdot \g \leq n \cdot \g = n \cdot \g + 0 \leq n \cdot \g + k = \b
+    $$
+    since $1 \leq n$ and $0 \leq k$.
+    Hence we have $k \in n$ and $\g \leq \b < \w_\a$ so that $\g \in \w_\a$.
+    We then set $f(\b) = (k, \g) \in n \times \w_\a$.
+
+    First we show that $f$ is injective.
+    So consider $\b_1$ and $\b_2$ in $\w_\a$ where $f(\b_1) = f(\b_2)$.
+    If we have $f(\b_1) = (k_1, \g_1)$ and $f(\b_2) = (k_2, \g_2)$ then clearly this means that $k_1 = k_2$ and $\g_1 = \g_2$.
+    It then clearly follows that
+    $$
+    \b_1 = n \cdot \g_1 + k_1 = n \cdot \g_2 + k_2 = \b_2 \,,
+    $$
+    which shows that $f$ is injective.
+
+    Now we show that $f$ is also surjective.
+    So consider any $(k, \g) \in n \times \w_\a$ so that $k \in n$ and $\g \in \w_\a$.
+    Then let $\b = n \cdot \g + k$ so that clearly $f(\b) = (k, \g)$.
+    However, we must show that $\b$ is actually in $\w_\a$.
+    To see this, first we note that since $\g < \w_\a$ is an ordinal we have $\g = \d + m$ for some limit ordinal $\d$ and natural number $m$ by Exercise~6.5.4, where clearly $\d \leq \g$.
+    Hence we have
+    $$
+    \b = n \cdot \g + k = n \cdot (\d + m) + k = (n \cdot \d + n \cdot m) + k = n \cdot \d + (n \cdot m + k) = \d + (n \cdot m + k) \,,
+    $$
+    where $n \cdot \d = \d$ by Lemma~\ex.\ref{lem:natal:natlim} since $\d$ is a limit ordinal.
+    Then since also $\d \leq \g < \w_\a$ and $n \cdot m + k$ is a natural number we clearly have that $\b = \d + (n \cdot m + k)< \w_\a$ as well since $\w_\a$ is a limit ordinal (by Theorem~7.1.9b).
+    Hence $\b \in \w_\a$.
+
+    Thus we have shown that $f$ is bijective so that by definition $n \cdot \al_\a = \abs{n \times \w_\a} = \abs{\w_\a} = \al_\a$ as desired. \qedsymbol
+\end{solution}
+
+\question{7.2.3}
+\begin{solution}
+    \newcommand\nss[1]{\squares{\al_\a}^{#1}}
+    \def\wss{\squares{\al_\a}^{<\w}}
+	(a) For any ordinal $\a$, we show this by induction on $n$, noting that we only need to show this for positive $n$ so that $n \geq 1$ (in fact it is untrue for $n=0$).
+    First, for $n=1$ we clearly have $\al_\a^n = \al_\a^1 = \al_\a$ by what was shown in Exercise~5.1.2.
+    Now assume that $\al_\a^n = \al_\a$.
+    We then have
+    \ali{
+        \al_\a^{n+1} &= \al_\a^n \cdot \al_\a^1 & \text{(by Theorem~5.1.7a)} \\
+        &= \al_\a^n \cdot \al_\a & \text{(again by Exercise~5.1.2)} \\
+        &= \al_\a \cdot \al_\a & \text{(by the induction hypothesis)} \\
+        &= \al_\a \,. & \text{(by Theorem~7.2.1)}
+    }
+    This completes the induction step. \qedsymbol
+
+    (b) For ordinal $\a$ and natural number $n$, first we show that $\abs{\nss{n}} \leq \al_\a$ by constructing an injective $f : \nss{n} \to \w_\a^n$.
+    For a set $X \in \nss{n}$ we have that $\abs{X} = n$.
+    Thus there is a bijective $g$ from $n$ to $X$, and since clearly $X \ss \al_\a = \w_\a$ it follows that $g$ is a function from $n$ to $\w_\a$.
+    Hence we simply set $f(X) = g$.
+    Now consider any $X_1$ and $X_2$ in $\nss{n}$ where $X_1 \neq X_2$.
+    Then let $g_1$ and $g_2$ be the corresponding bijections from $n$ to $X_1$ and $X_2$, respectively.
+    Thus $f(X_1) = g_1$ and $f(X_2) = g_2$.
+    Then, since clearly the range of $g_1$ is $X_1$, the range of $g_2$ is $X_2$, and $X_1 \neq X_2$ it follows that $f(X_1) = g_1 \neq g_2 = f(X_2)$, which shows that $f$ is injective.
+    Hence it follows that $\abs{\nss{n}} \leq \abs{\w_\a^n} = \abs{\w_\a}^{\abs{n}} = \al_\a^n = \al_\a$ by what was shown in part (a).
+
+    Now we show that also $\al_\a \leq \abs{\nss{n}}$ by constructing an injective $f : \w_\a \to \nss{n}$.
+    So for any $\b \in \w_\a$ let $X = \braces{\b + k \where k \in n}$, noting that clearly $X \ss \w_\a = \al_\a$ since $\w_\a$ is a limit ordinal (since then $\b + k \in \w_\a$ for any natural number $k$).
+    Also clearly $\abs{X} = n$ so that $X \in \nss{n}$.
+    We then set $f(\b) = X$.
+    Now consider any $\b_1$ and $\b_2$ in $\w_\a$ where $\b_1 \neq \b_2$ and let $X_1 = \braces{\b_1 + k \where k \in n}$ and $X_2 = \braces{\b_2 + k \where k \in n}$ so that $f(\b_1) = X_1$ and $f(\b_2) = X_2$.
+    Since $\b_1 \neq \b_2$ we can assume that $\b_1 < \b_2$ without loss of generality.
+    Now, clearly $\b_1 = \b_1 + 0$ is the least element of $X_1$ and $\b_2 = \b_2 + 0$ the least element of $X_2$.
+    Since $\b_1 < \b_2$ it then follows that $\b_1 \notin X_2$, but since $\b_1 \in X_1$ this clearly implies that $f(\b_1) = X_1 \neq X_2 = f(\b_2)$.
+    This shows that $f$ is injective so that $\al_\a = \abs{\w_\a} \leq \abs{\nss{n}}$.
+
+    Since we have shown that both $\abs{\nss{n}} \leq \al_\a$ and $\al_\a \leq \abs{\nss{n}}$, it follows from the Cantor-Bernstein Theorem that $\abs{\nss{n}} = \al_\a$, which is what we intended to show. \qedsymbol
+
+    (c) For any ordinal $\a$ we show first note that clearly $\wss = \bigcup_{n < \w} \nss{n}$.
+    We show that $\abs{\wss} = \al_\a$ by constructing a bijective $f : \w \times \w_\a \to \bigcup_{n < \w} \nss{n}$.
+    So consider any $n \in \w$ and $\b \in \w_\a$.
+    Now, by what was shown in part (b), we have $\abs{\nss{n}} = \al_\a = \abs{\w_\a}$ so that there is a bijective $g_n : \w_\a \to \nss{n}$, i.e. $g_n$ is a transfinite enumeration of $\nss{n}$.
+    We then set $f(n, \b) = g_n(\b)$, from which it should be clear that $f(n,\b) \in \bigcup_{k < \w} \nss{k}$ since $f(n, \b) = g_n(\b) \in \nss{n}$.
+
+    First we show that $f$ is injective.
+    To this end consider any $(n_1, \b_1)$ and $(n_2, \b_2)$ in $\w \times \w_\a$ where $(n_1, \b_1) \neq (n_2, \b_2)$.
+    Then either $n_1 \neq n_2$ or $\b_1 \neq \b_2$ (or both).
+    Let $g_{n_1}$ and $g_{n_2}$ be the corresponding bijections from $\w_\a$ to $\nss{n_1}$ and $\nss{n_2}$, respectively, as described above.
+    Clearly if $n_1 \neq n_2$ then $f(n_1, \b_1) = g_{n_1}(\b_1) \in \nss{n_1}$ whereas $f(n_2, \b_2) = g_{n_2}(\b_2) \in \nss{n_2}$ so that $f(n_1, \b_1) \neq f(n_2, \b_2)$ since $\nss{n_1}$ and $\nss{n_2}$ are clearly disjoint (since $\nss{n_1}$ contains only sets with $n_1$ elements and $\nss{n_2}$ contains only sets with $n_2$ elements and $n_1 \neq n_2$).
+    On the other hand, if $n_1 = n_2$ then it must be the case that $\b_1 \neq \b_2$.
+    It also follows that $g_{n_1} = g_{n_2}$ since $n_1 = n_2$.
+    Hence we have $f(n_1, \b_1) = g_{n_1}(\b_1) \neq g_{n_1}(\b_2) = g_{n_2}(\b_2) = f(n_2, \b_2)$ since $g_{n_1} = g_{n_2}$ is injective and $\b_1 \neq \b_2$.
+    Thus in any case $f(n_1, \b_1) \neq f(n_2, \b_2)$ so that $f$ is injective.
+
+    Next we show that $f$ is surjective.
+    So consider any $X \in \bigcup_{n < \w} \nss{n}$ so that there is an $n < \w$ such that $X \in \nss{n}$.
+    Then let $\b = \inv{g_n}(X)$ (where $g_n$ is the bijection from $\w_\a$ to $\nss{n}$ as described above).
+    Then clearly $(n, \b) \in \w \times \w_\a$ and we have $f(n, \b) = g_n(\b) = g_n(\inv{g_n}(X)) = X$.
+    Since $X$ was arbitrary this shows that $f$ is surjective.
+
+    Hence $f$ is a bijection so that $\abs{\wss} = \abs{\bigcup_{n < \w} \nss{n}} = \abs{\w \times \w_\a} = \abs{\w} \cdot \abs{\w_\a} = \al_0 \cdot \al_\a = \al_\a$ by Corollary~7.2.2 since clearly $0 \leq \a$.
+    This shows the desired result. \qedsymbol
+\end{solution}
+
+\def\maxab{\max\parens{\abs{\a}, \abs{\b}}}
+\def\maxag{\max\parens{\abs{\a}, \abs{\g}}}
+\def\ex{7.2.4}
+\setcounter{itm}{0}
+\question{\ex}
+\begin{solution}
+    \begin{statement}{Lemma~\ex.\itm{lem:orcarar:add}}
+        If $\a$ and $\b$ are ordinals then $\abs{\a + \b} = \abs{\a} + \abs{\b}$.
+    \end{statement}
+    \proof{
+        Suppose that $A$ and $B$ are disjoint sets where $\abs{A} = \abs{\a}$ and $\abs{B} = \abs{\b}$ so that, by the definition of cardinal addition, $\abs{\a} + \abs{\b} = \abs{A \cup B}$.
+        We then show the result by constructing a bijection $f$ from $A \cup B$ to the ordinal $\a + \b$.
+        First, since $\abs{A} = \abs{\a}$, there is a bijective $f_A : A \to \a$.
+        Similarly there is a bijective $f_B : B \to \b$ since $\abs{B} = \abs{\b}$.
+        Now consider any $x \in A \cup B$.
+        We then set
+        $$
+        f(x) = \begin{cases}
+             f_A(x) & x \in A \\
+             \a + f_B(x) & x \in B
+        \end{cases} \,,
+        $$
+        noting that this is unambiguous since $A$ and $B$ are disjoint.
+        If $x \in A$ then we clearly have $f(x) = f_A(x) < \a = \a + 0 \leq \a + \b$ by Lemma~6.5.4 so that $f(x) \in \a + \b$.
+        On the other hand if $x \in B$ then $f(x) = \a + f_B(x) < \a + \b$ again by Lemma~6.5.4 since $f_B(x) < \b$, and hence again $f(x) \in \a + \b$.
+        This shows that $f$ really is a function into $\a + \b$.
+
+        Next we show that $f$ is injective.
+        So consider any $x$ and $y$ in $A \cup B$ where $x \neq y$.
+
+        Case: $x$ and $y$ are both in $A$.
+        Then $f(x) = f_A(x) \neq f_A(y) = f(y)$ since $f_A$ is injective and $x \neq y$.
+
+        Case: $x \in A$ and $y \in B$.
+        Then $f(x) = f_A(x) < \a = \a + 0 \leq \a + f_B(y) = f(y)$ by Lemma~6.5.4 so that clearly $f(x) \neq f(y)$.
+
+        Case: $x \in B$ and $y \in A$.
+        This is analagous to the previous case.
+
+        Case: $x$ and $y$ are both in $A$.
+        Then $f(x) = \a + f_B(x) \neq \a + f_B(y) = f(y)$ by Lemma~6.5.4b since $f_B$ is injective and $x \neq y$ so that $f_B(x) \neq f_B(y)$.
+
+        Hence in all cases we have $f(x) \neq f(y)$, which shows that $f$ is injective.
+
+        Lastly, we show that $f$ is surjective.
+        So consider any $y$ in $\a + \b$.
+        If $y < \a$ then $y \in \a$.
+        Since $f_A$ is surjective there is an $x \in A$ such that $f_A(x) = y$.
+        Then, since $x \in A$, clearly $f(x) = f_A(x) = y$.
+        If $y \geq a$ then by Lemma~6.5.5 there is an ordinal $\x$ such that $\a + \x = y$.
+        It then follows that $\a + \x = y < \a + \b$ so that $\x < \b$ by Lemma~6.5.4a.
+        Hence $\x \in \b$ so that there is an $x \in B$ such that $f_B(x) = \x$ since $f_B$ is surjective.
+        Then, since $x \in B$,  clearly we have $f(x) = \a + f_B(x) = \a + \x = y$.
+        Hence in both cases there is an $x \in A \cup B$ where $f(x) = y$.
+        Since $y$ was arbitrary, this shows that $f$ is surjective.
+
+        Thus we have shown that $f$ is bijective so that $\abs{\a} + \abs{\b} = \abs{A \cup B} = \abs{\a + \b}$. \qedsymbol
+    }
+
+    \begin{statement}{Lemma~\ex.\itm{lem:orcarar:mult}}
+        If $\a$ and $\b$ are ordinals then $\abs{\a \cdot \b} = \abs{\a} \cdot \abs{\b}$.
+    \end{statement}
+    \proof{
+        First, if $\a = 0$ then
+        $$
+        \abs{\a \cdot \b} = \abs{0 \cdot \b} = \abs{0} = 0 = 0 \cdot \abs{\b} = \abs{0} \cdot \abs{\b} = \abs{\a} \cdot \abs{\b} \,.
+        $$
+        The result also holds when $\b = 0$.
+        Hence going forward we can assume that $\a$ and $\b$ are nonzero and therefore nonempty.
+
+        We then show the result by constructing a bijective $f : \a \times \b \to \a \cdot \b$.
+        So consider any $(\g, \d) \in \a \times \b$.
+        It then follows that $\g < \a$ and $\d < \b$ so that $\d+1 \leq \b$.
+        We then set $f(\g, \d) = \a \cdot \d + \g$.
+        We note that
+        $$
+        f(\g, \d) = \a \cdot \d + \g < \a \cdot \d + \a = \a \cdot \d + \a \cdot 1 = \a \cdot (\d + 1) \leq \a \cdot \b
+        $$
+        by Lemma~6.5.4, Exercise~6.5.2, and Exercise~6.5.7.
+        Hence $f(\g, \d) \in \a \cdot \b$ so that $f$ is into $\a \cdot \b$.
+
+        Now we show that $f$ is injective.
+        So consider any $(\g_1, \d_1)$ and $(\g_2, \d_2)$ in $\a \times \b$ where $(\g_1, \d_1) \neq (\g_2, \d_2)$.
+        Then clearly we have $\g_1 < \a$, $\g_2 < \a$, $\d_1 < \b$, and $\d_2 < \b$.
+        We then have
+
+        Case: $\d_1 = \d_2$.
+        Then it must be that $\g_1 \neq \g_2$.
+        We then have
+        $$
+        f(\g_1, \d_1) = \a \cdot \d_1 + \g_1 \neq \a \cdot \d_1 + \g_2 = \a \cdot \d_2 + \g_2 = f(\g_2, \d_2)\,,
+        $$
+        where we have used Lemma~6.5.4b and Exercise~6.5.7b since $\a \neq 0$.
+        
+        Case: $\d_1 \neq \d_2$.
+        Without loss of generality we can assume that $\d_1 < \d_2$ so that clearly $\d_1 + 1 \leq \d_2$.
+        Then we have
+        $$
+        f(\g_1, \g_2) = \a \cdot \d_1 + \g_1 < \a \cdot \d_1 + \a = \a \cdot (\d_1 + 1) \leq \a \cdot \d_2 \leq \a \cdot \d_2 + \g_2 = f(\g_2, \d_2) \,,
+        $$
+        where we have again used Lemma~6.5.4a, Exercise~6.5.2, and Exercise~6.5.7.
+
+        Hence in all cases we have $f(\g_1, \d_1) \neq f(\g_2, \d_2)$, which shows that $f$ is injective.
+
+        Lastly, we show that $f$ is surjective.
+        So consider any ordinal $\x \in \a \cdot \b$ so that $\x < \a \cdot \b$.
+        Since $\a \neq 0$, it follows from Theorem~6.6.3 that there is a unique $\d$ and unique $\g < \a$ such that $\x = \a \cdot \d + \g$.
+        Note that we have $\d < \b$ since otherwise $\d \geq \b$ would imply that
+        $$
+        \x = \a \cdot \d + \g \geq \a \cdot \d \geq \a \cdot \b
+        $$
+        by Lemma~6.5.4 and Exercise~6.5.7, which is impossible since $\x < \a \cdot \b$.
+        Hence we have that $(\g, \d) \in \a \times \b$, and clearly $f(\g, \d) = \x$.
+        Since $\x$ was arbitrary this shows that $f$ is surjective.
+
+        Thus we have shown that $f$ is bijective so that by the definition of cardinal multiplication we have $\abs{\a \cdot \b} = \abs{\a \times \b} = \abs{\a} \cdot \abs{\b}$ as desired. \qedsymbol
+     }
+
+     The following lemmas are generalizations of the some of the theorems proved in section~4.3.
+
+     \iffalse
+    \begin{statement}{Lemma~\ex.\itm{lem:orcarar:range}}
+        If $\angles{a_\g}_{\g < \a}$ is a transfinite sequence indexed by some ordinal $\a$ then the range of the sequence $A = \braces{a_\g}_{\g < \a}$ is at most $\abs{\a}$, i.e. $\abs{A} \leq \abs{\a}$.
+    \end{statement}
+    \proof{
+        We construct an injective $f: A \to \a$.
+        For any $a \in A$ consider the set $B = \braces{\g \in \a \where a_\g = a}$, noting that this is a nonempty set of ordinals since $A$ is the range of the sequence $\angles{a_\g}_{\g < \a}$.
+        It then follows that $B$ has a unique least element $\b$, so we set $f(a) = \b$.
+
+        To see that $f$ is injective, consider $a_1$ and $a_2$ in $A$ such that $f(a_1) = f(a_2)$.
+        By the definition of $f$ we then have that $a_1 = a_{f(a_1)} = a_{f(a_2)} = a_2$.
+
+        Hence, since $f$ is injective, we have by definition that $\abs{A} \leq \abs{\a}$. \qedsymbol
+    }
+    \fi
+
+    \def\sun{\bigcup_{\b<\a} A_\b}
+    \begin{statement}{Lemma~\ex.\itm{lem:orcarar:union}}
+        Suppose $\g$ is an ordinal and $\angles{A_\b}_{\b < \a}$ is a system of sets indexed by nonzero ordinal $\a$ where $\abs{\a} \leq \al_\g$.
+        Also suppose that each set in the system is well-orderable and at most $\al_\g$.
+        Then $\sun$ is at most $\al_\g$ as well.
+    \end{statement}
+    \proof{
+        First, suppose that every set in the system is empty.
+        Then clearly $\sun$ is empty since, if there is an $x \in \sun$, then there is a $\b < \a$ where $x \in A_\b$, which contradicts the fact that $A_\b = \es$.
+        Hence clearly $\abs{\sun} = \abs{\es} = 0 < \al_\g$.
+
+        So we assume that at least one set in the system is non-empty and so that there exists an $a$ in that set.
+        Now, consider any $\b < \a$.
+        Then we clearly have  $\abs{A_\b} \leq \al_\g$.
+        Also, since $A_\b$ is well-orderable, it follow that there is an ordinal $\a_\b$ such that the elements of $A_\b$ can be written as a transfinite sequence $\angles{a_\d}_{\d < \a_\b}$.
+        It also follows that $\abs{\a_\b} \leq \al_\g$.
+    }
+
+    \begin{statement}{Lemma~\ex.\itm{lem:orcarar:exp}}
+        If $\a$ and $\b$ are ordinals where at least one is infinite then $\abs{\a^\b} \leq \maxab$.
+    \end{statement}
+    \proof{
+        Clearly $\maxab$ is an infinite cardinal since at least one of $\a$ or $\b$ is infinite.
+        First we show that $\maxab \cdot \abs{\a} = \maxab \cdot \abs{\b} = \maxab$.
+        We need only consider the case when $\abs{\a} \leq \abs{\b}$ since otherwise we apply can the same argument.
+        Hence $\abs{\b} = \al_\g$ for some ordinal $\g$ since $\b$ must be infinite, and $\maxab = \abs{\b} = \al_\g$.
+        We then clearly have $\maxab \cdot \abs{\b} = \al_\g \cdot \al_\g = \al_\g$ by Theorem~7.2.1.
+        If $\abs{\a} = n$ for some finite $n$ then clearly $\maxab \cdot \abs{\a} = \al_\g \cdot n = n \cdot \al_\g = \al_\g$ by Corollary~7.2.2.
+        Finally, if $\abs{\a}$ is infinite, then $\abs{\a} = \al_\d$ for some ordinal $\d$, and clearly $\d \leq \g$ since $\al_\d = \abs{\a} \leq \abs{\b} = \al_\g$.
+        We then have $\maxab \cdot \abs{\a} = \al_\g \cdot \al_\d = \al_\d \cdot \al_\g = \al_\g$ again by Corollary~7.2.2.
+        Hence we have shown that $\maxab \cdot \abs{\a} = \maxab \cdot \abs{\b} = \maxab$ since $\maxab = \al_\g$.
+
+        Now we show the main result by transfinite induction.
+        First, for $\b = 0$ then it has be that $\a$ is infinite so that $\maxab = \abs{\a}$ is also infinite.
+        Then, clearly $\abs{\a^\b} = \abs{\a^0} = \abs{1} = 1 \leq \maxab$.
+        Now suppose that $\abs{\a^\b} \leq \maxab$.
+        Then we have
+        \ali{
+            \abs{\a^{\b+1}} &= \abs{\a^\b \cdot \a} & \text{(by the definition of ordinal exponentiation)} \\
+            &= \abs{\a^\b} \cdot \abs{\a} & \text{(by Lemma~\ex.\ref{lem:orcarar:mult})} \\
+            &\leq \maxab \cdot \abs{\a} & \text{(by the induction hypothesis and property (i) after Lemma~5.1.4)} \\
+            &= \maxab & \text{(by what was just shown above)} \,.
+        }
+        Now suppose that $\b$ is a nonzero limit ordinal and that $\abs{\a^\g} \leq \maxag$ for all $\g < \b$.
+        Then, for any $\g < \b$, clearly $\g \ss \b$ (since $\beta$ is transitive and $\g \in \b$ since $\g < \b$) so that $\abs{\g} \leq \abs{\b}$.
+        
+    }
+    
+    \emph{Main Problem.}
+
+    That $\abs{\a + \b} \leq \al_\g$ follows almost immediately from Lemma~\ex.\ref{lem:orcarar:add}.
+    We have that $\abs{\a + \b} = \abs{\a} + \abs{\b} \leq \al_\g + \al_\g = \al_\g$, where we have also used property (c) of cardinal numbers after Lemma~5.1.2, and Corollary~7.2.3.
+
+    Similarly, $\abs{\a \cdot \b} \leq \al_\g$ follows from Lemma~\ex.\ref{lem:orcarar:mult}.
+    We have that $\abs{\a \cdot \b} = \abs{\a} \cdot \abs{\b} \leq \al_\g \cdot \al_\g = \al_\g$, where we have used property (i) of cardinal numbers following Lemma~5.1.4, and Theorem~7.2.1.
+
+    The analagous lemma for ordinal exponentiation (i.e. that $\abs{\a^\b} = \abs{\a}^{\abs{\b}}$ for ordinals $\a$ and $\b$) is evidently not true.
+    As a counterexample consider $\a = 2$ and $\b = \w$.
+    We then have that $\abs{\a^\b} = \abs{2^\w} = \abs{\w} = \al_0$ is countable whereas we know that $\abs{\a}^{\abs{\b}} = \abs{2}^{\abs{\w}} = 2^{\al_0}$ is uncountable.
+
+    However, the somewhat analagous Lemma~\ex.\ref{lem:orcarar:exp} will help us show the desired result.
+    First, if both $\a$ and $\b$ are finite then clearly $\a^\b$ is also finite so that clearly $\abs{\a^\b} \leq \al_\g$.
+    On the other hand, if at least one of $\a$ or $\b$ is infinite, then have we have that $\abs{\a^\b} \leq \maxab \leq \al_\g$ by Lemma~\ex.\ref{lem:orcarar:exp} as desired, noting that clearly $\maxab \leq \al_\g$ since both $\abs{\a} \leq \al_\g$ and $\abs{\b} \leq \al_\g$. \qedsymbol
+\end{solution}
