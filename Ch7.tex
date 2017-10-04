@@ -302,18 +302,24 @@
 \def\ex{7.1.6}
 \setcounter{itm}{0}
 \question{\ex}
-
 \begin{solution}
     \def\hs{h^*}
 
     \begin{statement}{Lemma~\ex.\itm{lem:hs:onto}}
-        If $A$ is a well-orderable set, $B$ is any other set, and there is a function from $A$ onto $B$ then $\abs{B} \leq \abs{A}$.
+        If $A$ is a well-orderable set and $B$ is any other set, there is a function from $A$ onto $B$ if and only if $\abs{B} \leq \abs{A}$.
     \end{statement}
 
     \proof{
-        Let $f$ be a function from $A$ onto $B$ and suppose that $R$ is a well-ordering of $A$.
-        For each $b \in B$ define the set $A_b = \braces{a \in A \where f(a) = b}$, which clearly not empty since $f$ is onto.
-        Then since $R$ is a well-ordering of $A$ and $A_b \ss A$ there is a unique least element of $a_b$ of $A_b$ according to $R$.
+        Suppose that $R$ is a well-ordering of $A$.
+
+        $(\to)$ Suppose that $f$ is a function from $A$ onto $B$.
+        If $A$ is empty then clearly $B$ must be as well or else $f$ could not be onto.
+        Thus we have $\abs{B} = \abs{\es} = 0 \leq 0 = \abs{\es} = \abs{A}$.
+        So we can assume that $A$ is nonempty so that if $B$ is empty then $\abs{B} = \abs{\es} = 0 < \abs{A}$.
+        Hence we can assume that $B$ is nonempty as well.
+
+        Then, for each $b \in B$, define the set $A_b = \braces{a \in A \where f(a) = b}$, which clearly not empty since $f$ is onto.
+        Then, since $R$ is a well-ordering of $A$ and $A_b \ss A$, there is a unique least element of $a_b$ of $A_b$ according to $R$.
         We then define $g: B \to A$ by simply setting $g(b)  = a_b$ for any $b \in B$.
 
         We then claim that $g$ is injective.
@@ -321,7 +327,22 @@
         Then since $a_{b_1} \in A_{b_1}$ clearly $f(a_{b_1}) = b_1$.
         Similarly $f(a_{b_2}) = b_2$ so that clearly $a_{b_1} \neq a_{b_2}$ since $f$ is a function and $b_1 \neq b_2$.
         Hence $g(b_1) = a_{b_1} \neq a_{b_2} = g(b_2)$, which shows that $g$ is injective since $b_1$ and $b_2$ were arbitrary.
-        Then by definition $\abs{B} \leq \abs{A}$ as desired. \qedsymbol
+        Then by definition $\abs{B} \leq \abs{A}$ as desired.
+
+        $(\leftarrow)$ Now suppose that $\abs{B} \leq \abs{A}$ so that there is an injective $f: B \to A$.
+        If $B$ is empty then clearly it has to be that $\abs{B} = \abs{\es} = 0 \leq \abs{A}$ regardless of $A$.
+        So we can assume that $B$ is nonempty so that there is a $b \in B$.
+        Since $f$ is injective, the inverse $\inv{f}$ is a function from $\ran(f)$ onto $B$.
+        Now we construct a function $g: A \to B$ by setting
+        $$
+        g(x) = \begin{cases}
+             \inv{f}(x) & x \in \ran(f) \\
+             b & x \notin \ran(f)
+        \end{cases}
+        $$
+        for any $x \in A$.
+        It should be clear that $g$ maps $A$ onto $B$ since, for any $b \in B$, we have $f(b) \in \ran(f)$ (hence also $f(b) \in A$) so that $g(f(b)) = \inv{f}(f(b)) = b$.
+        \qedsymbol
     }
 
     \emph{Main Problem.}
@@ -375,7 +396,7 @@
     So suppose to the contrary that $\hs(A) > h(A)$.
     Then by the definition of $\hs(A)$ it follows that there is a function from $A$ onto $h(A)$.
     It then  follows from Lemma~\ex.\ref{lem:hs:onto} that $\abs{h(A)} \leq \abs{A}$ since $A$ is well-orderable.
-    However, this contradict Lemma~7.1.4.\ref{lem:lthart:lthart} so that it must be that $\hs(A) \leq h(A)$ so that the result follows.
+    However, this contradicts Lemma~7.1.4.\ref{lem:lthart:lthart} so that it must be that $\hs(A) \leq h(A)$ so that the result follows.
 
     (e) Consider any set $A$ and let $S$ denote the set of well-orderings of some partition of $A$ into equivalence classes, noting that it could be that $S = \es$.
     Since each $R \in S$ is isomorphic to a unique ordinal, let $H$ be the set of ordinals that are isomorphic to some $R \in S$, which exists by the Axiom Schema of Replacement.
@@ -975,4 +996,11 @@
     However, the somewhat analagous Lemma~\ex.\ref{lem:orcarar:exp} will help us show the desired result.
     First, if both $\a$ and $\b$ are finite then clearly $\a^\b$ is also finite so that clearly $\abs{\a^\b} \leq \al_\g$.
     On the other hand, if at least one of $\a$ or $\b$ is infinite, then have we have that $\abs{\a^\b} \leq \maxab \leq \al_\g$ by Lemma~\ex.\ref{lem:orcarar:exp} as desired, noting that clearly $\maxab \leq \al_\g$ since both $\abs{\a} \leq \al_\g$ and $\abs{\b} \leq \al_\g$. \qedsymbol
+\end{solution}
+
+\question{7.2.5}
+\begin{solution}
+	Clearly $f$ is a function from $\w_\a$ onto its image $X$ so that it follows from Lemma~7.1.6.\ref{lem:hs:onto} that $\abs{X} \leq \abs{\w_\a} = \al_\a$ as desired. \qedsymbol
+    
+    Note that the proof of Lemma~7.1.6.\ref{lem:hs:onto} uses exactly the technique given in the hint to argue its conclusion.
 \end{solution}
