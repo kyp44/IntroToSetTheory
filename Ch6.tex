@@ -49,7 +49,7 @@
         From this it clearly follows that $S$ is finite since $n$ is. \qedsymbol
     }
 
-    \emph{Main Problem.}
+    \mainprob
 
     Throughout the following let $<$ denote the standard well-ordering on $\nats$ and let $R$ be the set of all well-orderings defined on $\nats$.
 
@@ -523,7 +523,7 @@
         Thus $\a < \b$ or $\a = \b$, i.e. $\a \leq \b$. \qedsymbol
     }
 
-    \emph{Main Problem.}
+    \mainprob
     
     Suppose that $X$ is a set of ordinals with no greatest element.
     Let $\b = \sup{X} = \bigcup X$.
@@ -978,7 +978,7 @@
         Thus $\a \cdot \b \neq 0$. \qedsymbol
     }
 
-    \emph{Main Problem.}
+    \mainprob
     
 	We show this by transfinite induction on $\g$.
 
@@ -1145,7 +1145,7 @@
         This completes the inductive proof. \qedsymbol
     }
 
-    \emph{Main Problem.}
+    \mainprob
 
 	\emph{Existence.}
     First for any ordinal $\a$ let
@@ -1236,7 +1236,7 @@
         This completes the inductive proof. \qedsymbol
     }
 
-    \emph{Main Problem.}
+    \mainprob
     
     In what follows suppose generally that $\a = \g + n$ and $\b = \d + m$ where $\g$ and $\d$ are limit ordinals and $n$ and $m$ are natural numbers.
     Note that $\a$ and $\b$ can be expressed in this way uniquely by Exercise~6.5.4.
@@ -1421,7 +1421,7 @@
         Hence $\b$ is a limit ordinal such that $\b < \w^2$ so that by Lemma~6.5.6.3 there is a natural number $n$ such that $\b = \w \cdot n$, thereby proving the result since this means that $\a = \b + k = \w \cdot n + k$. \qedsymbol
     }
     
-    \emph{Main Problem}
+    \mainprob
 
     We claim that $\w^2$ is the first additive ordinal after $\w$.
 
@@ -1580,7 +1580,7 @@
         By Definition~6.5.6 we have that $n \cdot \w = \sup\braces{n \cdot k \where k < \w}$ but clearly $n \cdot k$ is a natural number for any $k < \w$ so that $n \cdot \w = \sup\braces{n \cdot k \where k < \w} = \sup\braces{k \where k < \w} = \w$. \qedsymbol
     }
 
-    \emph{Main Problem.}
+    \mainprob
 
 	(a) Let $\a = 1$, $\b = 2$, and $\g = \w$ so that
     $$
@@ -1651,7 +1651,7 @@
         We then have that $\b = \a + \g = \a + (n + 1) = (\a + n) + 1$ so that clearly $\b$ is a successor ordinal. \qedsymbol
     }
 
-    \emph{Main Problem.}
+    \mainprob
 
 	($\to$) Suppose to the contrary that not every limit ordinal is equal to $\w \cdot \b$ for some $\b$.
     Then let $\a$ be a limit ordinal such that $\a \neq \w \cdot \g$ for every ordinal $\g$.
@@ -1975,7 +1975,7 @@
         Hence $E_\a$ is an embedding of $\a$ in $[a,b)$. \qedsymbol
     }
     
-    \emph{Main Problem.}
+    \mainprob
 
     (a) Define $f: \w \to \rats$ by
     $$
@@ -2290,7 +2290,7 @@
         It then follows from the least upper bound property that $\sup{A} \leq \sup{B}$ as desired. \qedsymbol
     }
 
-    \emph{Main Problem.}
+    \mainprob
 
     (a) We show this by transfinite induction on $\g$.
     So first suppose that $\a \leq \b$.
@@ -2376,7 +2376,7 @@
         Hence since $\d$ was arbitrary this concludes the proof that $\sup{B} = \sup{C}$ by the least upper bound property. \qedsymbol
     }
 
-    \emph{Main Problem.}
+    \mainprob
 
     (a) We claim that the least such ordinal here is $\x = \w^2$.
     That this has the desired property (i.e. that $\w + \x = \x$) was shown in Exercise~6.5.3b.
@@ -2519,13 +2519,13 @@
     Thus in what follows we shall assume the more interesting case when $\a > 1$ (and $\b > 0$).
 
     Now we define a function $h : S(\b, \a) \to \a^\b$.
-    For any $f \in S(\b, \a)$ since $s(f)$ is a finite set of ordinal it follows that it is isomorphic to some natural number $n$.
+    For any $f \in S(\b, \a)$ since $s(f)$ is a finite set of ordinals it follows that it is isomorphic to some natural number $n$.
     Thus its elements can be expressed as a  strictly increasing sequence $\braces{s_k}$ for $k < n$ where each $s_k \in \b$ since $s(f) \ss \b$.
     We now set
     $$
     h(f) = \sum_{k=0}^{n-1} \a^{s_k} \cdot f(s_k) \,,
     $$
-    noting that it could be the case that $n=0$ so that $h(f) = 0$, consistent with our convention..
+    noting that it could be the case that $n=0$ so that $h(f) = 0$, consistent with our convention.
 
     First we show that $h(f) \in \a^\b$ so that the range of $h$ is in fact a subset of $\a^\b$.
     We begin by showing by induction on $m$ that

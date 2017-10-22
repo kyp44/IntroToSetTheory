@@ -1,0 +1,16 @@
+\documentclass{report}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[hidelinks]{hyperref}
+\usepackage{color}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{parskip}
+
+\input{macros}
+
+\newcounter{itm}
+\newcommand{\itm}[1]{\refstepcounter{itm}\label{#1}\arabic{itm}}
+
+\begin{document}
+\input{lemmas_content}
+\end{document}
