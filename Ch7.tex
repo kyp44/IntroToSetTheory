@@ -657,7 +657,7 @@
     Thus in all cases we have
     \ali{
         \abs{X} &= \abs{X_1} + \abs{X_2} \\
-        &\leq \al_\g + \al_\g & \text{(by property (d) of cardinal numbers in section~5.1)} \\
+        &\leq \al_\g + \al_\g & \text{(by property (d) of in section~5.1)} \\
         &= \al_\g & \text{(by the induction hypothesis since $\g < \a$)} \\
         &< \al_\a \,.
     }
@@ -1104,4 +1104,45 @@
 	Clearly $f$ is a function from $\w_\a$ onto its image $X$ so that it follows from Lemma~7.1.6.\ref{lem:hs:onto} that $\abs{X} \leq \abs{\w_\a} = \al_\a$ as desired. \qedsymbol
     
     Note that the proof of Lemma~7.1.6.\ref{lem:hs:onto} uses exactly the technique given in the hint to argue its conclusion.
+\end{solution}
+
+\def\ex{7.2.6}
+\setcounter{itm}{0}
+\question{\ex}
+\begin{solution}
+    \begin{statement}{Lemma~\ex.\itm{lem:minus:add}}
+        If $\k$ and $\l$ are cardinal numbers and $\k \leq \l < \al_\a$ for some ordinal $\a$, then $\k + \l < \al_\a$.
+    \end{statement}
+    \proof{
+        We have
+        \ali{
+            \k + \l &= \l + \k & \text{(by the commutativaty of cardinal addition)} \\
+            &\leq \l + \l & \text{(by property~(d) in section~5.1)} \\
+            &= \l \cdot 1 + \l \cdot 1 \\
+            &= \l \cdot (1 + 1) & \text{(by property~(g) in section~5.1)} \\
+            &= \l \cdot 2 \,.
+        }
+        If $\l$ is finite then clearly $\l \cdot 2$ is finite so that $\k + \l \leq \l \cdot 2 < \al_\a$.
+        On the other hand if $\l$ is infinite then $\l = \al_\b$ where $\b < \a$ since $\al_\b = \l < \al_\g$.
+        Thus we have $\k + \l \leq \l \cdot 2 = 2 \cdot \l = 2 \cdot \al_\b = \al_\b < \al_\a$ by Corollary~7.2.2.
+        Hence in either case $\k + \l < \al_\a$ as desired. \qedsymbol
+    }
+
+    \mainprob
+
+    First, we clearly have that $\w_\a - X$ and $X$ are disjoint and $(\w_\a - X) \cup X = \w_\a$ so that, by the definition of cardinal addition, we have
+    $$
+    \abs{\w_\a - X} + \abs{X} = \abs{(\w_\a - X) \cup X} = \abs{\w_\a} = \al_\a \,.
+    $$
+    Now suppose that $\abs{\w_\a - X} < \al_\a$
+    Since $\w_\a - X \ss \w_\a$ and $X \ss \w_\a$ are both sets of ordinals, they are clearly both well ordered by $<$.
+    Thus $\abs{\w_\a - X} \leq \abs{X}$ or $\abs{X} \leq \abs{\w_\a - X}$ by Lemma~7.1.8.1.T.
+    Since we also have $\abs{\w_\a - X} < \al_\a$ and $\abs{X} < \al_\a$, in either case it follows from Lemma~\ex.\ref{lem:minus:add} that
+    $$
+    \al_\a = \abs{\w_\a - X} + \abs{X} < \al_\a \,,
+    $$
+    which is clearly a contradiction.
+    Thus it must be that $\abs{\w_\a - X} \nless \al_\a$ so that $\al_\a \leq \abs{\w_\a - X}$ by Corollary~7.1.8.2.T.
+    Since $\w_\a - X \ss \w_\a$ we clearly also have that $\abs{\w_\a - X} \leq \abs{\w_\a} = \al_\a$.
+    Hence $\abs{\w_\a - X} = \al_\a$ by the Cantor-Bernstein Theorem. \qedsymbol
 \end{solution}
