@@ -1,0 +1,15 @@
+\begin{lem}\label{lem:ord:lub}
+If $A$ is a set of ordinals then ordinal $\a = \sup{A}$ if and only if $\a$ is the least upper bound of $A$, i.e. $\a$ is an upper bound of $A$ and $\b$ is not an upper bound of $A$ for any $\b < \a$.
+\end{lem}
+\qproof{
+  ($\to$) First suppose that $\a = \sup{A}$.
+  Then by the remarks following the proof of Theorem~6.2.6 in the text $\a$ is an upper bound of $A$ and if $\b$ is an upper bound of $A$ then $\a \leq \b$.
+  This last statement is simply the contrapositive of the statement that $\b < \a$ implies that $\b$ is \emph{not} an upper bound of $A$ and hence is logically equivalent.
+
+  ($\leftarrow$) We show that an ordinal $\a$ with the least upper bound property for $A$ is unique, which suffices to show the result since if $\b$ has this property then $\b = \sup{A}$ since $\sup{A}$ does as well (by what was just shown above) and the ordinal having this property is unique.
+
+  So suppose that ordinals $\a$ and $\b$ both have the least upper bound property for $A$ but that $\a \neq \b$.
+  Without loss of generality we can assume then that $\a < \b$.
+  But then, since $\b$ has the least upper bound property, $\a$ cannot be an upper bound of $A$, which contradicts the fact that $\a$ also has the least upper bound property!
+  Hence it has to be that $\a = \b$, which shows the uniquness.
+}

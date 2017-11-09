@@ -1,0 +1,18 @@
+\begin{lem}\label{lem:ord:expin:sups}
+  Suppose that $\g$ is a nonzero limit ordinal and $\braces{\a_\n}$ and $\braces{\b_\n}$ for $\n < \g$ are two transfinite sequences.
+  Also suppose that $\a_\n \leq \b_\n$ for every $\n < \g$.
+  Then
+  $$
+  \sup_{\n < \g} \a_\n \leq \sup_{\n < \g} \b_\n \,.
+  $$
+\end{lem}
+\qproof{
+  First let $A = \braces{\a_\n \where \n < \g}$ and $B = \braces{\b_\n \where \n < \g}$ be the ranges of the sequences so that we must show that $\sup{A} \leq \sup{B}$.
+  Now consider any $\a \in A$ so that $\a = \a_\n$ for some $\n < \g$.
+  We then have that
+  $$
+  \a = \a_\n \leq \b_\n \leq \sup{B}
+  $$
+  so that $\sup{B}$ is an upper bound of $A$ since $\a$ was arbitrary.
+  It then follows from the least upper bound property that $\sup{A} \leq \sup{B}$ as desired.
+}

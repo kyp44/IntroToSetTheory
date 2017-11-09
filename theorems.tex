@@ -1,45 +1,63 @@
-% A (minimal) template for problem sets and solutions using the exam document class
-
-% Organization:
-%% Define new commands, macros, etc. in macros.tex
-%% Anything that you would put before \begin{document} should go in prelude.tex
-
-%% For multiple psets, each should get its own file to \input into main with a \section{}
-
 \input{prelude}
 \title{Introduction to Set Theory Theorems}
+
 \begin{document}
 
+\title{
+  Introduction to Set Theory \\
+  Third Edition, Revised and Expanded \\
+  by Hrbacek and Jech \\
+  \ \\
+  Theorems Document
+}
+
+% Import all our custom macros
 \input{macros}
 
-\qformat{}
+% Question label format
+\qformat{\hspace{0.5cm} \textbf{Theorem \thesubsection.\thequestion} \hfill \vrule depth 1em width 0pt}
 
-%% Content goes here
+% Lemmas/Corollaries environments
+\newtheorem{lem}{Lemma}[subsubsection]
+\newtheorem{defin}[lem]{Definition}
+\newtheorem{cor}[lem]{Corollary}
+\newtheorem{thrm}[lem]{Theorem}
+
+% Title page
+\begin{titlingpage}
+  \maketitle
+\end{titlingpage}
+
+% Apparently need this to get page number on the first real page
+\cfoot{Page \thepage}
+
 \begin{questions}
 
-% Disable section numbers
-%\renewcommand\thesection{}
-
-\setcounter{section}{5}
+\setcounter{section}{6-1}
 \section{Ordinal Numbers}
 
-\question{Theorem 6.4.5}
+\setcounter{subsection}{4-1}
+\subsection{Transfinite Induction and Recursion}
 
-\begin{solution}
-    \def\P{\prop{P}}
-    \def\G{\prop{G}}
-    \def\R{\prop{R}}
-    \def\F{\prop{F}}
+\def\P{\prop{P}}
+\def\G{\prop{G}}
+\def\R{\prop{R}}
+\def\F{\prop{F}}
+\theorem{5}{
+  Let $\G$ be an operation; then the property $\P(x,y)$ defined by
+  \begin{enumerate}
+  \item $x$ is an ordinal number and $y = t(x)$ for some computation of length $x$ (with respect to $\G$), or
+  \item $x$ is not an ordinal and $y = \es$.
+  \end{enumerate}
+  defines an operation $\F$ such that $\F(\a) = \G(\F \rest \a)$ for all ordinals $\a$.
+
+  Note that, for ordinal $\a$, we say that $t$ is a computation of length $\a$ if $t$ is a transfinite sequence whose domain is $\a+1$ and such that, for all $\b \leq \a$, we have $t(\b) = \G(t \rest \b)$.
+}
+\sol{
+  \qproof{
     Suppose that $\G$ is an operation, which is to say that for each $x$ there is unique $y$ such that $y = \G(x)$.
 
-    For ordinal $\a$ we say that $t$ is a computation of length $\a$ if $t$ is a transfinite sequence whose domain is $\a+1$ and such that, for all $\b \leq \a$, we have $t(\b) = \G(t \rest \b)$.
-
-    Now we define the property $\P(x,y)$ such that $\P(x,y)$ holds if and only if
-    \begin{enumerate}
-        \item $x$ is an ordinal number and $y = t(x)$ for some computation of length $x$ (with respect to $\G$), or
-        \item $x$ is not an ordinal and $y = \es$.
-    \end{enumerate}
-
+    Now we define the property $\P(x,y)$ as described above.
     We prove that $\P$ defines an operation.
     Hence we have to show that  for any $x$ there is a unique $y$ such that $\P(x,y)$ holds.
     So consider any set $\a$.
@@ -52,9 +70,9 @@
 
     \emph{Existence.} First define a property $\R(x,y)$ such that $\R(x,y)$ holds if and only if
     \begin{enumerate}
-        \item $x$ is an ordinal where $x < \a$ and $y$ is a computation of length $x$ (with respect to $\G$), or
-        \item $x$ is is an ordinal and $x \geq \a$ and $y = \es$, or
-        \item $x$ is not an ordinal and $y = \es$ \,.
+    \item $x$ is an ordinal where $x < \a$ and $y$ is a computation of length $x$ (with respect to $\G$), or
+    \item $x$ is is an ordinal and $x \geq \a$ and $y = \es$, or
+    \item $x$ is not an ordinal and $y = \es$ \,.
     \end{enumerate}
     Clearly by the induction hypothesis this property has a unique $y$ for every $x$.
     Hence we can apply the Axiom Schema of Replacement, according to which there is a set $T$ such that for every $\b \in \a$ (so that $\b < \a$) there is a $t$ in $T$ such that $\R(\b, t)$ holds.
@@ -122,111 +140,114 @@
     Since $\b$ was arbitrary this shows that $\F \rest \a = t \rest \a$.
     
     So for any ordinal $\a$ let $t$ be the unique computation of length $\a$.
-    Then clearly we have $\F(\a) = t(\a) = \G(t \rest \a) = \G(\F \rest \a)$ by what was just shown above. \qedsymbol
-\end{solution}
+    Then clearly we have $\F(\a) = t(\a) = \G(t \rest \a) = \G(\F \rest \a)$ by what was just shown above.
+  }
+}
 
-\question{Theorem~6.5.3}
+\subsection{Ordinal Arithmetic}
 
-\begin{solution}
-    \begin{statement}{Lemma~6.5.3.1.T}
-        Any initial segment of an ordinal is also an ordinal.
-    \end{statement}
+\theorem{3}{
+  Let $(W_1, <_1)$ and $(W_2, <_2)$ be well-ordered sets, isomorphic to ordinals $\a_1$ and $\a_2$, respectively, and let $(W, <)$ be the sum of $(W_1, <_1)$ and $(W_2, <_2)$.
+  Then $(W, <)$ is isomorphic to $\a_1 + \a_2$.
+}
+\sol{
+  \begin{lem}\label{lem:ord:isord}
+    Any initial segment of an ordinal is also an ordinal.
+  \end{lem}
+  \qproof{
+    Suppose that $\a$ is an ordinal and that $\b$ is an initial segment of $\a$.
 
-    \proof{
-        Suppose that $\a$ is an ordinal and that $\b$ is an initial segment of $\a$.
+    First we show that $\b$ is transitive.
+    So consider any $x \in \b$ and any $y \in x$.
+    Since clearly $\b \ss \a$ we have that $x \in \a$ so that $x$ is an ordinal by Lemma~7.2.8.
+    But then since $y \in x$ we have that $y$ is an ordinal too by the same lemma.
+    Hence we have $y < x$ so that $y \in \b$ since $x \in \b$ and $\b$ is an initial segment.
+    Hence since $y \in x$ was arbitrary it follows that $x \ss \b$ so that $\b$ is transitive since $x$ was arbitrary.
 
-        First we show that $\b$ is transitive.
-        So consider any $x \in \b$ and any $y \in x$.
-        Since clearly $\b \ss \a$ we have that $x \in \a$ so that $x$ is an ordinal by Lemma~7.2.8.
-        But then since $y \in x$ we have that $y$ is an ordinal too by the same lemma.
-        Hence we have $y < x$ so that $y \in \b$ since $x \in \b$ and $\b$ is an initial segment.
-        Hence since $y \in x$ was arbitrary it follows that $x \ss \b$ so that $\b$ is transitive since $x$ was arbitrary.
+    Now consider any subset $X$ of $\b$.
+    Then since $\b \ss \a$ clearly $X \ss \a$ as well so that $X$ has a least element since $\a$ is well-ordered (since it is an ordinal).
+    Hence since $X$ was arbitrary $\b$ is also well-ordered.
 
-        Now consider any subset $X$ of $\b$.
-        Then since $\b \ss \a$ clearly $X \ss \a$ as well so that $X$ has a least element since $\a$ is well-ordered (since it is an ordinal).
-        Hence since $X$ was arbitrary $\b$ is also well-ordered.
-
-        This shows by definition that $\b$ is an ordinal. \qedsymbol
+    This shows by definition that $\b$ is an ordinal.
+  }
+  
+  \begin{lem}\label{lem:ord:isiso}
+    Suppose that $(W, \prec)$ is a well ordered set isomorphic to ordinal $\a$ and $W[a]$ is an initial segment of $W$ isomorphic to ordinal $\b$.
+    If $f$ is the isomorphism from $\a$ to $W$ and $g$ the isomorphism from $\b$ to $W[a]$ then:
+    \begin{enumerate}
+    \item $\b < \a$
+    \item $f \rest \b = g$
+    \item $f(\b) = a$
+    \end{enumerate}
+  \end{lem}
+  \qproof{
+    Consider $h = \inv{f} \circ g : \b \to \a$, which is clearly an isomorphism since $f$ and $g$ are.
+    We also claim that $h$ maps $\b$ onto an initial segment of $\a$, i.e. $h[\b]$ is an initial segment of $\a$.
+    So consider any $x \in h[\b]$, noting that $x \in \a$ since clearly $h[\b] \ss \a$.
+    Thus $x$ is an ordinal by Lemma~6.2.8.
+    So consider any ordinal $y < x$.
+    Now since $x \in h[\b]$ there is a $\g \in \b$ such that $h(\g) = x$.
+    Hence we have
+    \gath{
+      \inv{f}(g(\g)) = x \\
+      g(\g) = f(x)
     }
-    
-    \begin{statement}{Lemma~6.5.3.2.T}
-        Suppose that $(W, \prec)$ is a well ordered set isomorphic to ordinal $\a$ and $W[a]$ is an initial segment of $W$ isomorphic to ordinal $\b$.
-        If $f$ is the isomorphism from $\a$ to $W$ and $g$ the isomorphism from $\b$ to $W[a]$ then:
-        \begin{enumerate}
-            \item $\b < \a$
-            \item $f \rest \b = g$
-            \item $f(\b) = a$
-        \end{enumerate}
-    \end{statement}
-
-    \proof{
-        Consider $h = \inv{f} \circ g : \b \to \a$, which is clearly an isomorphism since $f$ and $g$ are.
-        We also claim that $h$ maps $\b$ onto an initial segment of $\a$, i.e. $h[\b]$ is an initial segment of $\a$.
-        So consider any $x \in h[\b]$, noting that $x \in \a$ since clearly $h[\b] \ss \a$.
-        Thus $x$ is an ordinal by Lemma~6.2.8.
-        So consider any ordinal $y < x$.
-        Now since $x \in h[\b]$ there is a $\g \in \b$ such that $h(\g) = x$.
-        Hence we have
-        \gath{
-            \inv{f}(g(\g)) = x \\
-            g(\g) = f(x)
-        }
-        and $f(x) = g(\g) \in W[a]$ since $\g \in \b$.
-        Also since $y < x$ and $f$ is an isomporphism we have $f(y) \prec f(x)$ so that $f(y) \in W[a]$ since $W[a]$ is an initial segment and $f(x) \in W[a]$.
-        Then since $g$ is onto there is a $\d \in \b$ such that
-        \gath{
-            g(\d) = f(y) \\
-            \inv{f}(g(\d)) = y \\
-            h(\d) = y \,,
-        }
-        which shows that $y \in h[\b]$.
-        Since $y < x$ was arbitrary this shows that $h[\b]$ is an initial segment of $\a$ by definition.
-
-        Thus, since $h$ is an isomorphism, $\b$ is isomorphic to an initial segment of $\a$.
-        By Lemma~6.5.3.1.T this an initial segment is itself an ordinal.
-        So it has to be that $h[\b] = \b$ since if it were any other ordinal then we would have that $\b$ is isomorphic to a different ordinal, which is not possible.
-        Then since $\b$ is an initial segment of $\a$ we have that $\b \pss \a$ so that $\b < \a$ by Lemma~6.2.9, which shows (1).
-
-        Moreover since $h$ is an isomorphism from $\b$ onto itself it follows from Corollary~6.1.5 part (b) that $h$ is the identity function.
-        Hence for any $x \in \b$ we have
-        \gath{
-            h(x) = \inv{f}(g(x)) = x \\
-            g(x) = f(x)
-        }
-        so that clearly (2) follows since $x$ was arbitrary.
-        
-        Now, let $W' = W - W[a]$, noting that this is not empty since $W[a] \pss W$.
-        Consider any $x \in W'$ so that since $x \notin W[a]$ but $x \in W$ we have that $x \succeq a$.
-        Since $x$ was arbitrary and clearly $a \in W'$ this shows that $a$ is the least element of $W'$.
-
-        Now let $X = \a - \b$, which is also nonempty since $\b \pss \a$.
-        Consider any $x \in X$ so that $x \in \a$ but $x \notin \b$.
-        Thus $x \geq \b$ so that $\b$ is the least element of $X$ since since $x$ was arbitrary and clearly $\b \in X$.
-
-        Now we claim that $f \rest X$ is an isomorphism from $X$ to $W'$.
-        So consider any $x \in X$ so that $x \notin \b$.
-        Suppose that $f(x) \in W[a]$.
-        Then there is a $\g \in \b$ such that $g(\g) = f(x)$.
-        But also since $f \rest \b = g$ it follows that $f(\g) = g(\g) = f(x)$.
-        Then since $f$ is injective it follows that $\g = x$.
-        But this is a contradiction since we have that $x \notin \b$ but $\g \in \b$, so it has to be that $f(x) \notin W[a]$.
-        Hence since clearly $f(x) \in W$ we have that $f(x) \in W'$.
-
-        Also for any $x$ and $y$ in $X$ where $x < y$ we clearly have $(f \rest X)(x) = f(x) < f(y) = (f \rest X)(y)$ since $f$ is an isomorphism.
-        Thus $f \rest X$ is an isomorphism and therefore also injective.
-        We need only show that $f \rest X$ is surjective as well.
-        So consider any $b \in W'$ so that $b \in W$ but $b \notin W[a]$.
-        Since $f$ is surjective there is a $\g \in \a$ such that $f(\g) = b$.
-        Suppose that $\g \in \b$ so that since $f \rest \b = g$ we have $g(\g) = f(\g) = b \in W[a]$, a contradiction.
-        Hence $\g \notin \b$ so that $\g \in X$.
-        Since we have also shown that $f(\g) = b$ and $b$ was arbitrary this shows that $f \rest X$ is surjective.
-
-        Thus we have proven that $f \rest X$ is an isomorphism between $X$ and $W'$.
-        Then since $\b$ is the least element of $X$ and $a$ is the least element of $W'$ it follows that $f(\b) = (f \rest X)(\b) = a$, which shows (3) and thus the entire lemma. \qedsymbol
+    and $f(x) = g(\g) \in W[a]$ since $\g \in \b$.
+    Also since $y < x$ and $f$ is an isomorphism we have $f(y) \prec f(x)$ so that $f(y) \in W[a]$ since $W[a]$ is an initial segment and $f(x) \in W[a]$.
+    Then since $g$ is onto there is a $\d \in \b$ such that
+    \gath{
+      g(\d) = f(y) \\
+      \inv{f}(g(\d)) = y \\
+      h(\d) = y \,,
     }
+    which shows that $y \in h[\b]$.
+    Since $y < x$ was arbitrary this shows that $h[\b]$ is an initial segment of $\a$ by definition.
 
-    \emph{Main Theorem.}
+    Thus, since $h$ is an isomorphism, $\b$ is isomorphic to an initial segment of $\a$.
+    By Lemma~\ref{lem:ord:isord} this an initial segment is itself an ordinal.
+    So it has to be that $h[\b] = \b$ since if it were any other ordinal then we would have that $\b$ is isomorphic to a different ordinal, which is not possible.
+    Then since $\b$ is an initial segment of $\a$ we have that $\b \pss \a$ so that $\b < \a$ by Lemma~6.2.9, which shows (1).
+
+    Moreover since $h$ is an isomorphism from $\b$ onto itself it follows from Corollary~6.1.5 part (b) that $h$ is the identity function.
+    Hence for any $x \in \b$ we have
+    \gath{
+      h(x) = \inv{f}(g(x)) = x \\
+      g(x) = f(x)
+    }
+    so that clearly (2) follows since $x$ was arbitrary.
     
+    Now, let $W' = W - W[a]$, noting that this is not empty since $W[a] \pss W$.
+    Consider any $x \in W'$ so that since $x \notin W[a]$ but $x \in W$ we have that $x \succeq a$.
+    Since $x$ was arbitrary and clearly $a \in W'$ this shows that $a$ is the least element of $W'$.
+
+    Now let $X = \a - \b$, which is also nonempty since $\b \pss \a$.
+    Consider any $x \in X$ so that $x \in \a$ but $x \notin \b$.
+    Thus $x \geq \b$ so that $\b$ is the least element of $X$ since since $x$ was arbitrary and clearly $\b \in X$.
+
+    Now we claim that $f \rest X$ is an isomorphism from $X$ to $W'$.
+    So consider any $x \in X$ so that $x \notin \b$.
+    Suppose that $f(x) \in W[a]$.
+    Then there is a $\g \in \b$ such that $g(\g) = f(x)$.
+    But also since $f \rest \b = g$ it follows that $f(\g) = g(\g) = f(x)$.
+    Then since $f$ is injective it follows that $\g = x$.
+    But this is a contradiction since we have that $x \notin \b$ but $\g \in \b$, so it has to be that $f(x) \notin W[a]$.
+    Hence since clearly $f(x) \in W$ we have that $f(x) \in W'$.
+
+    Also for any $x$ and $y$ in $X$ where $x < y$ we clearly have $(f \rest X)(x) = f(x) < f(y) = (f \rest X)(y)$ since $f$ is an isomorphism.
+    Thus $f \rest X$ is an isomorphism and therefore also injective.
+    We need only show that $f \rest X$ is surjective as well.
+    So consider any $b \in W'$ so that $b \in W$ but $b \notin W[a]$.
+    Since $f$ is surjective there is a $\g \in \a$ such that $f(\g) = b$.
+    Suppose that $\g \in \b$ so that since $f \rest \b = g$ we have $g(\g) = f(\g) = b \in W[a]$, a contradiction.
+    Hence $\g \notin \b$ so that $\g \in X$.
+    Since we have also shown that $f(\g) = b$ and $b$ was arbitrary this shows that $f \rest X$ is surjective.
+
+    Thus we have proven that $f \rest X$ is an isomorphism between $X$ and $W'$.
+    Then since $\b$ is the least element of $X$ and $a$ is the least element of $W'$ it follows that $f(\b) = (f \rest X)(\b) = a$, which shows (3) and thus the entire lemma.
+  }
+
+  \mainthrm
+  \qproof{
     We assume that $W_1$ and $W_2$ are disjoint and that $(W,<)$ is their sum as defined in Lemma~4.4.5.
     We prove the result by transfinite induction on $\a_2$, in particular the version of induction in 6.4.3.
 
@@ -247,7 +268,7 @@
     Clearly if $\b_1 = \b_2$ then $f_{\b_1} = f_{\b_2}$ since the function is unique so suppose that $\b_1 < \b_2$.
     Then by Lemma~6.5.4a $\a_1 + \b_1 < \a_1 + \b_2$.
     From this it follows that $W[a_{\b_1}]$ is an initial segment of $W[a_{\b_2}]$
-    From Lemma~6.5.3.2.T part (2) above it follows that $f_{\b_2} \rest (\a_1 + \b_1) = f_{\b_1}$.
+    From Lemma~\ref{lem:ord:isiso} part (2) above it follows that $f_{\b_2} \rest (\a_1 + \b_1) = f_{\b_1}$.
     Since $\b_1$ and $\b_2$ were arbitrary this shows that the system is compatible and thus that $f$ is a function.
 
     We also show that  $\dom f = \a_1 + \a_2$.
@@ -269,14 +290,14 @@
     Thus $\ran f \ss W$ since $b$ was arbitrary.
     Now consider any $b \in W$.
     If $b \in W_1$ then let $g$ be the isomorphism from $\a_1$ to $W_1$ so that there is a $\g \in \a_1$ such that $g(\g) = b$.
-    Clearly also $\g \in a_1 + 1$ and since $W_1$ is an initial segment of $W$ by Lemma~6.5.3.2.T part 2 we have that $f_1 \rest \a_1 = g$ so that $f_1(\g) = b$ as well.
+    Clearly also $\g \in a_1 + 1$ and since $W_1$ is an initial segment of $W$ by Lemma~\ref{lem:ord:isiso}, part 2 we have that $f_1 \rest \a_1 = g$ so that $f_1(\g) = b$ as well.
     Thus $b \in \ran f_1$ so that clearly $b \in \ran f$ also.
     On the other hand if $b \in W_2$ then let $g$ denote the isomorphism from $\a_2$ to $W_2$ so that there is a $\g \in \a_2$ such that $g(\g) = b$, which exists since $g$ is onto.
     Since $\a_2$ is a limit ordinal we have that $\g+1 \in \a_2$ so that $\g+1 < \a_2$.
     Then $f_{\g+1}$ is an isomorphism from $\a_1 + (\g+1)$ to $W[a_{\g+1}]$.
     Thus $f_{\g+1}(\a_1 + \g) = g(\g) = b \in W[a_{\g+1}]$ since $\a_1 + \g \in (\a_1 + \g) + 1 = \a_1 + (\g+1)$.
     Hence $b \in \ran f_{\g+1}$ so that also $b \in \ran f$.
-    Hence since $b$ was arbitary and $b \in \ran f$ in all cases it follows that $W \ss \ran f$, which shows that $\ran f = W$ as desired.
+    Hence since $b$ was arbitrary and $b \in \ran f$ in all cases it follows that $W \ss \ran f$, which shows that $\ran f = W$ as desired.
     
     Finally we show that $f$ is an isomorphism.
     So consider any $\g_1$ and $\g_2$ in $\a_1 + \a_2$ where $\g_1 < \g_2$.
@@ -287,132 +308,125 @@
     f(\g_1) = f_{\b+1}(\g_1) < f_{\b+1}(\g_2)= f(\g_2)
     $$
     so that $f$ is an isomorphism as well since $\g_1$ and $\g_2$ were arbitrary.
-    Thus $\a_1 + \a_2$ is isomorphic to $W$ in this case as well, which proves the entire theorem. \qedsymbol
-\end{solution}
+    Thus $\a_1 + \a_2$ is isomorphic to $W$ in this case as well, which proves the entire theorem.
+  }
+}
 
-\question{Least upper bound property of ordinal supremum}
+\subsection{The Normal Form}
 
-\begin{solution}
-    We show that if $A$ is a set of ordinals then ordinal $\a = \sup{A}$ if and only if $\a$ is the least upper bound of $A$, i.e. $\a$ is an upper bound of $A$ and $\b$ is not an upper bound of $A$ for any $\b < \a$.
+\theorem{1}{
+  The ordinal functions $\a + \b$, $\a \cdot \b$, and $\a^\b$ are \emph{continuous} in the second variable: If $\g$ is a limit ordinal and $\b = \sup_{\n < \g} \b_\n$, then
+  \ali{
+    \a + \b &= \sup_{\n < \g}\parens{\a + \b_\n}, &
+    \a \cdot \b &= \sup_{\n < \g}\parens{\a \cdot \b_\n}, &
+    \a^\b &= \sup_{\n < \g} \a^{\b_\n}
+  }
+}
+\sol{
+  \begin{lem}\label{lem:ord:gesup}
+    Suppose that $A$ is a nonempty set of ordinals where $\a$ is the greatest element of $A$ and that $f$ is a non-decreasing function on $A$ whose range is a set of ordinals.
+    Then
+    $$
+    f(\a) = \sup_{\b \in A} f(\b) \,.
+    $$
+  \end{lem}
+  \qproof{
+    Consider any $\b \in A$ so that $\b \leq \a$ since $\a$ is the greatest element of $A$.
+    It then follows that $f(\b) \leq f(\a)$ since $f$ is non-decreasing.
+    Since $\b$ was arbitrary this shows that $f(\a)$ is the greatest element of the set $f(A) = \braces{f(\g) \where \g \in A}$.
+    Therefore by the remarks after the proof of Theorem~6.2.6 in the text it follows that $f(\a) = \sup{f(A)}$ as desired.
+  }
 
-    \proof{
-        ($\to$) First suppose that $\a = \sup{A}$.
-        Then by the remarks following the proof of Theorem~6.2.6 in the text $\a$ is an upper bound of $A$ and if $\b$ is an upper bound of $A$ then $\a \leq \b$.
-        This last statement is simply the contrapositive of the statement that $\b < \a$ implies that $\b$ is \emph{not} an upper bound of $A$ and hence is logically equivalent.
+  \input{shared/lem_ord_lub}
 
-        ($\leftarrow$) We show that an ordinal $\a$ with the least upper bound property for $A$ is unique, which suffices to show the result since if $\b$ has this property then $\b = \sup{A}$ since $\sup{A}$ does as well (by what was just shown above) and the ordinal having this property is unique.
+  \begin{lem}\label{lem:ord:ngesup}
+    Suppose that $A$ and $B$ are sets of ordinals and that $f$ is a non-decreasing function defined on $A \cup B$ whose range is a set of ordinals.
+    Also suppose that neither $A$ nor $B$ have greatest elements and that $\sup{A} = \sup{B}$.
+    Then
+    $$
+    \sup_{\a \in A} f(\a) = \sup_{\b \in B} f(\b) \,.
+    $$
+  \end{lem}
+  \qproof{
+    First we denote $f(A) = \braces{f(\a) \where \a \in A}$ and $f(B) = \braces{f(\b) \where \b \in B}$ so that we must show that $\sup{f(A)} = \sup{f(B)}$.
+    We show this by proving that $\sup{f(A)}$ has the least upper bound property of the set $f(B)$, from which the result follows from Lemma~\ref{lem:ord:lub}.
 
-        So suppose that ordinals $\a$ and $\b$ both have the least upper bound property for $A$ but that $\a \neq \b$.
-        Without loss of generality we can assume then that $\a < \b$.
-        But then, since $\b$ has the least upper bound property, $\a$ cannot be an upper bound of $A$, which contradicts the fact that $\a$ also has the least upper bound property!
-        Hence it has to be that $\a = \b$, which shows the uniquness. \qedsymbol
-    }
-\end{solution}
+    So first consider any $f(\b)$ in $f(B)$ so that $\b \in B$.
+    Then $\b \leq \sup{B} = \sup{A}$.
+    Moreover it has to be that $\b < \sup{B} = \sup{A}$ since $B$ has no greatest element (since if $\b = \sup{B}$ then it would be the greatest element of $B$).
+    Thus $\b$ is not an upper bound of $A$ so that there is an $\a \in A$ such that $\b < \a$.
+    Then, since $f$ is non-decreasing, we have $f(\b) \leq f(\a) \leq \sup{f(A)}$.
+    Hence $\sup{f(A)}$ is an upper bound of $f(B)$ since $f(\b)$ was arbitrary.
 
-\question{Proof of statements (6.6.1)}
+    Now consider any $\g < \sup{f(A)}$.
+    Then $\g$ is not an upper bound of $f(A)$ so that there is an $\a \in A$ such that $\g < f(\a)$.
+    Since $A$ has no greatest element it follows that $\a < \sup{A} = \sup{B}$ so that it is not an upper bound of $B$.
+    Hence there is a $\b \in B$ such that $\a < \b$.
+    It then follows that $f(\a) \leq f(\b)$ since $f$ is non-decreasing.
+    Thus $\g < f(\a) \leq f(\b)$.
+    This shows that $\g$ is not an upper bound of $f(B)$ and thus the result since $g < \sup{f(A)}$ was arbitrary.
+  }
 
-\begin{solution}
-    \begin{statement}{Lemma~6.6.1.1.T}
-        Suppose that $A$ is a nonempty set of ordinals where $\a$ is the greatest element of $A$ and that $f$ is a non-decreasing function on $A$ whose range is a set of ordinals.
-        Then
-        $$
-        f(\a) = \sup_{\b \in A} f(\b) \,.
-        $$
-    \end{statement}
+  \mainthrm
 
-    \proof{
-        Consider any $\b \in A$ so that $\b \leq \a$ since $\a$ is the greatest element of $A$.
-        It then follows that $f(\b) \leq f(\a)$ since $f$ is non-decreasing.
-        Since $\b$ was arbitrary this shows that $f(\a)$ is the greatest element of the set $f(A) = \braces{f(\g) \where \g \in A}$.
-        Therefore by the remarks after the proof of Theorem~6.2.6 in the text it follows that $f(\a) = \sup{f(A)}$ as desired. \qedsymbol
-    }
+  Suppose that $\g$ is a nonzero limit ordinal, $\braces{\b_\n}$ is a transfinite sequence of ordinals where $\n < \g$, and $\b = \sup_{\n < \g} \b_\n$.
 
-    \begin{statement}{Lemma~6.6.1.2.T}
-        Suppose that $A$ and $B$ are sets of ordinals and that $f$ is a non-decreasing function defined on $A \cup B$ whose range is a set of ordinals.
-        Also suppose that neither $A$ nor $B$ have greatest elements and that $\sup{A} = \sup{B}$.
-        Then
-        $$
-        \sup_{\a \in A} f(\a) = \sup_{\b \in B} f(\b) \,.
-        $$
-    \end{statement}
+  For what follows let $A = \braces{\b_\n \where \n < \g}$, i.e. the range of the sequence, so that clearly then $\b = \sup_{\n < \g} \b_\n = \sup{A}$.
+  Note also that $A$ is nonempty since the domain of the sequence is a nonzero ordinal.
 
-    \proof{
-        First we denote $f(A) = \braces{f(\a) \where \a \in A}$ and $f(B) = \braces{f(\b) \where \b \in B}$ so that we must show that $\sup{f(A)} = \sup{f(B)}$.
-        We show this by proving that $\sup{f(A)}$ has the least upper bound property of the set $f(B)$.
+  First we show that $\a + \b = \sup_{\n < \g} \parens{\a + \b_\n}$ for any ordinal $\a$.
+  \qproof{
+    First note that the function $f(\d) = \a + \d$ defined for any $\d \leq \b$ is non-decreasing by Lemma~6.5.4.
+    With this notation we aim to show that $\a + \b = \sup_{\d \in A} f(\d)$.
 
-        So first consider any $f(\b)$ in $f(B)$ so that $\b \in B$.
-        Then $\b \leq \sup{B} = \sup{A}$.
-        Moreover it has to be that $\b < \sup{B} = \sup{A}$ since $B$ has no greatest element (since if $\b = \sup{B}$ then it would be the greatest element of $B$).
-        Thus $\b$ is not an upper bound of $A$ sp that there is an $\a \in A$ such that $\b < \a$.
-        Then, since $f$ is non-decreasing, we have $f(\b) \leq f(\a) \leq \sup{f(A)}$.
-        Hence $\sup{f(A)}$ is an upper bound of $f(B)$ since $f(\b)$ was arbitrary.
+    In the first case suppose that $\b \in A$ so that clearly $\b$ is the greatest element of $A$ (since it is an upper bound of $A$).
+    The result then follows from Lemma~\ref{lem:ord:gesup}.
 
-        Now consider any $\g < \sup{f(A)}$.
-        Then $\g$ is not an upper bound of $f(A)$ so that there is an $\a \in A$ such that $\g < f(\a)$.
-        Since $A$ has no greatest element it follows that $\a < \sup{A} = \sup{B}$ so that it is not an upper bound of $B$.
-        Hence there is a $\b \in B$ such that $\a < \b$.
-        It then follows that $f(\a) \leq f(\b)$ since $f$ is non-decreasing.
-        Thus $\g < f(\a) \leq f(\b)$.
-        This shows that $\g$ is not an upper bound of $f(B)$ and thus the result since $g < \sup{f(A)}$ was arbitrary. \qedsymbol
-    }
+    On the other hand suppose that $\b \notin A$.
+    It then follows that $A$ has no greatest element and then by Exercise~6.2.7 that $\b$ is a limit ordinal.
+    Note that $\b \neq 0$ since if that were the case then $A = \es$, which is not possible since it is the range of a sequence indexed by a nonzero ordinal.
+    Hence we have by Definition~6.5.1c that
+    $$
+    \a + \b = \sup_{\d < \b} \parens{\a + \d} = \sup_{\d < \b} f(\d) \,.
+    $$
+    The result then follows from Lemma~\ref{lem:ord:ngesup} since $f$ is non-decreasing and by the remarks after Theorem~6.2.10 we have that
+    $$
+    \sup_{\d < \b} \d = \b = \sup{A}
+    $$
+    since $\b$ is a limit ordinal.
+  }
 
-    \emph{Main Problem.}
+  The proof that $\a \cdot \b = \sup_{\n < \g} \parens{\a \cdot \b_\n}$ is analogous, noting that the function $f(\d) = \a \cdot \d$ is non-decreasing by Exercise~6.5.7 (even clearly when $\a = 0$ since non-decreasing is not strict like it would be if we required that the function be increasing).
 
-    Suppose that $\g$ is a nonzero limit ordinal, $\braces{\b_\n}$ is a transfinite sequence of ordinals where $\n < \g$, and $\b = \sup_{\n < \g} \b_\n$.
+  Similarly, the proof for the exponential function, i.e. that $\a^\b = \sup_{\n < \g} \a^{\b_\n}$, is also analogous.
+  However this is only valid for $\a > 1$, which is not mentioned in the text.
+  This is because ordinal exponentiation is only non-decreasing for $\a > 0$ since $0^1 = 0 < 1 = 0^0$.
+  That it is non-decreasing follows trivially from what is shown in Exercise~6.5.14b.
+  The following is a counterexample that shows that the assertion does not hold for $\a = 0$, even though exponentiation not being non-decreasing does not necessarily mean it is false (it just means our proof does not work for $\a = 0$).
 
-    For what follows let $A = \braces{\b_\n \where \n < \g}$, i.e. the range of the sequence, so that clearly then $\b = \sup_{\n < \g} \b_\n = \sup{A}$.
-    Note also that $A$ is nonempty since the domain of the sequence is a nonzero ordinal.
-
-    First we show that $\a + \b = \sup_{\n < \g} \parens{\a + \b_\n}$ for any ordinal $\a$.
-
-    \proof{
-        First note that the function $f(\d) = \a + \d$ defined for any $\d \leq \b$ is non-decreasing by Lemma~6.5.4.
-        With this notation we aim to show that $\a + \b = \sup_{\d \in A} f(\d)$.
-
-        In the first case suppose that $\b \in A$ so that clearly $\b$ is the greatest element of $A$ (since it is an upper bound of $A$).
-        The result then follows from Lemma~6.6.1.1.T.
-
-        On the other hand suppose that $\b \notin A$.
-        It then follows that $A$ has no greatest element and then by Exercise~6.2.7 that $\b$ is a limit ordinal.
-        Note that $\b \neq 0$ since if that were the case then $A = \es$, which is not possible since it is the range of a sequence indexed by a nonzero ordinal.
-        Hence we have by Definition~6.5.1c that
-        $$
-        \a + \b = \sup_{\d < \b} \parens{\a + \d} = \sup_{\d < \b} f(\d) \,.
-        $$
-        The result then follows from Lemma~6.6.1.2.T since $f$ is non-decreasing and by the remarks after Theorem~6.2.10 we have that
-        $$
-        \sup_{\d < \b} \d = \b = \sup{A}
-        $$
-        since $\b$ is a limit ordinal. \qedsymbol
-   }
-
-   The proof that $\a \cdot \b = \sup_{\n < \g} \parens{\a \cdot \b_\n}$ is analagous, noting that the function $f(\d) = \a \cdot \d$ is non-decreasing by Exercise~6.5.7 (even clearly when $\a = 0$ since non-decreasing is not strict like it would be if we required that the function be increasing).
-
-   Similarly, the proof for the exponential function, i.e. that $\a^\b = \sup_{\n < \g} \a^{\b_\n}$, is also analagous.
-   However this is only valid for $\a > 1$, which is not mentioned in the text.
-   This is because ordinal exponentiation is only non-decreasing for $\a > 0$ since $0^1 = 0 < 1 = 0^0$.
-   That it is non-decreasing follows trivially from what is shown in Exercise~6.5.14b.
-   The following is a counterexample that shows that the assertion does not hold for $\a = 0$, even though exponentiation not being non-decreasing does not necessarily mean it is false (it just means our proof does not work for $\a = 0$).
-
-   Suppose that our transfinite sequence is indexed by $\g = \w$ (i.e. it is an ordinary sequence) and that the sequence is $\braces{\b_\n} = \braces{1, 0, 0, 0, \ldots}$.
-   We then clearly have that
-   $$
-   \b = \sup_{\n < \g} \b_\n = \sup_{\n < \w} \b_\n = \sup \braces{1, 0, 0, 0, \ldots} = 1
-   $$
-   so that $\a^\b = 0^1 = 0$.
-   However, we also have
-   $$
-   \sup_{\n < \g} \a^{\b_\n} = \sup_{\n < \w} 0^{\b_\n} = \sup\braces{0^1, 0^0, 0^0, 0^0, \ldots} = \sup\braces{0, 1, 1, 1, \ldots} = 1 \,.
-   $$
-   Hence the result does not hold since $\a^\b = 0 \neq 1 = \sup_{\n < \g} \a^{\b_\n}$.
-\end{solution}
+  Suppose that our transfinite sequence is indexed by $\g = \w$ (i.e. it is an ordinary sequence) and that the sequence is $\braces{\b_\n} = \braces{1, 0, 0, 0, \ldots}$.
+  We then clearly have that
+  $$
+  \b = \sup_{\n < \g} \b_\n = \sup_{\n < \w} \b_\n = \sup \braces{1, 0, 0, 0, \ldots} = 1
+  $$
+  so that $\a^\b = 0^1 = 0$.
+  However, we also have
+  $$
+  \sup_{\n < \g} \a^{\b_\n} = \sup_{\n < \w} 0^{\b_\n} = \sup\braces{0^1, 0^0, 0^0, 0^0, \ldots} = \sup\braces{0, 1, 1, 1, \ldots} = 1 \,.
+  $$
+  Hence the result does not hold since $\a^\b = 0 \neq 1 = \sup_{\n < \g} \a^{\b_\n}$.
+}
 
 \section{Alephs}
 
-\question{Theorem~7.1.7}
+\subsection{Initial Ordinals}
 
-\begin{solution}
-	For every well-ordered set $(W,R)$ where $W \ss A$ there is a unique ordinal $\a$ such that $(\a,<)$ is isomorphic to $(W,R)$ by Theorem~6.3.1.
+\theorem{7}{
+  The Hartogs number of $A$ exists for all $A$.
+}
+\sol{
+  \qproof{
+  	For every well-ordered set $(W,R)$ where $W \ss A$ there is a unique ordinal $\a$ such that $(\a,<)$ is isomorphic to $(W,R)$ by Theorem~6.3.1.
     Then by the Axiom Schema of Replacement there is a set $H$ such that $\a \in H$ if and only if it is the ordinal isomorphic to a well-ordering $R \ss \pset{A \times A}$ of some $W \ss A$.
 
     We claim that $H$ contains all ordinals that are equipotent to some subset of $A$.
@@ -428,7 +442,7 @@
     $$
     h(A) = \braces{\a \in H \where \text{$\a$ is equipotent to some subset of $A$}}
     $$
-    exsists by the Axiom Schema of Comprehension.
+    exists by the Axiom Schema of Comprehension.
     We claim that this is the Hartogs numbers.
     To justify this we need to show that it is an ordinal and that it is the least ordinal which is not equipotent to a subset of $A$.
 
@@ -449,170 +463,83 @@
     So it must be that $h(A)$ is in fact not equipotent to any subset of $A$.
     Clearly also for any $\a < h(A)$ we have $\a \in h(A)$ since $h(A)$ is an ordinal.
     But then by definition $\a$ is equipotent to a subset of $A$.
-    This shows that $h(A)$ is the least ordinal that is not equipotent to a subset of $A$ and hence is the Hartogs number. \qedsymbol
-\end{solution}
+    This shows that $h(A)$ is the least ordinal that is not equipotent to a subset of $A$ and hence is the Hartogs number.
+  }
+}
 
-\question{Remarks after Definition~7.1.8}
+\theorem{8}{
+  We show the remark after Definition~7.1.8 that $\abs{\w_\a} < \abs{\w_\b}$ for ordinals $\a$ and $\b$ where $\a < \b$.
+}
+\sol{
+  \input{shared/lem_aleph_wolege}
+  \input{shared/cor_aleph_wonlegt}
 
-\begin{solution}
-    \def\aA{\abs{A}}
-    \def\aB{\abs{B}}
-    \begin{statement}{Lemma~7.1.8.1.T}
-        For well ordered sets $A$ and $B$ either $\aA \leq \aB$ or $\aB \leq \aA$ (or both in which case $\aA = \aB$).
-    \end{statement}
+  \mainthrm
+  
+  \qproof{
+    We show this by induction.
+    First for $\a$ we have by definition that $\w_{\a+1} = h(\w_\a)$.
+    Since it has been shown that $\abs{h(\w_\a)} \nleq \abs{\w_\a}$ it follows from Corollary~\ref{cor:aleph:wonlegt} that $\abs{\w_{\a+1}} = \abs{h(\w_\a)} > \abs{\w_\a}$ since $\w_\a$ and $h(\w_\a)$ are ordinals and therefore well-ordered.
+    Hence $\abs{\w_\a} < \abs{\w_{\a+1}}$.
 
-    \proof{
-        By Theorem~6.1.3 we have:
+    Now suppose that $\a$ is a nonzero limit ordinal and consider any $\g < \a$.
+    Then $\g + 1 < \a$ since $\a$ is a limit ordinal.
+    Then since $\w_\a$ is an upper bound of $\braces{\w_\b \where \b < \a}$ it follows that $\w_{\g+1} \leq \w_\a$ since $\g+1 < \a$.
+    From this it clearly follows that $\abs{\w_{\g+1}} \leq \abs{\w_\a}$.
+    We also have by what was just shown that $\abs{\w_\g} < \abs{\w_{\g+1}}$.
+    Hence by Exercise~4.1.2a we have $\abs{\w_\g} < \abs{\w_\a}$.
+    Since $\g < \a$ was arbitrary this completes the induction and the result follows.
+  }
+}
 
-        Case: $A$ and $B$ are isomorphic.
-        Let $f$ be the isomorphism from $A$ to $B$.
-        Then clearly $f$ is a bijection so that $\aA = \aB$.
-        Also since $f$ is injective $\aA \leq \aB$.
-        Clearly also $\inv{f}$ is bijective from $B$ to $A$ so that $\aB \leq \aA$ as well.
+\theorem{9}{
+  We show part (b): If $\W$ is an infinite initial ordinal number, then $\W = \w_\a$ for some $\a$.
+}
+\sol{
+  \input{shared/lem_aleph_infwo_succ}
+  \input{shared/lem_aleph_initlimit}
+  \input{shared/lem_ord_expin_sups}
+  
+  \begin{lem}\label{lem:aleph:alewa}
+    $\a \leq \w_\a$ for every ordinal $\a$.
+  \end{lem}
+  \qproof{
+    We show this by induction on $\a$.
+    Clearly for $\a = 0$ we have $\a = 0 \leq \w = \w_0 = \w_\a$.
+    Now suppose that $\a \leq \a_\w$.
+    Then by Exercise~6.5.8 we have that $\a + 1 \leq \w_\a + 1$.
+    Then, since $h(\w_\a)$ is an initial ordinal by Lemma~7.1.6 and clearly is infinite, it follows that $h(\w_\a)$ is a limit ordinal by Lemma~\ref{lem:aleph:initlimit}.
+    Since clearly $\w_\a < h(\w_\a)$ we then have that $\w_\a + 1 < h(\w_\a)$ as well.
+    Hence we have
+    $$
+    \a + 1 \leq  \w_\a + 1 < h(\w_\a) = \w_{\a+1}
+    $$
+    so that $\a+1 \leq \w_{\a+1}$ is true.
 
-        Case: $A$ is isomorphic to an initial segment of $B$.
-        Then if $f$ is the isomorphism clearly $f$ is an injective function from $A$ to $B$ so that $\aA \leq \aB$.
+    Now suppose that $\a$ is a nonzero limit ordinal and that $\g \leq \w_\g$ for all $\g < \a$.
+    Since $\a$ is a limit ordinal it follows that $\a = \sup\braces{\g \where \g < \a}$ and by definition we have that $\w_\a = \sup\braces{\w_\g \where \g < \a}$.
+    It then follows from these and the induction hypothesis that
+    $$
+    \a = \sup\braces{\g \where \g < \a} \leq \sup\braces{\w_\g \where \g < \a} = \w_\a
+    $$
+    by Lemma~\ref{lem:ord:expin:sups}.
+    This completes the inductive proof.
+  }
 
-        Case: $B$ is isomporphic to an initial segment of $A$.
-        Then if $f$ is the isomorphism clearly $f$ is an injective function from $B$ to $A$ so that $\aB \leq \aA$.
+  \input{shared/lem_aleph_initle}
+  \input{shared/lem_aleph_initltwa}
 
-        Since these cases are exhaustive by Theorem~6.1.3 clearly the result has been shown. \qedsymbol
-
-        Note that this did not require the Axiom of Choice.
-    }
-
-    \begin{statement}{Corollary~7.1.8.2.T}
-        If $A$ and $B$ are well ordered sets then $\aA \nleq \aB$ if and only if $\aB < \aA$.
-    \end{statement}
-
-    \proof{
-        ($\to$) Suppose that $\aA \nleq \aB$.
-        Then it follows from Lemma~7.1.8.1.T above that $\aB \leq \aA$.
-        Suppose that $\aB = \aA$.
-        Then there is a bijection $f$ from $B$ to $A$.
-        But then clearly $\inv{f}$ is also a bijection and therefore injective.
-        Hence by definition $\aA \leq \aB$, a contradiction.
-        So it cannot be that $\aB = \aA$.
-        Hence $\aB < \aA$ by definition as desired.
-
-        ($\leftarrow$) We show this by proving the contrapositive.
-        So suppose that $\aA \leq \aB$.
-        Also suppose that $\aB \leq \aA$ so that by Lemma~7.1.8.1.T above $\aA = \aB$.
-        Thus we have shown that
-        \gath{
-            \aB \leq \aA \to \aA = \aB \\
-            \aB \nleq \aA \lor \aA = \aB \\
-            \lnot \parens{\aB \leq \aA \land \aA \neq \aB} \\
-            \lnot (\aB < \aA) \,,
-        }
-        thereby showing the contrapositive. \qedsymbol
-    }
-
-    \emph{Main Problem.}
-
-    We show that $\abs{\w_\a} < \abs{\w_\b}$ for ordinals $\a$ and $\b$ where $\a < \b$.
-
-    \proof{
-        We show this by induction.
-        First for $\a$ we have by definition that $\w_{\a+1} = h(\w_\a)$.
-        Since it has been shown that $\abs{h(\w_\a)} \nleq \abs{\w_\a}$ it follows from Corollary~7.1.8.2.T that $\abs{\w_{\a+1}} = \abs{h(\w_\a)} > \abs{\w_\a}$ since $\w_\a$ and $h(\w_\a)$ are ordinals and therefore well-ordered.
-        Hence $\abs{\w_\a} < \abs{\w_{\a+1}}$.
-
-        Now suppose that $\a$ is a nonzero limit ordinal and consider any $\g < \a$.
-        Then $\g + 1 < \a$ since $\a$ is a limit ordinal.
-        Then since $\w_\a$ is an upper bound of $\braces{\w_\b \where \b < \a}$ it follows that $\w_{\g+1} \leq \w_\a$ since $\g+1 < \a$.
-        From this it clearly follows that $\abs{\w_{\g+1}} \leq \abs{\w_\a}$.
-        We also have by what was just shown that $\abs{\w_\g} < \abs{\w_{\g+1}}$.
-        Hence by Exercise~4.1.2a we have $\abs{\w_\g} < \abs{\w_\a}$.
-        Since $\g < \a$ was arbitrary this completes the induction and the result follows. \qedsymbol
-    }
-\end{solution}
-
-\question{Theoerem~7.1.9b}
-
-\begin{solution}
-    \begin{statement}{Lemma~7.1.9.1.T}
-        Every infinite initial ordinal is a limit ordinal.
-    \end{statement}
-
-    \proof{
-        Suppose that $\a$ is an infinite initial ordinal and that it a successor so that $\a = \b+1$.
-        It was shown in Lemma~7.1.1.1 (in the solutions manual) that $\abs{\b} = \abs{\b+1} = \abs{\a}$, but since clearly $\b < \a$ this contradicts the fact that $\a$ is an initial ordinal.
-        Hence $\a$ must be a limit ordinal. \qedsymbol
-    }
-
-    \begin{statement}{Lemma~7.1.9.2.T}
-        $\a \leq \w_\a$ for every ordinal $\a$.
-    \end{statement}
-
-    \proof{
-    	We show this by induction on $\a$.
-        Clearly for $\a = 0$ we have $\a = 0 \leq \w = \w_0 = \w_\a$.
-        Now suppose that $\a \leq \a_\w$.
-        Then by Exercise~6.5.8 we have that $\a + 1 \leq \w_\a + 1$.
-        Then, since $h(\w_\a)$ is an initial ordinal by Lemma~7.1.6 and clearly is infinite, it follows that $h(\w_\a)$ is a limit ordinal by Lemma~7.1.9.1.T.
-        Since clearly $\w_\a < h(\w_\a)$ we then have that $\w_\a + 1 < h(\w_\a)$ as well.
-        Hence we have
-        $$
-        \a + 1 \leq  \w_\a + 1 < h(\w_\a) = \w_{\a+1}
-        $$
-        so that $\a+1 \leq \w_{\a+1}$ is true.
-
-        Now suppose that $\a$ is a nonzero limit ordinal and that $\g \leq \w_\g$ for all $\g < \a$.
-        Since $\a$ is a limit ordinal it follows that $\a = \sup\braces{\g \where \g < \a}$ and by definition we have that $\w_\a = \sup\braces{\w_\g \where \g < \a}$.
-        It then follows from these and the induction hypothesis that
-        $$
-        \a = \sup\braces{\g \where \g < \a} \leq \sup\braces{\w_\g \where \g < \a} = \w_\a
-        $$
-        by Lemma~6.5.14.1 in the solutions manual.
-        This completes the inductive proof. \qedsymbol
-    }
-
-    \begin{statement}{Lemma~7.1.9.3.T}
-        For initial ordinals $\a$ and $\b$ if $\abs{\a} \leq \abs{\b}$ then $\a \leq \b$.
-    \end{statement}
-    
-    \proof{
-        Suppose that $\abs{\a} \leq \abs{\b}$ but that $\a > \b$.
-        Then clearly $\b$ is isomorphic (and therefore equipotent) to an initial segment of $\a$ so that $\abs{\b} \leq \abs{\a}$.
-        Then by the Cantor-Bernstein Theorem we have $\abs{\a} = \abs{\b}$.
-        However since $\a$ is an initial ordinal and $\b < \a$ it cannot be that $\abs{\a} = \abs{\b}$.
-        Thus we have a contradiction so that it must be that $\a \leq \b$ as desired. \qedsymbol
-    }
-    
-    \begin{statement}{Lemma~7.1.9.4.T}
-        For any ordinal $\a$ and any infinite initial ordinal $\W$ where $\W < \w_\a$, there is a $\g < \a$ such that $\W = \w_\g$.
-    \end{statement}
-    
-    \proof{
-        We show this by induction on $\a$.
-        For $\a = 0$ we have $\w_\a = \w_0 = \w$ so that there is no infinite initial ordinal $\W$ such that $\W < \w_\a = \w$.
-        Hence the hypothesis is vacuously true.
-        Now suppose that, for every infinite initial ordinal $\W < \w_\a$, there is a $\g < \a$ such that $\W = \w_\g$.
-        Consider any infinite initial ordinal $\W < \w_{\a+1}$.
-        Then $\W < \w_{\a+1} = h(\w_\a)$ so that $\W$ is equipotent to some subset of $\w_\a$ by the definition of the Hartogs number.
-        From this it clearly follows that $\abs{\W} \leq \abs{\w_\a}$ and hence $\W \leq \w_\a$ by Lemma~7.1.9.3.T since both $\W$ and $\w_\a$ are initial ordinals.
-        If $\W = \w_\a$ then we are finished but if $\W < \w_\a$ then by the induction hypothesis there is a $\g < \a$ such that $\W = \w_\g$ so that we are also finished.
-
-        Now suppose that $\a$ is a nonzero limit ordinal and that for every $\b < \a$ and infinite initial ordinal $\W < \w_\b$ there is a $\g < \b$ such that $\W = \w_\g$.
-        Consider then any infinite initial ordinal $\W < \w_\a$.
-        Then since $\w_\a = \sup\braces{\w_\b \where \b < \a}$ it follows that $\W$ is not an upper bound of $\braces{\w_\b \where \b < \a}$ so that there is a $\b < \a$ such that $\W < \w_\b$.
-        But then by the induction hypothesis there is a $\g < \b$ such that $\W = \w_\g$.
-        This completes the transfinite induction. \qedsymbol
-    }
-
-    \emph{Main Problem.}
-
+  \mainthrm
+  \qproof{
     Let $\W$ be any infinite initial ordinal.
-    Then by Lemma~7.1.9.2T we have
+    Then by Lemma~\ref{lem:aleph:alewa} we have
     $$
     \W < \W + 1 \leq \w_{\W+1} \,.
     $$
     Hence there is an $\a$ such that $\W < \w_\a$.
-    It then follows from Lemma~7.1.9.4.T that there is a $\g < \a$ such that $\W = \w_\g$. \qedsymbol
-\end{solution}
-
-%\section{The Axiom of Choice}
+    It then follows from Lemma~\ref{lem:aleph:initltwa} that there is a $\g < \a$ such that $\W = \w_\g$.
+  }
+}
 
 \end{questions}
 \end{document}

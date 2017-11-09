@@ -1,0 +1,186 @@
+\subsection{Transfinite Induction and Recursion}
+
+\def\P{\prop{P}}
+\def\G{\prop{G}}
+\def\R{\prop{R}}
+\def\F{\prop{F}}
+\exercise{1}{
+  Prove a more general Transfinite Recursion Theorem (Double Recursion Theorem):
+  Let $\G$ be an operation in two variables.
+  Then there is an operation $\F$ such that $\F(\a,\b) = \G(\F \rest (\b \times \a))$ for all ordinals $\b$ and $\a$.
+  [Hint: Computations are functions on $(\b+1) \times (\a+1)$.]
+}
+\sol{
+  \qproof{
+    Since in these Recursion Theorems the arguments of interest of the given operation $\G$ are typically functions, we assume that $\G$ still takes a single variable despite what the text says.
+    Hence for each $x$ there is a unique $y$ such that $y = \G(x)$.
+    It just happens that in this case the variables of interest are functions of two variables.
+
+    For ordinals $\a$ and $\b$ we let $f_{\a,\b}$ be the isomorphism from the ordinal $(\b+1)\cdot(\a+1)$ to the lexicographic ordering of $(\a+1) \times (\b+1)$, which exists by Theorem~6.5.8.
+    We also note that  according to Exercise~6.5.2 we have
+    $$
+    (\b+1)\cdot(\a+1) = (\b+1)\cdot\a + (\b+1)\cdot 1 = (\b+1)\cdot\a + (\b+1) = \squares{(\b+1)\cdot\a + \b} + 1
+    $$
+    so that $(\b+1)\cdot(\a+1)$ is a successor ordinal.
+    Then for $\g < (\b+1)\cdot(\a+1)$ define
+    $$
+    X_{\a,\b,\g} : \braces{(\d,\e) \in (\a+1) \times (\b+1) \where (\d,\e) \prec f_{\a,\b}(\g)}
+    $$
+
+    Then for $\g < (\b+1) \cdot (\a+1)$ we say that $t$ is a computation of length $\g$ if $t$ is a transfinite sequence whose domain is $\g+1$ and such that $t(\d) = \G(t \circ (\inv{f_{\a,\b}} \rest X_{\a,\b,\d}))$ for all $\d \leq \g$.
+    We note that since $(\b+1)\cdot(\a+1)$ is a successor that $\g+1 \leq (\b+1)\cdot(\a+1)$.
+
+    Now we define the property $\P(x,y,z)$ such that $\P(x,y,z)$ holds if and only if
+    \begin{enumerate}
+    \item $x$ and $y$ are ordinal numbers and $z = t(\inv{f_{x,y}}(x,y))$ for some computation $t$ of length $(y+1)\cdot x + y$ (with respect to $\G$), or
+    \item $x$ or $y$ is \emph{not} an ordinal and $z = \es$.
+    \end{enumerate}
+
+    We prove that $\P$ defines an operation.
+    Hence we have to show that  for any $x$ and $y$ there is a unique $z$ such that $\P(x,y,z)$ holds.
+    So consider any sets $\a$ and $\b$.
+    If $\a$ or $\b$ is not an ordinal than clearly $\P(\a,\b,\es)$ holds and $\es$ is unique.
+    So suppose that both $\a$ and $\b$ are ordinals.
+    Then it suffices to show that there is a unique computation of length $(y+1)\cdot x + y$ (with respect to $\G$) since this will make $z = t(\inv{f_{\a,\b}}(\a,\b))$ unique.
+    We show this via transfinite induction.
+
+    So consider any ordinal $\g < (\b+1) \cdot (\a+1)$ so that $\g \leq (y+1)\cdot x + y$ and assume that for all $\d < \g$ that there is a unique computation of length $\d$ and we show that there exists a unique computation of length $\g$, which completes the proof that $\P$ defines an operation.
+
+    \emph{Existence.} First define a property $\R(x,y)$ such that $\R(x,y)$ holds if and only if
+    \begin{enumerate}
+    \item $x$ is an ordinal where $x < \g$ and $y$ is a computation of length $x$ (with respect to $\G$), or
+    \item $x$ is is an ordinal and $x \geq \g$ and $y = \es$, or
+    \item $x$ is not an ordinal and $y = \es$ \,.
+    \end{enumerate}
+    Clearly by the induction hypothesis this property has a unique $y$ for every $x$.
+    Hence we can apply the Axiom Schema of Replacement, according to which there is a set $T$ such that for every $\d \in \g$ (so that $\d < \g$) there is a $t$ in $T$ such that $\R(\d, t)$ holds.
+    That is
+    $$
+    T = \braces{t \where t \text{ is the unique computation of length $\d$ for all $\d < \g$}}
+    $$
+    Now, $T$ is a system of transfinite sequences (which are functions) so define $\bar{t} = \bigcup T$ and let $\t = \bar{t} \cup \braces{(\g, \G(\bar{t} \circ (\inv{f_{\a,\b}} \rest X_{\a,\b,\g}))}$.
+
+    \emph{Claim 1:} $\dom(\t) = \g+1$.
+    So consider any $\e \in \dom(\t)$.
+    Clearly if $\e = \g$ then $\e \in \g+1$.
+    On the other hand if $\e \in \dom(\bar{t})$ then there is a $t \in T$ such that $\e \in \dom(t)$.
+    But since $t$ is a computation of length $\d$ and $\d < \g$ it follows that $\e \leq \d < \g < \g+1$ so that $\e \in \g+1$.
+    Hence since $\e$ was arbitrary $\dom(\t) \ss \g+1$.
+
+    Now consider any $\e \in \g+1$ so that $\e \leq \g$.
+    If $\e = \g$ then clearly by definition $\e \in \dom(\t)$.
+    On the other hand if $\e \neq \g$ then $\e < \g$.
+    So consider the $t \in T$ where $t$ is the unique computation of length $\e$ (which exists since $\e < \g$).
+    Then clearly $\e \in \dom(t)$ so that $\e \in \dom(\bar{t})$.
+    From this it follows that clearly $\e \in \dom(\t)$ so that $\g+1 \ss \dom(\t)$ since $\e$ was arbitrary.
+    This proves the claim.
+    
+    \emph{Claim 2:} $\t$ is a function.
+    Consider any $\e \in \dom(\t) = \g+1$ so that again $\e \leq \g$.
+    If $\e = \g$ then clearly $\t(\e) = \t(\g) = \G(\bar{t} \circ (\inv{f_{\a,\b}} \rest X_{\a,\b,\g}))$ is unique since $\G$ is an operation.
+    On the other hand if $\e < \g$ then $\t$ is a function so long as $\bar{t}$ is, and this is the case so long as $T$ is a compatible system of functions since $\bar{t} = \bigcup T$.
+    We show this presently.
+
+    So consider any arbitrary $t_1, t_2 \in T$ where $t_1$ is the computation of length $\e_1$ and $t_2$ is the computation of length $\e_2$.
+    Without loss of generality we can assume that $\e_1 \leq \e_2$.
+    We must show that $t_1(\d) = t_2(\d)$ for all $\d \leq \e_1$.
+    This we show by transfinite induction.
+    So suppose that $t_1(\k) = t_2(\k)$ for all $\k < \d \leq \e_1$.
+    Then clearly $t_1 \rest \d = t_2 \rest \d$, from which it follows that $t_1 \circ (\inv{f_{\a,\b}} \rest X_{\a,\b,\d}) = t_2 \circ (\inv{f_{\a,\b}} \rest X_{\a,\b,\d})$ and since $\G$ is an operation we have $t_1(\d) = \G(t_1 \circ (\inv{f_{\a,\b}} \rest X_{\a,\b,\d})) = \G(t_2 \circ (\inv{f_{\a,\b}} \rest X_{\a,\b,\d})) = t_2(\d)$.
+    This completes the proof of the claim.
+
+    \emph{Claim 3:} $\t(\d) = \G(\t \circ (\inv{f_{\a,\b}} \rest X_{\a,\b,\d}))$ for all $\d \leq \g$.
+    So consider any such $\d$.
+    If $\d = \g$ then since $\t \rest \g = \bar{t}$ we clearly have $\t(\d) = \t(\g) = \G(\bar{t} \circ (\inv{f_{\a,\b}} \rest X_{\a,\b,\g})) = \G(\t \circ (\inv{f_{\a,\b}} \rest X_{\a,\b,\g})) = \G(\t \circ (\inv{f_{\a,\b}} \rest X_{\a,\b,\d}))$\,.
+    On the other hand if $\d < \g$ then let $t \in T$ be the computation of length $\d$ (which exists since $\d < \g$).
+    Then $\t(\d) = t(\d) = \G(t \circ (\inv{f_{\a,\b}} \rest X_{\a,\b,\d})) = \G(\t \circ (\inv{f_{\a,\b}} \rest X_{\a,\b,\d}))$ since $t$ is a computation (with respect to $\G$) and clearly $t \ss \t$.
+
+    Claims 1 through 3 show that $\t$ is a computation of length $\g$ and hence that such a computation exists.
+
+    \emph{Uniqueness.} Now let $\s$ be another computation of length $\g$.
+    We show that $\s = \t$, which proves uniqueness.
+    Since both $\s$ and $\t$ are functions with $\dom(\s) = \g+1 = \dom(\t)$ it suffices to show that $\s(\d) = \t(\d)$ for all $\d \leq \g$.
+    We show this once again by using transfinite induction.
+    So suppose that $\s(\e) = \t(\e)$ for all $\e < \d \leq \g$.
+    It then follows that $\s \rest \d = \t \rest \d$ so that $\s \circ (\inv{f_{\a,\b}} \rest X_{\a,\b,\d}) = \t \circ (\inv{f_{\a,\b}} \rest X_{\a,\b,\d})$.
+    Then since $\s$ and $\t$ are computations we have that $\s(\d) = \G(\s \circ (\inv{f_{\a,\b}} \rest X_{\a,\b,\d})) = \G(\t \circ (\inv{f_{\a,\b}} \rest X_{\a,\b,\d})) = \t(\d)$, thereby completing the uniqueness proof.
+
+    This completes the proof that $\P$ defines an operation.
+
+    So let $\F$ be the operation defined by $\P$.
+    The last thing we need to show to complete the proof of the entire theorem is that $\F(\a, \b) = \G(\F \rest (\a \times \b))$ for all ordinals $\a$ and $\b$, noting that we are treating $\F$ as a function even though it is an operation.
+    Thus, for any set $X$, $\F \rest X$ denotes the set $\braces{(x, \F(x)) \where x \in X}$, which forms a function with domain $X$.
+    The range of this function is a set whose existence is guaranteed by the Axiom Schema of Replacement since $\F$ is an operation.
+
+    So consider any ordinals $\a$ and $\b$ and the unique computation $t$ of length $(\b+1)\cdot\a + \b$.
+    Then clearly for any $\g \leq (\b+1)\cdot\a + \b$ we have that $t_\g = t \rest (\g+1)$ is a computation of length $\g$.
+    Since this computation is the unique computation of length $\g$, by the definition of $\F$ as it relates to $\P$ we have $\F(f(\g)) = t_\g(\g) = t(\g)$.
+    Since $\g$ was arbitrary this shows that $\F \rest (\a \times \b) = t \rest (\b+1)\cdot\a + \b$.
+    Then clearly we have $\F(\a, \b) = t((\b+1)\cdot\a + \b) = \G(t \circ (\inv{f_{\a,\b}} \rest X_{\a,\b,(\b+1)\cdot\a + \b})) = \G(t \rest (\b+1)\cdot\a + \b) = \G(\F \rest (\a \times \b))$ by what was just shown above.
+  }
+
+  NOTE: This is a very nasty exercise and there may be a simpler way to do this.
+}
+
+\def\G{\prop{G}}
+\def\F{\prop{F}}
+\exercise{2}{
+  Using the Recursion Theorem~6.4.9 show that there is a binary operation $\F$ such that
+
+  (a) $\F(x,1) = 0$ for all $x$.
+
+  (b) $\F(x, n+1) = 0$ if and only if there exist $y$ and $z$ such that $x = (y,z)$ and $\F(y,n) = 0$.
+
+  We say that $x$ is an \emph{$n$-tuple} (where $n \in \w$, $n > 0$) if $\F(x,n) = 0$.
+  Prove that this definition of $n$-tuples coincides with the one given in Exercise~5.17 in Chapter~3.
+}
+\sol{
+  \qproof{
+    Note that there is no such operation that can exactly satisfy both conditions as they actually contradict each other.
+    To  see this suppose there is such an operation $\F$.
+    Then define the set $x = \es$ and $n = 0$
+    Then by (a) we have that $\F(x,n+1) = \F(x, 1) = 0$.
+    It then follows from (b) that there are a $y$ and $z$ such that $x = (y,z)$, but clearly this is not the case for $x=\es$.
+    Hence a contradiction.
+
+    To remedy this we simply add a condition to (b), which when restated becomes
+
+    (b) $n > 0$ and $\F(x,n+1) = 0$ if and only if there exists $y$ and $z$ such that $x = (y,z)$ and $\F(y,n) = 0$.
+
+    Now, define an operation $\G$ by $z = \G(x,y_u)$ if and only if either
+    \begin{enumerate}
+    \item $y_u$ is a function with parameter $u$, $\dom(y_u) = 1$, and $z = 0$, or
+    \item $y_u$ is a function with parameter $u$, $\dom(y_u) = \a+1$ for some ordinal $\a$, there are $p$ and $q$ where $x = (p,q)$, $y_p(\a) = 0$, and $z = 0$ or
+    \item None of the above hold and $z = 1$.
+    \end{enumerate}
+
+    Then by Theorem~6.4.9 there is an operation $\F$ such that $\F(x,\a) = \G(x, \F_x \rest \a)$ for all ordinals $\a$ and sets $x$.
+
+    Then for any set $x$ we have that clearly $\F \rest 1$ is a function with domain $1$ (and parameter $x$) so that by definition
+    $$
+    \F(x,1) = \G(x, \F_x \rest 1) = 0 \,.
+    $$
+    This shows (a).
+
+    To show (b) consider any ordinal $n$ and set $x$.
+
+    ($\to$) Suppose that $n > 0$ and $\F(x,n+1) = 0$ so that clearly $(3)$ above cannot be the case.
+    Also $(1)$ cannot be the case since $\F(x,n+1) = \G(x, \F_x \rest n+1)$ and $\dom(\F_x \rest n+1) = n + 1 > 1$.
+    Hence (2) is the case so that there are $y$ and $z$ such that $x = (y,z)$ and $(\F_y \rest n+1)(n) = 0$.
+    Hence it follows that $F(y,n) = 0$.
+
+    ($\leftarrow$) Now suppose that there are $y$ and $z$ such that $x = (y,z)$ and $F(y,n) = 0$.
+    Then $F(y,n) = G(y, \F_y \rest n) = 0$.
+
+    So if $n=0$ then $\dom(\F_y \rest n) = \dom(\F_y \rest 0) = 0 \neq 1$ so (1) cannot be the case.
+    Also since $0$ is not a successor ordinal (2) cannot be the case either (since $\dom(\F_y \rest 0) \neq \a+1$ for any ordinal $\a$).
+    Hence (3) must be the case, but this implies that $F(y,n) = 1$, which is a contradiction.
+    So we must have that $n \neq 0$ so $n > 0$.
+
+    Since $\F(y, n) = 0$ clearly we have that $(\F_y \rest n+1)(n) = 0$.
+    Since also $\dom(\F_x \rest n+1) = n+1$ we find that (2) holds for $\G(x, \F_x \rest n+1)$.
+    From this it follows that $\F(x,n+1) = \G(x, \F_x \rest n+1) = 0$.
+
+    This completes the proof.
+  }
+}

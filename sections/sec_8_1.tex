@@ -1,0 +1,55 @@
+\subsection{The Axiom of Choice and its Equivalents}
+
+\exercise{1}{
+  Prove: If a set $A$ can be linearly ordered, then every system of finite subsets of $A$ has a choice function.
+  (It does not follow from the Zermelo-Fraenkel axioms that every set can be linearly ordered.)
+}
+\sol{
+  \begin{lem}\label{lem:aoc:finitelo}
+    Any linear ordering of a finite set is a well-ordering.
+  \end{lem}
+  \qproof{
+    We show this by strong induction on the cardinality of the set.
+    So consider natural number $n$ and suppose that all linear ordered sets of cardinality $k  < n$ are well-orderings.
+    Also suppose that $(A, \preceq)$ is any linearly ordered set with $\abs{A} = n$.
+    Consider any nonempty $B \ss A$ so that there is a $b \in B$.
+    Then clearly $C = B - \braces{b}$ is also a finite set with $C \pss B \ss A$ so that $\abs{C} < n$.
+    Clearly also $C$ is linearly ordered by $\preceq$ so that, by the induction hypothesis, $C$ is well-ordered by $\preceq$.
+    Now, if $C = \es$, then it follows that $B = \braces{b}$, which clearly has least element $b$.
+    On the other hand, if $C \neq \es$, then it has a least element $c$ since it is well-ordered.
+    Since $\preceq$ is a \emph{linear} ordering, it has to be that either $c \preceq b$ or $b \preceq c$.
+
+    Case: $c \preceq b$.
+    Then consider any $x \in B$.
+    If $x = b$ then obvisouly $c \preceq b = x$.
+    If $x \neq b$ then $x \in C = B - \braces{b}$ so that again $c \preceq x$ since $c$ is the least element of $C$.
+    This shows that $c$ is the least element of $B$ since $x$ was arbitrary.
+
+    Case: $b \preceq c$.
+    Then consider any $x \in B$.
+    If $x = b$ then obviously $b \preceq b = x$.
+    If $x \neq b$ then $x \in C = B - \braces{b}$ so that $b \preceq c \preceq x$ since $c$ is the least element of $C$.
+    This shows that $b$ is the least element of $B$ since $x$ was arbitrary.
+
+    Hence in all cases we have that $B$ has a $\preceq$-least element.
+    This shows that $\preceq$ is a well-ordering of $A$ since $B \ss A$ was arbitrary.
+    This completes the inductive proof.
+  }
+
+  \mainprob
+  \qproof{
+    Suppose that $A$ is a set that can be linearly ordered and suppose that $\preceq$ is a such a linear ordering.
+    Suppose also that $S$ is a system of finite subsets of $A$.
+    Then clearly any $B \in S$ is finite and linearly ordered by $\preceq$.
+    We then have that $\preceq$ is a well-ordering of $B$ by Lemma~\ref{lem:aoc:finitelo}.
+    So we then set
+    \gath{
+      f(B) = \begin{cases}
+        \text{the least element of $B$ according to $\preceq$} & B \neq \es \\
+        \es & B = \es
+      \end{cases}
+    }
+    for any $B \in S$.
+    Clearly then $f$ is a choice function for $S$.
+  }
+}

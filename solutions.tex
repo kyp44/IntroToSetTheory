@@ -1,39 +1,59 @@
-% A (minimal) template for problem sets and solutions using the exam document class
-
-% Organization:
-%% Define new commands, macros, etc. in macros.tex
-%% Anything that you would put before \begin{document} should go in prelude.tex
-
-%% For multiple psets, each should get its own file to \input into main with a \section{}
-
 \input{prelude}
-\title{Introduction to Set Theory Solutions}
-\begin{document}
 
+\title{
+  Introduction to Set Theory \\
+  Third Edition, Revised and Expanded \\
+  by Hrbacek and Jech \\
+  \ \\
+  Solutions Manual
+}
+
+% Import all our custom macros
 \input{macros}
 
-\qformat{}
+% Lemmas/Corollaries environments
+\newtheorem{lem}{Lemma}[subsubsection]
+\newtheorem{defin}[lem]{Definition}
+\newtheorem{cor}[lem]{Corollary}
+\newtheorem{thrm}[lem]{Theorem}
 
-% This counter is used for items in solutions
-\newcounter{itm}
-\newcommand{\itm}[1]{\refstepcounter{itm}\label{#1}\arabic{itm}}
+\begin{document}
 
+% Question label format
+\qformat{\hspace{0.5cm} \textbf{Exercise \thesubsection.\thequestion} \hfill \vrule depth 1em width 0pt}
 
-%% Content goes here
+% Title page
+\begin{titlingpage}
+  \maketitle
+\end{titlingpage}
+
+% Apparently need this to get page number on the first real page
+\cfoot{Page \thepage}
+
+% Start content
 \begin{questions}
 
-% Disable section numbers
-%\renewcommand\thesection{}
+% Chapters (sections are used since the exam class has no chapters)
+\setcounter{section}{5-1}
 
-\setcounter{section}{4}
 \section{Cardinal Numbers}
-\input{Ch5}
+\input{sections/sec_5_1}
+\input{sections/sec_5_2}
 
 \section{Ordinal Numbers}
-\input{Ch6}
+\input{sections/sec_6_1}
+\input{sections/sec_6_2}
+\input{sections/sec_6_3}
+\input{sections/sec_6_4}
+\input{sections/sec_6_5}
+\input{sections/sec_6_6}
 
 \section{Alephs}
-\input{Ch7}
+\input{sections/sec_7_1}
+\input{sections/sec_7_2}
+
+\section{The Axiom of Choice}
+\input{sections/sec_8_1}
 
 \end{questions}
 \end{document}

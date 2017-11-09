@@ -1,0 +1,230 @@
+\subsection{Ordinal Numbers}
+
+\exercise{1}{
+  A set $X$ is transitive if and only if $X \ss \pset{X}$.
+}
+\sol{
+  \qproof{
+    ($\to$) Suppose that $X$ is a transitive set and consider any $x \in X$.
+    Then $x \ss X$ since $X$ is transitive.
+    Thus $x \in \pset{X}$ so that, since $x$ was arbitrary, $X \ss \pset{X}$.
+
+    ($\leftarrow$) Now suppose that $X \ss \pset{X}$ and consider any $x \in X$.
+    Then also $x \in \pset{X}$ so that $x \ss X$.
+    Hence, since $x$ was arbitrary, $X$ is transitive by definition.
+  }
+}
+
+\exercise{2}{
+  A set $X$ is transitive if and only if $\bigcup X \ss X$.
+}
+\sol{
+  \qproof{
+    ($\to$) Suppose that $X$ is transitive and consider any $y \in \bigcup X$.
+    Then there is an $x \in X$ such that $y \in x$.
+    Since $X$ is transitive and $x \in X$ we have that $x \ss X$ so that $y \in X$ as well.
+    Since $y$ was arbitrary this shows that $\bigcup X \ss X$.
+
+    ($\leftarrow$) Now suppose that $\bigcup X \ss X$ and consider any $x \in X$.
+    If $x = \es$ then clearly $x \ss X$.
+    So suppose that $x \neq \es$ and consider any $y \in x$.
+    Then since $x \in X$ it follows that $y \in \bigcup X$ so that also $y \in X$.
+    So since $y$ was arbitrary it follows that $x \ss X$.
+    Since $x$ was arbitrary by definition $X$ is transitive.
+  }
+}
+
+\exercise{3}{
+  Are the following sets transitive?
+
+  (a) $\braces{\es, \braces{\es}, \braces{\braces{\es}}}$,
+
+  (b) $\braces{\es, \braces{\es}, \braces{\braces{\es}}, \braces{\es, \braces{\es}}}$,
+
+  (c) $\braces{\es, \braces{\braces{\es}}}$.
+}
+\sol{
+
+  (a) We claim that $X = \braces{\es, \braces{\es}, \braces{\braces{\es}}}$ is transitive.
+  \qproof{
+    Suppose $x \in X$.
+    If $x = \es$ then obviously $x \ss X$.
+    If $x = \braces{\es}$ then $x \ss X$ since $\es \in X$.
+    If $x  = \braces{\braces{\es}}$ then $x \ss X$ since $\braces{\es} \in X$.
+    Thus since the cases are exhaustive we've shown that $x \ss X$ so that $X$ is transitive by definition.
+  }
+
+  (b) We claim that $X = \braces{\es, \braces{\es}, \braces{\braces{\es}}, \braces{\es, \braces{\es}}}$ is transitive.
+  \qproof{
+    For $x \in X$ the three cases in part (a) above have the same results and, if $x = \braces{\es, \braces{\es}}$, then $x \ss X$ since $\es \in X$ and $\braces{\es} \in X$.
+    Hence again $X$ is transitive by definition.
+  }
+
+  (c) We claim that $X = \braces{\es, \braces{\braces{\es}}}$ is \emph{not} transitive.
+  \qproof{
+    If $x = \braces{\braces{\es}}$ we have that $x$ is not a subset of $X$ since $\braces{\es} \in x$ but $\braces{\es} \notin X$.
+    Hence $X$ is not transitive.
+  }
+}
+
+\exercise{4}{
+  Which of the following statements are true?
+
+  (a) If $X$ and $Y$ are transitive, then $X\cup Y$ is transitive.
+
+  (b) If $X$ and $Y$ are transitive, then $X \cap Y$ is transitive.
+
+  (c) If $X \in Y$ and $Y$ is transitive, then $X$ is transitive.
+
+  (d) If $X \ss Y$ and $Y$ is transitive, then $X$ is transitive.
+
+  (e) If $Y$ is transitive and $S \ss \pset{Y}$, then $Y \cup S$ is transitive.
+}
+\sol{
+  
+  (a) We claim that this is true.
+  \qproof{
+    Consider any $x \in X \cup Y$.
+    If $x \in X$ then $x \ss X$ since $X$ is transitive.
+    Since also $X \ss X \cup Y$ we clearly have that $x \ss X \ss X \cup Y$.
+    We can make the same argument if it is the case that $x \in Y$.
+    Hence since $x$ was arbitrary this shows that $X \cup Y$ is indeed transitive.
+  }
+
+  (b) We claim that this is true.
+  \qproof{
+    Consider any $x \in X \cap Y$.
+    Then $x \in X$ and $x \in Y$.
+    Since $X$ and $Y$ are transitive this means that $x \ss X$ and $x \ss Y$.
+    So consider any $y \in x$ then $y \in X$ and $y \in Y$ so that $y \in X \cap Y$.
+    Hence since $y$ was arbitrary it follows that $x \ss X \cap Y$ so that $X \cap Y$ is transitive since $x$ was arbitrary.
+  }
+
+  (c) We claim that this is \emph{not} true.
+  \qproof{
+    It was shown in Exercise~6.2.3 part (a) that $Y = \braces{\es, \braces{\es}, \braces{\braces{\es}}}$ is transitive.
+    So let $X = \braces{\braces{\es}}$ so that clearly $X \in Y$.
+    If then $x = \braces{\es}$ then $x \in X$ but $x$ is not a subset of $X$ since $\es \notin X$.
+    Hence the original hypothesis is not true.
+  }
+
+  (d)  We claim that this is \emph{not} true.
+  \qproof{
+    Again $Y = \braces{\es, \braces{\es}, \braces{\braces{\es}}}$ is transitive so let $X = \braces{\braces{\es}, \braces{\braces{\es}}}$ so that clearly $X \ss Y$.
+    Then if $x = \braces{\es}$ then $x \in X$ but $x$ is not a subset of $X$ because $\es \notin X$.
+    Thus the original hypothesis is false.
+  }
+
+  (e) We claim that this is true.
+  \qproof{
+    Consider any $x \in Y \cup S$.
+    If $x \in Y$ then since $Y$ is transitive $x \ss Y$.
+    Hence $x \ss Y \ss Y \cup S$.
+    On the other hand if $x \in S$ then $x \in \pset{Y}$ since $S \ss \pset{Y}$
+    Hence $x \ss Y \ss Y \cup S$.
+    Since in all cases $x \ss Y \cup S$ and $x$ was arbitrary this shows that $Y \cup S$ is transitive by definition.
+  }
+}
+
+\exercise{5}{
+  If every $X \in S$ is transitive, then $\bigcup S$ is transitive.
+}
+\sol{
+  \qproof{
+    Consider any $x \in \bigcup S$.
+    Then there is an $X \in S$ where $x \in X$.
+    Since $X$ is transitive it follows that $x \ss X$.
+    So consider any $y \in x$ so that also $y \in X$.
+    Thus also $y \in \bigcup S$ since $X \in S$.
+    Since $y$ was arbitrary this shows that $x \ss \bigcup S$.
+    Since $x$ was arbitrary this shows by definition that $\bigcup S$ is transitive.
+  }
+}
+
+\exercise{6}{
+  An ordinal $\a$ is a natural number if and only if every nonempty subset of $\a$ has a greatest element.
+}
+\sol{
+  \qproof{
+    ($\to$) Suppose that $n$ is a natural number and consider any nonempty subset $A$ of $n$.
+    Since $A \ss n$ it follows that $|A| \leq |n| = n$ so that $A$ is finite.
+    Thus $A$ is a finite set of natural numbers and so has a greatest element.
+    This can be proven by a trivial inductive argument.
+
+    ($\leftarrow$) We show this by contrapositive.
+    Suppose that $\a$ is an ordinal such that $\a \notin \nats$.
+    Then $\a \notin \w = \nats$ so that $\a \nless \w$, from which it follows that $\a \geq \w$
+    Hence $\a = \w$ or $\a > \w$, in which case $\w \in \a$ so that $\w \ss \a$ since $\a$ is transitive.
+    Thus in either case $\nats = \w \ss \a$.
+    Clearly $\nats$ has no greatest element (since if $n$ were such a greatest element then $n+1 \in \nats$ but $n < n+1$).
+    Thus there is a nonempty subset $A$ of $\a$ such that $A$ has no greatest element.
+  }
+}
+
+\exercise{7}{
+  If a set of ordinals $X$ does not have a greatest element, then $\sup{X}$ is a limit ordinal.
+}
+\sol{
+
+  \begin{lem}\label{lem:ord:ordleq}
+    If $\a$ and $\b$ are ordinals and $\a < \b$ then $\a+1 \leq \b$.
+  \end{lem}
+  \qproof{
+    To the contrary, suppose that $\a+1 > \b$.
+    Then by the definition of $<$ we have that $\b \in \a+1 = \a \cup \braces{\a}$ and since $\b \neq \a$ it has to be that $\b \in \a$.
+    But then $\b < \a$, which is a contradiction.
+  }
+
+  \begin{lem}\label{lem:ord:ordleq2}
+    If $\a$ and $\b$ are ordinals and $\a < \b+1$ then $\a \leq \b$.
+  \end{lem}
+  \qproof{
+    Since $\a < \b+1$ we have that $\a \in \b+1 = \b \cup \braces{\b}$.
+    Hence $\a \in \b$ or $\a = \b$.
+    Thus $\a < \b$ or $\a = \b$, i.e. $\a \leq \b$.
+  }
+
+  \mainprob
+  \qproof{
+    Suppose that $X$ is a set of ordinals with no greatest element.
+    Let $\b = \sup{X} = \bigcup X$.
+    Then by the remarks following the proof of Theorem~6.2.6 $\b \notin X$ since $X$ has no greatest element.
+    Now also suppose that $\b$ is a successor so that there is an ordinal $\a$ such that $\b = \a+1$.
+
+    If $\a \in X$ then since $X$ has no greatest element there is a $\g \in X$ such that $\a < \g$.
+    Then by Lemma~\ref{lem:ord:ordleq} $\b = \a + 1 \leq \g$.
+    It cannot be that $\g = \b$ since $\g \in X$ but $\b \notin X$ so it must be that $\b < \g$.
+    But then since $\b$ is an upper bound of $X$ it follows that $\g$ is also.
+    However, since $\g \in X$ this would make $\g$ the greatest element of $X$, which is a contradiction.
+
+    On the other hand if $\a \notin X$ then consider any $\g \in X$.
+    Then $\g < \b = \a+1$ so that by Lemma~\ref{lem:ord:ordleq2} $\g \leq \a$.
+    Since $\g$ was arbitrary this shows that $\a$ is an upper bound of $X$.
+    However, since $\a < \b$ this contradicts the definition of $\b$ as being the least upper bound of $X$, according to which $\a \geq \b$.
+
+    Since all cases lead to a contradiction it cannot be that $\b = \sup{X}$ is a successor and therefore by definition is a limit ordinal.
+  }
+}
+
+\exercise{8}{
+  If $X$ is a nonempty set of ordinals, then $\bigcap X$ is an ordinal.
+  Moreover $\bigcap X$ is the least element of $X$.
+}
+\sol{
+  \qproof{
+    Suppose that $X$ is a set of ordinals.
+    Then by Theorem~6.2.6d $X$ has a least element $\a$.
+    We shall show that $\a = \bigcap X$, which simultaneously shows that $\bigcap X$ is an ordinal and the least element of $X$.
+
+    Consider any $\b \in X$.
+    Since $\a$ is the least element $\a \leq \b$ so that $\a = \b$ or $\a < \b$.
+    Clearly $\a \ss \a = \b$ in the former case.
+    In the latter case we have $\a \in \b$ so that $\a \ss \b$ as well since $\b$ is transitive (since it is an ordinal).
+    Since $\b$ was arbitrary any $x \in \a$ is also in every $\b \in X$ so that $x \in \bigcap X$ so that $\a \ss \bigcap X$ since $x$ was arbitrary.
+
+    Now consider any $x \in \bigcap X$.
+    Then clearly $x \in \a$ since $\a \in X$ so that $\bigcap X \ss \a$ since $x$ was arbitrary.
+
+    Thus we have shown that $\a = \bigcap X$ as desired.
+  }
+}

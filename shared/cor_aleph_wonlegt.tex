@@ -1,0 +1,27 @@
+\def\aA{\abs{A}}
+\def\aB{\abs{B}}
+\begin{cor}\label{cor:aleph:wonlegt}
+  If $A$ and $B$ are well ordered sets then $\aA \nleq \aB$ if and only if $\aB < \aA$.
+\end{cor}
+\qproof{
+  ($\to$) Suppose that $\aA \nleq \aB$.
+  Then it follows from Lemma~\ref{lem:aleph:wolege} above that $\aB \leq \aA$.
+  Suppose that $\aB = \aA$.
+  Then there is a bijection $f$ from $B$ to $A$.
+  But then clearly $\inv{f}$ is also a bijection and therefore injective.
+  Hence by definition $\aA \leq \aB$, a contradiction.
+  So it cannot be that $\aB = \aA$.
+  Hence $\aB < \aA$ by definition as desired.
+
+  ($\leftarrow$) We show this by proving the contrapositive.
+  So suppose that $\aA \leq \aB$.
+  Also suppose that $\aB \leq \aA$ so that by Lemma~\ref{lem:aleph:wolege} above $\aA = \aB$.
+  Thus we have shown that
+  \gath{
+    \aB \leq \aA \to \aA = \aB \\
+    \aB \nleq \aA \lor \aA = \aB \\
+    \lnot \parens{\aB \leq \aA \land \aA \neq \aB} \\
+    \lnot (\aB < \aA) \,,
+  }
+  thereby showing the contrapositive.
+}

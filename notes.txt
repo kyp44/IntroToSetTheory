@@ -1,7 +1,6 @@
 Unfinished or needs work:
-2. Section about transfinite recursion (esp exercise 6.4.1)
-3. Better way to provide references for lemmas, perhaps using custom counters
-4. Color lemmas/theorems/etc. statements to make them easier to pick out but with coloring bounding rects
+1. Section about transfinite recursion (esp exercise 6.4.1)
+2. Add title pages to solutions and theorems? (Errata already has this)
 
 Notes:
 1. Theorems from theorems doc suffixed with T

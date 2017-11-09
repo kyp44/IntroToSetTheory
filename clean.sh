@@ -1,2 +1,3 @@
 #!/bin/bash
-rm *.aux *.log *.pdf *.out *.dvi
+rm -f *.aux *.log *.pdf *.out
+rm -f lemmas_content.tex

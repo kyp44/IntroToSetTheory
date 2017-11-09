@@ -5,11 +5,14 @@
 \usepackage{color}
 \usepackage[margin=0.75in]{geometry}
 \usepackage{parskip}
+\usepackage{calc}
 
 \input{macros}
 
-\newcounter{itm}
-\newcommand{\itm}[1]{\refstepcounter{itm}\label{#1}\arabic{itm}}
+\newtheorem{lem}{Lemma}[subsection]
+\newtheorem{defin}[lem]{Definition}
+\newtheorem{cor}[lem]{Corollary}
+\newtheorem{thrm}[lem]{Theorem}
 
 \begin{document}
 \input{lemmas_content}

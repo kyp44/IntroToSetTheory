@@ -35,9 +35,10 @@
 % Other stuff
 \def\dom{\mathrm{dom}}
 \def\ran{\mathrm{ran}}
-\def\N{{\aleph_0}}
-\def\NI{{2^\N}}
-\def\NII{{2^\NI}}
+
+% Cardinality shortcuts
+\def\cnats{{\al_0}}
+\def\ccont{{2^\cnats}}
 
 % Shortcuts that make writing easier
 \newcommand\parens[1]{\left( #1 \right)}
@@ -56,6 +57,9 @@
 \def\rest{\restriction}
 \newcommand\tet[2]{{^{#1}#2}}
 
+% This is needed so that half-open intervals do not cause auto-indentation issues due to unmatched brackets
+\newcommand\clop[1]{[#1)}
+
 \def\ss{\subseteq}
 \def\pss{\subset}
 \def\Seq{\mathrm{Seq}}
@@ -63,15 +67,8 @@
 % Environment shortcuts
 \newcommand\gath[1]{\begin{gather*} #1 \end{gather*}}
 \newcommand\ali[1]{\begin{align*} #1 \end{align*}}
+\newcommand\qproof[1]{\begin{proof} #1 \end{proof}}
 
-% Environment for definitions/theorem/lemma statements
-\newenvironment{statement}[1]
-{
-    \color{blue}
-    \emph{#1.}
-}{
-}
-    
 % Environment for indenting nested paragraphs (useful in case trees)
 \newenvironment{indpar}
 {
@@ -80,5 +77,23 @@
     \end{adjustwidth}
 }
 
-% Main problem label
-\def\mainprob{{\color{red}\emph{Main Problem.}}}
+% Exercise, Theorem, and solution shortcuts
+\newcommand{\exercise}[2]{{
+    \renewcommand\label[1]{} % Needed to suppress multiply-defined label warning since the same question numbers are used in different sections
+    \setcounter{subsubsection}{#1-1} % Subsubsections are used to that lemmas have the full nested numbering
+    \stepcounter{subsubsection} % Need to increment this so that the lemma counter gets reset
+    \setcounter{question}{#1-1} % Manually set the question number since we always know the exercise number
+    \question{#2} % The actual exam class question
+}}
+\newcommand{\theorem}[2]{{
+    \renewcommand\label[1]{} % Needed to suppress multiply-defined label warning since the same question numbers are used in different sections
+    \setcounter{subsubsection}{#1-1} % Subsubsections are used to that lemmas have the full nested numbering
+    \stepcounter{subsubsection} % Need to increment this so that the lemma counter gets reset
+    \setcounter{question}{#1-1} % Manually set the question number since we always know the theorem number
+    \question{#2} % The actual exam class question
+}}
+\newcommand{\sol}[1]{\begin{solution} #1 \end{solution}}
+
+% Main problem and theorem labels
+\def\mainprob{\textbf{Main Problem.}}
+\def\mainthrm{\textbf{Main Theorem.}}

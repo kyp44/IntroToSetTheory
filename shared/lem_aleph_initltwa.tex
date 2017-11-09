@@ -1,0 +1,19 @@
+\begin{lem}\label{lem:aleph:initltwa}
+  For any ordinal $\a$ and any infinite initial ordinal $\W$ where $\W < \w_\a$, there is a $\g < \a$ such that $\W = \w_\g$.
+\end{lem}
+\qproof{
+  We show this by induction on $\a$.
+  For $\a = 0$ we have $\w_\a = \w_0 = \w$ so that there is no infinite initial ordinal $\W$ such that $\W < \w_\a = \w$.
+  Hence the hypothesis is vacuously true.
+  Now suppose that, for every infinite initial ordinal $\W < \w_\a$, there is a $\g < \a$ such that $\W = \w_\g$.
+  Consider any infinite initial ordinal $\W < \w_{\a+1}$.
+  Then $\W < \w_{\a+1} = h(\w_\a)$ so that $\W$ is equipotent to some subset of $\w_\a$ by the definition of the Hartogs number.
+  From this it clearly follows that $\abs{\W} \leq \abs{\w_\a}$ and hence $\W \leq \w_\a$ by Lemma~\ref{lem:aleph:initle} since both $\W$ and $\w_\a$ are initial ordinals.
+  If $\W = \w_\a$ then we are finished but if $\W < \w_\a$ then by the induction hypothesis there is a $\g < \a$ such that $\W = \w_\g$ so that we are also finished.
+
+  Now suppose that $\a$ is a nonzero limit ordinal and that for every $\b < \a$ and infinite initial ordinal $\W < \w_\b$ there is a $\g < \b$ such that $\W = \w_\g$.
+  Consider then any infinite initial ordinal $\W < \w_\a$.
+  Then since $\w_\a = \sup\braces{\w_\b \where \b < \a}$ it follows that $\W$ is not an upper bound of $\braces{\w_\b \where \b < \a}$ so that there is a $\b < \a$ such that $\W < \w_\b$.
+  But then by the induction hypothesis there is a $\g < \b$ such that $\W = \w_\g$.
+  This completes the transfinite induction.
+}

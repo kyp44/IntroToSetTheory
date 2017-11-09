@@ -1,0 +1,24 @@
+\def\aA{\abs{A}}
+\def\aB{\abs{B}}
+\begin{lem}\label{lem:aleph:wolege}
+  For well ordered sets $A$ and $B$ either $\aA \leq \aB$ or $\aB \leq \aA$ (or both in which case $\aA = \aB$).
+\end{lem}
+\qproof{
+  By Theorem~6.1.3 we have:
+
+  Case: $A$ and $B$ are isomorphic.
+  Let $f$ be the isomorphism from $A$ to $B$.
+  Then clearly $f$ is a bijection so that $\aA = \aB$.
+  Also since $f$ is injective $\aA \leq \aB$.
+  Clearly also $\inv{f}$ is bijective from $B$ to $A$ so that $\aB \leq \aA$ as well.
+
+  Case: $A$ is isomorphic to an initial segment of $B$.
+  Then if $f$ is the isomorphism clearly $f$ is an injective function from $A$ to $B$ so that $\aA \leq \aB$.
+
+  Case: $B$ is isomorphic to an initial segment of $A$.
+  Then if $f$ is the isomorphism clearly $f$ is an injective function from $B$ to $A$ so that $\aB \leq \aA$.
+
+  Since these cases are exhaustive by Theorem~6.1.3 clearly the result has been shown.
+
+  Note that this did not require the Axiom of Choice.
+}

@@ -1,0 +1,50 @@
+\begin{lem}\label{lem:aleph:infwo:succ}
+  If $\a$ is an infinite ordinal then $\abs{\a} = \abs{\a+1}$, i.e. $\a$ and $\a+1$ are equipotent.
+\end{lem}
+\qproof{
+  First we note that since $\a$ is infinite we have $\a + 1 > \a \geq \w$.
+  We then construct a bijection from $\a+1$ to $\a$.
+  So define $f: \a+1 \to \a$ by
+  $$
+  f(\b) =
+  \begin{cases}
+    \b+1 & \b < \w \\
+    \b & \b \geq \w \text{ and } \b \neq \a \\
+    0 & \b = \a
+  \end{cases}
+  $$
+  for $\b \in \a+1$.
+
+  First we show that $f$ is injective.
+  So consider any $\b$ and $\g$ in $\a+1$ where $\b \neq \g$.
+  Without loss of generality we can assume that $\b < \g$.
+  We then have the following:
+
+  Case: $\b < \w$.
+  Then clearly $f(\b) = \b + 1 < \w$ since $\b < \w$ and $\w$ is a limit ordinal, but we also clearly have that $0 < \b + 1 = f(\b)$.
+  Now, if also $\g < \w$ then clearly $f(\b) = \b + 1 < \g + 1 = f(\g)$ since $\b < \g$.
+  If $\g \geq \w$ and $\g \neq \a$ then we have $f(\b) < \w \leq \g = f(\g)$.
+  Lastly if $\g = \a$ then we have $f(\g) = 0 < f(\b)$.
+
+  Case: $\b \geq \w$ and $\b \neq \a$.
+  Here since $\b < \g$ we have $\w \leq \b < \g$.
+  Thus if also $\g \neq \a$ then clearly we have $f(\b) = \b < \g = f(\g)$.
+  On the other hand if $\g = \a$ then $f(\g) = 0 < \w \leq \b = f(\b)$.
+
+  Thus in every case we have $f(\b) \neq f(\g)$, thereby showing that $f$ is injective.
+  We note that the case in which $\b = \a$ is impossible since $\a$ is the greatest element of $\a+1$ but $\g > \b$ and $\g \in \a+1$.
+
+  Next we show that $f$ is surjective.
+  So consider any $\b \in \a$.
+
+  Case: $\b < \w$.
+  If $\b = 0$ then clearly $f(\a) = 0 = \b$.
+  On the other hand if $0 < \b < \w$ then $\b$ is a successor ordinal, say $\b = \g+1$, so that $\g < \b < \w$ hence clearly $\g \in \a+1$ and $f(\g) = \g+1 = \b$.
+
+  Case: $\b \geq \w$.
+  Then since $\b \in \a$ we have $\b < \a < \a+1$ so that $\b \neq \a$ but $\b \in \a+1$.
+  Then clearly $f(\b) = \b$.
+
+  Hence in all cases there is a $\g \in \a+1$ such that $f(\g) = \b$ so that $f$ is injective.
+  Therefore we have shown that $f$ is a bijection so that by definition $\a+1$ and $\a$ are equipotent.
+}

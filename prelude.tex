@@ -1,24 +1,28 @@
 \documentclass[answers]{exam}
+
+% AMS packages
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{amsfonts}
 \usepackage{amssymb}
-\usepackage{mathrsfs}
-\usepackage{parskip}
-\usepackage{enumitem}
-\usepackage[ampersand]{easylist}
-%\renewcommand{\qedsymbol}{$\blacksquare$}
-\pagestyle{headandfoot}
-\runningheader{}{Chapter \thesection}{}
+\usepackage{amsthm}
+
+% Used so the PDF is hyperlinked for convenience
 \usepackage[hidelinks]{hyperref}
+
 % Used in copmlex tabular/table
+% Needed for a table in one of the solutions
 \usepackage{multirow}
+
 % Make the margins not so large
 % Cannot use for now because the page number at the bottom goes off page
 %\usepackage[margin=0.75in]{geometry}
 
-% Used to add color to statments
-\usepackage{color}
-
 % Used to indent whole paragraphs
 \usepackage{changepage}
+
+% Needed to be able to do arithmetic when setting counters
+\usepackage{calc}
+
+% Needed to make title pages without page numbers in exam class
+\usepackage{titling}

@@ -1,0 +1,438 @@
+\subsection{Initial Ordinals}
+
+\exercise{1}{
+  If $X$ is an infinite well-orderable set, then $X$ has nonisomorphic well-orderings.
+}
+\sol{
+  \input{shared/lem_aleph_infwo_succ}
+
+  \begin{lem}\label{lem:aleph:infwo:reord}
+    If an infinite set $A$ with order $\prec$ is isomorphic to an ordinal $\a$ then it can also be re-ordered to be isomorphic to $\a + 1$.
+  \end{lem}
+  \qproof{
+    Since $A$ is infinite and the isomorphism from $A$ to $\a$ is a bijective function, it follows that they are equipotent so that $\a$ is also infinite.
+    Then by Lemma~\ref{lem:aleph:infwo:succ} $\a$ is equipotent to $\a+1$ so that $A$ is also equipotent to $\a+1$.
+    Hence there is an $f:A \to \a+1$ that is bijective.
+    We then simply re-order $A$ according to $\a+1$, i.e. we create the following order on $A$:
+    $$
+    R = \braces{(a,b) \in A \times A \where f(a) < f(b)}
+    $$
+    so that clearly $(A, R)$ is isomorphic to $(\a+1, <)$.
+  }
+
+  \mainprob
+  \qproof{
+    For an infinite well-orderable set $X$ we show that $X$ has an infinite number of non-isomorphic well-orderings.
+    So let $\prec$ be a well-ordering of $X$ so that by Theorem~6.3.1 $(X, \prec)$ is isomorphic to some ordinal $\a$.
+    We then show by induction that, for any natural number $n$, there is an ordering $R_n$ of $X$ such that it is isomorphic to $\a + n$.
+    For $n=0$ we have that, for $R_0 = \prec$, clearly $(X, R_0)$ is isomorphic to $(\a, <)$ by what has already been established.
+    Now suppose that there is an ordering $R_n$ of $X$ such that $(X, R_n)$ is isomorphic to $(\a + n, <)$.
+    Then since $X$ is an infinite set it follows from Lemma~\ref{lem:aleph:infwo:reord} that there is an ordering $R_{n+1}$ such that $X$ is isomorphic to $(\a + n) + 1 = \a + (n+1)$.
+    This completes the inductive proof.
+    We note that clearly each of these re-orderings are mutually non-isomorphic since different ordinals are not isomorphic to each other.
+  }
+}
+
+\exercise{2}{
+  If $\a$ and $\b$ are at most countable ordinals then $\a + \b$, $\a \cdot \b$, and $\a^\b$ are at most countable.
+  [Hint: Use the representation of ordinal operations from Theorems~5.3 and 5.8 and Exercise~5.16 in Chapter~6.
+    Another possibility is a proof by transfinite induction.]
+}
+\sol{
+  First we show that $\a + \b$ is at most countable.
+  \qproof{
+    First we define two sets:
+    \ali{
+      W_1 &= \braces{(0,\g) \where \g \in \a} &
+      W_2 &= \braces{(1,\g) \where \g \in \b} \,.
+    }
+    We also define the order $<_1$ on $W_1$ so that $(0,\g) <_1 (0,\d)$ if and only if $\g < \d$ for $(0, \g)$ and $(0, \d)$ in $W_1$ (so that $\g$ and $\d$ are in $\a$).
+    Similarly we define the order $<_2$ on $W_2$ so that $(1,\g) <_2 (1,\d)$ if and only if $\g < \d$ for $(1, \g)$ and $(1, \d)$ in $W_2$ (so that $\g$ and $\d$ are in $\b$).
+
+    Clearly $W_1$ and $W_2$ are disjoint, $(W_1, <_1)$ is isomorphic to $\a$, and $(W_2, <_2)$ is isomorphic to $\b$.
+    It then follows from Theorem~6.5.3 that the sum $(W, <)$ is isomorphic to $\a + \b$.
+
+    Now, since they are isomorphic, clearly $W_1$ is equipotent to $\a$ and therefore is at most countable.
+    Similarly $W_2$ is at most countable by virtue of being isomorphic to $\b$.
+    It then follows from Theorem~4.2.6 and Theorem~4.3.5 that $W = W_1 \cup W_2$ is at most countable.
+    Then, since $(W, <)$ is isomorphic to $\a + \b$, $W$ and $\a + \b$ are equipotent so that $\a + \b$ must be at most countable too.
+  }
+
+  Next we show that $\a \cdot \b$ is at most countable.
+  \qproof{
+    Since $\a$ and $\b$ are at most countable it follows from Exercise~4.2.2 and Theorem~4.3.7 that $\a \times \b$ is at most countable.
+    Then, since $\a \cdot \b$ is isomorphic to the antilexicographic ordering of $\a \times \b$ by Theorem~6.5.8, it follows that $\a \cdot \b$ is equipotent to $\a \times \b$ and there for at most countable.
+  }
+
+  Lastly we show that $\a^\b$ is at most countable.
+  \qproof{
+    First if we have that $\a = 0$ then then either $\a^\b = 0^\b = 1$ (if $\b = 0$) or $\a^\b = 0^\b = 0$ (if $\b > 0$).
+    Clearly both $0$ and $1$ are both at most countable so in the following we assume that $\a \neq 0$.
+
+    \def\seqab{\Seq(\a \cdot \b)}
+    \def\sba{S(\b, \a)}
+    Now, let $\seqab$ be the set of all finite sequences of elements of $\a \cdot \b$, and $\sba$ be the set as defined in Exercise~6.5.16 such that $\sba$ with the order defined there is isomorphic (and therefore equipotent) to $\a^\b$.
+    We shall construct a function $g: \sba \to \seqab$.
+
+    So consider any $f \in \sba$ so that $f:\b \to \a$ and $s(f) = \braces{\x < \b \where f(\x) \neq 0}$ (as defined in the exercise) is finite.
+    Hence there is a natural number $n$ such that $s(f)$ can be expressed as an increasing sequence $h: n \to s(f)$.
+    We now define another sequence $t: n \to \a \cdot \b$ by
+    $$
+    t(k) = \a \cdot h(k) + f(h(k))
+    $$
+    for $k \in n$.
+    We then set $g(f) = t$.
+
+    The first thing we show is that $g(f)$ is really a sequence whose elements are in $\a \cdot \b$ for any $f \in \sba$.
+    Hence for any such $f$ again let $h$ be the increasing finite sequence whose range is $s(f)$ and let $t = g(f)$.
+    Then for any $k \in n$ we we note that $h(k) < \b$ since $h(k) \in s(f)$ so that $h(k) + 1 \leq \b$.
+    We also note that $f(h(k)) \in \a$ since $f: \b \to \a$ so that $f(h(k)) < \a$.
+    Thus we have by definition that
+    \ali{
+      t(k) &= \a \cdot h(k) + f(h(k)) \\
+      &< \a \cdot h(k) + \a & \text{(by Lemma~6.5.4)} \\
+      &= \a \cdot (h(k) + 1) & \text{(by Definition~6.5.6b)} \\
+      &\leq \a \cdot \b \,. & \text{(by Exercise~6.5.7 since $\a \neq 0$)}
+    }
+    Hence $t(k) < \a \cdot \b$ so that $t(k) \in \a \cdot \b$.
+    Thus $t: n \to \a \cdot \b$ and since clearly this sequence is finite it follows that $t \in \seqab$.
+
+    Now we show that $g$ is injective.
+    So consider $f_1$ and $f_2$ in $\sba$ such that $f_1 \neq f_2$.
+    Let $h_1$, $n_1$ and $h_2$, $n_2$ be the increasing sequences and natural numbers for $f_1$ and $f_2$, respectively, as defined above.
+    Also let $t_1 = g(f_1)$ and $t_2 = g(f_2)$.
+
+    Case: $n_1 \neq n_2$.
+    In this case the sequences are different sizes so that clearly $t_1 \neq t_2$ since $t_1$ and $t_2$ are sequences of sizes $n_1$ and $n_2$, respectively.
+
+    Case: $n_1 = n_2$.
+    Since $f_1 \neq f_2$ there must be a $\g \in \b$ such that $f_1(\g) \neq f_2(\g)$.
+    Without loss of generality we can assume that $f_1(\g) < f_2(\g)$.
+
+    If $f_1(\g) = 0$ then by definition $\g \notin s(f_1)$ but $\g \in s(f_2)$.
+    Hence there is a $k \in n_2$ such that $h_2(k) = \g$.
+    Also since $n_1 = n_2$ clearly $k \in n_1$.
+    However, it must be that $h_1(k) \neq \g = h_2(k)$ since otherwise it would be that $\g \in s(f_1)$.
+    Suppose that $h_1(k) < h_2(k)$ so that $h_1(k) + 1 \leq h_2(k)$ and we have
+    \ali{
+      t_1(k) &= \a \cdot h_1(k) + f_1(h_1(k)) \\
+      &< \a \cdot h_1(k) + \a & \text{(by Lemma~6.5.4)} \\
+      &= \a \cdot (h_1(k) + 1) & \text{(by Definition~6.5.6b)} \\
+      &\leq \a \cdot h_2(k) & \text{(by Exercise~6.5.7 since $\a \neq 0$)} \\
+      &\leq \a \cdot h_2(k) + f_2(h_2(k)) \\
+      &= t_2(k)
+    }
+    so that $t_1(k) \neq t_2(k)$ and therefore $t_1 \neq t_2$.
+    The case in which $h_1(k) > h_2(k)$ is analogous.
+
+    On the other hand if $f_1(\g) \neq 0$ then $0 < f_1(\g) < f_2(\g)$ so that $\g \in s(f_1)$ and $\g \in s(f_2)$.
+    Thus there are $k_1$ and $k_2$ in $n_1 = n_2$ such that $h_1(k_1) = h_2(k_2) = \g$.
+    If $k_1 = k_2$ then we have
+    \ali{
+      t_1(k_1) &= \a \cdot h_1(k_1) + f_1(h_1(k_1)) \\
+      &= \a \cdot \g + f_1(\g) \\
+      &\neq \a \cdot \g + f_2(\g) & \text{(by Lemma~6.5.4b since $f_1(\g) \neq f_2(\g)$)} \\
+      &= \a \cdot h_2(k_2) + f_2(h_2(k_2)) \\
+      &= t_2(k_2) = t_2(k_1)
+    }
+    so that $t_1 \neq  t_2$.
+    If $k_1 < k_2$ then since $h_1$ is increasing we have $h_2(k_2) = h_1(k_1) < h_1(k_2)$ so that $h_2(k_2) + 1 \leq h_1(k_2)$ and so
+    \ali{
+      t_2(k_2) &= \a \cdot h_2(k_2) + f_2(h_2(k_2)) \\
+      &< \a \cdot h_2(k_2) + \a & \text{(by Lemma~6.5.4)} \\
+      &= \a \cdot (h_2(k_2) + 1) & \text{(by Definition~6.5.6b)} \\
+      &\leq \a \cdot h_1(k_2) & \text{(by Exercise~6.5.7 since $\a \neq 0$)} \\
+      &\leq \a \cdot h_1(k_2) + f_1(h_1(k_2)) \\
+      &= t_1(k_2)
+    }
+    and $t_1 \neq t_2$.
+    The final sub-case in which $k_1 > k_2$ is analogous.
+    
+    Hence in all cases and sub-cases $g(f_1) = t_1 \neq t_2 = g(f_2)$, which shows that $g$ is injective.
+    From this it follows from Definition~4.1.4 that $\abs{\sba} \leq \abs{\seqab}$.
+    However, from what was shown above it follows that $\a \cdot \b$ is at most countable since $\a$ and $\b$ are.
+    Thus $\seqab$ is also at most countable by Exercise~4.2.4 and Theorem~4.3.10 so that $\sba$ must be at most countable since it was just shown that $\abs{\sba} \leq \abs{\seqab}$.
+    Lastly, since $\sba$ is equipotent to $\a^\b$ it follows that $\a^\b$ is at most countable as well.
+  }
+}
+
+\exercise{3}{
+  For any set $A$, there is a mapping of $\pset{A \times A}$ onto $h(A)$.
+  [Hint: Define $f(R) =$ the ordinal isomorphic to $R$, if $R \ss A \times A$ is a well-ordering of its field; $f(R) = 0$ otherwise.]
+}
+\sol{
+  \begin{lem}\label{lem:aleph:pset:sslt}
+    For a set $A$ and ordinal $\a$, if $\a$ is equipotent to a subset of $A$ then $\a < h(A)$.
+  \end{lem}
+  \qproof{
+    Suppose that $\a$ is equipotent to $X \ss A$ but that $\a \geq h(A)$.
+    Clearly if $\a = h(A)$ then $h(A)$ is equipotent to $X \ss A$ (since $\a$ is), which contradicts the definition of the Hartogs number.
+    On the other hand if $\a > h(A)$ then let $f$ be a bijection from $\a$ to $X$.
+    Then, since $h(A) < \a$ we have that $h(A) \in \a$ and $h(A) \ss \a$ since ordinals are transitive.
+    It then follows that $f \rest h(A)$ is a bijection from $h(A)$ to $f[h(A)] \ss X \ss A$.
+    Hence again $h(A)$ is equipotent to a subset of $A$, contradicting the definition of the Hartogs number.
+    So it has to be that $\a < h(A)$ as desired.
+  }
+
+  \mainprob
+  \qproof{
+    We define a function $f : \pset{A \times A} \to h(A)$.
+    So for any $R \in \pset{A \times A}$ clearly $R \ss A \times A$ so that $R$ is a relation on $A$.
+    If $R$ is a well-ordering of some $X \ss A$ then by Theorem~6.3.1 there is a unique ordinal $\a$ such that $(X, R)$ is isomorphic to $\a$.
+    We then set
+    $$
+    f(R) = \begin{cases}
+      \a & \text{$R$ is a well-ordering of some $X \ss A$} \\
+      0 & \text{$R$ is not a well-ordering of any $X \ss A$} \\
+    \end{cases} \,.
+    $$
+
+    First we show that $f(R)$ really is in $h(A)$ for any $R \in \pset{A \times A}$.
+    So for any such $R$, if $R$ is not a well-ordering of some $X \ss A$ then clearly $f(R) = 0$.
+    Then, since clearly $\es \ss A$ and $\es$ is equipotent to 0, it follows that $0 < h(A)$ by Lemma~\ref{lem:aleph:pset:sslt}.
+    Hence $f(R) = 0 \in h(A)$.\
+    On the other hand if $R$ is a well-ordering of some $X \ss A$ then let $\a$ be the ordinal isomorphic to $(X,R)$ so that $f(R) = \a$.
+    Since this means that $\a$ is equipotent to $X \ss A$, it again follows from Lemma~\ref{lem:aleph:pset:sslt} that $\a < h(A)$ so that $f(R) = \a \in h(A)$.
+
+    To show that $f$ is surjective consider any $\a \in h(A)$ so that $\a < h(A)$.
+    Since by definition $h(A)$ is the \emph{least} ordinal that is not equipotent to a subset of $A$ it follows that $\a$ has to be equipotent to an $X \ss A$.
+    Then let $R$ be the well-ordering of $X$ such that $(X,R)$ is isomorphic to $\a$.
+    Clearly $R$ is a relation on $X$ and therefore also a relation on $A$ since $X \ss A$.
+    Thus $R \ss A \times A$ so that $R \in \pset{A \times A}$.
+    Clearly also $f(R) = \a$ and since $\a$ was arbitrary this shows that $f$ is surjective.
+  }
+
+  Note that this does not mean that $h(A) \leq \abs{\pset{A \times A}}$ unless the Axiom of Choice is employed.
+}
+
+\exercise{4}{
+  $\abs{A} < \abs{A} + h(A)$ for all $A$.
+}
+\sol{
+  \begin{lem}\label{lem:aleph:lthart:lthart}
+    $\abs{h(A)} \nleq \abs{A}$ for any set $A$.
+  \end{lem}
+  \qproof{
+    Suppose to the contrary that $\abs{h(A)} \leq \abs{A}$ so that there is an injective $f$ from $h(A)$ to $A$.
+    Then let $X = f[h(A)]$ so that clearly $X \ss A$.
+    But then $f$ considered as function from $h(A)$ to $X$ is a bijection so that $h(A)$ is equipotent to a subset of $A$, which contradicts the definition of the Hartogs number.
+    Hence it must be that $\abs{h(A)} \nleq \abs{A}$ as desired.
+  }
+  
+  Note that this does not imply that $h(a) > \abs{A}$ without using the Axiom of Choice.
+
+  \mainprob
+  \qproof{
+    Since we are only interested in the cardinalities of $A$ and $h(A)$ and their cardinal sum we can assume that they are disjoint.
+    Clearly $f: A \to A \cup h(A)$ defined by $f(x) = x$ for $x \in A$ is an injective function so that $\abs{A} \leq \abs{A} + h(A)$ by the definition of cardinal addition.
+    So suppose that $\abs{A} = \abs{A} + h(A)$.
+    Then there is a bijective function $f$ from $A \cup h(A)$ into $A$ so that $f \rest h(A)$ is an injective function from $h(A)$ to $A$.
+    By definition this means that $h(A) \leq \abs{A}$, but this contradicts Lemma~\ref{lem:aleph:lthart:lthart}.
+    So it must be that $\abs{A} < \abs{A} + h(A)$ as desired.
+  }
+}
+
+\exercise{5}{
+  $\abs{h(A)} < \abs{\pset{\pset{A \times A}}}$ for all $A$.
+  [Hint: Prove that $\abs{\pset{h(A)}} \leq \abs{\pset{\pset{A \times A}}}$ by assigning to each $X \in \pset{h(A)}$ the set of all well orderings $R \ss A \times A$ for which the ordinal isomorphic to $R$ belongs to $X$.]
+}
+\sol{
+  \def\pha{\pset{h(A)}}
+  \def\paa{\pset{\pset{A \times A}}}
+  \qproof{
+    First we show that $\abs{\pha} \leq \abs{\paa}$ by constructing an injective $f : \pha \to \paa$.
+    So consider any $X \in \pha$ so that $X \ss h(A)$.
+    Then let $Y$ be the set of well-orderings $R \ss A \times A$ (so that $R \in \pset{A \times A}$) of subsets $B \ss A$ such that $(B,R)$ is isomorphic to some $\a \in X$.
+    We then set $f(X) = Y$, noting that clearly $f(X) = Y \in \paa$ since for any $R \in Y$ we have that $R \in \pset{A \times A}$ so that $Y \ss \pset{A \times A}$ hence $Y \in \paa$.
+    Note also that $Y \neq \es$ because every $\a \in h(A)$ is equipotent to some subset $B \ss A$ (by the definition of the Hartogs number) so that the well-ordering of $B$ according to $\a$ will be in $Y$.
+
+    We claim that $f$ is injective.
+    So consider $X_1$ and $X_2$ in $\pha$ (so that $X_1 \ss h(A)$ and $X_2 \ss h(A)$) such that $f(X_1) = f(X_2)$.
+    Then consider any $\a \in X_1$.
+    Then since $f(X_1) \neq \es$ there is a well-ordering $R \in f(X_1)$ of a subset of $A$ that is isomorphic to $\a$.
+    Then since $f(X_1) = f(X_2)$ we have $R \in f(X_2)$ as well.
+    It follows from this that $\a \in X_2$.
+    Thus $X_1 \ss X_2$ since $\a$ was arbitrary.
+    A similar argument shows that $X_2 \ss X_1$ so that we conclude that $X_1 = X_2$.
+    This shows that $f$ is injective.
+
+    Hence we have shown that $\abs{\pha} \leq \abs{\paa}$.
+    We also have by Cantor's Theorem (Theorem~5.1.8 in the text) that $\abs{h(A)} < \abs{\pha}$.
+    It therefore follows from Exercise~4.1.2a that $\abs{h(A)} < \abs{\paa}$ as desired.
+  }
+}
+
+\def\hs{h^*}
+\exercise{6}{
+  Let $\hs(A)$ be the least ordinal $\a$ such that there exists no function with domain $A$ and range $\a$.
+  Prove:
+
+  (a) If $\a \geq \hs(A)$, then there is no function with domain $A$ and range $\a$.
+
+  (b) $\hs(A)$ is an initial ordinal.
+
+  (c) $h(A) \leq \hs(A)$.
+
+  (d) If $A$ is well-orderable, then $h(A) = \hs(A)$.
+
+  (e) $\hs(A)$ exists for all $A$.
+
+  [Hint for part (e): Show that $\a \in \hs(A)$ if and only if $\a = 0$ or $\a = $ the ordinal isomorphic to $R$, where $R$ is a well-ordering of some partition of $A$ into equivalence classes.]
+}
+\sol{
+  \begin{lem}\label{lem:aleph:hs:onto}
+    If $A$ is a well-orderable set and $B$ is any other set, there is a function from $A$ onto $B$ if and only if $\abs{B} \leq \abs{A}$.
+  \end{lem}
+  \qproof{
+    Suppose that $R$ is a well-ordering of $A$.
+
+    $(\to)$ Suppose that $f$ is a function from $A$ onto $B$.
+    If $A$ is empty then clearly $B$ must be as well or else $f$ could not be onto.
+    Thus we have $\abs{B} = \abs{\es} = 0 \leq 0 = \abs{\es} = \abs{A}$.
+    So we can assume that $A$ is nonempty so that if $B$ is empty then $\abs{B} = \abs{\es} = 0 < \abs{A}$.
+    Hence we can assume that $B$ is nonempty as well.
+
+    Then, for each $b \in B$, define the set $A_b = \braces{a \in A \where f(a) = b}$, which clearly not empty since $f$ is onto.
+    Then, since $R$ is a well-ordering of $A$ and $A_b \ss A$, there is a unique least element of $a_b$ of $A_b$ according to $R$.
+    We then define $g: B \to A$ by simply setting $g(b)  = a_b$ for any $b \in B$.
+
+    We then claim that $g$ is injective.
+    So consider $b_1$ and $b_2$ in $B$ where $b_1 \neq b_2$.
+    Then since $a_{b_1} \in A_{b_1}$ clearly $f(a_{b_1}) = b_1$.
+    Similarly $f(a_{b_2}) = b_2$ so that clearly $a_{b_1} \neq a_{b_2}$ since $f$ is a function and $b_1 \neq b_2$.
+    Hence $g(b_1) = a_{b_1} \neq a_{b_2} = g(b_2)$, which shows that $g$ is injective since $b_1$ and $b_2$ were arbitrary.
+    Then by definition $\abs{B} \leq \abs{A}$ as desired.
+
+    $(\leftarrow)$ Now suppose that $\abs{B} \leq \abs{A}$ so that there is an injective $f: B \to A$.
+    If $B$ is empty then clearly it has to be that $\abs{B} = \abs{\es} = 0 \leq \abs{A}$ regardless of $A$.
+    So we can assume that $B$ is nonempty so that there is a $b \in B$.
+    Since $f$ is injective, the inverse $\inv{f}$ is a function from $\ran(f)$ onto $B$.
+    Now we construct a function $g: A \to B$ by setting
+    $$
+    g(x) = \begin{cases}
+      \inv{f}(x) & x \in \ran(f) \\
+      b & x \notin \ran(f)
+    \end{cases}
+    $$
+    for any $x \in A$.
+    It should be clear that $g$ maps $A$ onto $B$ since, for any $b \in B$, we have $f(b) \in \ran(f)$ (hence also $f(b) \in A$) so that $g(f(b)) = \inv{f}(f(b)) = b$.
+  }
+
+  \mainprob
+
+  First we note that presumably $\hs(A)$ for a set $A$ is the least \emph{nonzero} ordinal $\a$ such that there is no function from $A$ onto $\a$.
+  The fact that $\hs(A)$ is nonzero is important since, for a non-empty set $A$, there is no function from $A$ onto $\es = 0$ so that $0$ is actually the least ordinal such that such a function does not exist!
+  We also make note of the fact that, even for $A=\es$, the empty function $f = \es$ is a vacuously a function from $A$ onto $\es = 0$ so that $\hs(A) = 1$ anyway since there is no function from $A = \es$ onto $1 = \braces{0}$.
+
+  (a)
+  \qproof{
+    Suppose to the contrary that there \emph{is} a function $f$ from $A$ onto $\a$.
+    Then since $0 < \hs(A) \leq \a$ clearly $0 \in \hs(A)$ and $\hs(A) \ss \a$.
+    So we define a function $g : A \to \hs(A)$ by
+    $$
+    g(a) = \begin{cases}
+      f(a) & f(a) \in \hs(A) \\
+      0 & f(a) \notin \hs(A)
+    \end{cases} \,.
+    $$
+    for any $a \in A$.
+    Clearly each $g(a) \in \hs(A)$ but we also claim that $g$ is onto.
+    To this end consider any $\b \in \hs(A)$.
+    Since $\hs(A) \ss \a$ we have that $\b \in \a$ also.
+    Then, since $f$ is onto $\a$ there is an $a \in A$ such that $f(a) = \b$.
+    Since $f(a) = \b \in \hs(A)$ it follows by definition that $g(a) = f(a) = \b$.
+    Since $\b$ was arbitrary this shows that $g$ is onto.
+    However, the existence of $g$  contradicts the definition of $\hs(A)$ so that it must be that there is no such function from $A$ onto $\a$.
+  }
+
+  (b)
+  \qproof{
+    Suppose to the contrary that $\hs(A)$ is \emph{not} an initial ordinal so that there is an $\a < \hs(A)$ such that $\abs{\a} = \abs{\hs(A)}$.
+    Let $f$ then be a bijection from $\a$ onto $\hs(A)$.
+    Also since $\a < \hs(A)$ it follows from the definition of $\hs(A)$ that there is a function $g$ from $A$ onto $\a$ (since otherwise $\hs(A)$ would not be the \emph{least} such ordinal for which such a function does not exist).
+    But then $f \circ g$ is a function from $A$ onto $\hs(A)$, which contradicts the definition of $\hs(A)$.
+    Hence it has to be that $\hs(A)$ is in fact an initial ordinal.
+  }
+
+  (c)
+  \qproof{
+    Suppose to the contrary that $h(A) > \hs(A)$.
+    Then by the definition of $h(A)$ there is a subset $X \ss A$ such that $\hs(A)$ is equipotent to $X$.
+    So let $f$ be a bijection from $\hs(A)$ to $X$.
+    We then define a function $g : A \to \hs(A)$ by
+    $$
+    g(a) = \begin{cases}
+      \inv{f}(a) & a \in X \\
+      0 & a \notin X
+    \end{cases}
+    $$
+    for any $a \in A$, noting that $0 < \hs(A)$ so that $0 \in \hs(A)$.
+    Clearly $g$ is into $\hs(A)$ but we also claim that it is onto.
+    So consider any $\a \in \hs(A)$ and let $a = f(\a)$ so that $a \in X$ and therefore $a \in A$ since $X \ss A$.
+    We then have $g(a) = \inv{f}(a) = \inv{f}(f(\a)) = \a$ since $a \in X$.
+    Since $\a$ was arbitrary this shows that $g$ is onto.
+    However, the existence of $g$ contradicts the definition of $\hs(A)$ so that it must be that in fact $h(A) \leq \hs(A)$ as desired.
+  }
+
+  (d)
+  \qproof{
+    We show that $\hs(A) \leq h(A)$, from which the result clearly follows since also $\hs(A) \geq h(A)$ by part (c).
+    So suppose to the contrary that $\hs(A) > h(A)$.
+    Then by the definition of $\hs(A)$ it follows that there is a function from $A$ onto $h(A)$.
+    It then  follows from Lemma~\ref{lem:aleph:hs:onto} that $\abs{h(A)} \leq \abs{A}$ since $A$ is well-orderable.
+    However, this contradicts Lemma~\ref{lem:aleph:lthart:lthart} so that it must be that $\hs(A) \leq h(A)$ so that the result follows.
+  }
+
+  (e)
+  \qproof{
+    Consider any set $A$ and let $S$ denote the set of well-orderings of some partition of $A$ into equivalence classes, noting that it could be that $S = \es$.
+    Since each $R \in S$ is isomorphic to a unique ordinal, let $H$ be the set of ordinals that are isomorphic to some $R \in S$, which exists by the Axiom Schema of Replacement.
+    Then let $\a = \braces{0} \cup H$ and we claim that $\a = \hs(A)$.
+
+    First we show that $\a$ is indeed an ordinal number.
+    Since $\a$ is a set of ordinals clearly it is well-ordered by Theorem~6.2.6d.
+    We also must show that $\a$ is transitive, so consider any $\b \in \a$.
+    Then either $\b = 0$ or $\b \in H$.
+    If $\b = 0 = \es$ then clearly $\b \ss \a$.
+    On the other hand if $\b \in H$ then there is a partition $P$ of $A$ and a well-ordering $R$ of $P$ such that $(P, R)$ is isomorphic to $(\b, <)$.
+    Now consider any $\g \in \b$ so that $\g < \b$.
+    It then follows that $\g$ is isomorphic to an initial segment of $\b$ and therefore also to an initial segment $P'$ of $P$ ordered by $R$.
+    Let $L$ be the least element of $P$ (which is also the least element of $P'$), which exists since $R$ is a well-ordering.
+    Then let
+    $$
+    L' = L \cup \parens{A - \bigcup P'} \,,
+    $$
+    i.e. $L'$ is the set containing the elements of $L$ and any elements of $A$ that are not covered in the initial segment $P'$.
+    Then let
+    $$
+    P'' = \braces{L'} \cup \parens{P' - \braces{L}} \,,
+    $$
+    i.e. $P''$ is $P'$ but with $L$ replaced with $L'$.
+    It is easy to show that $P''$ is a partition of $A$ and that it is isomorphic to $\g$ with the same ordering as $R$ except with $L$ replaced by $L'$.
+    Hence by definition we have that $\g \in \a$.
+    Since $\g \in \b$ was arbitrary this shows that $\b \ss \a$, and since $\b \in \a$ was arbitrary this shows that $\a$ is transitive and hence an ordinal number.
+
+    Now we show that there is no function from $A$ onto $\a$.
+    So suppose to the contrary that there is such a function $f$.
+    We then define the set
+    $$
+    E = \braces{(a,b) \in A \times A \where f(a) = f(b)} \,.
+    $$
+    It is trivial to show that this is an equivalence relation on $A$ so that $A/E$ is a partition of $A$ by Theorem~4.4.7.
+    Moreover let $g$ be the mapping from $A/E$ to $\a$ defined as follows: for any $B \in A/E$ let $g(B)$ be the least element of $\braces{f(x) \where x \in B}$, noting that $\braces{f(x) \where x \in B}$ contains only a single element since $B$ is an equivalence class where $f(x) = f(y)$ for any $x$ and $y$ in $B$.
+    It is trivial to show that $g$ is a bijective function so that we can well-order $A/E$ according to the ordinal $\a$ since $\a$ is the range of $g$.
+    However, it then follows by definition that $\a \in \a$, which contradicts Lemma~6.2.7.
+    Hence it must be that there is no function from $A$ onto $\a$.
+
+    Lastly we show that there is a function from $A$ onto $\b$ for every nonzero $\b < \a$.
+    So consider any such $\b$ so that $\b \in \a$.
+    Then either $\b = 0$ or $\b \in H$, but since $\b$ is nonzero it must be that $\b \in H$.
+    Then by definition there is is a partition $P$ of $A$ and well-ordering $R$ of $P$ such that $(P,R)$ is isomorphic to $(\b,<)$.
+    Let $f$ then be the isomorphism from $P$ to $\b$.
+    We then define the mapping $g : A \to \b$ as follows: for any $a \in A$ there is a unique $B \in P$ such that $a \in B$ since $P$ is a partition of $A$.
+    We then set $g(a) = f(B)$.
+    It is easy to show that $g$ is onto.
+
+    It follows from what has been shown that indeed $\a = \hs(A)$.
+  }
+}

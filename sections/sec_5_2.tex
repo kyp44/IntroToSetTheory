@@ -1,0 +1,242 @@
+\subsection{The Cardinality of the Continuum}
+
+\exercise{1}{
+  Prove that the set of all finite sets of reals has cardinality $2^{\al_0}$.
+  We remark here that the set of all countable sets of reals also has cardinality $2^{\al_0}$, but the proof of this requires the Axiom of Choice.
+}
+\sol{
+  \qproof{
+    Let $F$ denote the set of all finite sets of reals.
+    First we construct an injective $f: F \to \reals^\nats$
+    So consider any $A \in F$.
+    Then $|A|=n$ for an $n \in \nats$ so that there is a finite sequence $\angles{a_k \where k \in n}$ where $\ran(a) = A$.
+    Now we define an infinite sequence of reals $\hat{a} \in \reals^\nats$ by
+    $$
+    \hat{a}_k = \begin{cases}
+      a_k & k \in n \,\, \text{(i.e. $0 \leq k < n$)} \\
+      a_0 & k \notin n \,\, \text{(i.e. $k \geq n$)}
+    \end{cases}
+    $$
+    so that clearly we have $\ran(\hat{a}) = A$ as well.
+    Note that this only works if $A \neq \es$ since otherwise there is no $a_0$.
+    In the case  where $A = \es$ we set $\hat{a}_k = k$ for $k \in \nats$ so that $\ran(\hat{a}) = \nats$.
+    In any case we set $f(A) = \hat{a}$.
+
+    Now we claim that $f$ is injective.
+    So consider any $A,B \in F$ where $A \neq B$.
+    If one of them is the empty set, say $A$, then since $B$ is finite $m = \max(\ceil{\max(B)} + 1, 0)$ exists so that clearly $m \notin B$.
+    Hence $m \notin \ran(f(B)) = B$.
+    However $m \in \ran(f(A)) = \nats$ since $m \in \nats$.
+    It thus follows that $\ran(f(B)) \neq \ran(f(A))$ so that $f(A) \neq f(B)$.
+    On the other hand if neither $A$ nor $B$ is the empty set (but still $A \neq B$) then there is an $a \in A$ where $a \notin B$ or vice versa.
+    Without loss of generality we need only consider the first case.
+    Clearly then $a \in \ran(f(A)) = A$ but $a \notin \ran(f(B)) = B$ so that again $f(A) \neq f(B)$.
+    Hence in all cases we've shown that $f$ is injective.
+
+    Thus we have that
+    $$
+    |F| \leq |\reals^\nats| = \ccont \,,
+    $$
+    where the last equality was shown in Theorem~5.2.3d.
+    Now define
+    $$
+    E = \braces{\braces{x} \where x \in \reals}
+    $$
+    so that clearly $E \subseteq F$ and $|E| = |\reals|$.
+    Hence we have
+    $$
+    \ccont = |\reals| = |E| \leq |F|
+    $$
+    by Exercise 4.1.3.
+    Thus by the Cantor-Bernstein Theorem $|F| = \ccont$ as required.
+  }
+}
+
+\exercise{2}{
+  A real number $x$ is \emph{algebraic} if it is a solution of some equation
+  $$
+  a_n x^n + a_{n-1} x^{n-1} + \cdots + a_1 x + a_0 = 0 \,,
+  $$
+  where $a_0, \ldots, a_n$ are integers.
+  If $x$ is not algebraic, it is called \emph{transcendental}.
+  Show that the set of algebraic numbers is countable and hence the set of all transcendental numbers has cardinality $2^{\al_0}$.
+}
+\sol{
+  I did not prove this here as I have already done so when studying Rudin's Principles of Mathematical Analysis, Exercise~2.2.
+}
+
+\exercise{3}{
+  If a linearly ordered set $P$ has a countable dense subset, then $\abs{P} \leq 2^{\al_0}$.
+}
+\sol{
+  Note that the countable dense subset is dense in $P$ and not just in itself as explained in the errata list.
+  \qproof{
+    Suppose that $(P,<)$ is our linearly ordered set and $R$ is the countable dense subset of $P$.
+    We construct an $f : P \to \pset{R}$ by defining
+    $$
+    f(x) = \braces{y \in R \where y < x}
+    $$
+    for any $x \in P$.
+    Clearly for such $x$ we have that $f(x) \ss R$ so that $f(x) \in \pset{R}$.
+
+    Now we claim that $f$ is injective.
+    So consider any $x,y \in P$ such that $x \neq y$.
+    Without loss of generality we can assume that $x < y$.
+    Since $R$ is dense in $P$ there is a $z \in R$ where $x < z < y$.
+    From this it follows that $z \in f(y)$ but that $z \notin f(x)$ since it is not true that $z < x$.
+    Hence clearly $f(x) \neq f(y)$ so that we have shown that $f$ is injective.
+
+    Thus we have
+    $$
+    |P| \leq |\pset{R}| = 2^{|R|} = \ccont \,,
+    $$
+    where we have  used Theorem~5.1.9.
+  }
+}
+
+\exercise{4}{
+  The set of all closed subsets of reals has cardinality $2^{\al_0}$.
+}
+\sol{
+  \qproof{
+    Let $C$ denote all the closed subsets of $\reals$ and $O$ the open sets.
+    We form a mapping $f: C \to O$ defined by
+    $$
+    f(A) = \reals - A
+    $$
+    for $A \in C$.
+    Clearly by definition $f(A)$ is open for every $A \in C$ since $A$ is closed.
+
+    Now consider any $A,B \in C$ where $A \neq B$.
+    Then there is an $a \in A$ such that $a \notin B$ or vice versa.
+    Without loss of generality we can assume the former.
+    Then since $a \in A$ it follows that $a \notin \reals - A$.
+    But also since $a \notin B$ (but $a \in \reals$) we have that $a \in \reals - B$.
+    Thus
+    $$
+    f(A) = \reals - A \neq \reals - B = f(B)
+    $$
+    so that $f$ is injective.
+
+    Now consider any $B \in O$ and let $A = \reals - B$.
+    $$
+    f(A) = \reals - A = \reals - (\reals - B) = B
+    $$
+    so that $f$ is also surjective.
+    Hence we have that
+    $$
+    |C| = |O| = \ccont
+    $$
+    by Theorem~2.6b.
+  }
+}
+
+\exercise{5}{
+  Show that, for $n > 0$, $n \cdot 2^\ccont = \cnats \cdot 2^\ccont = \ccont \cdot 2^\ccont = 2^\ccont \cdot 2^\ccont = \parens{2^\ccont}^n = \parens{2^\ccont}^\cnats = \parens{2^\ccont}^\ccont = 2^\ccont$.
+}
+\sol{
+  \begin{lem}\label{lem:card:multone}
+    For any cardinal number $\k$
+    $$
+    1 \cdot \k = \k \,.
+    $$
+  \end{lem}
+  \qproof{
+    Suppose that $\k = |A|$ for a set $A$.
+    We define $f : A \to 1 \times A$ by
+    $$
+    f(a) = (0, a)
+    $$
+    for $a \in A$, noting that $1 = \braces{0}$.
+    Clearly by simple inspection this is bijective so that
+    $$
+    1 \cdot \k = |1 \times A| = |A| = \k
+    $$
+    as desired.
+  }
+
+  \mainprob
+  \qproof{
+    First we note that clearly since $\cnats \leq \ccont$ we have
+    $$
+    \ccont \leq 2^\ccont
+    $$
+    by property (n) in section~5.1.
+    So consider any cardinal $n \in \nats$ where $n > 0$ so that $1 \leq n$.
+    We then have
+    \ali{
+      2^\ccont &= 1 \cdot 2^\ccont & \text{(by Lemma~\ref{lem:card:multone})} \\
+      &\leq n \cdot 2^\ccont \leq \cnats \cdot 2^\ccont \leq \ccont \cdot 2^\ccont \leq 2^\ccont \cdot 2^\ccont & \text{(repeated property (i) of 5.1)} \\
+      &= \parens{2^\ccont}^2 & \text{(by property (o) of 5.1)}\\
+      &= 2^{2 \cdot \ccont} & \text{(by Theorem 5.1.7b)} \\
+      &= 2^\ccont \,. & \text{(by Theorem 5.2.2b)}
+    }
+    We also have
+    \ali{
+      2^\ccont &= \parens{2^\ccont}^1 & \text{(by Exercise 5.1.2)} \\
+      &\leq \parens{2^\ccont}^n \leq \parens{2^\ccont}^\cnats \leq \parens{2^\ccont}^\ccont & \text{(repeated property (n) of 5.1)} \\
+      &= 2^{\ccont \cdot \ccont} & \text{(by Theorem 5.1.7b)} \\
+      &= 2^\ccont & \text{(by Theorem 5.2.2b)}
+    }
+    Clearly these together with the Cantor-Bernstein Theorem shows the desired result.
+  }
+}
+
+\exercise{6}{
+  The cardinality of the set of all discontinuous functions is $2^\ccont$.
+  [Hint: Using Exercise~2.5, show that $\abs{\reals^\reals - C} = 2^\ccont$ whenever $\abs{C} \leq \ccont$.]
+}
+\sol{
+  \begin{lem}\label{lem:card:contminus}
+    If $B$ is a set with $|B| = 2^\ccont$ and $A$ is a subset of $B$ with $|A| \leq \ccont$ then $|B - A| = 2^\ccont$.
+  \end{lem}
+  \qproof{
+    The proof is analogous to that of Theorem~5.2.4.
+    So suppose that $C$ is a set with $|C| = 2^\ccont$.
+    Let $B = C \times C$ so that by Exercise~5.2.5 we have
+    $$
+    |B| = |C \times C| = 2^\ccont \cdot 2^\ccont = 2^\ccont \,.
+    $$
+    Also suppose that $A \subseteq B$ where $|A| = \ccont$.
+    Now define a set
+    $$
+    P = \braces{x \in C \where \exists y \in C ((x,y) \in A} \,.
+    $$
+    Clearly then $|P| \leq |A| = \ccont$.
+    Since also $|C| = 2^\ccont$ but $P \subseteq C$ it follows that there is an $x_0 \in C$ where $x_0 \notin P$.
+    If we let $X = \braces{x_0} \times C$ then any $(x,y) \in X$ is not in $A$ so that $(x,y) \in C\times C - A = B - A$.
+    Hence $X \subseteq B - A$ but also since there is an obvious bijection between $X$ and $C$ we have
+    $$
+    2^\ccont = |C| = |X| \leq |B-A| \,.
+    $$
+    Since also clearly $B - A \subseteq B$ we also have that
+    $$
+    |B-A| \leq |B| = 2^\ccont \,.
+    $$
+    Hence by the Cantor-Bernstein Theorem $|B-A| = 2^\ccont$ as desired.
+  }
+
+  \mainprob
+  \qproof{
+    By Lemma~5.2.7 $|\reals^\reals| = 2^\ccont$.
+    Also by Theorem~5.2.6a the set $C$ of all continuous $f: \reals \to \reals$ has cardinality of $\ccont$.
+    Thus clearly the set of all discontinuous functions from $\reals \to \reals$ is simply
+    $$
+    D = \reals^\reals - C \,.
+    $$
+    But then by Lemma~\ref{lem:card:contminus} above we have that
+    $$
+    |D| = |\reals^\reals| = 2^\ccont
+    $$
+    as desired.
+  }
+}
+
+\exercise{7}{
+  Construct a one-to-one mapping of $\reals \times \reals$ onto $\reals$.
+  [Hint: If $a,b \in [0, 1]$ have decimal expansions $0.a_1 a_2 a_3 \cdots$ and $0.b_1 b_2 b_3 \cdots$, map the ordered pair $(a,b)$ onto $0.a_1 b_1 a_2 b_2 a_3 b_3 \cdots \in [0,1]$.
+    Make adjustments to avoid sequences where the digit 9 appears from some place onward.]
+}
+\sol{
+  Skipping this problem due to the obviousness of it in principle but the fact that the details are tedious, and I have proved similar problems when studying Rudin's Principles of Mathematical Analysis.
+}

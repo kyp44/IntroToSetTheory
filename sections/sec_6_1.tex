@@ -1,0 +1,415 @@
+\subsection{Well-Ordered Sets}
+
+\exercise{1}{
+  Give an example of a linearly ordered set $(L,<)$ and an initial segment $S$ of $L$ which is not of the form $\braces{x \where x < a}$, for any $a \in L$.
+}
+\sol{
+  We claim that $L = \reals$ and $S = \braces{x \in L \where x \leq 0}$ with the usual order meet the criteria.
+  \qproof{
+    First, clearly $L = \reals$ is a linearly ordered set.
+    So consider any $a \in S$ and any $x < a$ so that we have
+    $$
+    x < a \leq 0 \,.
+    $$
+    Hence $x \in S$ also so that by definition $S$ is an initial segment of $\reals$.
+    Now suppose that $S$ does have the form
+    $$
+    S = \braces{x \in L \where x < a}
+    $$
+    for some $a \in L$.
+    Since $0 \leq 0$ clearly $0 \in S$ by the original definition so that by the above $0 < a$.
+    But now consider $a/2$, which is clearly in $L = \reals$.
+    By the above $a/2 < a$ since $a > 0$ so $a/2 \in S$ but we also have $0 < a/2$ (hence it is not true that $a/2 \leq 0$) since $0 < a$ so that by the original definition $a/2 \notin S$.
+    Since we have a contradiction it must be that $S$ cannot be expressed in such a form.
+  }
+}
+
+\exercise{2}{
+  $\w + 1$ is not isomorphic to $\w$ (in the well-ordering by $\in$).
+}
+\sol{
+  \qproof{
+    Since $\w = \nats$ and $\w + 1 = \w \cup \braces{\w}$ clearly $\w$ is a proper subset of $\w + 1$ (since $\w \notin \w$ but $\w \in \w + 1$).
+    Now consider any $a \in \w = \nats$ and any $x < a$.
+    Then clearly also $x \in \nats$ so $x \in \w$.
+    Thus $\w$ is an initial segment of $\w + 1$.
+    Then, since it has already been shown that both $\w$ and $\w + 1$ are well-ordered sets, it follows from Corollary~6.1.5a that they  cannot be isomorphic.
+  }
+}
+
+\exercise{3}{
+  There exist $\ccont$ well-orderings of the set of natural numbers.
+}
+\sol{
+  \begin{lem}\label{lem:ord:isnats}
+    Suppose that $A$ is a subset of $\nats$ (including $A = \nats$).
+    Then every initial segment of $A$ with the standard ordering is finite.
+  \end{lem}
+  \qproof{
+    Consider any initial segment $S$ of $(A, <)$.
+    Then by Lemma~6.1.2 there is an $n \in A \ss \nats$ such that $S = \braces{k \in A \where k < n}$.
+    So consider any $k \in S$ so that $k \in A \ss \nats$ and $k < n$.
+    Then by the definition of $<$ we have that $k \in n$.
+    Since $k$ was arbitrary this shows that $S \ss n$ so that $|S| \leq n$.
+    From this it clearly follows that $S$ is finite since $n$ is.
+  }
+
+  \mainprob
+  \qproof{
+    Throughout the following let $<$ denote the standard well-ordering on $\nats$ and let $R$ be the set of all well-orderings defined on $\nats$.
+
+    First we construct an injective $F: R \to \nats^\nats$.
+    So for any $\prec \in R$ we have that $(\nats, <)$ and $(\nats, \prec)$ are two well-orderings of $\nats$.
+    Consider then Theorem~6.1.3.
+    We show that (c) cannot be the case, i.e. that an initial segment of $(\nats, <)$ cannot be isomorphic to $(\nats, \prec)$.
+    So suppose that this is the case so that $f$ is an isomorphism from an initial segment $S$ of $(\nats, <)$ to $(\nats, \prec)$.
+    Then by  Lemma~\ref{lem:ord:isnats}, $S$ is finite whereas $\nats$ is infinite, but since $f$ is a bijection this is impossible since it would imply that $|S| = |\nats| = \cnats$.
+    Hence it must be that (a) $(\nats, <)$ is isomorphic to $(\nats, \prec)$ or (b) the former is isomorphic to an initial segment of the latter.
+    In either case such an isomorphism $f$ is unique by Corollary~6.1.5c.
+    So define $F(\prec) = f$, noting that clearly $f \in \nats^\nats$.
+
+    Now we show that $F$ is injective by considering two $\prec_1, \prec_2 \in R$ where $\prec_1 \neq \prec_2$.
+    Without loss of generality we can the assume that there is an $(n,m) \in \prec_1$ where $(n,m) \notin \prec_2$.
+    Thus $n \prec_1 m$ but since $\prec_2$ is a linear, strict ordering and $\lnot (n \prec_2 m)$ it has to be that $m \prec_2 n$ since $n \neq m$.
+    Now let $f_1 = F(\prec_1)$ and $f_2 = F(\prec_2)$.
+    Since both $f_1$ and $f_2$ are bijective there are $k_1,l_1,k_2,l_2 \in \nats$ such that
+    \ali{
+      f_1(k_1) &= n & f_2(k_2) &= n \\
+      f_1(l_1) &= m & f_2(l_2) &= m
+    }
+    Since $f_1$ is an isomorphism and $f_1(k_1) = n \prec_1 m = f_1(l_1)$ it follows that
+    $$
+    k_1 < l_1
+    $$
+    and similarly since $f_2$ is an isomorphism and $f_2(l_2) = m \prec_2 n = f_2(k_2)$ it follows that
+    $$
+    l_2 < k_2 \,.
+    $$
+    Now we claim that either $f_1(k_1) \neq f_2(k_1)$ or $f_1(l_1) \neq f_2(l_1)$.
+    Either case shows that $F(\prec_1) = f_1 \neq f_2 = F(\prec_2)$ so that $F$ is injective.
+    To this end suppose that $f_1(k_1) = f_2(k_1) = n = f_2(k_2)$.
+    Then since $f_2$ is injective it follows that $k_1 = k_2$.
+    Hence with the above we have
+    $$
+    l_2 < k_2 = k_1 < l_1
+    $$
+    so that $m = f_2(l_2) \prec_2 f_2(l_1)$ and hence $m \neq f_2(l_1)$.
+    Thus we have $f_1(l_1) = m \neq f_2(l_1)$ so that the disjunction is shown (since $\lnot P \to Q \equiv P \lor Q$) and $F$ is injective.
+
+    Hence since $F: R \to \nats^\nats$ is injective we have that
+    $$
+    |R| \leq |\nats^\nats| = \cnats^\cnats = \ccont
+    $$
+    by Theorem~5.2.2c.
+
+    Now suppose that $B$ is the set of all bijections from $\nats$ to $\nats$.
+    We then construct an injective $G: 2^\nats \to B$.
+    So for any infinite sequence $a \in 2^\nats$ we define an $f \in \nats^\nats$ by
+    \ali{
+      f(2n) &= \begin{cases}
+        2n & a_n = 0 \\
+        2n+1 & a_n = 1
+      \end{cases}
+      &
+      f(2n+1) &= \begin{cases}
+        2n+1 & a_n = 0 \\
+        2n & a_n = 1 \,.
+      \end{cases}
+    }
+    for $n \in \nats$, i.e we swap $2n$ and $2n+1$ if $a_n = 1$ and leave them alone if $a_n = 0$.
+    We then assign $G(a) = f$.
+    It is trivial but tedious to show that $f$ is bijective so that indeed $f \in B$.
+
+    Now consider any $a, b \in 2^\nats$ where $a \neq b$ and let $f = G(a)$ and $g = G(b)$.
+    Since $a \neq b $ there is an $n \in \nats$ where $a_n \neq b_n$.
+    Without loss of generality we can assume that $a_n = 0 \neq 1 = b_n$.
+    Then we have
+    $$
+    f(2n) = 2n \neq 2n+1 = g(2n)
+    $$
+    since $a_1 = 0$ but $b_n = 1$.
+    Hence $f \neq g$ so that $G$ is injective, from which it follows that $|2^\nats| \leq |B|$.
+
+    Lastly we construct an injective $H : B \to R$.
+    So for an $f \in B$ define
+    $$
+    \prec = \braces{(f(n), f(m)) \where (n,m) \in \nats \times \nats \land n < m}
+    $$
+    and set $H(f) = \prec$.
+    Clearly by definition since $f$ is bijective it is an isomorphism from $(\nats, <)$ to $(\nats, \prec)$.
+    This means that $(\nats, \prec)$ is isomorphic to $(\nats, <)$ so that clearly $\prec$ is a well-ordering since $<$ is.
+    Hence indeed $H(f) = \prec \in R$.
+
+    Now we show that $H$ is injective.
+    So consider $f_1, f_2 \in B$ where $\prec_1 = H(f_1) = H(f_2) = \prec_2$.
+    Then $\inv{f_1} \circ f_2$ is an isomorphism from $(\nats, \prec_1)$ to $(\nats, \prec_2)$
+    But since $\prec_1 = \prec_2$ these are the same well-ordered set so that it follows from Corollary~6.1.5b that the only isomorphism between them is the identity $i_\nats$.
+    Hence $\inv{f_1} \circ f_2 = i_\nats$, from which it follows that $f_1 = f_2$.
+    Therefore $H$ is injective so that $|B| \leq |R|$.
+
+    Putting this together results in
+    $$
+    \ccont = |2^\nats| \leq |B| \leq |R| \,.
+    $$
+    It then follows from the Cantor-Bernstein Theorem that $|R| = \ccont$ as desired.
+  }
+}
+
+\exercise{4}{
+  For every infinite subset $A$ of $\nats$, $(A,<)$ is isomorphic to $(\nats,<)$.
+}
+\sol{
+  \qproof{
+    Let $A$ be an infinite subset of $\nats$.
+    Then $(A, <)$ (where $<$ is the standard well-ordering of $\nats$) is a well-ordering since any $B \ss A$ is also a subset of $\nats$ and therefore has a least element.
+    Hence by Theorem~6.1.3 either:
+    \begin{enumerate}
+    \item $(A,<)$ and $(\nats,<)$ are isomorphic,
+    \item An initial segment of $(A,<)$ is isomorphic to $(\nats,<)$, or
+    \item $(A,<)$ is isomorphic to an initial segment of $(\nats,<)$
+    \end{enumerate}
+    We show that they must be isomorphic (1) by showing that (2) and (3) lead to contradictions.
+
+    Suppose (2), i.e. that an initial segment $S$ of $(A,<)$ is isomorphic to $(\nats,<)$.
+    Then since $A \ss \nats$ it follows from Lemma~\ref{lem:ord:isnats} that $S$ is finite.
+    But since this is isomorphic to $\nats$ it means that $|S| = |\nats| = \cnats$, which is a contradiction!
+
+    Now suppose (3) so that $(A,<)$ is isomorphic to an initial segment $S$ of $(\nats, <)$.
+    Again Lemma~\ref{lem:ord:isnats} tells us that $S$ is finite whereas $A$ is infinite.
+    But since they are isomorphic this implies that $|S| = |A| = \cnats$, which is again a contradiction!
+
+    Hence it has to be that $(A,<)$ and $(\nats,<)$ are isomorphic.
+  }
+}
+
+\exercise{5}{
+  Let $(W_1, <_1)$ and $(W_2,<_2)$ be disjoint well-ordered sets, each isomorphic to $(\nats,<)$.
+  Show that the sum of the two linearly ordered sets (as defined in Lemma~4.5 in Chapter~4) is a well-ordering, and is isomorphic to the ordinal number $\w + \w = \braces{0,1,2,\ldots,\w,\w+1,\w+2,\ldots}$.
+}
+\sol{
+  \qproof{
+    Suppose that $(W, \prec)$ is the sum and associated order as defined in Lemma~4.4.5.
+    By that lemma $\prec$ is a linear ordering but we must show that it is also a well-ordering.
+
+    First we note that clearly $W_1$ and $W_2$ are both well-orderings since they are both isomorphic to $(\nats, <)$.
+    So consider any non-empty subset of $A$ of $W = W_1 \cup W_2$.
+    Let $A_1 = A \cap W_1$ and $A_2 = A \cap W_2$ so that clearly they are disjoint since $W_1$ and $W_2$ are and $A_1 \ss W_1$ and $A_2 \ss W_2$.
+    Also since $A$ is not empty either $A_1$ or $A_2$ (or both) are also not empty.
+    If $A_1$ is not empty then since $A_1 \ss W_1$ and $(W_1, <_1)$ is a well-ordering there is a least element $a \in A_1$.
+    Otherwise if $A_1$ is empty then $A_2$ is not and it has a least element $a$ since it is a non-empty subset of the well-ordered $(W_2, <_2)$.
+    Now consider any $b \in A$ so that also $b \in W$.
+    If $b \in W_1$ then $b \in A_1$ so that $A_1$ is not empty.
+    In this case since $a$ is the least element of $A_1$ we have $a \leq_1 b$ so that by definition $a \preceq b$.
+    On the other hand if $b \in W_2$ then $b \in A_2$.
+    If $A_1$ was empty then $a$ is the least element of $A_2$ and $b \in A_2$ so that again $a \leq_2 b$, hence by definition $a \preceq b$.
+    If $A_1$ is not empty then $a \in A_1 \ss W_1$ so that by the definition of the sum $(W, \prec)$ we have that $a \prec b$ since $b \in W_2$.
+    Hence also $a \preceq b$.
+    Thus in all cases $a \preceq b$ so that $a$ is the least element of $A$ since $b$ was arbitrary.
+
+    Now we show that $(W, \prec)$ is isomorphic to $(\w + \w, <)$.
+    First, since $(W_1, <_1)$ and $(W_2, <_2)$ are both isomorphic to $(\nats, <)$ let $f_1 : W_1 \to \nats$ and $f_2 : W_2 \to \nats$ be isomorphisms.
+    Now we define $g : W \to \w + \w$ by
+    $$
+    g(w) = \begin{cases}
+      f_1(w) & w \in W_1 \\
+      \w + f_2(w) & w \in W_2
+    \end{cases}
+    $$
+    for $w \in W = W_1 \cup W_2$, noting that $g$ is well defined since $W_1$ and $W_2$ are disjoint.
+    Clearly since $\ran(f_1) = \ran(f_2) = \nats$ we have that $g(w) \in \w + \w$ for all $w \in W$.
+
+    Consider any $k \in \w + \w$ so that $k \in \nats$ or $k = \w + n$ for some $n \in \nats$.
+    In the former case let $w = \inv{f_1}(k)$, which exists since $f_1$ is bijective.
+    Thus $w \in W_1$ so that by definition $g(w) = f_1(w) = k$.
+    In the latter case let $w = \inv{f_2}(n)$, which exists since $f_2$ is bijective.
+    Thus $w \in W_2$ so that by definition $g(w) = \w + f_2(w) = \w + n = k$.
+    This shows that $g$ is surjective.
+
+    Now we show that $g$ is an increasing function.
+    So consider any $w_1, w_2 \in W$ where $w_1 \prec w_2$.
+
+    Case: $w_1, w_2 \in W_1$.
+    Then since $w_1 \prec w_2$ we have that $w_1 <_1 w_2$.
+    It then follows that $g(w_1) = f(w_1) < f_(w_2) = g(w_2)$ since $f_1$ is an isomorphism.
+
+    Case: $w_1, w_2 \in W_2$.
+    Then since $w_1 \prec w_2$ we have that $w_1 <_2 w_2$.
+    It then follows that $f_2(w_1) < f_2(w_2)$ since $f_2$ is an isomorphism.
+    Hence we clearly then have $g(w_1) = \w + f_2(w_1) < \w + f_2(w_2) = g(w_2)$.
+
+    Case: $w_1 \in W_1$ and $w_2 \in W_2$.
+    Then we have that $g(w_1) = f_1(w_1) \in \nats$ and $g(w_2) = \w + f_2(w_2)$ so that clearly $g(w_1) < \w \leq g(w_2)$ since $f_2(w_2) \in \nats$.
+
+    Case: $w_2 \in W_1$ and $w_1 \in W_2$.
+    If this were the case then by the definition of $\prec$ we would have that $w_2 \prec w_1$, which contradicts the established hypothesis that $w_1 \prec w_2$.
+    Hence this case is impossible.
+
+    Hence in all cases $g(w_1) < g(w_2)$ so that $g$ is increasing.
+    Therefore it is also injective and an isomorphism (since we've shown that it is surjective as well).
+    Thus we've shown that $W$ is isomorphic to $\w + \w$ as desired.
+  }
+}
+
+\exercise{6}{
+  Show that the lexicographic product $(\nats \times \nats, <)$ (see Lemma~4.6 in Chapter~4) is isomorphic to $\w \cdot \w$.
+}
+\sol{
+  \qproof{
+    Suppose that $\prec$ is the lexicographic ordering of $\nats \times \nats$.
+    Now we define $f: \nats \times \nats \to \w \cdot \w$ by
+    $$
+    f(n,m) = \w \cdot n + m
+    $$
+    for any $(n,m) \in \nats \times \nats$.
+    Clearly $f(n,m) \in \w \times \w$.
+
+    First we show that $f$ is surjective.
+    So consider any $k \in \w \cdot \w$ so that there are $n,m \in \nats$ where $k = \w \cdot n + m$.
+    Then we clearly have that $f(n,m) = \w \cdot  n + m = k$.
+    Since clearly $(n,m) \in \nats \times \nats$ it follows that $f$ is surjective.
+
+    Now we show that $f$ is an increasing function.
+    To this end consider any $(n_1, m_1), (n_2, m2) \in \nats \times \nats$ where $(n_1, m_1) \prec (n_2, m_2)$.
+
+    Case: $n_1 = n_2$.
+    Then since $(n_1, m_1) \prec (n_2, m_2)$ it must be that $m_1 < m_2$.
+    Hence we have that $f(n_1, m_1) = \w \cdot n_1 + m_1 = \w \cdot n_2 + m_1 < \w \cdot n_2 + m_2 = f(n_2, m_2)$.
+
+    Case: $n_1 \neq n_2$.
+    Then since $(n_1, m_1) \prec (n_2, m_2)$ it must be that $n_1 < n_2$.
+    Hence we have that $f(n_1, m_1) = \w \cdot n_1 + m_1 < \w \cdot n_2 \leq \w \cdot n_2 + m_2 = f(n_2, m_2)$.
+
+    Thus in all cases $f(n_1, m_1) < f(n_2, m_2)$ so that $f$ is increasing.
+    It then follows that $f$ is injective and isomorphic.
+    Hence $(\nats \times \nats, \prec)$ is isomorphic to $\w \cdot \w$.
+  }
+}
+
+\exercise{7}{
+  Let $(W,<)$ be a well-ordered set, and let $a \notin W$.
+  Extend $<$ to $W' = W \cup \braces{a}$ by making $a$ greater than all $x \in W$.
+  Then $W$ has a smaller order type than $W'$.
+}
+\sol{
+  This problem is looking ahead to future sections where order types and how to compare them are defined.
+  \qproof{
+    Suppose that $\a$ is the order type of $W$ and that $f : W \to \a$ is the isomorphism.
+    Now let $\b = S(\a) = \a \cup \braces{\a}$.
+    We then claim that $W'$ is isomorphic to $\b$.
+    So define a $g : W' \to \b$ by
+    $$
+    g(w) = \begin{cases}
+      f(w) & w \in W \\
+      \a & w \notin W
+    \end{cases}
+    $$
+    for $w \in W'$.
+    Clearly we have that $g(w) \in \b$ for any $w \in W'$.
+
+    Now consider any $x \in \b$.
+    If $x = \a$ then set $w = a \notin W$ so that $g(w) = \a = x$.
+    If $x \neq \a$ then $x \in \a$ so set $w = \inv{f}(x)$ so that then $w \in W$.
+    We then have that $g(w) = f(w) = f(\inv{f}(x)) = x$.
+    Therefore $g$ is surjective.
+
+    Now consider any $w_1, w_2 \in W'$ where $w_1 < w_2$
+
+    Case: $w_1, w_2 \in W$.
+    Then since $f$ is an isomorphism and $w_1 < w_2$ we have that $g(w_1) = f(w_1) < f_(w_2) = g(w_2)$.
+
+    Case: $w_1 \in W$ and $w_2 = a$.
+    Then $g(w_1) = f(w_1) \in \a$ and $w_2 \notin W$ so that $g(w_2) = \a$.
+    Hence $g(w_1) \in g(w_2)$ so that by the definition of $<$ we have that $g(w_1) < g(w_2)$.
+
+    Note that these cases are exhaustive since it can't be that $w_1 = w_2 = \a$ since $w_1 < w_2$ (and therefore $w_1 \neq w_2$).
+    It also cannot be that $w_2 \in W$ but $w_1 = a$ since then it would be that $w_2 \leq w_1$ since $a$ is the greatest element of $W'$, which contradicts $w_1 < w_2$.
+    Thus in all cases $g(w_1) < g(w_2)$ so that $g$ is increasing, and therefore injective and an isomorphism.
+
+    Hence $\b$ is the order type of $W'$, $\a$ is the order type of $W$, and $\a < \b$ since $\a \in \b$.
+  }
+}
+
+\exercise{8}{
+  The sets $W = \nats \times \braces{0,1}$ and $W' = \braces{0,1} \times \nats$, ordered lexicographically, are nonisomorphic well-ordered sets.
+  (See the remark following Theorem~4.7 in Chapter~4.)
+}
+\sol{
+  \qproof{
+    Let $\prec$ be the lexicographic ordering of $W = \nats \times \braces{0,1}$ and $\prec'$ be the lexicographic ordering of $W' = \braces{0,1} \times \nats$.
+
+    First we define $f : W \to \w$ by
+    $$
+    f(n,m) = 2n + m
+    $$
+    for $(n, m) \in W$.
+    Clearly each $f(n,m) \in \nats = \w$.
+
+    Now consider any $k \in \w = \nats$.
+    If $k$ is even then $k = 2n$ for some $n \in \nats$ so set $w = (n, 0) \in W$.
+    Then clearly $f(w) = f(n,0) = 2n = k$.
+    On the other hand if $k$ is even then $k = 2n + 1$ for some $n \in \nats$ so set $w = (n,1) \in W$.
+    Then clearly $f(w) = f(n,1) = 2n+1 = k$.
+    This shows that $f$ is surjective.
+
+    Now consider any $w_1 = (n_1,m_1)$ and $w_2 = (n_2, m_2)$ in $W$ where $w_1 \prec w_2$.
+
+    Case: $n_1 = n_2$.
+    Then since $w_1 \prec w_2$ it has to be that $m_1 < m_2$, and since $m_1,m_2 \in \braces{0,1}$ it has to be that $m_1=0$ and $m_2 = 1$.
+    From this it follows that
+    $$
+    f(w_1) = f(n_1,m_1) = f(n_1,0) = 2n_1 < 2n_1 + 1 = 2n_2 + 1 = f(n_2,1) = f(n_2,m_2) = f(w_2) \,.
+    $$
+
+    Case: $n_1 \neq n_2$.
+    Then since $w_1 \prec w_2$ it has to be that $n_1 < n_2$.
+    Then $n_1 + 1 \leq n_2$ and since also $m_1 < 2$ we have
+    $$
+    f(w_1) = f(n_1, m_1) = 2n_1 + m_1 < 2n_1 + 2 = 2(n_1 + 1) \leq 2n_2 \leq 2n_2 + m_2 = f(n_1, m_2) = f(w_2) \,.
+    $$
+    Hence in all cases $f(w_1) < f(w_2)$ so that $f$ is increasing and therefore injective and isomorphic.
+    Therefore $W$ is isomorphic to $\w$.
+
+    Now we define $g: W' \to \w+\w$ by
+    $$
+    g(n,m) = \begin{cases}
+      m & n = 0 \\
+      \w + m & n = 1
+    \end{cases}
+    $$
+    for $(n,m) \in W'$.
+    Clearly since $m \in \nats$ we have that $g(n,m) \in \w+\w$ for all $(n,m) \in W'$.
+
+    Now consider any $\a \in \w + \w$.
+    If $\a \in \w = \nats$ then $(0, \a) \in W'$ and $g(0,\a) = \a$.
+    On the other hand if $\a = \w + m$ for some $m \in \nats$ then $(1, m) \in W'$ and $g(1,m) = \w + m = \a$.
+    Therefore $g$ is surjective.
+
+    Now consider any $w_1 = (n_1,m_1)$ and $w_2 = (n_2, m_2)$ in $W'$ where $w_1 \prec' w_2$.
+
+    Case: $n_1 = n_2$.
+    Then since $w_1 \prec' w_2$ it has to be that $m_1 < m_2$.
+    If $n_1 = n_2 = 0$ then
+    $$
+    g(w_1) = g(n_1,m_1) = g(0,m_1) = m_1 < m_2 = g(0, m_2) = g(n_2,m_2) = g(w_2) \,.
+    $$
+    On the other hand if $n_1 = n_2 = 1$ then
+    $$
+    g(w_1) = g(n_1,m_1) = g(1,m_1) = \w + m_1 < \w + m_2 = g(1, m_2) = g(n_2,m_2) = g(w_2) \,.
+    $$
+
+    Case: $n_1 \neq n_2$.
+    Then since $w_1 \prec' w_2$ it has to be that $n_1 < n_2$.
+    Moreover since $n_1,n_2 \in \braces{0,1}$ it has to be that $n_1 = 0$ and $n_2 = 1$ so that
+    $$
+    g(w_1) = g(n_1,m_1) = g(0,m_1) = m_1 < \w + m_2 = g(1,m_2) = g(n_2,m_2) = g(w_2) \,.
+    $$
+
+    Hence in all cases $g(w_1) < g(w_2)$ so that $g$ is increasing and therefore injective and an isomorphism.
+    Therefore $W'$ is isomorphic to $\w + \w$.
+
+    Now, since $w \in \w+\w$ we have that $\w < \w+\w$ and so are distinct ordinals.
+    Therefore by the remarks following Theorem~6.2.10 $\w$ and $\w+\w$ are not isomorphic.
+    If $W$ and $W'$ were isomorphic with $h$ as the isomorphism then $g \circ h \circ \inv{f}$ would be an isomorphism from $\w$ to $\w + \w$, which is impossible.
+    So it must be that $W$ and $W'$ are not isomorphic.
+  }
+}
