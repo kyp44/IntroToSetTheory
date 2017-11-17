@@ -11,45 +11,147 @@
   \qproof{
     We show this by strong induction on the cardinality of the set.
     So consider natural number $n$ and suppose that all linear ordered sets of cardinality $k  < n$ are well-orderings.
-    Also suppose that $(A, \preceq)$ is any linearly ordered set with $\abs{A} = n$.
+    Also suppose that $(A, \prece)$ is any linearly ordered set with $\abs{A} = n$.
     Consider any nonempty $B \ss A$ so that there is a $b \in B$.
     Then clearly $C = B - \braces{b}$ is also a finite set with $C \pss B \ss A$ so that $\abs{C} < n$.
-    Clearly also $C$ is linearly ordered by $\preceq$ so that, by the induction hypothesis, $C$ is well-ordered by $\preceq$.
+    Clearly also $C$ is linearly ordered by $\prece$ so that, by the induction hypothesis, $C$ is well-ordered by $\prece$.
     Now, if $C = \es$, then it follows that $B = \braces{b}$, which clearly has least element $b$.
     On the other hand, if $C \neq \es$, then it has a least element $c$ since it is well-ordered.
-    Since $\preceq$ is a \emph{linear} ordering, it has to be that either $c \preceq b$ or $b \preceq c$.
+    Since $\prece$ is a \emph{linear} ordering, it has to be that either $c \prece b$ or $b \prece c$.
 
-    Case: $c \preceq b$.
+    Case: $c \prece b$.
     Then consider any $x \in B$.
-    If $x = b$ then obvisouly $c \preceq b = x$.
-    If $x \neq b$ then $x \in C = B - \braces{b}$ so that again $c \preceq x$ since $c$ is the least element of $C$.
+    If $x = b$ then obviously $c \prece b = x$.
+    If $x \neq b$ then $x \in C = B - \braces{b}$ so that again $c \prece x$ since $c$ is the least element of $C$.
     This shows that $c$ is the least element of $B$ since $x$ was arbitrary.
 
-    Case: $b \preceq c$.
+    Case: $b \prece c$.
     Then consider any $x \in B$.
-    If $x = b$ then obviously $b \preceq b = x$.
-    If $x \neq b$ then $x \in C = B - \braces{b}$ so that $b \preceq c \preceq x$ since $c$ is the least element of $C$.
+    If $x = b$ then obviously $b \prece b = x$.
+    If $x \neq b$ then $x \in C = B - \braces{b}$ so that $b \prece c \prece x$ since $c$ is the least element of $C$.
     This shows that $b$ is the least element of $B$ since $x$ was arbitrary.
 
-    Hence in all cases we have that $B$ has a $\preceq$-least element.
-    This shows that $\preceq$ is a well-ordering of $A$ since $B \ss A$ was arbitrary.
+    Hence in all cases we have that $B$ has a $\prece$-least element.
+    This shows that $\prece$ is a well-ordering of $A$ since $B \ss A$ was arbitrary.
     This completes the inductive proof.
   }
 
   \mainprob
   \qproof{
-    Suppose that $A$ is a set that can be linearly ordered and suppose that $\preceq$ is a such a linear ordering.
+    Suppose that $A$ is a set that can be linearly ordered and suppose that $\prece$ is a such a linear ordering.
     Suppose also that $S$ is a system of finite subsets of $A$.
-    Then clearly any $B \in S$ is finite and linearly ordered by $\preceq$.
-    We then have that $\preceq$ is a well-ordering of $B$ by Lemma~\ref{lem:aoc:finitelo}.
+    Then clearly any $B \in S$ is finite and linearly ordered by $\prece$.
+    We then have that $\prece$ is a well-ordering of $B$ by Lemma~\ref{lem:aoc:finitelo}.
     So we then set
     \gath{
       f(B) = \begin{cases}
-        \text{the least element of $B$ according to $\preceq$} & B \neq \es \\
+        \text{the least element of $B$ according to $\prece$} & B \neq \es \\
         \es & B = \es
       \end{cases}
     }
     for any $B \in S$.
     Clearly then $f$ is a choice function for $S$.
+  }
+}
+
+\exercise{2}{
+  If $A$ can be well-ordered, then $\pset{A}$ can be linearly ordered.
+  [Hint: Let $<$ be a well-orering of $A$; for $X,Y \ss A$ define $X \prec Y$ if any only if the $<$-least element of $X \sd Y$ belongs to $X$.]
+}
+\sol{
+  \qproof{
+    Suppose that $<$ is a well-ordering of $A$.
+    Then, following the hint, defined the relation $X \prec Y$ if and only if the $<$-least element of $X \sd Y$ is in $X$ for any $X$ and $Y$ in $\pset{A}$.
+    Note that, for any $x \in X \sd Y = (X - Y) \cup (Y - X)$, we clearly have that $x \in X$ or $x \in Y$ so that $x \in A$ since $X \ss A$ and $Y \ss A$.
+    Hence $X \sd Y \ss A$ so that it is also well-ordered by $<$.
+
+    First we show that $\prec$ is a (strict) order on $\pset{A}$.
+    Hence we must show that it is asymmetric and transitive.
+    So consider any $X$ and $Y$ in $\pset{A}$ where $X \prec Y$.
+    Then by definition the $<$-least element $x$ in $X \sd Y$ is in $X$.
+    Suppose also that $Y \prec X$ so that, since $Y \sd X = X \sd Y$, $x$ is also in $Y$.
+    Then clearly $x$ can be neither in $X - Y$ nor $Y - X$, but then it cannot be that $x \in (X - Y) \cup (Y - X) = X \sd Y$.
+    This is a contradiction since $x$ was defined to be in $X \sd Y$.
+    Hence it cannot be that $Y \prec X$ as well, which shows that $\prec$ is asymmetric since $X$ and $Y$ were arbitrary.
+
+    To see that $\prec$ is transitive, conisder any $X, Y, Z \in \pset{A}$ where $X \prec Y$ and $Y \prec Z$.
+    Then the least element $x$ of $X \sd Y$ is in $X$ and the least element $y$ of $Y \sd Z$ is in $Y$.
+    Thus it has to be that $x \in X - Y$ and $y \in Y - Z$ so that $x \in X$, $x \notin Y$, $y \in Y$, and $y \notin Z$.
+    Note that, in particular, this means that $x \neq y$.
+    Since clearly $\braces{x, y} \ss A$, it follows that it has a $<$-least element $a$.
+    Thus either $a = x$ or $a = y$.
+    For each case we show that
+    \begin{enumerate}
+    \item $a \in X$
+    \item $a \in X \sd Z$
+    \item $a$ is a lower bound of $X \sd Z$
+    \end{enumerate}
+
+    Case: $a = x$.
+    Then clearly $a = x \leq y$ so that $a < y$ since $a = x \neq y$.
+    \begin{enumerate}
+    \item Clearly $a \in X$ since $a = x$.
+    \item Suppose that $a \in Z$.
+      Then, since $a = x \notin Y$, we have that $a \in Z - Y$ so that $a \in Y \sd Z$.
+      Hence $y \leq a$ since $y$ is the least element of $Y \sd Z$, but this contradicts the fact that $y > a$.
+      So it must be that in fact $a \notin Z$ so that $a \in X - Z$.
+      Thus $a \in X \sd Z$.
+    \item Now consider any $z \in X \sd Z$.
+
+      Case: $z \in X - Z$.
+      Then, if $z \in Y$, we have that $z \in Y - Z$ so that $z \in Y \sd Z$.
+      It then follows that $a = x \leq y \leq z$ since $y$ is the least element of $Y \sd Z$.
+      On the other hand, if $z \notin Y$, then we have $z \in X - Y$ so that $z \in X \sd Y$.
+      Hence $a = x \leq z$ since $x$ is the least element of $X \sd Y$.
+
+      Case: $x \in Z - X$.
+      Then, if $z \in Y$, we have $x \in Y - X$ so $z \in X \sd Y$.
+      Then $a = x \leq z$ since $x$ is the least element of $X \sd Y$.
+      On the other hand, if $z \notin Y$, then we have $z \in Z - Y$ so that $z \in Y \sd Z$.
+      Then, as before, $a = x \leq y \leq z$ since $y$ is the least element of $Y \sd Z$.
+
+      Hence in all cases $a \leq z$ so that $a$ is a lower bound since $z$ was arbitrary.
+    \end{enumerate}
+
+    Case: $a = y$.
+    Then clearly $a = y \leq x$ so that $a < x$ since $a = y \neq x$.
+    \begin{enumerate}
+    \item Suppose that $a \notin X$.
+      Then since $a = y \in Y$ we have that $a \in Y - X$ so that also $a \in X \sd Y$.
+      But then $x \leq a$ since $x$ is the least element of $X \sd Y$, which contradicts the fact that $x > a$.
+      Hence it has to be that $a \in X$.
+    \item We already know that $a = y \notin Z$ so that $a \in X - Z$ since we just showed that $a \in X$.
+      Hence $a \in X \sd Z$.
+    \item Consider any $z \in X \sd Z$.
+
+      Case: $z \in X - Z$.
+      If also $z \in Y$ then clearly $z \in Y - Z$ so that $z \in Y \sd Z$.
+      It then follows that $a = y \leq z$ since $y$ is the least element of $Y \sd Z$.
+      On the other hand, if $z \notin Y$, then clearly $z \in X - Y$ so that $z \in X \sd Y$.
+      Hence $a = y \leq x \leq z$ since $x$ is the least element of $X \sd Y$.
+
+      Case: $z \in Z - X$.
+      Then, if $z \in Y$, clearly $z \in Y - X$ so that $z \in X \sd Y$.
+      We then have that $a = y \leq x \leq z$ since $x$ is the least element of $X \sd Y$.
+      On the other hand, if $z \notin Y$, then $z \in Z - Y$ so that $z \in Y \sd Z$.
+      Then clearly $a = y \leq z$ since $y$ is the least element of $Y \sd Z$.
+
+      Hence in all cases $a \leq z$ so that $a$ is a lower bound since $z$ was arbitrary.
+    \end{enumerate}
+    
+    Thus in all cases we have that $a$ is the least element of $X \sd Z$ (since it is in $X \sd Z$ and also is a lower bound) and $a \in X$.
+    By definition, this shows that $X \prec Z$ so that $\prec$ is transitive.
+    This also shows that $\prec$ is a (strict) order.
+
+    Lastly, we show that $\prec$ is a linear ordering.
+    So consider any $X, Y \in \pset{A}$.
+    Assume that $X \neq Y$ so that $X - Y \neq \es$ or $Y - X \neq \es$ (or both).
+    From this it follows that $X \sd Y \neq \es$.
+    Since also clearly $X \sd Y \ss A$, it has a least element $a$.
+    If $a \in X - Y$ then $a \in X$ so that $X \prec Y$.
+    Similarly, if $a \in Y - X$ then $a \in Y$ so that $Y \prec X$.
+    Hence we have shown that either $X = Y$, $X \prec Y$, or $Y \prec X$ so that $\prec$ is in fact linear since $X$ and $Y$ were arbitrary.
+
+    This completes the proof since we have shown that $\prec$ is a linear ordering of $\pset{A}$.
   }
 }

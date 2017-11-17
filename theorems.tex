@@ -541,5 +541,135 @@
   }
 }
 
+\section{The Axiom of Choice}
+
+\subsection{The Axiom of Choice and its Equivalents}
+
+\theorem{13}{
+  The following statements are equivalent:
+
+  (a) (The Axiom of Choice) There exists a choice function for every system of sets.
+
+  (b) (The Well-Ordering Principle) Every set can be well-ordered.
+
+  (c) (Zorn's Lemma) If every chain in a partially ordered set has an upper bound, then the partially ordered set has a maximal element.
+}
+\sol{
+  \begin{lem}\label{lem:aoc:notin}
+    For any set $A$, there is a $b \notin A$.
+  \end{lem}
+  \qproof{
+    Let $X = \braces{\a \in A \where \a \text{ is an ordinal number}}$.
+    Then by Theorem~6.2.6e there is an ordinal $\a$ such that $\a \notin X$.
+    It also has to be that $\a \notin A$ since, if it were, then $\a$ would be in $X$ since it is an ordinal number, which would be a contradiction.
+  }
+  
+  \mainthrm
+  \def\fb{\overline{f}}
+  \def\fbb{\bar{\bar{f}}}
+  \qproof{
+    The equivalence of (a) and (b) follows immediately from Theorem~8.1.1; therefore it suffices to show the equivalence of (a) and (c).
+
+    \emph{(a) implies (c).}
+    Suppose that $(A \prece)$ is a partially ordered set in which every chain has an upper bound.
+    Then by Lemma~\ref{lem:aoc:notin} there is a $b \notin A$, and by (a) there is a choice function $g$ on $\pset{A}$.
+    We then define a transfinite sequence $\angles{a_\a \where \a < h(A)}$ by transfinite recursion.
+    Given the transfinite sequence $\angles{a_\x \where \x < \a}$ for an $\a < h(A)$ we define the set $A_\a = \braces{a \in A \where a_\x \prec a \text{ for all } \x < \a}$.
+    We then set
+    \gath{
+      a_\a = \begin{cases}
+        g(A_\a) & \text{if $a_\x \neq b$ for all $\x < \a$ and $A_\a \neq \es$} \\
+        b & \text{otherwise} \,,
+      \end{cases}
+    }
+    noting that clearly $A_\a$ is in the domain of $g$ since $A_\a \ss A$.
+
+    We can justify the recursive definition of this sequence as follows.
+    First, let $B = A \cup \braces{b}$ and $S = \bigcup_{\a < h(A)} B^\a$ be the set of all transfinite sequences of elements $B$ of length less than $h(A)$.
+    We then define a function $G: S \to B$.
+    For any transfinite sequence $F \in S$ there is an $\a < h(A)$ such that $F \in B^\a$, and we let $A_F = \braces{a \in A \where F(\x) \prec a \text{ for all } \x < \a}$.
+    We then simply set
+    \gath{
+      G(F) = \begin{cases}
+        g(A_F) & \text{if $F(\x) \neq b$ for all $\x < \a$ and $A_F \neq \es$} \\
+        b & \text{otherwise} \,.
+      \end{cases}
+    }
+    It then follows from Theorem~6.4.4 that there is a function $f$ such that $f(\a) = G(f \rest \a)$ for all $\a < h(A)$.
+    Clearly based on our definition of $G$ this $f$ is exactly the transfinite sequence constructed above.
+
+    Returning to our main proof, we claim that there is an $\a < h(A)$ such that $a_\a = b$.
+    To see this, suppose to the contrary that $a_\a \neq b$ for all $\a < h(A)$ so that it has to be that each $a_\a \in A$.
+    Consider now any $\a < h(A)$ and $\b < h(A)$ where $\a \neq \b$.
+    Without loss of generality we can assume that $\a < \b$.
+    Clearly then, by definition, we have that $a_\b \in A_\b$ so that $a_\x \prec a_\b$ for all $\x < \b$.
+    But since $\a < \b$, we have that $a_\a \prec a_\b$ so that $a_\a \neq a_\b$.
+    Since $\a$ and $\b$ were arbitrary, this shows that the sequence is an injective function from $h(A)$ to $A$.
+    However, this would mean that $h(A)$ is equipotent to some subset of $A$, which contradicts the definition of the Hartogs number.
+    Hence it has to be that $a_\a = b$ for some $\a < h(A)$.
+
+    So let $\l < h(A)$ be the least ordinal such that $a_\l = b$ and let $C = \braces{a_\x \where \x < \l}$.
+    We claim that $C$ is a chain in $(A, \prece)$.
+    So consider any $a_\a$ and $a_\b$ in $C$ so that $\a < \l$ and $\b < \l$
+    Without loss of generality we can assume that $\a \leq \b$.
+    If $\a = \b$ then obviously $a_\a = a_\b$ so that $a_a \prece a_\b$ clearly holds.
+    If $\a < \b$ then, by what was shown above, we have that $a_\a \prec a_\b$ so that $a_\a \prece a_\b$ again holds.
+    Hence, in every case, $a_\a$ and $a_\b$ are comparable in $\prece$, which shows that $C$ is a chain since $a_\a$ and $a_\b$ were arbitrary.
+
+    Thus, since $C$ is a chain, it has an upper bound $c \in A$.
+    We claim that $c$ is also a maximal element of $A$.
+    To show this, suppose that there is an $a \in A$ such that $c \prec a$.
+    Now consider any $\x < \l$.
+    Then, since $c$ is an upper bound of $C$, we have that $a_\x \prece c \prec a$ so that $a_\x \prec a$ since orders are transitive.
+    It then follows from the definition of $A_\l$ that $a \in A_\l$ so that $A_\l \neq \es$.
+    Also note that, by the definition of $\l$, we have that $a_\x \neq b$ for any $\x < \l$.
+    Thus, by the recursive definition of the sequence, it follows that $a_\l = g(A_\l) \neq b$, which contradicts the definition of $\l$ (as the least ordinal such that $a_\l = b$).
+    So it has to be that there is no such element $a$, which shows that $c$ is in fact a maximal element of $A$.
+
+    \emph{(c) implies (a).}
+    Suppose that $T$ is any system of sets.
+    Then, supposing that $\es \in T$, $S = T - \braces{\es}$ is a system of nonempty sets.
+    If we can show that $S$ has a choice function $g$ then $f = g \cup \braces{(\es, \es)}$ is clearly a choice function for $T$.
+    Thus it suffices to show that any system $S$ of nonempty sets has a choice function.
+
+    So let $S$ be such a system.
+    Let $F$ be the system of functions $f$ for which $\dom{f} \ss S$ and $f(X) \in X$ holds for any $X \in \dom{f}$.
+    Note that $F \in \pset{\pset{S \times \bigcup S}}$, which exists by the Axiom of Power Set and the Axiom of Union.
+    We claim that $F$ is ordered by $\ss$.
+    Hence we must show that $\ss$ is reflexive, asymmetric, and transitive.
+    Since, for any $f \in F$, we obviously have that $f \ss f$, clearly $\ss$ is reflexive.
+    Also, clearly if we have $f \ss g$ and $g \ss f$ then $f=g$ so that $\ss$ is asymmetric.
+    Lastly, if $f \ss g$ and $g \ss h$, then obviously $f \ss h$ as well so that $\ss$ is transitive.
+    Hence $\ss$ is a (partial) order on $F$.
+
+    Now suppose that $F_0$ is a linearly ordered subset of $F$.
+    We claim that $F_0$ is a compatible set of functions.
+    Consider any $f$ and $g$ in $F_0$.
+    Since $\ss$ is a linear ordering of $F_0$ we have that either $f \ss g$ or $g \ss f$.
+    Without loss of generality, we can assume that $f \ss g$.
+    Then clearly $f \cup g = g$.
+    Since this is a function, it follows from Lemma~2.3.11a that $f$ and $g$ are compatible.
+    Since $f$ and $g$ were arbitrary, this shows that $F_0$ is a compatible system.
+    It then follows from Theorem~2.3.12 that $f_0 = \bigcup F_0$ is a function and that it extends every $g \in F_0$ and hence is compatible with them all.
+
+    We also claim that $f_0 \in F$.
+    First consider any $X \in \dom{f_0}$ so that it has to be that $X \in \dom{g}$ for some $g \in F_0$.
+    Then, since also clearly $g \in F$ (since $F_0 \ss F$), it follows that $g(X) \in X$.
+    Thus also $f_0(X) = g(X) \in X$ since $f_0$ and $g$ are compatible.
+    We also have that $\dom{g} \ss S$ (since $g \in F$) so that $X \in S$.
+    Since $X$ was arbitrary this shows that $\dom{f_0} \ss S$ and hence that $f_0 \in F$.
+    Lastly, clearly $f_0$ is an upper bound of $F_0$ in $(F, \ss)$ since $g \ss \bigcup F_0 = f_0$ for any $g \in F_0$.
+
+    Therefore the conditions of Zorn's Lemma are satisfied so that $F_0$ has a maximal element $\fb$.
+    We claim that $\dom{\fb} = S$.
+    If this were not the case then it would have to be that $\dom{\fb} \pss S$ since we know that $\dom{\fb} \ss S$ since $\fb \in F_0 \ss F$.
+    Thus there would be an $X \in S$ where $X \notin \dom{\fb}$.
+    Consider choose $x \in X$ so that clearly the function $\fbb = \fb \cup \braces{(X, x)} \in F$.
+    However, we would also clearly have that $\fb \ss \fbb$ but $\fb \neq \fbb$, which would contradict the maximality of $\fb$.
+    So it has to be that $\dom{\fb} = S$.
+    Clearly then $\fb$ is a choice function for $S$ since, for any $X \in S$, we have that $\fb(X) \in X$ since $\fb \in F$.
+  }
+}
+
 \end{questions}
 \end{document}
