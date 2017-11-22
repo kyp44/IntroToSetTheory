@@ -155,3 +155,64 @@
     This completes the proof since we have shown that $\prec$ is a linear ordering of $\pset{A}$.
   }
 }
+
+\exerciseapp{3}{*}{
+  Let $(A, \leq)$ be an ordered set in which every chain has an upper bound.
+  Then for every $a \in A$, there is a $\leq$-maximal element of $x$ of $A$ such that $a \leq x$.
+}
+\sol{
+  \input{shared/lem_aoc_notin}
+
+  \mainprob
+  
+  The proof of this is similar to the proof of Zorn's Lemma from the Axiom of Choice (part of Theorem~8.1.13 in the text).
+  \qproof{
+    First, by Lemma~\ref{lem:aoc:notin}, there is a $b \notin A$.
+    Also, by the Axiom of Choice, there is a choice function $g$ on $\pset{A}$.
+    Now consider any $a \in A$.
+    We then define a transfinite sequence $\angles{a_\a \where \a < h(A)}$ by transfinite recursion as follows.
+    Set $a_0 = a$.
+    Then, having constructed the sequence $\angles{a_\x \where \x < \a}$ for $0 < \a < h(A)$, we define the set $A_\a = \braces{x \in A \where a_\x < x \text{ for all } \x < \a}$.
+    We then set
+    \gath{
+      a_\a = \begin{cases}
+        g(A_\a) & \text{if $a_\x \neq b$ for all $\x < \a$ and $A_\a \neq \es$} \\
+        b & \text{otherwise} \,.
+      \end{cases}
+    }
+
+    We claim that there is an $\a < h(A)$ such that $a_\a = b$.
+    To see this, suppose to the contrary that $a_\a \neq b$ for all $\a < h(A)$ so that it has to be that each $a_\a \in A$.
+    Consider now any $\a < h(A)$ and $\b < h(A)$ where $\a \neq \b$.
+    Without loss of generality we can assume that $\a < \b$.
+    Clearly then, by definition, we have that $a_\b \in A_\b$ so that $a_\x < a_\b$ for all $\x < \b$.
+    But since $\a < \b$, we have that $a_\a < a_\b$ so that $a_\a \neq a_\b$.
+    Since $\a$ and $\b$ were arbitrary, this shows that the sequence is an injective function from $h(A)$ to $A$.
+    However, this would mean that $h(A)$ is equipotent to some subset of $A$, which contradicts the definition of the Hartogs number.
+    Hence it has to be that $a_\a = b$ for some $\a < h(A)$.
+
+    So let $\l < h(A)$ be the least ordinal such that $a_\l = b$ and let $C = \braces{a_\x \where \x < \l}$.
+    We claim that $C$ is a chain in $(A, \leq)$.
+    So consider any $a_\a$ and $a_\b$ in $C$ so that $\a < \l$ and $\b < \l$
+    Without loss of generality we can assume that $\a \leq \b$.
+    If $\a = \b$ then obviously $a_\a = a_\b$ so that $a_a \leq a_\b$ clearly holds.
+    If $\a < \b$ then, by what was shown above, we have that $a_\a < a_\b$ so that $a_\a \leq a_\b$ again holds.
+    Hence, in every case, $a_\a$ and $a_\b$ are comparable in $\leq$, which shows that $C$ is a chain since $a_\a$ and $a_\b$ were arbitrary.
+
+    Thus, since $C$ is a chain of $A$, it has an upper bound $c \in A$.
+    We claim that $c$ is also a maximal element of $A$.
+    To show this, suppose that there is an $x \in A$ such that $c < x$.
+    Now consider any $\x < \l$.
+    Then, since $c$ is an upper bound of $C$, we have that $a_\x \leq c < x$ so that $a_\x < x$ since orders are transitive.
+    It then follows from the definition of $A_\l$ that $x \in A_\l$ so that $A_\l \neq \es$.
+    Also note that, by the definition of $\l$, we have that $a_\x \neq b$ for any $\x < \l$.
+    Thus, by the recursive definition of the sequence, it follows that $a_\l = g(A_\l) \neq b$, which contradicts the definition of $\l$ (as the least ordinal such that $a_\l = b$).
+    So it has to be that there is no such element $x$, which shows that $c$ is in fact a maximal element of $A$.
+
+    Now, it has to be that $0 \neq \l$ since $a_0 = a \neq b = a_\l$.
+    It then follows that $0 < \l$ since $\l$ is an ordinal.
+    Hence $a = a_0 \in C$ by the definition of $C$.
+    Then, since $c$ is an upper bound of $C$, we have that $c$ is a maximal element of $A$ where $a \leq c$.
+    Since $a$ was arbitrary this shows the desired result.
+  }
+}

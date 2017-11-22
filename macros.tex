@@ -81,21 +81,26 @@
 }
 
 % Exercise, Theorem, and solution shortcuts
-\newcommand{\exercise}[2]{{
+\newcommand\exercise[2]{{
     \renewcommand\label[1]{} % Needed to suppress multiply-defined label warning since the same question numbers are used in different sections
     \setcounter{subsubsection}{#1-1} % Subsubsections are used to that lemmas have the full nested numbering
     \stepcounter{subsubsection} % Need to increment this so that the lemma counter gets reset
     \setcounter{question}{#1-1} % Manually set the question number since we always know the exercise number
     \question{#2} % The actual exam class question
 }}
-\newcommand{\theorem}[2]{{
+\newcommand\exerciseapp[3]{
+    \setqf{#2}
+    \exercise{#1}{#3}
+    \setqf{}
+}   
+\newcommand\theorem[2]{{
     \renewcommand\label[1]{} % Needed to suppress multiply-defined label warning since the same question numbers are used in different sections
     \setcounter{subsubsection}{#1-1} % Subsubsections are used to that lemmas have the full nested numbering
     \stepcounter{subsubsection} % Need to increment this so that the lemma counter gets reset
     \setcounter{question}{#1-1} % Manually set the question number since we always know the theorem number
     \question{#2} % The actual exam class question
 }}
-\newcommand{\sol}[1]{\begin{solution} #1 \end{solution}}
+\newcommand\sol[1]{\begin{solution} #1 \end{solution}}
 
 % Main problem and theorem labels
 \def\mainprob{\textbf{Main Problem.}}

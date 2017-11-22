@@ -20,7 +20,8 @@
 \begin{document}
 
 % Question label format
-\qformat{\hspace{0.5cm} \textbf{Exercise \thesubsection.\thequestion} \hfill \vrule depth 1em width 0pt}
+\newcommand\setqf[1]{\qformat{\hspace{0.5cm} \textbf{Exercise \thesubsection.\thequestion #1} \hfill \vrule depth 1em width 0pt}}
+\setqf{}
 
 % Title page
 \begin{titlingpage}
@@ -53,6 +54,7 @@
 \input{sections/sec_7_2}
 
 \section{The Axiom of Choice}
+As in the text, asterisks indicate exercises for which the Axiom of Choice is needed.
 \input{sections/sec_8_1}
 
 \end{questions}
