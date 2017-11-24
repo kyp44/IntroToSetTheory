@@ -56,7 +56,7 @@
 
 \exercise{2}{
   If $A$ can be well-ordered, then $\pset{A}$ can be linearly ordered.
-  [Hint: Let $<$ be a well-orering of $A$; for $X,Y \ss A$ define $X \prec Y$ if any only if the $<$-least element of $X \sd Y$ belongs to $X$.]
+  [Hint: Let $<$ be a well-ordering of $A$; for $X,Y \ss A$ define $X \prec Y$ if any only if the $<$-least element of $X \sd Y$ belongs to $X$.]
 }
 \sol{
   \qproof{
@@ -74,7 +74,7 @@
     This is a contradiction since $x$ was defined to be in $X \sd Y$.
     Hence it cannot be that $Y \prec X$ as well, which shows that $\prec$ is asymmetric since $X$ and $Y$ were arbitrary.
 
-    To see that $\prec$ is transitive, conisder any $X, Y, Z \in \pset{A}$ where $X \prec Y$ and $Y \prec Z$.
+    To see that $\prec$ is transitive, consider any $X, Y, Z \in \pset{A}$ where $X \prec Y$ and $Y \prec Z$.
     Then the least element $x$ of $X \sd Y$ is in $X$ and the least element $y$ of $Y \sd Z$ is in $Y$.
     Thus it has to be that $x \in X - Y$ and $y \in Y - Z$ so that $x \in X$, $x \notin Y$, $y \in Y$, and $y \notin Z$.
     Note that, in particular, this means that $x \neq y$.
@@ -214,5 +214,86 @@
     Hence $a = a_0 \in C$ by the definition of $C$.
     Then, since $c$ is an upper bound of $C$, we have that $c$ is a maximal element of $A$ where $a \leq c$.
     Since $a$ was arbitrary this shows the desired result.
+  }
+}
+
+\exercise{4}{
+  Prove that Zorn's Lemma is equivalent to the statement: For all $(A, \leq)$, the set of all chains of $(A, \leq)$ has an $\ss$-maximal element.
+}
+\sol{
+  \qproof{
+    $(\to)$ First, suppose that Zorn's Lemma is true, and let $C$ be the set of all chains of $(A, \leq)$.
+    First, it is trivial to show that $\ss$ is a partial order on $C$, i.e. that it is reflexive, antisymmetric, and transitive.
+    Let $B \ss C$ be any $\ss$-chain, and let $U = \bigcup B$.
+
+    First we claim that that $U \in C$, which requires that we show that $U$ is a chain of $(A, \leq)$.
+    So consider any $x,y \in U = \bigcup B$ so that there are sets $X,Y \in B$ such that $x \in X$ and $y \in Y$.
+    Since $B$ is a $\ss$-chain it follows that either $X \ss Y$ or $Y \ss X$.
+    In the case of $X \ss Y$ then clearly both $x$ and $y$ are in $Y$ (since $x \in X$ and $X \ss Y$).
+    Then, since $Y \in C$ (since $Y \in B$ and $B \ss C$), we have that $Y$ is a $\leq$-chain.
+    Hence $x$ and $y$ are comparable in $\leq$.
+    The case in which $Y \ss X$ is analogous.
+    Since $x,y \in U$ were arbitrary, this shows that $U$ is a $\leq$-chain so that $U \in C$.
+
+    We also claim that $U$ is an upper bound (with respect to $\ss$) of $B$.
+    To show this, consider any $X \in B$ and any $x \in X$.
+    Then clearly $x \in \bigcup B = U$.
+    Hence $X \ss U$ since $x$ was arbitrary.
+    Since also $X \in B$ was arbitrary, this shows that $U$ is an upper bound of $B$.
+
+    Thus, since $B$ was an arbitrary $\ss$-chain, this shows that every chain of $(C, \ss)$ has an upper bound.
+    It then follows from Zorn's Lemma that $C$ has a $\ss$-maximal element as desired.
+
+    $(\leftarrow)$ Suppose that the set of all chains of $(A, \leq)$ has a $\ss$-maximal element for any $(A, \leq)$.
+    So consider any such ordered set $(A, \leq)$ where every chain has a upper bound.
+    Let $C$ be the set of all chains of $(A, \leq)$ so that $C$ has a $\ss$-maximal element $M$ by our initial supposition.
+    Then, since $M \in C$, it is a chain so it has an upper bound $a \in A$.
+    We claim that $a$ is a maximal element of $(A, \leq)$.
+
+    To show this, assume to the contrary that there is a $b \in A$ such that $a < b$, and let $M' = M \cup \braces{b}$.
+    Consider any $x,y \in M'$.
+    If $x,y \in M$ then clearly $x$ and $y$ are comparable in $\leq$ since $M$ is a chain.
+    On the other hand, if $x \in M$ but $y = b$, then $x \leq a$ since $a$ is an upper bound of $M$.
+    We also have that $a < b = y$ so that $x < y$ since orders are transitive.
+    The case in which $y \in M$ but $x = b$ similarly leads to $y < x$.
+    Lastly, if $x = y = b$ then clearly $x \leq y$ is true.
+    Hence in all cases $x$ and $y$ are comparable in $\leq$, which shows that $M'$ is a chain since $x$ and $y$ were arbitrary.
+    Therefore $M' \in C$.
+
+    Now, it has to be that $b \notin M$ since, if it were, $a$ could not be an upper bound of $M$ since $a < b$ (and therefore it cannot be that $b \leq a$ since the strict ordering is asymmetric).
+    So, since $b \notin M$ it follows that $M \pss M \cup \braces{b} = M'$, which contradicts the fact that $M$ is a $\ss$-maximal element of $C$ since also $M' \in C$.
+    So it has to be that there is no such $b$ where $a < b$, which shows that $a$ is in fact a maximal element of $(A, \leq)$.
+    This proves Zorn's Lemma since $(A, \leq)$ was arbitrary.
+  }
+}
+
+\exercise{5}{
+  Prove that Zorn's Lemma is equivalent to the statement: If $A$ is a system of sets such that, for each $B \ss A$ which is linearly ordered by $\ss$, $\bigcup B  \in A$, then $A$ has an $\ss$-maximal element.
+}
+\sol{
+  \qproof{
+    $(\to)$ Suppose Zorn's Lemma and let $A$ be a system of sets where $\bigcup B \in A$ for any $B$ that is linearly ordered by $\ss$.
+    We know that $\ss$ is a partial order on $A$.
+    So let $B$ be any $\ss$-chain of $A$.
+    Then we know that $\bigcup B \in A$, and we also claim that $\bigcup B$ is an upper bound of $B$.
+    To see this, consider any $X \in B$ and any $x \in X$, so that clearly $x \in \bigcup B$.
+    Hence $X \ss B$ since $x$ was arbitrary.
+    This shows that $\bigcup B$ is an upper bound of $B$ since $X$ was arbitrary.
+    Since $B$ was an arbitrary chain, this shows that $(A, \ss)$ is an ordered set where every chain has an upper bound.
+    Thus by Zorn's Lemma there is a $\ss$-maximal element of $A$ as desired.
+
+    $(\leftarrow)$ Now suppose that $A$ has a $\ss$-maximal element for any system of sets $A$ such that $\bigcup B \in A$ for any $B \ss A$ where $B$ is linearly ordered by  $\ss$.
+    Consider any ordered set $(A, \leq)$ and let $C$ be the set of all chains of $A$.
+    Let $B$ be any subset of $C$ that is linearly ordered by $\ss$, and consider any $x$ and $y$ in $\bigcup B$.
+    Then there are $X$ and $Y$ in $B$ such that $x \in X$ and $y \in Y$.
+    Since $B$ is linearly ordered by $\ss$ we have that either $X \ss Y$ or $Y \ss X$.
+    In the former case we have $x \in X \ss Y$ so that both $x$ and $y$ are in $Y$.
+    Hence $x$ and $y$ are comparable in $\leq$ since $Y \in B \ss C$ so that $Y$ is a $\leq$-chain.
+    A similar argument shows that $x$ and $y$ are comparable if $Y \ss X$.
+    Since $x$ and $y$ were arbitrary this shows that $\bigcup B$ is a $\leq$-chain so that $\bigcup B \in C$.
+
+    Thus $C$ is a system of sets that meet the criteria of the initial supposition since $B$ was arbitrary.
+    Hence $C$ has a $\ss$-maximal element.
+    Since $(A, \leq)$ was an arbitrary ordered set and we have shown that the set of all chains of $(A, \leq)$ has a $\ss$-maximal element, Zorn's Lemma follows from Exercise~8.1.4.
   }
 }
