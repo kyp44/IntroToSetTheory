@@ -297,3 +297,72 @@
     Since $(A, \leq)$ was an arbitrary ordered set and we have shown that the set of all chains of $(A, \leq)$ has a $\ss$-maximal element, Zorn's Lemma follows from Exercise~8.1.4.
   }
 }
+
+\exercise{6}{
+  A system of sets $A$ has \emph{finite character} if $X \in A$ if and only if every finite subset of $X$ belongs to $A$.
+  Prove that Zorn's Lemma is equivalent to the following (Tukey's Lemma): Every system of sets of finite character has an $\ss$-maximal element.
+  [Hint: Use Exercise~8.1.5.]
+}
+\sol{
+  \qproof{
+    $(\to)$ Suppose Zorn's Lemma and let $A$ be an arbitrary system of sets of finite character.
+    Suppose that $B$ is any subset of $A$ that is linearly ordered by $\ss$ and let $C$ be any finite subset of $\bigcup B$.
+    Now, for each $x \in C$ there is a set $X_x \in B$ such that $x \in X_x$, since $x \in C \ss \bigcup B$.
+    Clearly the set $D = \braces{X_x \where x \in C}$ is a subset of $B$ so that $D$ is also linearly ordered by $\ss$.
+    Also clearly $D$ is finite since $C$ is.
+    Hence $D$ has a $\ss$-greatest element $X$.\
+    Note that the Axiom of Choice is not needed in selecting the set $X_x$ for each $x \in C$ since we are only making a finite number of choices.
+    So consider any $x \in C$ so that $x \in X_x \ss X$.
+    Hence $x \in X$ so that $C \ss X$ since $x$ was arbitrary.
+    We also have that $X \in B \ss A$ so $X \in A$.
+    Therefore $C$ is a finite subset of $X$, which is an element of $A$, so that $C$ is also in $A$ since $A$ has finite character.
+    Since $C$ was an arbitrary finite subset of $\bigcup B$ and $C \in A$ it follows that $\bigcup B \in A$.
+    Hence, since $B$ was an arbitrary linearly ordered (by $\ss$) subset of $A$, we have by Exercise~8.1.5 and Zorn's Lemma that $A$ has a $\ss$-maximal element as desired.
+
+    $(\leftarrow)$ Now suppose that every system of sets of finite character has a $\ss$-maximal element.
+    Let $(A, \leq)$ be any ordered set and let $C$ be the set of all chains of $(A, \leq)$.
+    Now suppose that $X \in C$ and let $Y$ be any finite subset of $X$.
+    Clearly since $X \in C$, it is linearly ordered by $\leq$ so that $Y$ is as well since $Y \ss X$.
+    Hence $Y \in C$.
+    Now let $X'$ be any set such that every finite subset of $X'$ is in $C$.
+    Consider any $x,y \in X'$.
+    Then $\braces{x, y}$ is clearly a finite subset of $X'$ so that it is in $C$ and therefore a $\leq$-chain.
+    Hence $x$ and $y$ are comparable in $\leq$, which shows that $X'$ itself is a $\leq$-chain since $x$ and $y$ were arbitrary.
+    Hence $X' \in C$.
+    Thus we have just shown that $X \in C$ if and only if every finite subset of $X$ is in $C$ so that $C$ has finite character by definition.
+    Therefore, by the initial supposition, $C$ has a $\ss$ maximal element.
+    Since again $C$ is the set of all chains of the arbitrary $(A, \leq)$, Zorn's Lemma follows from Exercise~8.1.4.
+  }
+}
+
+\exerciseapp{7}{*}{
+  Let $E$ be a binary relation on a set $A$.
+  Show that there exists a function $f: A \to A$ such that for all $x \in A$, $(x, f(x)) \in E$ if and only if there is some $y \in A$ such that $(x, y) \in E$.
+}
+\sol{
+  \qproof{
+    If $A = \es$ then clearly it must be that $E = \es$ since $E \ss A \times A = \es \times \es = \es$.
+    Hence $f = \es$ is vacuously such a function.
+    So assume that $A \neq \es$ so that there is an $a \in A$.
+    For any $x \in A$ define the set $Y_x = \braces{y \in A \where (x,y) \in E}$, noting that this could certainly be empty if $x$ is not in the domain of $E$.
+    Clearly $S = \braces{Y_x \where x \in A}$ is a system of sets, and so has a choice function $g$ by the Axiom of Choice.
+    We then define a function $f : A \to A$ by
+    \gath{
+      f(x) = \begin{cases}
+        g(Y_x) & Y_x \neq \es \\
+        a & Y_x = \es
+      \end{cases}
+    }
+    for all $x \in A$.
+    We claim that $f$ meets the required criteria, so let $x$ be some element of $A$.
+
+    $(\to)$ Suppose that $(x, f(x)) \in E$.
+    Then clearly for $y = f(x)$ we have that $(x, y) = (x, f(x)) \in E$.
+    We note that, if $Y = \es$, then $y = f(x) = a \in A$, and if $Y_x \neq \es$ then $y = f(x) = g(Y_x) \in Y_x$ since $g$ is a choice function so that again $y \in A$ since clearly $Y_x \ss A$.
+
+    $(\leftarrow)$ Now suppose that there is a $y \in A$ such that $(x,y) \in E$.
+    Then clearly by definition we have $y \in Y_x$ so that $Y_x \neq \es$.
+    Thus $f(x) = g(Y_x) \in Y_x$ since $g$ is a choice function.
+    We therefore have $(x, f(x)) \in E$ as desired, again by the definition of $Y_x$.
+  }
+}
