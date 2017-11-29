@@ -366,3 +366,73 @@
     We therefore have $(x, f(x)) \in E$ as desired, again by the definition of $Y_x$.
   }
 }
+
+\exerciseapp{8}{*}{
+  Prove that every uncountable set has a subset of cardinality $\al_1$.
+}
+\sol{
+  This proof is similar to that of Theorem~8.1.4.
+  \qproof{
+    Let $A$ be an uncountable set.
+    By the Well-Ordering Principle (which is equivalent to the Axiom of Choice by Theorem~8.1.13) $A$ can be well ordered, and so can be arranged in a bijective transfinite sequence $\angles{a_\a \where \a < \W}$ for some ordinal $\W$.
+    Since $A$ is then equipotent to $\W$ it has to be that $\w_1 \leq \W$ since otherwise $\W$ (and therefore $A$) would be countable or finite.
+    So then clearly the range of the transfinite sequence $\angles{a_\a \where \a < \w_1}$ is a subset of $A$ with cardinality $\al_1$.
+  }
+}
+
+\exerciseapp{9}{*}{
+  Every infinite set is equipotent to some of its proper subsets.
+  Equivalently, Dedekind finite sets are precisely the finite sets.
+}
+\sol{
+  \qproof{
+    By Theorem~8.1.4, any infinite set has a countable subset so that such a set is Dedekind infinite by Exercise~5.1.10.
+    Therefore any infinite set is equipotent to a proper subset of itself by the definition of Dedekind infinite as desired.
+    In fact, any countable set (and by extension any infinite set) is equipotent to an infinite number of its proper subsets.
+    To see this we note that the mapping $f(k) = k + n$ is a bijection from $\nats$ to $\nats - n$, which is clearly a proper subset of $\nats$, for any natural number $n$.
+
+    Of course the contrapositive of this is that, if a set is Dedekind finite (i.e. \emph{not} Dedekind infinite), then the set is finite (i.e. \emph{not} finite).
+  }
+}
+
+\exerciseapp{10}{*}{
+  Let $(A, <)$ be a linearly ordered set.
+  A sequence $\angles{a_n \where n \in \w}$ of elements of $A$ is \emph{decreasing} if $a_{n+1} < a_n$ for all $n \in \w$.
+  Prove that $(A, <)$ is a well-ordering if and only if there exists no infinite decreasing sequence in $A$.
+}
+\sol{
+  \qproof{
+    $(\to)$ We show the contrapositive of this implication.
+    So suppose that there \emph{is} a decreasing sequence $\angles{a_n \where n \in \w}$ in $A$, and let $X$ be the range of the sequence so that clearly $X \ss A$ and $X \neq \es$.
+    Now consider any $x \in X$ so that there is a $n \in \w$ such that $x = a_n$.
+    We then have that $x = a_n > a_{n+1}$ since the sequence is decreasing, noting that clearly $a_{n+1} \in X$.
+    Since $x$ was arbitrary this shows that $X$ has no least element (since we have shown that $\forall x \in X \exists y \in X (x > y)$ and this is logically equivalent to $\lnot \exists x \in X \forall y \in X (x \leq y)$, noting that $\lnot (x > y)$ is equivalent to $x \leq y$ since the ordering is linear).
+    Thus, since there is a nonempty subset of $A$ that has no least element, it follows that $(A, <)$ is not a well-ordering.
+
+    $(\leftarrow)$ We show the contrapositive of this implication as well.
+    So suppose that $(A, <)$ is \emph{not} a well-ordering.
+    Then there exists a nonempty subset $X$ of $A$ such that $X$ has no least element.
+    By the Axiom of Choice the set $\pset{X}$ has a choice function $g$.
+    For any $x \in X$ we define the set $X_x = \braces{y \in X \where y < x}$.
+
+    First we claim that $X_x \neq \es$ for any $x \in X$.
+    Suppose to the contrary that there is some $x \in X$ such that $X_x = \es$.
+    Consider any other $y \in X$.
+    Then it cannot be that $y < x$ for then $y \in X_x$ so that $X_x \neq \es$.
+    So, since the ordering is linear, it has to be that $y \geq x$.
+    But, since $y$ was arbitrary, this would mean that $x$ is the least element of $X$, which we know cannot be since $X$ has no least element!
+    Therefore it has to be that indeed $X_x \neq \es$ for any $x \in X$.
+
+    Now we construct a sequence $\angles{a_n \where n \in \w}$ by recursion:
+    \ali{
+      a_0 &= g(X) \\
+      a_{n+1} &= g(X_{a_n}) \,,
+    }
+    noting that the recursive step is always valid since $X_{a_n}$ is never empty, as was just shown.
+    It is easy to see that this is a decreasing sequence.
+    Take any $n \in \w$ so that we have that $a_{n+1} = g(X_{a_n})$.
+    Hence $a_{n+1} \in X_{a_n}$ since $g$ is a choice function.
+    By the definition of $X_{a_n}$ it then follows that $a_{n+1} < a_n$, which shows that the sequence is decreasing since $n$ was arbitrary.
+    Hence we have constructed an infinite decreasing sequence in $A$.
+  }
+}
