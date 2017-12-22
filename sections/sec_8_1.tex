@@ -436,3 +436,327 @@
     Hence we have constructed an infinite decreasing sequence in $A$.
   }
 }
+
+\def\FL{\bigcap_{t \in T} \parens{\bigcup_{s \in S} A_{t,s}}}
+\def\FR{\bigcup_{f \in S^T} \parens{\bigcap_{t \in T} A_{t, f(t)}}}
+\def\SL{\bigcup_{t \in T} \parens{\bigcap_{s \in S} A_{t,s}}}
+\def\SR{\bigcap_{f \in S^T} \parens{\bigcup_{t \in T} A_{t, f(t)}}}
+\exerciseapp{11}{*}{
+  Prove the following distributive laws (see Exercise 3.13 in Chapter 2).
+  \gath{
+    \FL = \FR \\
+    \SL = \SR
+  }
+}
+\sol{
+  First we show that
+  \gath{
+    \FL = \FR \,.
+  }
+  \qproof{
+    First let
+    \ali{
+      L &= \FL & R &= \FR
+    }
+    so that we must show that $L = R$.
+
+    $(\ss)$ Consider any $x \in L$.
+    For any $t \in T$, define the set $S_t = \braces{s \in S \where x \in A_{t,s}}$.
+    Since $x \in L$ we have that $x \in \bigcup_{s \in S} A_{t,s}$ for all $t \in T$.
+    Hence, for all $t \in T$, there is an $s \in S$ such that $x \in A_{t,s}$.
+    From this it follows that $S_t \neq \es$ for any $t \in T$.
+    Now, by the Axiom of Choice, the system of sets $\braces{S_t \where t \in T}$ has a choice function $g$.
+    We then define a function $f(t) = g(S_t)$ for any $t \in T$, noting that this is defined for all $t \in T$ since $S_t$ is nonempty.
+    Clearly then we have, for any such $t \in T$, that $f(t) = g(S_t) \in S_t \ss S$ so that $f(t) \in S$.
+    Hence $f$ is a function from $T$ into $S$ so that $f \in S^T$.
+
+    Now consider any specific $t \in T$ so that $f(t) \in S_t$ and hence $x \in A_{t,f(t)}$ by the definition of $S_t$.
+    Thus since $t$ was arbitrary this shows that $x \in \bigcap_{t \in T} A_{t, f(t)}$.
+    Moreover, since $f \in S^T$ we clearly have that $x \in \FR = R$.
+    Thus, since $x$ was arbitrary, this shows that $L \ss R$.
+
+    $(\supseteq)$ Now consider any $x \in R$ so that there is an $f \in S^T$ such that $x \in \bigcap_{t \in T} A_{t,f(t)}$.
+    Thus we have that $x \in A_{t,f(t)}$ for all $t \in T$.
+    So consider any $t \in T$ and let $s = f(t)$, noting that $s = f(t) \in S$ since $f \in S^T$.
+    Thus we have that $x \in A_{t,f(t)} = A_{t,s}$.
+    Since we have shown that there is an $s \in S$ such that $x \in A_{t,s}$, it follows that $x \in \bigcup_{s \in S} A_{t,s}$.
+    Since $t \in T$ was arbitrary we have $x \in \FL = L$.
+    Hence $R \ss L$ since $x$ was arbitrary.
+  }
+
+  Now we show that
+  \gath{
+    \SL = \SR \,.
+  }
+  \qproof{
+    First let
+    \ali{
+      L &= \SL & R &= \SR
+    }
+    so that we must show that $L = R$.
+
+    $(\ss)$ Consider any $x \in L$ so that there is a $t \in T$ such that $x \in \bigcap_{s \in S} A_{t,s}$.
+    Hence we have that $x \in A_{t,s}$ for all $s \in S$.
+    Now consider any $f \in S^T$.
+    Then we have that $f(t) \in S$ so that $x \in A_{t,f(t)}$.
+    Therefore there is a $t \in T$ such that $x \in A_{t,f(t)}$ so that $x \in \bigcup_{t \in T} A_{t,f(t)}$.
+    Moreover, since $f$ was arbitrary, we have that $x \in \SR = R$.
+    This shows that $L \ss R$ since $x$ was arbitrary.
+
+    $(\supseteq)$ We show this by contrapositive.
+    So suppose that $x \notin L$.
+    Hence we have
+    \gath{
+      x \notin \SL \\
+      \lnot \exists t \in T \parens{x \in \bigcap_{s \in S} A_{t,s}} \\
+      \lnot \exists t \in T \forall s \in S \parens{x \in A_{t,s}} \\
+      \forall t \in T \exists s \in S \parens{x \notin A_{t,s}} \,.
+    }
+    Now, let $S_t = \braces{s \in S \where x \notin A_{t,s}}$ for each $t \in T$, noting that $S_t \neq \es$ by the above for any $t \in T$.
+    Then, by the Axiom of Choice, the system of sets $\braces{S_t \where t \in T}$ has a choice function $g$.
+    We then set $f(t) = g(S_t)$ for any $t \in T$.
+    Then clearly $f(t) = g(S_t) \in S_t \ss S$ for any $t \in T$ so that $f(t) \in S$ since $g$ is a choice function.
+    It then follows that $f$ is a function from $T$ into $S$ so that $f \in S^T$.
+    Now consider any $t \in T$ so that $f(t) = g(S_t) \in S_t$.
+    Then, by the definition of $S_t$, we have that $x \notin A_{t,f(t)}$.
+    Since $t \in T$ was arbitrary, we have thus shown that
+    \gath{
+      \exists f \in S^T \forall t \in T \parens{x \notin A_{t,f(t)}} \\
+      \lnot \forall f \in S^T \exists t \in T \parens{x \in A_{t,f(t)}} \\
+      \lnot \forall f \in S^T \parens{x \in \bigcup_{t \in T} A_{t,f(t)}} \\
+      \lnot \squares{x \in \SR} \\
+      x \notin \SR \\
+      x \notin R \,.
+    }
+    Since $x$ was arbitrary, this shows by contrapositive that $x \in R$ implies $x \in L$ so that $R \ss L$.
+  }
+}
+
+\exerciseapp{12}{*}{
+  Prove that for every ordering $\prece$ on $A$, there is a linear ordering $\leq$ on $A$ such that $a \prece b$ implies $a \leq b$ for all $a,b \in A$ (i.e., every partial ordering can be extended to a linear ordering).
+}
+\sol{
+  \iffalse
+  % These were part of an earlier attempted solution that did not work out
+  \begin{defin}\label{def:aoc:tranclos}
+    For a relation $R$ on a set $A$, the transitive closure $S$ of $R$ is a relation on $A$ such that
+    \begin{enumerate}
+    \item $R \ss S$,
+    \item $S$ is transitive,
+    \item For every relation $T \ss A \times A$, if $R \ss T$ and $T$ is transitive, then $S \ss T$.
+    \end{enumerate}
+    That is, $S$ is the smallest transitive relation (by $\ss$) such that $R \ss S$.
+  \end{defin}
+
+  \begin{thrm}\label{def:aoc:tranclosu}
+    Suppose that $R$ is a relation on $A$ and let
+    \gath{
+      \famF = \braces{T \ss A \times A \where \text{$R \ss T$ and $T$ is transitive}} \,.
+    }
+    Then the set $S = \bigcap \famF$ is the unique transitive closure of $R$, noting that $\famF \neq \es$ since clearly $R \ss A \times A$ and $A \times A$ is transitive so that $A \times A \in \famF$.
+    For this reason we say \emph{the} transitive closure rather than \emph{a} transitive closure.
+    \qproof{
+      First we show that $S$ satisfies part (1) in the definition of a transitive closure.
+      So consider any $(x,y) \in R$ and let $T$ be an arbitrary element of $\famF$.
+      Then $R \ss T$ by the definition of $\famF$ so that $(x,y) \in T$.
+      Since $T$ was arbitrary this shows that $(x,y) \in \bigcap \famF = S$, and since $(x,y)$ was arbitrary this shows that $R \ss S$ as desired.
+
+      To show (2) consider any $(x,y)$ and $(y,z)$ in $S = \bigcap \famF$.
+      Then both $(x,y)$ and $(y,z)$ are in every $T \in \famF$.
+      Hence, for any arbitrary $T \in \famF$, clearly $(x,y) \in T$ and $(y,z) \in T$.
+      Then, since $T \in F$ we have that $T$ is transitive (by the definition of $\famF$) so that $(x,z) \in T$.
+      Since $T$ was arbitrary this shows that $(x,z) \in \bigcap \famF = S$ so that $S$ is transitive.
+
+      Now, to show part (3), consider any relation $T$ on $A$ where $R \ss T$ and $T$ is transitive.
+      Consider then any $(x,y) \in S = \bigcap \famF$ so that $(x,y) \in T'$ for every $T' \in \famF$.
+      In particular, $T \in \famF$ since $R \ss T$ and $T$ is transitive so that $(x,y) \in T$.
+      Since $(x,y)$ was arbitrary this shows that $S \ss T$ as desired.
+
+      Lastly, to show that the transitive closure is unique let $S$ and $T$ be transitive closures of $R$.
+      Then, since $R \ss S$ (by part (1) for $S$) and $S$ is transitive (by part (2) for $S$), we have that $T \ss S$ (by part (3) for $T$).
+      By an analogous argument $S \ss T$, which shows that $S = T$ so that the transitive closure is unique.
+    }
+  \end{thrm}
+  \fi
+
+  \qproof{
+    \iffalse
+    % This was another attempted solution that did not work out
+    \def\tleq{\trianglelefteq}
+    \newcommand\lord[1]{(#1, \leq_{#1})}
+    \def\Cb{\overline{C}}
+    \def\Ab{\overline{A}}
+
+    Let $(A, \prece)$ be a partially ordered set.
+    We define the set
+    \ali{
+      L = \{\lord{B} \where & \text{$B \ss A$ and $\leq_B$ is a linear order on $B$ such that} \\
+      & \text{$x \prece y$ implies $x \leq_B y$ for all $x$ and $y$ in $B$}\}
+    }
+    Moreover, we define the following relation $\tleq$ on $L$:
+    \gath{
+      \text{$\lord{B} \tleq \lord{C}$ if and only if $B \ss C$ and $\leq_B \ss \leq_C$}
+    }
+    for any $\lord{B}$ and $\lord{C}$ in $L$.
+
+    It is easy to see that $\tleq$ is a partial order on $L$.
+    Consider any $\lord{B} \in L$.
+    Then, since obviously $B \ss B$ and $\leq_B \ss \leq_B$ we have by definition that $\lord{B} \tleq \lord{B}$ so that $\tleq$ is reflexive since $\lord{B}$ was arbitrary.
+    Now consider any $\lord{B}$ and $\lord{C}$ in $L$ where $\lord{B} \tleq \lord{C}$ and $\lord{C} \tleq \lord{B}$.
+    Then by definition we have that $B \ss C$ and $\leq_B \ss \leq_C$ as well as $C \ss B$ and $\leq_C \ss \leq_B$.
+    From this it clearly follows that $B = C$ and $\leq_B = \leq_C$ so that $\lord{B} = \lord{C}$, which shows that $\tleq$ is antisymmetric.
+    Lastly, consider any $\lord{B}$, $\lord{C}$, and $\lord{D}$ in $L$ where $\lord{B} \tleq \lord{C}$ and $\lord{C} \tleq \lord{D}$.
+    Then we have $B \ss C$ and $\leq_B \ss \leq_C$ as well as $C \ss D$ and $\leq_C \ss \leq_D$.
+    Since we know that $\ss$ is transitive we then have that $B \ss D$ and $\leq_B \ss \leq_D$ so that $\lord{B} \tleq \lord{D}$ by definition.
+    This shows that $\tleq$ is transitive as well and therefore a partial order on $L$.
+
+    Now we claim that every $\tleq$-chain of $L$ has an upper bound.
+    So let $\Cb$ be such a chain of $(L, \tleq)$ and let
+    \ali{
+      U &= \bigcup_{\lord{B} \in \Cb} B &
+      \leq_U &= \bigcup_{\lord{B} \in \Cb} \leq_B \,.
+    }
+    Now consider any $x \in U$ so that there is a $\lord{B} \in \Cb$ such that $x \in B$.
+    Then, since $\lord{B} \in \Cb$ and $\Cb \ss L$ we have that $\lord{B} \in L$ so that $B \ss A$ by definition.
+    Hence since $x \in B$ it follows that $x \in A$.
+    Since $x$ was arbitrary this shows that $U \ss A$.
+
+    Now consider any $x$ and $y$ in $U$.
+    Then there is are $\lord{B}$ and $\lord{C}$ in $\Cb$ such that $x \in B$ and $y \in C$.
+    Now, since $\Cb$ is a $\tleq$-chain we either have that $\lord{B} \tleq \lord{C}$ or $\lord{C} \tleq \lord{B}$.
+    In the former case we have that $B \ss C$ and $\leq_B \ss \leq_C$.
+    Then since $x \in B$ and $B \ss C$ we have $x \in C$.
+    Since also $y \in C$ and $\leq_C$ is a linear order on $C$ it follows that $x$ and $y$ are comparable in $\leq_C$.
+    Hence $(x,y) \in \leq_C$ or $(y,x) \in \leq_C$.
+    Since $\lord{C} \in \Cb$ it then follows that $(x,y) \in \leq_U$ or $(y,x) \in \leq_U$.
+    This shows that $\leq_U$ is a linear order on $U$ since $x$ and $y$ were arbitrary.
+    The latter case in which $\lord{C} \tleq \lord{B}$ is analogous.
+
+    Lastly, consider any $x$ and $y$ in $U$ where $x \prece y$.
+    Then, again, there are $\lord{B}$ and $\lord{C}$ in $\Cb$ such that $x \in B$ and $y \in C$.
+    Since $\Cb$ is a chain, by the same argument as above, we have that either $x$ and $y$ are both in $B$ or they are both in $C$.
+    In the former case, since $\lord{B} \in \Cb$ and $\Cb \ss L$, we have $\lord{B} \in L$ so that by definition $x \leq_B y$ since $x$ and $y$ are both in $B$ and $x \prece y$.
+    Hence $(x,y) \in \leq_B$ so that, by the definition of $\leq_U$ we have that $(x,y) \in \leq_U$.
+
+    Thus we have shown that $U \ss A$, $\leq_U$ is a linear order on $U$, and $x \prec y$ implies that $x \leq_U y$ for all $x$ and $y$ in $U$.
+    This shows by definition that $\lord{U} \in L$.
+
+    Now consider any $\lord{B}$ in $\Cb$.
+    Suppose arbitrary $x \in B$ and $(y,z) \in \leq_B$.
+    Then clearly $x \in U$ and $(y,z) \in \leq_U$ by definition.
+    Hence $B \ss U$ and $\leq_B \ss \leq_U$ so that by definition $\lord{B} \tleq \lord{U}$.
+    Since $\lord{B}$ was arbitrary this shows that $\lord{U}$ is an upper bound of $\Cb$.
+
+    Since $\Cb$ was an arbitrary chain of $(L, \tleq)$, this proves the conditions of Zorn's Lemma so that there is a maximal element of $(L, \tleq)$.
+    Call this maximal element $(\Ab, \leq)$.
+    Now, since $(\Ab, \leq) \in L$ we have that $\Ab \ss A$.
+    For a moment, suppose that $A$ is not a subset of $\Ab$ so that there is an $a \in A$ such that $a \notin \Ab$.
+    Clearly $\leq_a = \braces{(a,a)}$ is a trivial linear order on $\braces{a}$.
+    Moreover, obviously $\leq_a$ has the property that $x \leq_a y$ for any $x$ and $y$ in $\braces{a}$ where $x \prece y$.\
+    Hence it follows that $(\braces{a}, \leq_a) \in L$.
+    \fi
+
+    Let $(A, \prece)$ be a partially ordered set.
+    Define the set
+    \gath{
+      P = \braces{R \ss A \times A \where \text{$R$ is a partial order of $A$ and $\prece \ss R$}} \,.
+    }
+    We know that $\ss$ partially orders $P$.
+    Now consider any $\ss$-chain $C$ of $P$.
+    If $C = \es$ then, since clearly we have that $\prece \in P$, we have that $\es \ss \prece$ so that $\prece$ is an upper bound of $C$.
+    On the other hand if $C \neq \es$ then there is an $R \in C$, noting that $C \ss P$ so that $R \in P$ as well.
+    Then, by the definition of $P$, $R$ is a partial order on $A$ such that $\prece \ss R$.
+    Let $U = \bigcup C$. We first show that $U$ is a partial order on $A$.
+
+    So consider any $a \in A$.
+    Then $(a,a) \in R$ since $R$ is a partial order of $A$ (and therefore reflexive).
+    Hence clearly then $(a,a) \in \bigcup C = U$ since $R \in C$ so that $U$ is reflexive since $a$ was arbitrary.
+
+    Now consider any $x$ and $y$ in $A$ where $(x,y) \in U$ and $(y,x) \in U$.
+    Then, since $U = \bigcup C$, there are $S \in C$ and $T \in C$ such that $(x,y) \in S$ and $(y,x) \in T$.
+    Since $C$ is a $\ss$-chain, we have that either $S \ss T$ or $T \ss S$.
+    In the former case then we have that both $(x,y) \in T$ (since $(x,y) \in S$ and $S \ss T$) and $(y,x) \in T$ so that $x=y$ since $T$ is a partial order of $A$ (since $T \in C$ and $C \ss P$) and is therefore antisymmetric.
+    The case in which $T \ss S$ is analogous.
+    This shows that $U$ is antisymmetric.
+
+    Lastly, consider $x$, $y$, and $z$ in $A$ such that $(x,y) \in U$ and $(y,z) \in U$.
+    Then, again, we have that there are $S \in C$ and $T \in C$ such that $(x,y) \in S$ and $(y,z) \in T$.
+    We also again have that $S \ss T$ or $T \ss S$ since $C$ is a $\ss$-chain.
+    In the former case we have that $(x,y) \in T$ (since $(x,y) \in S$ and $S \ss T$) and $(y,z) \in T$ so that $(x,z) \in T$ since $T$ is a partial order on $A$ (again since $T \in C$ and $C \ss P$) and therefore transitive.
+    Hence, since $T \in C$, clearly we have $(x,z) \in \bigcup C = U$ so that $U$ is transitive.
+    The case in which $T \ss S$ is again analogous.
+
+    Therefore we have shown that $U$ is reflexive, antisymmetric, and transitive, and is therefore a partial order on $A$ by definition.
+    Now consider any $(x,y) \in \prece$.
+    Then $(x,y) \in R$ since $\prece \ss R$.
+    Hence $(x,y) \in \bigcup C = U$ since $R \in C$.
+    It then follows that $\prece \ss U$ since $(x,y)$ was arbitrary.
+    Thus $U$ is a partial order on $A$ and $\prece \ss U$ so that by definition $U \in P$.
+
+    Now consider any $S \in C$ and any $(x,y) \in S$.
+    Then clearly $(x,y) \in \bigcup C = U$ so that $S \ss U$ since $(x,y)$ was arbitrary.
+    Since $S$ was arbitrary this shows that $U$ is in fact an upper bound of $C$ with respect to $\ss$.
+
+    Since the chain $C$ was arbitrary, this shows that all $\ss$-chains of $P$ have an upper bound so that the conditions of Zorn's Lemma are satisfied.
+    We can therefore conclude that $P$ has a $\ss$-maximal element $\leq$.
+
+    We claim that $\leq$ is a linear ordering of $A$.
+    So assume to the contrary that $\leq$ is not linear so that there are $a$ and $b$ in $A$ such that $(a,b) \notin \leq$ and $(b,a) \notin \leq$.
+    Then define the relations
+    \gath{
+      R' = \braces{(x,y) \in A \times A \where x \leq a \text{ and } b \leq y}
+    }
+    and $R = \leq \cup R'$.
+    First, notice that $(a,a) \in \leq$ and $(b,b) \in \leq$ since $\leq$ is reflexive so that by definition $(a,b) \in R'$ and hence $(a,b) \in R$.
+    We claim that $R \in P$ so that we must first show that $R$ is an order on $A$.
+
+    Consider any $x \in A$ so that clearly $(x,x) \in \leq$ since $\leq$ is an ordering of $A$ and is therefore reflexive.
+    Hence clearly $(x,x) \in \leq \cup R' = R$ so that $R$ is reflexive.
+
+    Now suppose any $x$ and $y$ in $A$ where $(x,y) \in R$ and $(y,x) \in R$.
+    Then clearly $(x,y) \in \leq$ or $(x,y) \in R'$ and similarly $(y,x) \in \leq$ or $(y,x) \in R'$
+
+    Case: $(x,y) \in \leq$. If $(y,x) \in \leq$ then clearly $x=y$ since $\leq$ is an order on $A$ and therefore is antisymmetric.
+    The sub-case in which $(y,x) \in R'$ cannot be since, if it were, then we would have $y \leq a$ and $b \leq x$.
+    Hence we would have that $b \leq x \leq y \leq a$ so that $b \leq a$ by transitivity, which we know is not possible by our definition of $a$ and $b$.
+
+    Case: $(x,y) \in R'$.
+    Then $x \leq a$ and $b \leq y$.
+    Here again the sub-case in which $(y,x) \in \leq$ is impossible since we would then have $b \leq y \leq x \leq a$ so that $b \leq a$ by transitivity.
+    Evidently the sub-case in which $(y,x) \in R'$ is also impossible since then we would have $y \leq a$ and $b \leq x$ so that $b \leq x \leq a$ as well as $b \leq y \leq a$ so that $b \leq a$ and $a \leq b$, which we know is not possible.
+    Hence this entire case is not possible.
+
+    Thus, in the only valid case, we have that $x=y$ so that $R$ is antisymmetric.
+
+    Now suppose $x$, $y$, and $z$ in $A$ where $(x,y) \in R$ and $(y,z) \in R$.
+    Then we have that $(x,y) \in \leq$ or $(x,y) \in R'$ and similarly $(y,z) \in \leq$ or $(y,z) \in R'$.
+
+    Case: $(x,y) \in \leq$.
+    If $(y,z) \in \leq$ also then clearly we have $(x,z) \in \leq$ since $\leq$ is an order and therefore transitive.
+    If, on the other hand, $(y,z) \in R'$ then we have $y \leq a$ and $b \leq z$.
+    Hence we have that $x \leq y \leq a$ so that $x \leq a$ by transitivity.
+    We thus have $x \leq a$ and $b \leq z$ so that $(x,z) \in R'$ by definition.
+
+    Case: $(x,y) \in R'$.
+    Then we have $x \leq a$ and $b \leq y$.
+    If $(y,z) \in \leq$ then we have $b \leq y \leq z$ so that $b \leq z$ by transitivity.
+    Hence $x \leq a$ and $b \leq z$ so that $(x,z) \in R'$ by definition.
+    On the other hand, if $(y,z) \in R'$, then we have $y \leq a$ and $b \leq z$.
+    Hence $b \leq y \leq a$ so that $b \leq a$ by transitivity, which we know is not true.
+    Therefore this sub-case is impossible.
+
+    Hence in all valid cases we have that $(x,z) \in \leq$ or $(x,z) \in R'$ so that clearly $(x,z) \in R = \leq \cup R'$, thereby showing that $R$ is transitive.
+
+    Therefore we have shown that $R$ is an ordering of $A$.
+    We also clearly have that $\prece \ss R$ since $\prece \ss \leq$ (since $\leq \in P$) and $\leq \ss R$ (since $R = \leq \cup R'$).
+    Thus indeed $R \in P$.
+
+    Now, since $R = \leq \cup R'$ we clearly have that $\leq \ss R$.
+    We also know that $(a,b) \in R$ but $(a,b) \notin \leq$ so that $R \neq \leq$, and hence $\leq \pss R$.
+    However, this contradicts the fact that $\leq$ is a maximal element of $P$ so that it must be that $\leq$ is in fact linear!
+
+    Lastly, consider any $a$ and $b$ in $A$ where $a \prece b$.
+    Then $(a,b) \in \prece$ so that $(a,b) \in \leq$ because $\prece \ss \leq$ since $\leq \in P$.
+    Thus $a \leq b$ so that $\leq$ is the $\prece$-extended linear ordering of $A$ that we seek.
+  }
+}
