@@ -760,3 +760,161 @@
     Thus $a \leq b$ so that $\leq$ is the $\prece$-extended linear ordering of $A$ that we seek.
   }
 }
+
+\exerciseapp{13}{*}{
+  (Principle of Dependent Choices)
+  If $R$ is a binary relation on $M \neq \es$ such that for each $x \in M$ there is a $y \in M$ for which $xRy$, then there is a sequence $\angles{x_n \where n \in \w}$ such that $x_n R x_{n+1}$ holds for all $n \in \w$.
+}
+\sol{
+  \qproof{
+    Suppose such a relation $R$ on $M \neq \es$.
+    Define the set $X_x = \braces{y \in M \where xRy}$ for each $x \in M$.
+    Then, by the given property of $R$, clearly $X_x \neq \es$ for any $x \in M$.
+    Then, by the Axiom of Choice, the system of sets $\braces{X_x \where x \in M}$ has a choice function $g$.
+    We also have that there is an $a \in M$ since $M \neq \es$.
+    We then define a sequence recursively as follows:
+    \ali{
+      x_0 &= a \\
+      x_{n+1} &= g(X_{x_n}) \,,
+    }
+    noting that this is well defined since each $X_n$ is nonempty.
+
+    To show that the sequence $\angles{x_n \where n \in \w}$ has the desired property, consider any $n \in \w$.
+    Then by the recursive definition we have that $x_{n+1} = g(X_{x_n})$ so that $x_{n+1} \in X_{x_n}$ since $g$ is a choice function and $X_{x_n}$ is nonempty.
+    Then, from the definition of $X_{x_n}$, it follows that $x_{n} R x_{n+1}$.
+    This shows the desired result since $n$ was arbitrary.
+  }
+}
+
+\exercise{14}{
+  Assuming only the Principle of Dependent Choices, prove that every countable system of sets has a choice function (the Axiom of Countable Choice).
+}
+\sol{
+  \qproof{
+    Suppose that $S$ is a countable system of sets and let $T = \braces{X \in S \where X \neq \es}$.
+    Then it suffices to show that there is a choice function $h$ for $T$.
+    To see this suppose that there is such a choice function $h$ and define a function $g$ on $S$ by
+    \gath{
+      g(X) =
+      \begin{cases}
+        \es & X = \es \\
+        h(X) & X \neq \es
+      \end{cases} \,,
+    }
+    for any $X \in S$, noting that clearly $X \in T$ if $X \neq \es$ so that $X$ is in the domain of $h$.
+    Then, for any nonempty $X \in S$, we have that $g(X) = h(X) \in X$ since $h$ is a choice function.
+    Hence $g$ is a choice function on $S$.
+
+    Now we construct a choice function $h$ for $T$.
+    First note that clearly either $T$ is finite or countable since $T \ss S$ and $S$ is countable.
+    If $T$ is finite then it has a choice function $h$ by Theorem~8.1.2, so we shall assume that $T$ is also countable.
+    It then follows that $T$ can be written as a sequence of sets $\angles{X_n \where n \in \w}$.
+
+    Now define the the binary relation $R$ on $\bigcup T$ by
+    \gath{
+      R = \braces{(x,y) \in \bigcup T \times \bigcup T \where \text{$x \in X_n$ and $y \in X_{n+1}$ for some $n \in \w$}} \,.
+    }
+    First, since $X_0 \in T$, it is nonempty so that there is an $x \in X_0$.
+    Then clearly $x \in \bigcup T$ so that $\bigcup T$ is nonempty.
+    Now consider any $x \in \bigcup T$ so that there is an $n \in \w$ such that $x \in X_n$.
+    We then have that $X_{n+1} \neq \es$ since $X_{n+1} \in T$ so that there is a $y \in X_{n+1}$, noting that clearly also $y \in \bigcup T$.
+    It then follows from the definition of $R$ that $xRy$.
+    Since $x$ was arbitrary this shows that the relation $R$ on $\bigcup T$ meets the conditions of the Principle of Dependent Choices.
+    Thus we can conclude that there is a sequence $\angles{x_n \where n \in \w}$ of elements of $\bigcup T$ where $x_n R x_{n+1}$ holds for any $n \in \w$.
+
+    Now, since we have that $x_0 \in \bigcup T$, there is an $m \in \w$ such that $x_0 \in X_m$.
+    We claim that $x_n \in X_{m+n}$ for all $n \in \w$, which we show by induction on $n$.
+    First, for $n = 0$, we already know that $x_n = x_0 \in X_m = X_{m+0} = X_{m+n}$.
+    Now suppose that $x_n \in X_{m+n}$.
+    By the property of the sequence $\angles{x_k}_{k \in \w}$ we know that $x_n R x_{n+1}$ so that, by the definition of $R$, we have that $x_{n+1} \in X_{(m+n)+1} = X_{m + (n+1)}$ since clearly $m+n \in \w$ and $x_n \in X_{m+n}$.
+    This completes the induction.
+
+    Now consider the set $T' = \braces{X_n \where n \in m}$, which is clearly a finite system of nonempty sets.
+    Hence by Theorem~8.1.2 it has a choice function $h'$.
+    Now we define a function $h: T \to \bigcup T$.
+    For any $X \in T$ we know that there is an $n \in \w$ such that $X = X_n$.
+    So we set
+    \gath{
+      h(X) = h(X_n) =
+      \begin{cases}
+        h'(X_n) & n < m \\
+        x_{n-m} & n \geq m
+      \end{cases} \,.
+    }
+    We claim that $h$ is a choice function on $T$.
+    So consider any $X \in T$ (which automatically means that $X \neq \es$) so that again $X = X_n$ for some $n \in \w$.
+    If $n < m$ then we have that $h(X) = h'(X_n) \in X_n = X$ since $h'$ is a choice function.
+    On the other hand, if $n \geq m$, then we note that $n-m \in \w$ and we have $h(X) = x_{n-m} \in X_{m+(n-m)} = X_n = X$ by what was shown above.
+    Since $X$ was arbitrary this shows that $h$ is a choice function on $T$.
+    Hence, as shown above this means that there is a choice function $g$ on $S$ as desired.
+  }
+}
+
+\exercise{15}{
+  If every set is equipotent to an ordinal number, then the Axiom of Choice holds.
+}
+\sol{
+  \qproof{
+    Let $A$ be any set and $\a$ be an ordinal equipotent to $A$.
+    Then there is a bijection $f$ from $A$ to $\a$.
+    We can then simply order $A$ according to $f$, that is order it by the relation
+    \gath{
+      \prece = \braces{(x,y) \in A \times A \where f(x) \leq f(y)}
+    }
+    Clearly then $(A, \prece)$ is isomorphic to $(\a, \leq)$ so that it is a well-ordering.
+    Hence $A$ can be well-ordered.
+    Since $A$ was an arbitrary set, this shows the Well-Ordering Principle, which is equivalent to the Axiom of Choice by Theorem~8.1.13.
+  }
+}
+
+\exercise{16}{
+  If for any sets $A$ and $B$ either $\abs{A} \leq \abs{B}$ or $\abs{B} \leq \abs{A}$, then the Axiom of Choice holds.
+  [Hint: Compare $A$ and $B = h(A)$.]
+}
+\sol{
+  \qproof{
+    Consider any set $A$.
+    Then we have that either $\abs{A} \leq \abs{h(A)}$ or $\abs{h(A)} \leq \abs{A}$ (where $h(A)$ denotes the Hartogs number of $A$).
+    Now, it cannot be that $\abs{h(A)} \leq \abs{A}$.
+    For, if it were, then there would be an injection $f$ from $h(A)$ into $A$.
+    Then clearly $\ran{f} \ss A$ and $f$ is a bijection from $h(A)$ to $\ran{f}$.
+    Thus $h(A)$ is equipotent to $\ran{f} \ss A$, which violates the definition of the Hartogs number.
+
+    Therefore it must be that $\abs{A} \leq \abs{h(A)}$.
+    Hence there is an injection $g$ from $A$ into $h(A)$.
+    Since $h(A)$ is an ordinal and $\ran{g} \ss h(A)$, it follows that $\ran{g}$ is a set of ordinals, which is well-ordered by Theorem~6.2.6d.
+    So, ordering $A$ according to $g$ (considered as a bijection from $A$ to $\ran{g}$) results in a well-ordering of $A$.
+    Since $A$ was an arbitrary set, this shows the Well-Ordering Principle, from which the Axiom of Choice follows by Theorem~8.1.13.
+  }
+}
+
+\exerciseapp{17}{*}{
+  If $B$ is an infinite set and $A$ is a subset of $B$ such that $\abs{A} < \abs{B}$, then $\abs{B-A} = \abs{B}$.
+}
+\sol{
+  \qproof{
+    Since $B$ is infinite, it follows Theorem~8.1.5 that there is a unique ordinal $\a$ such that $\abs{B} = \al_\a$, noting that this requires the Axiom of Choice.
+    Thus there is a bijection $f$ from $B$ onto $\w_\a$.
+    Clearly then, since $A \ss B$, we have that $f[A] \ss \w_\a$.
+    Moreover, clearly $f$ is a bijection from $A$ to $f[A]$ so that $\abs{f[A]} = \abs{A} < \abs{B} = \al_\a$.
+    It therefore follows from Exercise~7.2.6 that $\abs{\w_\a - f[A]} = \al_\a$.
+    We now claim that $f[B - A] = \w_\a - f[A]$.
+
+    $(\ss)$ So consider any $y \in f[B - A]$ so that there is an $x \in B - A$ such that $y = f(x)$.
+    Since clearly $x \in B$, we have that $y = f(x) \in \w_\a$ since $f$ maps $B$ onto $\w_\a$.
+    Now suppose that also $y \in f[A]$ so that there is a $z \in A$ where $y = f(z)$.
+    Then we have that $y = f(x) = f(z)$ so that $x = z$ since $f$ is injective.
+    Hence we have $x = z \in A$ but also $z = x \notin A$ since $z = x \in B - A$, which is a contradiction.
+    So it must be that $y \notin f[A]$ so that indeed $y \in \w_\a - f[A]$.
+    Therefore $f[B - A] \ss \w_\a - f[A]$ since $y$ was arbitrary.
+
+    $(\supseteq)$ Now consider any $y \in \w_\a - f[A]$ so that $y \in \w_\a$ and $y \notin f[A]$.
+    Since $f$ is onto $\w_\a$, there is an $x \in B$ such that $y = f(x)$.
+    Moreover, since $y \notin f[A]$ we can be sure that $x \notin A$.
+    Therefore $x \in B - A$.
+    Since $y = f(x)$ it therefore follows that $y \in f[B - A]$ so that $\w_\a - f[A] \ss f[B - A]$ since $y$ was arbitrary.
+
+    Thus we have shown that $f[B - A] = \w_\a - f[A]$ so that clearly $f$ is a bijection from $B - A$ onto $\w_\a - f[A]$.
+    Hence we have that $\abs{B - A} = \abs{\w_\a - f[A]} = \al_\a = \abs{B}$ as desired.
+  }
+}
