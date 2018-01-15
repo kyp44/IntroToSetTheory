@@ -1,13 +1,9 @@
 % Common sets
-\def\nats{\mathbb{N}}
-\def\ints{\mathbb{Z}}
-\def\rats{\mathbb{Q}}
+\def\nats{{\boldsymbol{N}}}
+\def\ints{{\boldsymbol{Z}}}
+\def\rats{{\boldsymbol{Q}}}
 \def\prats{\rats^+}
-\def\reals{\mathbb{R}}
-\def\cpxs{\mathbb{C}}
-\def\pints{\ints^+}
-\def\preals{\reals^+}
-\def\nreals{\reals^-}
+\def\reals{{\boldsymbol{R}}}
 \def\es{\varnothing}
 
 % Common variables/symbols
@@ -40,6 +36,9 @@
 \def\cnats{{\al_0}}
 \def\ccont{{2^\cnats}}
 
+% Equivalence classes
+\newcommand\eclass[2]{\squares{#1}_{#2}}
+
 % Shortcuts that make writing easier
 \newcommand\parens[1]{\left( #1 \right)}
 \newcommand\squares[1]{\left[ #1 \right]}
@@ -60,8 +59,9 @@
 % Families of set
 \def\famF{\mathcal{F}}
 
-% This is needed so that half-open intervals do not cause auto-indentation issues due to unmatched brackets
+% These are needed so that half-open intervals do not cause auto-indentation issues due to unmatched brackets
 \newcommand\clop[1]{[#1)}
+\newcommand\ilab[1]{#1)}
 
 % Other miscellaneous stuff
 \def\ss{\subseteq}
@@ -103,6 +103,11 @@
     \setcounter{question}{#1-1} % Manually set the question number since we always know the theorem number
     \question{#2} % The actual exam class question
 }}
+\newcommand\theoremapp[3]{
+    \setqf{#2}
+    \theorem{#1}{#3}
+    \setqf{}
+}
 \newcommand\sol[1]{\begin{solution} #1 \end{solution}}
 
 % Main problem and theorem labels
