@@ -1,0 +1,483 @@
+\subsection{The Axiom of Choice in Mathematics}
+
+\exercise{1}{
+  Without using the Axiom of Choice, prove that the two definitions of closure points are equivalent if $A$ is an open set.
+  [Hint: $X_n$ is open, so $X_n \cap \rats \neq \es$, and $\rats$ can be well-ordered.]
+}
+\sol{
+  \begin{lem}\label{lem:aoc:intopen}
+    If $A$ and $B$ are open subsets of $\reals$ then $A \cap B$ is open.
+  \end{lem}
+  \qproof{
+    First note that, if $A \cap B = \es$, then this is vacuously open.
+    Otherwise, consider any $x \in A \cap B$.
+    Then, since $A$ is open and $x \in A$, there is a real $\d_1 > 0$ such that $\abs{y - x} < \d_1$ implies that $y \in A$ for all $y \in \reals$.
+    Similarly, $x \in B$ and $B$ is open so that there is a $\d_2 > 0$ where $\abs{y - x} < \d_2$ implies $y \in B$ for all $y \in \reals$
+    Let $\d = \min\braces{\d_1, \d_2}$ so that $\d \leq \d_1$ and $\d \leq \d_2$.
+    Then consider any $y \in \reals$ where $\abs{y - x} < \d$.
+    Then we have $\abs{y - x} < \d \leq \d_1$ so that $y \in A$.
+    Similarly, $\abs{y - x} < \d \leq \d_2$ so that $y \in B$ as well.
+    Hence $y \in A \cap B$.
+    Since $y$ was arbitrary and $\d > 0$, this shows that $A \cap B$ is open.
+  }
+
+  \begin{lem}\label{lem:aoc:openrat}
+    If $A$ is a nonempty open subset of $\reals$ then $A \cap \rats \neq \es$.
+  \end{lem}
+  \qproof{
+    Suppose that $A \ss \reals$ is nonempty and open.
+    Then there is an $x \in A$ and, since $A$ is open, there is a real $\d > 0$ such that $(x-\d, x+\d) \ss A$.
+    Now, since $\d > 0$, we clearly have
+    \gath{
+      -\d < 0 < \d \\
+      x-\d < x+\d \,.
+    }
+    Since $\rats$ is dense in $\reals$ with respect to order, there is a $q \in \rats$ such that $x-\d < q < x+\d$.
+    Then we have $q \in (x-\d, x+\d)$ so that also $q \in A$ since $(x-\d, x+\d) \ss A$.
+    Thus $q \in \rats$ and $q \in A$ so that $q \in A \cap \rats$ as desired.
+  }
+  
+  \mainprob
+  \qproof{
+    A proof of this equivalence is presented in the text as Theorem~8.2.1.
+    Recall that, in the proof that (b) implies (a), $a \in \reals$ is the closure point of $A \ss \reals$ and $X_n = \braces{x \in A \where \abs{x-a} < 1/n}$, and we know from (b) that each $X_n$ is nonempty.
+    Note that we assume that $X_0 = A \cap (-\infty, \infty) = A \cap \reals = A$.
+    Per the remarks after this proof, it suffices to show that the system of nonempty sets $\braces{X_n}_{n \in \nats}$ has a choice function when $A$ is open.
+
+    First we show that each $X_n$ is an open set.
+    Clearly $X_0 = A$ is open, so consider any natural $n > 0$ and let $I_n = (a-1/n, a+1/n)$.
+    We claim that $X_n = A \cap I_n$.
+    To this end we have
+    \ali{
+      x \in X_n &\bic x \in A \land \abs{x-a} < 1/n \\
+      &\bic x \in A \land -1/n < x - a < 1/n \\
+      &\bic x \in A \land a-1/n < x < a+1/n \\
+      &\bic x \in A \land x \in I_n \\
+      &\bic x \in A \cap I_n \,.
+    }
+    for any real $x$, which of course shows that $X_n = A \cap I_n$.
+    Then, since $A$ is open and $I_n$ is clearly an open interval, it follows from Lemma~\ref{lem:aoc:intopen} that $X_n$ is open as well.
+
+    Now, since each $X_n$ is open and nonempty, it follows that $X_n \cap \rats \neq \es$ from Lemma~\ref{lem:aoc:openrat}.
+    Then, since $\rats$ is countable, it can clearly be well-ordered.
+    So choose a well-ordering of $\rats$.
+    Since $X_n \cap \rats$ is clearly a nonempty subset of $\rats$, it then has a least element $x_n$ according to our well-ordering.
+    We then define a function $g$ on $\braces{X_n}_{n \in \nats}$ by $g(X_n) = x_n$, which is clearly a choice function.
+  }
+}
+
+\exercise{2}{
+  Prove that every continuous additive function $f$ is equal to $f_a$ for some $a \in \reals$.
+}
+\sol{
+  \qproof{
+    Consider any arbitrary continuous additive function $f : \reals \to \reals$.
+    Then, by what was shown in the text, there is a real $a$ such that $f(q) = f_a(q) = a \cdot q$ for all $q \in \rats$; in particular $a = f(1)$.
+
+    Now suppose to the contrary that $f \neq f_a$ so that there is an $x \in \reals$ where $f(x) \neq f_c(x)$.
+    So let $\e = \abs{f(x) - f_a(x)}/2$, noting that clearly $\e > 0$ since $f(x) \neq f_a(x)$.
+    Since $f$ is continuous there is a real $\d_1 > 0$ such that $\abs{f(y) - f(x)} < \e$ for all $y \in \reals$ where $\abs{y - x} < \d_1$.
+    Also clearly $f_a$ is also continuous so that there is a real $\d_2 > 0$ where $\abs{f_a(y) - f_a(x)} < \e$ for all $y \in \reals$ where $\abs{y - x} < \d_2$.
+    So let $\d = \min\braces{\d_1, \d_2}$.
+    Then, since $\d > 0$ it follows that $x - \d < x + \d$ so that there is a $q \in \rats$ where $x - \d < q < x + \d$ since $\rats$ is order dense in $\reals$.
+    It then clearly follows that $\abs{q - x} < \d$ so that $\abs{q - x} < \d \leq \d_1$ and $\abs{q - x} < \d \leq \d_2$.
+    Therefore $\abs{f(q) - f(x)} < \e$ and $\abs{f_a(q) - f_a(x)} < \e$.
+
+    We then have
+    \ali{
+      \abs{f(x) - f_a(x)} &\leq \abs{f(x) - f(q)} + \abs{f(q) - f_a(x)} \\
+      &\leq \abs{f(x) - f(q)} + \abs{f(q) - f_a(q)} + \abs{f_a(q) - f_a(x)} \\
+      &< \e + 0 + \e = 2\e = \abs{f(x) - f_a(x)} \,,
+    }
+    which is a contradiction, noting that $\abs{f(q) - f_a(q)} = 0$ since $f(q) = f_a(q)$ since $q \in \rats$.
+    So it must be that in fact $f = f_a$ as desired.
+  }
+
+  This proof is similar to that of Theorem~10.3.11 later in the text.
+  That theorem is certainly more general, and this can be easily proved from it.
+  In particular it was shown in the text that, for an arbitrary additive and continuous $f: \reals \to \reals$,  $f(q) = f_a(q)$ for all $q \in \rats$ for some $a \in \reals$ so that $f \rest \rats = f_a \rest \rats$.
+  Since $f$ and $f_a$ are both continuous and $\rats$ is order dense in $\reals$, it follows from Theorem~10.3.11 that $f = f_a$.
+}
+
+\exercise{3}{
+  Assume that $\mu$ has properties 0)-ii).
+  Prove properties iv) and v).
+  Also prove:
+  \begin{enumerate}
+  \item[\ilab{vi}] $\mu(A \cup B) = \mu(A) + \mu(B) - \mu(A \cap B)$.
+  \item[\ilab{vii}] $\mu\parens{\bigcup_{n=0}^\infty A_n} \leq \sum_{n=0}^\infty \mu(A_n)$.
+  \end{enumerate}
+}
+\sol{
+  First, for reference, we assume the following properties of $\mu$:
+  \begin{enumerate}
+    \item[\ilab{0}] $\mu([a,b]) = b - a$ for any $a$ and $b$ in $\reals$ where $a < b$.
+    \item[\ilab{i}] $\mu(\es) = 0$ and $\mu(\reals) = \infty$.
+    \item[\ilab{ii}] If $\braces{A_n}_{n=0}^\infty$ is a collection of mutually disjoint subsets of $\reals$, then
+      \gath{
+        \mu\parens{\bigcup_{n=0}^\infty A_n} = \sum_{n=0}^\infty \mu(A_n) \,.
+      }
+  \end{enumerate}
+  First we show
+  \begin{enumerate}
+  \item[\ilab{iv}] If $A \cap B = \es$ then $\mu(A \cup B) = \mu(A) + \mu(B)$.
+  \end{enumerate}
+  \qproof{
+    Assume that $A \cap B = \es$ and define $A_0 = A$, $A_1 = B$, and $A_n = \es$ for all natural $n > 1$.
+    Then clearly each of the sets in $\braces{A_n}_{n=0}^\infty$ are mutually disjoint.
+    It is also trivial to show that $\bigcup_{n=0}^\infty A_n = A \cup B$.
+    We then have by property ii) that
+    \ali{
+      \mu(A \cup B) &= \mu\parens{\bigcup_{n=0}^\infty A_n} = \sum_{n=0}^\infty \mu(A_n) = \mu(A_0) + \mu(A_1) + \sum_{n=2}^\infty \mu(A_n) \\
+      &= \mu(A) + \mu(B) + \sum_{n=2}^\infty \mu(\es) = \mu(A) + \mu(B) + \sum_{n=2}^\infty 0 \\
+      &= \mu(A) + \mu(B) \,,
+    }
+    noting that we have also used property i) according to which $\mu(\es) = 0$.
+    This shows the desired result.
+  }
+
+  \begin{lem}\label{lem:aoc:measmin}
+    For a measure $\mu$, if $A \ss B \ss \reals$ then $\mu(B-A) = \mu(B) - \mu(A)$.
+  \end{lem}
+  \qproof{
+    Clearly $A$ and $B-A$ are disjoint sets such that $A \cup (B-A) = B$ so that $\mu(A) + \mu(B-A) = \mu(B)$ by property iv).
+    The result then clearly follows by subtracting $\mu(A)$ from both sides.
+  }
+  
+  Next we show
+  \begin{enumerate}
+  \item[\ilab{v}] If $A \ss B$ then $\mu(A) \leq \mu(B)$.
+  \end{enumerate}
+  \qproof{
+    Suppose that $A \ss B$ so that $\mu(A) + \mu(B-A) = \mu(B)$ by Lemma~\ref{lem:aoc:measmin}.
+    Since $\mu$ is a function into $\clop{0, \infty} \cup \braces{\infty}$, it follows that
+    \gath{
+      0 \leq \mu(B-A) \\
+      \mu(A) \leq \mu(B-A) + \mu(A) = \mu(A) + \mu(B-A) \\
+      \mu(A) \leq \mu(B)
+    }
+    as desired.
+  }
+
+  Now we show
+  \begin{enumerate}
+  \item[\ilab{vi}] $\mu(A \cup B) = \mu(A) + \mu(B) - \mu(A \cap B)$.
+  \end{enumerate}
+  \qproof{
+    Let $C = A \cap B$, $A' = A - C$, and $B' = B - C$.
+    It is then trivial to show that $A'$, $B'$, and $C$ are mutually disjoint sets such that $A' \cup B' \cup C = A \cup B$.
+    We then have by a straightforward extension of property iv) that
+    \gath{
+      \mu(A') + \mu(B') + \mu(C) = \mu(A \cup B) \\
+      \mu(A - C) + \mu(B - C) + \mu(C) = \mu(A \cup B) \\
+      \mu(A) - \mu(C) + \mu(B) - \mu(C) + \mu(C) = \mu(A \cup B) \\
+      \mu(A) + \mu(B) - \mu(C) = \mu(A \cup B) \\
+      \mu(A) + \mu(B) - \mu(A \cap B) = \mu(A \cup B)
+    }
+    as desired.
+    Note that we have also used Lemma~\ref{lem:aoc:measmin} since clearly $C \ss A$ and $C \ss B$ so that $\mu(A-C) = \mu(A) - \mu(C)$ and $\mu(B-C) = \mu(B) - \mu(C)$.
+  }
+
+  Lastly we show
+  \begin{enumerate}
+  \item[\ilab{vii}] $\mu\parens{\bigcup_{n=0}^\infty A_n} \leq \sum_{n=0}^\infty \mu(A_n)$.
+  \end{enumerate}
+  \qproof{
+    Supposing that we have a system of sets $\braces{A_n}_{n=0}^\infty$, first we define a sequence of corresponding sets recursively:
+    \ali{
+      A_0' &= A_0 \\
+      A_{n+1}' &= A_{n+1} - \bigcup_{k=0}^n A_k'
+    }
+    Note that it is clear that $A_n' \ss A_n$ for any $n \in \nats$ so that $\mu(A_n') \leq \mu(A_n)$ by property v).
+    
+    We now show that each of these sets are mutually disjoint.
+    So consider any natural $m$ and $n$ where $m \neq n$.
+    Without loss of generality, we can then assume that $m < n$.
+    Suppose that $A_m'$ and $A_n'$ are \emph{not} disjoint so that there is an $x \in A_m' \cap A_n'$.
+    Thus $x \in A_n' = A_n - \bigcup_{k=0}^{n-1} A_k'$ so that $x \notin \bigcup_{k=0}^{n-1} A_k'$.
+    However since also $x \in A_m'$ and $0 \leq m \leq n-1$, we also can conclude that $x \in \bigcup_{k=0}^{n-1} A_k'$.
+    Since this is a contradiction, it must be that $A_m'$ and $A_n'$ are in fact disjoint, which shows mutual disjointedness since $m$ and $n$ were arbitrary.
+
+    Next we show that $\bigcup_{n=0}^\infty A_n' = \bigcup_{n=0}^\infty A_n$.
+    The $\ss$ direction is clear since, for any $x \in \bigcup_{n=0}^\infty A_n'$, there a natural $n$ where $x \in A_n'$.
+    Since $A_n' \ss A_n$ it follows that $x \in A_n$ so that clearly $x \in \bigcup_{n=0}^\infty A_n$.
+    Now consider any $x \in \bigcup_{n=0}^\infty A_n$ so that there is a natural $n$ where $x \in A_n$.
+    Clearly if $n=0$ then $x \in A_0 = A_0'$.
+    So assume that $n > 0$ so that $\bigcup_{k=0}^{n-1} A_k'$ is defined.
+    If $x \in \bigcup_{k=0}^{n-1} A_k'$ then there is a $0 \leq k \leq n-1$ where $x \in A_k'$.
+    On the other hand, if $x \notin \bigcup_{k=0}^{n-1} A_k'$ then clearly $x \in A_n - \bigcup_{k=0}^{n-1} A_k' = A_n'$.
+    Thus in all cases there is a natural $k$ such that $x \in A_k'$ so that $x \in \bigcup_{n=0}^\infty A_n'$ as desired.
+
+    We therefore have
+    \ali{
+      \mu\parens{\bigcup_{n=0}^\infty A_n} &= \mu\parens{\bigcup_{n=0}^\infty A_n'} \\
+      &= \sum_{n=0}^\infty \mu(A_n') & \text{(by property ii) since the sets $\braces{A_n'}_{n=0}^\infty$ are mutually disjoint)} \\
+      &\leq \sum_{n=0}^\infty \mu(A_n) & \text{(since $0 \leq \mu(A_n') \leq \mu(A_n)$ for all natural $n$)}
+    }
+    as desired.
+  }
+}
+
+\def\defsa{
+  \begin{enumerate}
+  \item[(a)] $\es \in \fs$ and $S \in \fs$.
+  \item[(b)] If $X \in \fs$ then $S - X \in \fs$.
+  \item[(c)] If $X_n \in \fs$ for all $n$, then $\bigcup_{n=0}^\infty X_n \in \fs$ and $\bigcap_{n=0}^\infty X_n \in \fs$.
+  \end{enumerate}
+}
+\def\fs{\mathfrak{S}}
+\exerciseapp{4}{*}{
+  Let $\fs = \braces{X \ss S \where \abs{X} \leq \al_0 \text{ or } \abs{S-X} \leq \al_0}$.
+  Prove that $\fs$ is a $\s$-algebra.
+}
+\sol{
+  \begin{lem}\label{lem:aoc:setdm}
+    If $A$, $B$, and $C$ are sets then $A - (B - C) = (A - B) \cup (A \cap C)$.
+  \end{lem}
+  \qproof{
+    For any $x$ we have
+    \ali{
+      x \in A - (B - C) &\bic x \in A \land x \notin B - C \\
+      &\bic x \in A \land \lnot (x \in B \land x \notin C) \\
+      &\bic x \in A \land (x \notin B \lor x \in C) \\
+      &\bic (x \in A \land x \notin B) \lor (x \in A \land x \in C) \\
+      &\bic X \in A - B \lor x \in A \cap C \\
+      &\bic x \in (A - B) \cup (A \cap C) \,.
+    }
+  }
+
+  \begin{lem}\label{lem:aoc:smss}
+    If $A \ss B$ and $S$ is another set, then $S - B \ss S - A$.
+  \end{lem}
+  \qproof{
+    Consider any $x \in S - B$ so that $x \in S$ and $x \notin B$.
+    Then it has to be that also $x \notin A$ since otherwise it would not be that $A \ss B$.
+    Hence $x \in S - A$, which shows the result since $x$ was arbitrary.
+  }
+  
+  \mainprob
+  \qproof{
+    We must show that the above definition of $\fs$ satisfies the three parts of the definition of a $\s$-algebra:
+    \defsa
+
+    For (a) clearly $\abs{\es} = 0 \leq \al_0$ so that $\es \in \fs$, and $S - S = \es$ so that $\abs{S - S} = \abs{\es} = 0 \leq \al_0$.
+    Hence $S \in \fs$ as well.
+
+    For (b) suppose that $X \ss S$ and $X \in \fs$.
+    Then either $\abs{X} \leq \al_0$ or $\abs{S - X} \leq \al_0$.
+    If $\abs{X} \leq \al_0$ then by Lemma~\ref{lem:aoc:setdm} we have
+    \gath{
+      S - (S - X) = (S - S) \cup (S \cap X) = \es \cup (S \cap X) = S \cap X = X
+    }
+    since $X \ss S$.
+    Therefore $\abs{S - (S - X)} = \abs{X} \leq \al_0$ so that $S - X \in \fs$.
+    On the other hand, if $\abs{S - X} \leq \al_0$, then obviously $S - X \in \fs$ by definition.
+
+    Lastly, regarding (c), suppose that $\braces{X_n}_{n=0}^\infty$ is a system of sets where each $X_n$ is in $\fs$.
+    Thus $\abs{X_n} \leq \al_0$ or $\abs{S - X_n} \leq \al_0$ for each natural $n$.
+
+    Now we show that $\bigcup_{n=0}^\infty X_n \in \fs$.
+    First, if $\abs{X_n} \leq \al_0$ for all natural $n$, then it follows from Theorem~8.1.7 that $\abs{\bigcup_{n=0}^\infty X_n} \leq \al_0$, which of course uses the Axiom of Choice.
+    If, on the other hand, there is a natural $m$ such that $\abs{X_m} \not\leq \al_0$, then it has to be that $\abs{S - X_m} \leq \al_0$ since $X_m \in \fs$.
+    Then, since clearly $X_m \ss \bigcup_{n=0}^\infty X_n$, it follows from Lemma~\ref{lem:aoc:smss} that $S - \bigcup_{n=0}^\infty X_n \ss S - X_m$ so that clearly $\abs{S - \bigcup_{n=0}^\infty X_n} \leq \abs{S - X_m} \leq \al_0$.
+    Thus in all cases we have that either $\abs{\bigcup_{n=0}^\infty X_n} \leq \al_0$ or $\abs{S - \bigcup_{n=0}^\infty X_n} \leq \al_0$ so that $\bigcup_{n=0}^\infty X_n \in \fs$.
+
+    Lastly we show that $\bigcap_{n=0}^\infty X_n \in \fs$ as well.
+    If it is the case $\abs{S - X_n} \leq \al_0$ for all natural $n$, then clearly we have that $\bigcup_{n=0}^\infty (S - X_n) \leq \al_0$, again by Theorem~8.1.7.
+    It also follows from Exercise~2.3.11 that $S - \bigcap_{n=0}^\infty X_n = \bigcup_{n=0}^\infty (S - X_n)$ so that we have $\abs{S - \bigcap_{n=0}^\infty X_n} = \abs{\bigcup_{n=0}^\infty (S - X_n)} \leq \al_0$.
+    Now, on the other hand, if there is a natural $m$ such that $\abs{S - X_m} \not\leq \al_0$, then it has to be that $\abs{X_m} \leq \al_0$ since $X_m \in \fs$.
+    Since clearly $\bigcap_{n=0}^\infty X_n \ss X_m$, we then have $\abs{\bigcap_{n=0}^\infty X_n} \leq \abs{X_m} \leq \al_0$.
+    Hence in either case we have that $\abs{\bigcap_{n=0}^\infty X_n} \leq \al_0$ or $\abs{S - \bigcap_{n=0}^\infty X_n} \leq \al_0$ so that $\bigcap_{n=0}^\infty X_n \in \fs$ by definition.
+
+    We have therefore shown parts (a), (b), and (c) so that $\fs$ is a $\s$-algebra as desired.
+  }
+}
+
+\def\fc{\mathfrak{C}}
+\def\ft{\mathfrak{T}}
+\exercise{5}{
+  Let $\fc$ be any collection of subsets of $S$.
+  Let $\fs = \bigcap \braces{\ft \where \fc \ss \ft \text{ and $\ft$ is a $\s$-algebra of subsets of $S$}}$.
+  Prove that $\fs$ is a $\s$-algebra (it is called the \emph{$\s$-algebra generated} by $\fc$).
+}
+\sol{
+  \qproof{
+    First, let $T = \braces{\ft \where \fc \ss \ft \text{ and $\ft$ is a $\s$-algebra of subsets of $S$}}$ so that $\fs = \bigcap T$.
+    Then we must show that $\fs$ meets the definition of a $\s$-algebra:
+    \defsa
+
+    Regarding (a), consider any $\ft \in T$.
+    Since $\ft$ is then a $\s$-algebra it follows that both $\es \in \ft$ and $S \in \ft$ by (a).
+    Then, since $\ft \in T$ was arbitrary, it follows that both $\es$ and $S$ are in $\bigcap T = \fs$.
+
+    For (b) suppose that $X \in \fs = \bigcap T$ so that $X \in \ft$ for all $\ft \in T$.
+    So consider any such $\ft \in T$ so that clearly $X \in \ft$.
+    Then, since $\ft$ is then a $\s$-algebra, it follows that $S - X \in \ft$ by (b).
+    Since $\ft \in T$ was arbitrary, we have that $S - X \in \bigcap T = \fs$.
+
+    Lastly, for part (c) of the definition, suppose that $X_n \in \fs = \bigcap T$ for all $n \in \nats$.
+    Let $\ft$ be any element of $T$ so that $X_n \in \ft$ for all natural $n$.
+    Since $\ft$ is a $\s$-algebra, it then follows from (c) that both $\bigcup_{n=0}^\infty X_n$ and $\bigcap_{n=0}^\infty X_n$ are in $\ft$.
+    Since $\ft \in T$ was arbitrary we have that $\bigcup_{n=0}^\infty X_n$ and $\bigcap_{n=0}^\infty X_n$ are in $\bigcap T = \fs$.
+
+    Hence we have shown all three parts of the definition so that $\fs$ is indeed a $\s$-algebra.
+  }
+}
+
+\def\defsam{
+  \begin{enumerate}
+  \item[\ilab{i}] $\mu(\es) = 0$, $\mu(S) > 0$.
+  \item[\ilab{ii}] If $\braces{X_n}_{n=0}^\infty$ is a collection of mutually disjoint sets from $\fs$, then
+    \gath{
+      \mu\parens{\bigcup_{n=0}^\infty X_n} = \sum_{n=0}^\infty \mu(X_n) \,.
+    }
+  \end{enumerate}
+}
+\exercise{6}{
+  Fix $a \in S$ and define $\mu$ on $\pset{S}$ by: $\mu(A) = 1$ if $a \in A$, $\mu(A) = 0$ if $a \notin A$.
+  Show that $\mu$ is a $\s$-additive measure on $S$.
+}
+\sol{
+  \qproof{
+    Let $\fs = \pset{S}$, which we know is the largest $\s$-algebra of subsets of $S$.
+    We must show that $\mu$ as defined above satisfies the properties of $\s$-additive measure on $S$:
+    \defsam
+
+    To show \ilab{i}, we clearly have that $a \notin \es$ so that by definition $\mu(\es) = 0$.
+    Also, clearly $a \in S$ so that $\mu(S) = 1 > 0$.
+
+    Regarding \ilab{ii}, suppose that $\braces{X_n}_{n=0}^\infty$ is a collection of mutually disjoint sets in $\fs = \pset{S}$.
+
+    Case: $a \in \bigcup_{n=0}^\infty X_n$.
+    Then by definition $\mu\parens{\bigcup_{n=0}^\infty X_n} = 1$.
+    There is also an $n \in \nats$ such that $a \in X_n$, and since the sets $\braces{X_k}_{k=0}^\infty$ are mutually disjoint, it follows that $a \notin X_m$ for any natural $m \neq n$ (since otherwise $X_n$ and $X_m$ would not be disjoint).
+    Thus we have $\mu(X_n) = 1$ while $\mu(X_m) = 0$ for all natural $m \neq n$.
+    Hence
+    \gath{
+      \sum_{k=0}^\infty \mu(X_k) = \sum_{k \in \nats} \mu(X_k) = \sum_{k=0}^{n-1} \mu(X_k) + \mu(X_n) + \sum_{k=n+1}^\infty \mu(X_k)
+      = \sum_{k=0}^{n-1} 0 + 1 + \sum_{k=n+1}^\infty 0 = 1 \,.
+    }
+    Thus clearly $\mu\parens{\bigcup_{n=0}^\infty X_n} = \sum_{n=0}^\infty \mu(X_n) = 1$.
+
+    Case: $a \notin \bigcup_{n=0}^\infty X_n$.
+    Then $\mu\parens{\bigcup_{n=0}^\infty X_n} = 0$ by definition.
+    It also follows that $a \notin X_n$ for every natural $X_n$ so that $\mu(X_n) = 0$.
+    Hence clearly
+    \gath{
+      \mu\parens{\bigcup_{n=0}^\infty X_n} = 0 = \sum_{n=0}^\infty 0 = \sum_{n=0}^\infty \mu(X_n) \,.
+    }
+
+    Thus \ilab{ii} is shown in both cases so that $\mu$ is indeed a $\s$-additive measure on $S$ since we also showed \ilab{i}.
+  }
+}
+
+\exercise{7}{
+  For $A \ss S$ let $\mu(A) = 0$ if $A = \es$, $\mu(A) = \infty$ otherwise.
+  Show that $\mu$ is a $\s$-additive measure on $S$.
+}
+\sol{
+  \qproof{
+    Let $\fs = \pset{S}$, which we know is the largest $\s$-algebra of subsets of $S$.
+    We must show that $\mu$ as defined above satisfies the properties of $\s$-additive measure on $S$:
+    \defsam
+
+    For \ilab{i} we clearly have $\mu(\es) = 0$ by definition and $\mu(S) = \infty >0$ since $S$ is nonempty, which follows from the fact that $\pset{S}$ is a $\s$-algebra of subsets of $S$.
+
+    Regarding \ilab{ii}, suppose that $\braces{X_n}_{n=0}^\infty$ is a collection of disjoint sets in $\fs = \pset{S}$.
+
+    Case: $\bigcup_{n=0}^\infty X_n = \es$.
+    Then by definition $\mu\parens{\bigcup_{n=0}^\infty X_n} = 0$, and it also has to be that $X_n = \es$ for all $n \in \nats$ so that $\mu(X_n) = 0$.
+    Therefore
+    \gath{
+      \sum_{n=0}^\infty \mu(X_n) = \sum_{n=0}^\infty 0 = 0 = \mu\parens{\bigcup_{n=0}^\infty X_n} \,.
+    }
+
+    Case: $\bigcup_{n=0}^\infty X_n \neq \es$.
+    Then by definition $\mu\parens{\bigcup_{n=0}^\infty X_n} = \infty$.
+    It also follows that $X_n \neq \es$ for at least one $n \in \nats$ so that $\mu(X_n) = \infty$.
+    We then have
+    \ali{
+      \sum_{k=0}^\infty \mu(X_k) &= \sum_{k=0}^{n-1} \mu(X_k) + \mu(X_n) + \sum_{k=n+1}^\infty \mu(X_k)
+      = \sum_{k=0}^{n-1} \mu(X_k) + \infty + \sum_{k=n+1}^\infty \mu(X_k) \\
+      &= \infty = \mu\parens{\bigcup_{n=0}^\infty X_n}
+    }
+    since each $\mu(X_m) \in \braces{0, \infty}$ for all natural $m \neq n$.
+
+    Thus \ilab{ii} is shown in both cases so that $\mu$ is indeed a $\s$-additive measure on $S$ as desired.
+  }
+}
+
+\def\unxn{\bigcup_{n=0}^\infty X_n}
+\exercise{8}{
+  For $A \ss S$ let $\mu(A) = \abs{A}$ if $A$ is finite, $\mu(A) = \infty$ if $A$ is infinite.
+  $\mu$ is a $\s$-additive measure on $S$; it is called the \emph{counting measure} on $S$.
+}
+\sol{
+  \qproof{
+    Let $\fs = \pset{S}$, which we know is the largest $\s$-algebra of subsets of $S$.
+    We must show that $\mu$ as defined above satisfies the properties of $\s$-additive measure on $S$:
+    \defsam
+
+    For \ilab{i} we have that $\mu(\es) = \abs{\es} = 0$ since $\es$ is finite.
+    If $S$ is finite then $\mu(S) = \abs{S} > 0$ since $S$ is nonempty.
+    If $S$ is infinite then $\mu(S) = \infty > 0$ as well so that in either case $\mu(S) > 0$ as desired.
+
+    To show \ilab{ii} suppose that $\braces{X_n}_{n=0}^\infty$ is a collection of disjoint sets in $\fs = \pset{S}$.
+
+    Case: There is an $m \in \nats$ where $X_m$ is infinite.
+    Then obviously $\mu(X_m) = \infty$ by definition.
+    We also clearly have that $\unxn$ is infinite since $X_m \ss \unxn$, and hence $\mu(\unxn) = \infty$.
+    Then
+    \gath{
+      \sum_{n=0}^\infty \mu(X_n) = \sum_{n=0}^{m-1} \mu(X_n) + \mu(X_m) + \sum_{n=m+1}^\infty \mu(X_n)
+      = \sum_{n=0}^{m-1} \mu(X_n) + \infty + \sum_{n=m+1}^\infty \mu(X_n) = \infty
+    }
+    since $\mu(X_n) \in \nats \cup \braces{\infty}$ for every $n \neq m$.
+    Therefore $\mu(\unxn) = \sum_{n=0}^\infty \mu(X_n) = \infty$ as desired.
+
+    Case: $X_n$ is finite for every $n \in \nats$.
+    Clearly then $\mu(X_n) = \abs{X_n}$ for every natural $n$.
+    First, if there is a natural $N$ such that $X_n = \es$ for all $n > N$, then clearly $\unxn = \bigcup_{n=0}^N X_n$, i.e. the union is finite.
+    It then follows that $\bigcup_{n=0}^N X_n$ is finite by Theorem~4.2.7 so that $\mu\parens{\bigcup_{n=0}^N X_n} = \abs{\bigcup_{n=0}^N X_n}$.
+    Then, since the sets $\braces{X_n}_{n=0}^N$ are mutually disjoint, we have
+    \gath{
+      \mu\parens{\unxn} = \mu\parens{\bigcup_{n=0}^N X_n} = \abs{\bigcup_{n=0}^N X_n}
+      = \sum_{n=0}^N \abs{X_n} = \sum_{n=0}^N \mu(X_n) = \sum_{n=0}^\infty \mu(X_n)
+    }
+    by the definition of cardinal addition, noting that clearly the last step follows from the fact that $\mu(X_n) = \abs{\es} = 0$ for all $n > N$.
+
+    On the other hand, if there is no such $N$, then it follows that, for every $N \in \nats$, there is a natural $n > N$ such that $X_n \neq \es$.
+    At this point we need two facts from real analysis, supposing that $\angles{a_n}_{n=0}^\infty$ is a real sequence:
+    \begin{enumerate}
+    \item By definition, the sequence converges to a real $a$ if, for every real $\e > 0$, there is an $N \in \nats$ such that $\abs{a_n - a} < \e$ for every natural $n \geq N$.
+    \item If the infinite series $\sum_{n=0}^\infty a_n$ converges (to a finite value) then the sequence itself must converge to zero.
+    \end{enumerate}
+    We shall show that $\sum_{n=0}^\infty \mu(X_n)$ diverges by showing that the sequence $\angles{\mu(X_n)}_{n=0}^\infty$ does \emph{not} converge to zero (i.e. the contrapositive of 2).
+    So let $\e = 1/2$, noting that clearly $\e = 1/2 > 0$.
+    Then consider any natural $N$ so that there is a natural $n > N$ such that $X_n \neq \es$.
+    It then follows that, since $X_n$ is finite but nonempty, $\abs{\mu(X_n) - 0} = \abs{\mu(X_n)} = \abs{\abs{X_n}} = \abs{X_n} \geq 1 \geq 1/2 = \e$.
+    Therefore we have shown
+    \gath{
+      \exists \e > 0 \forall N \in \nats \exists n \geq N \parens{\abs{\mu(X_n) - 0} \geq \e} \\
+      \lnot \forall \e > 0 \exists N \in \nats \forall n \geq N \parens{\abs{\mu(X_n) - 0} < \e} \,,
+    }
+    which shows by definition that $\angles{\mu(X_n)}_{n=0}^\infty$ does not converge to zero.
+    Hence $\sum_{n=0}^\infty \mu(X_n)$ diverges so that by convention $\sum_{n=0}^\infty \mu(X_n) = \infty$.
+
+    Lastly, we show that $\unxn$ must be infinite.
+    Suppose to the contrary that $\unxn$ is finite.
+    We then construct a function $f : \unxn \to \nats$ as follows: for each $x \in \unxn$ there is a unique $m \in \nats$ where $x \in X_m$.
+    Clearly such an $m$ exists since $x \in \unxn$, and it is unique because the sets $\braces{X_n}_{n=0}^\infty$ are mutually disjoint (if it was not unique then there would be distinct $n$ and $m$ where $x \in X_n$ and $x \in X_m$ so that $X_n \cap X_m \neq \es$).
+    We then simply set $f(x) = m$.
+
+    It then follows from Theorem~4.2.5 that $\ran(f)$ is finite since $\dom(f) = \unxn$ is.
+    Since $\ran(f)$ is then a finite set of natural numbers, it has greatest natural number $N$.
+    But we know that there is an $m > N$ such that $X_m \neq \es$ so that there is an $x \in X_m$.
+    It then follows that clearly $x \in \unxn$ and that $f(x) = m$.
+    However, then $m$ would be in $\ran(f)$ so that $m \leq N$ since $N$ is the greatest element of $\ran(f)$.
+    But we already know that $m > N$, which is a contradiction.
+    So it has to be that $\unxn$ is in fact infinite as desired.
+
+    We therefore have $\mu\parens{\unxn} = \infty = \sum_{n=0}^\infty \mu(X_n)$ and hence ii) has been shown in every case and sub-case so that $\mu$ is indeed a $\s$-additive measure on $S$ by definition.
+  }
+}

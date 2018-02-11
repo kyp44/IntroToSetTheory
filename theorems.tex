@@ -3,16 +3,14 @@
 
 \begin{document}
 
+% Import all our custom macros
+\input{macros}
+
 \title{
-  Introduction to Set Theory \\
-  Third Edition, Revised and Expanded \\
-  by Hrbacek and Jech \\
+  \booktitle \\
   \ \\
   Theorems Document
 }
-
-% Import all our custom macros
-\input{macros}
 
 % Question label format
 \newcommand\setqf[1]{\qformat{\hspace{0.5cm} \textbf{Theorem \thesubsection.\thequestion #1} \hfill \vrule depth 1em width 0pt}}
@@ -934,13 +932,13 @@
     It therefore must be that $X + r$ and $X + q$ are indeed disjoint.
 
     Now suppose for the moment that $\mu(X) = 0$.
-    It then follows from property (iii) that $\mu(X + q) = \mu(X) = 0$ for any rational $q$.
+    It then follows from property iii) that $\mu(X + q) = \mu(X) = 0$ for any rational $q$.
     Then, since we showed that $R = \reals$, we have that
     \gath{
       \mu(\reals) = \mu(R) = \mu\parens{\bigcup \braces{X + r \where r \in \rats}} = \sum_{r \in \rats} \mu(X + r) = \sum_{r \in \rats} 0 = 0
     }
-    by property (ii), noting that this applies because $\rats$ is countable.
-    This contradicts property (i), according to which $\mu(\reals) = \infty$.
+    by property ii), noting that this applies because $\rats$ is countable.
+    This contradicts property i), according to which $\mu(\reals) = \infty$.
     So it must be that $\mu(X) > 0$.
 
     Suppose next that $\mu(X \cap [a, b]) = 0$ for every closed interval $[a,b]$.
@@ -955,8 +953,8 @@
     \gath{
       \mu(X) = \mu\parens{\bigcup_{n \in \ints} (X \cap A_n)} = \sum_{n \in \ints} (X + A_n) = \sum_{n \in \ints} 0 = 0
     }
-    by property (ii) since $\ints$ is countable.
-    As before, this contradicts property (i) so that it has to be that there is a closed interval $[a,b]$ such that $\mu(X \cap [a,b]) > 0$.
+    by property ii) since $\ints$ is countable.
+    As before, this contradicts property i) so that it has to be that there is a closed interval $[a,b]$ such that $\mu(X \cap [a,b]) > 0$.
 
     Let $Y = X \cap [a,b]$ and $P = \rats \cap [0,1]$.
     Next we show that the sets $\braces{Y + q}_{q \in P}$ are mutually disjoint.
@@ -970,7 +968,7 @@
     \gath{
       \mu\parens{\bigcup_{q \in P} (Y + p)} = \sum_{q \in P} \mu(Y + p) = \sum_{q \in P} \mu(Y)
     }
-    by properties (ii) and (iii), noting that clearly $P = \rats \cap [0,1]$ is countably infinite.
+    by properties ii) and iii), noting that clearly $P = \rats \cap [0,1]$ is countably infinite.
     Since $\mu(Y) > 0$ this is an infinite sum of a positive constant so that the result diverges and is thus $\infty$.
 
     Now consider any $z \in \bigcup_{q \in P} (Y + p)$ so that there is a $q \in P$ such that $z \in Y + q$.
@@ -984,7 +982,7 @@
     \gath{
       \infty = \mu\parens{\bigcup_{q \in P} (Y + p)} \leq \mu([a,b+1]) = b+1-a
     }
-    by properties (v) and (0).
+    by properties v) and 0).
     This clearly a contradiction though since $b+1-a$ is finite.
     Thus our initial assumption that there exists such a function $\mu$ must be incorrect.
   }
