@@ -1,0 +1,103 @@
+\subsection{Infinite Sums and Products of Cardinal Numbers}
+
+\newcommand\unaj[1]{\bigcup_{j \in J_{#1}} A_j}
+\exercise{1}{
+  If $J_i$ ($i \in I$) are mutually disjoint sets and  $J = \bigcup_{i \in I} J_i$, and if $\k_j$ ($j \in J$) are cardinals, then
+  \gath{
+    \sum_{i \in I} \parens{ \sum_{j \in J_i} \k_j } = \sum_{j \in J} \k_j
+  }
+  (\emph{associativity} of $\sum$)
+}
+\sol{
+  \qproof{
+  Suppose that $\angles{A_j \where j \in J}$ are mutually disjoint sets where $\abs{A_j} = \k_j$ for every $j \in J$.
+  Then, by definition, we have that
+  \begin{gather}
+    \sum_{j \in J} \k_j = \abs{\unaj{}} \,. \label{eqn:infsp:sumkjall}
+  \end{gather}
+  Now let $S = \braces{J_i \where i \in I}$, from which it is trivial to show that $\bigcup S = J$.
+  It follows from Exercise~2.3.10 that
+  \begin{gather}
+    \unaj{} = \bigcup_{a \in \bigcup S} A_a = \bigcup_{C \in S} \parens{\bigcup_{a \in C} A_a}
+    = \bigcup_{i \in I} \parens{\unaj{i}} \,. \label{eqn:infsp:dun}
+  \end{gather}
+  We claim that the sets $\angles{\unaj{i} \where i \in I}$ are mutually disjoint.
+  So consider any $i_1$ and $i_2$ in $I$ where $i_1 \neq i_2$, and suppose that $\unaj{i_1}$ and $\unaj{i_2}$ are \emph{not} disjoint so that there is an $x$ where $x \in \unaj{i_1}$ and $x \in \unaj{i_2}$.
+  Then there is a $j_1 \in J_{i_1}$ where $x \in A_{j_1}$ and a $j_2 \in J_{i_2}$ where $x \in A_{j_2}$.
+  Now, since $\angles{J_i \where i \in I}$ are mutually disjoint and $i_1 \neq i_2$, it follows that $J_{i_1}$ and $J_{i_2}$ are disjoint.
+  Therefore it has to be that $j_1 \neq j_2$ (since $j_1 \in J_{i_1}$ and $j_2 \in J_{i_2}$).
+  But then $A_{j_1}$ and $A_{j_2}$ are not disjoint (since $x$ is in both) despite the fact that $j_1 \neq j_2$, which contradicts the fact that $\angles{A_j \where j \in J}$ are mutually disjoint.
+  So it must be that in that $\unaj{i_1}$ and $\unaj{i_2}$ are disjoint, which proves the result since $i_1$ and $i_2$ were arbitrary.
+
+  Since $\angles{\unaj{i} \where i \in I}$ have been shown to be mutually dijoint, it follows by definition that
+  \begin{gather}
+    \sum_{i \in I} \abs{\unaj{i}} = \abs{\bigcup_{i \in I} \parens{\unaj{i}}} \,. \label{eqn:infsp:sumunaj}
+  \end{gather}
+  Lastly, we also clearly have that $\angles{A_j \where j \in J_i}$ are mutually disjoint for any $i \in I$ (since $\angles{A_j \where j \in J}$ are mutually disjoint) so that
+  \begin{gather}
+    \sum_{j \in J_i} \k_j = \abs{\unaj{i}} \,. \label{eqn:infsp:sumkj}
+  \end{gather}
+
+  Putting this all together, we have
+  \ali{
+    \sum_{j \in J} \k_j &= \abs{\unaj{}} & \text{(by \eqref{eqn:infsp:sumkjall})} \\
+    &= \abs{\bigcup_{i \in I} \parens{\unaj{i}}} & \text{(by \eqref{eqn:infsp:dun})} \\
+    &= \sum_{i \in I} \abs{\unaj{i}} & \text{(by \eqref{eqn:infsp:sumunaj})} \\
+    &= \sum_{i \in I} \parens{\sum_{j \in J_i} \k_j} & \text{(by \eqref{eqn:infsp:sumkj})}
+  }
+  as desired.
+  }
+}
+
+\exercise{2}{
+  If $\k_i \leq \l_i$ for all $i \in I$ then $\sum_{i \in I} \k_i \leq \sum_{i \in I} \l_i$.
+}
+\sol{
+  \def\un{\bigcup_{i \in I}}
+  \qproof{
+    Suppose that $\angles{A_i \where i \in I}$ are mutually disjoint sets such that $\abs{A_i} = \k_i$ for all $i \in I$.
+    Similarly, suppose that $\angles{B_i \where i \in I}$ are mutually disjoint sets such that $\abs{B_i} = \l_i$ for all $i \in I$.
+    It then follows by defintion that
+    \ali{
+      \sum_{i \in I} \k_i &= \abs{\un A_i} &
+      \sum_{i \in I} \l_i &= \abs{\un B_i} \,.
+    }
+    Now, we have $\abs{A_i} = \k_i \leq \l_i = \abs{B_i}$ so that there is an injective function $f_i : A_i \to B_i$ for all $i \in I$.
+    With the help of the Axiom of Choice, we can choose one of these functions for each $i \in I$ and form the system of functions $\braces{f_i}_{i \in I}$.
+
+    We claim that $\braces{f_i}_{i \in I}$ is a compatible system of functions.
+    To see this, consider any $i_1$ and $i_2$ in $I$.
+    If $i_1 = i_2$ then consider any $x \in \dom(f_{i_1}) \cap \dom(f_{i_2}) = A_{i_1} \cap A_{i_2} = A_{i_1} \cap A_{i_1} = A_{i_1}$.
+    Then clearly $f_{i_1}(x) = f_{i_2}(x)$ since $i_1 = i_2$ and $f_{i_1} = f_{i_2}$ is a function.
+    On the other hand, if $i_1 \neq i_2$, then we have that $\dom(f_{i_1}) \cap \dom(f_{i_2}) = A_{i_1} \cap A_{i_2} = \es$ since $\angles{A_i \where i \in I}$ are mutually disjoint and $i_1 \neq i_2$.
+    Hence it is vacuously true that $f_{i_1}(x) = f_{i_2}(x)$ for all $x \in \dom(f_{i_1}) \cap \dom(f_{i_2})$ since there is no such $x$.
+    Since $i_1$ and $i_2$ were arbitrary, this shows that $\braces{f_i}_{i \in I}$ is a compatible system (see Definition 2.3.10).
+    It then follows from Theorem~2.3.12 that $f = \un f_i$ is a function with domain $\un \dom(f_i) = \un A_i$.
+
+    Though perhaps it may seem obvious, we show formally that $f(x) = f_i(x)$ for any $x \in A_i$ (for any $i \in I$).
+    So consider any such $i \in I$ and $x \in A_i$.
+    Then $(x, f(x)) \in f = \un f_i$ so that there is a $j \in I$ where $(x, f(x)) \in f_j$.
+    Suppose for a moment that $j \neq i$ so that $x \in \dom(f_j) = A_j$.
+    Since $x \in A_i$ and $x \in A_j$ but $i \neq j$, this contradicts the fact that $\angles{A_i \where i \in I}$ are mutually disjoint.
+    Hence it must be that $j = i$ so that $(x, f(x)) \in f_j = f_i$.
+    From this of course it follows that $f_i(x) = f(x)$ as desired.
+    
+    We also claim that $f(x) \in \un B_i$ for any $x \in \un A_i$ so that $\un B_i$ can be the codomain of $f$.
+    This is easy to show: consider any $x \in \un A_i$ so that there is an $i \in I$ where $x \in A_i$.
+    It then follows that $f(x) = f_i(x) \in B_i$ since $f_i$ is a function from $A_i$ to $B_i$.
+    Therefore we clearly have $f(x) \in \un B_i$.
+    This shows the result since $x$ was arbitrary.
+
+    We also claim that $f$ is injective.
+    So consider any $x_1$ and $x_2$ in $\un A_i$ where $x_1 \neq x_2$.
+    Then there are $i_1$ and $i_2$ such that $x_1 \in A_{i_1}$ and $x_2 \in A_{i_2}$.
+    If $i_1 = i_2$ then $f(x_1) = f_{i_1}(x_1) \neq f_{i_1}(x_2) = f_{i_2}(x_2) = f(x_2)$ since $f_{i_1} = f_{i_2}$ is injective.
+    If $i_1 \neq i_2$ then $f(x_1) = f_{i_1}(x_1) \in B_{i_1}$ whereas $f(x_2) = f_{i_2}(x_2) \in B_{i_2}$.
+    Since $\braces{B_i \where i \in I}$ are mutually disjoint and $i_1 \neq i_2$ it follows that $f(x_1) \neq f(x_2)$.
+    Therefore $f$ is an injective function from $\un A_i$ to $\un B_i$ so that
+    \gath{
+      \sum_{i \in I} \k_i = \abs{\un A_i} \leq \abs{\un B_i} = \sum_{i \in I} \l_i
+    }
+    as desired.
+  }
+}
