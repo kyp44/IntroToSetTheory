@@ -51,6 +51,7 @@ def process_file(fpath, ofile, headers=False, shared=None) :
         # Whether or not we are in a statement or comment block
         ins = False
         inc = False
+        mdef = 0
 
         # Go through each line in the file
         for line in ifile :
@@ -79,9 +80,15 @@ def process_file(fpath, ofile, headers=False, shared=None) :
                 iarg = get_arg(sl, "input")
                 targ = get_arg(sl, "theorem")
                 scarg = get_arg(sl, "setcounter")
-                if sl.find(r"\def") == 0 :
+                if (sl.find(r"\def") == 0 and sl.find("{") >= 0) or mdef > 0 :
                     # Include any macro definitions
                     print(sl, file=ofile)
+                    if sl[-1] == "{" :
+                        # Multiline def
+                        mdef += 1
+                    elif sl[0] == "}" :
+                        # End multiline def
+                        mdef -= 1
                 elif sl.find(r"\iffalse") == 0:
                     # Start of comment block
                     inc = True
