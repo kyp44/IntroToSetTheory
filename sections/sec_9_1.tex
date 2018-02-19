@@ -172,3 +172,41 @@
     Thus in all cases and sub-cases the result has been shown.
   }
 }
+
+\def\sumi{\sum_{i \in I}}
+\def\uni{\bigcup_{i \in I}}
+\exercise{5}{
+  Prove the \emph{distributive} law:
+  \gath{
+    \l \cdot \parens{\sumi \k_i} = \sumi \parens{\l \cdot \k_i} \,.
+  }
+}
+\sol{
+  \qproof{
+    Suppose that $\angles{A_i \where i \in I}$ are mutually disjoint sets such that $\abs{A_i} = \k_i$ for all $i \in I$.
+    Then by definition $\sumi \k_i = \abs{\uni A_i}$.
+    Also suppose that $B$ is a set such that $\abs{B} = \l$.
+
+    We claim first that $B \times \uni A_i = \uni \parens{B \times A_i}$.
+    This is easy to show since, for any $x$ and $y$, we have
+    \ali{
+      (x, y) \in B \times \uni A_i &\bic x \in B \land \exists i \in I (y \in A_i) \\
+      &\bic \exists i \in I (x \in B \land y \in A_i) \\
+      &\bic \exists i \in I ((x,y) \in B \times A_i) \\
+      &\bic (x,y) \in \uni (B \times A_i) \,.
+    }
+    We then have
+    \ali{
+      \l \cdot \sumi \k_i &= \l \cdot \abs{\uni A_i} & \text{(by the definition of cardinal summation)} \\
+      &= \abs{B \times \uni A_i} & \text{(by the definition of cardinal multiplication)} \\
+      &= \abs{\uni \parens{B \times A_i}} & \text{(by what was just shown above)} \\
+      &= \sumi \abs{B \times A_i} & \text{(by the definition of cardinal summation)} \\
+      &= \sumi \parens{\l \cdot \k_i} & \text{(by the definition of cardinal multiplication)}
+    }
+    as desired.
+    We note that $\abs{\uni (B \times A_i)} = \sumi \abs{B \times A_i}$ works since the sets $\angles{B \times A_i \where i \in I}$ are mutually disjoint.
+    This is easy to see by considering $i$ and $j$ in $I$ where $i \neq j$.
+    Then, if $(x,y) \in B \times A_i$ and also $(x,y) \in B \times A_j$, it follows that $y \in A_i$ and $y \in A_j$, which cannot be since $i \neq j$ and $\angles{A_i \where i \in I}$ are mutually disjoint.
+    Hence it must be that there is no such ordered pair $(x,y)$ so that $B \times A_i$ and $B \times A_j$ are disjoint, which proves the result since $i$ and $j$ were arbitrary.
+  }
+}

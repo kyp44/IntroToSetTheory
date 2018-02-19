@@ -988,5 +988,68 @@
   }
 }
 
+\section{Arithmetic of Cardinal Numbers}
+\subsection{Infinite Sums and Products of Cardinal Numbers}
+
+\theorem{3}{
+  Let $\l$ be an infinite cardinal, let $\k_\a$ ($\a < \l$) be nonzero cardinal numbers, and let $\k = \sup\braces{\k_\a \where \a < \l}$.
+  Then
+  \gath{
+    \sum_{\a < \l} \k_\a = \l \cdot \k = \l \cdot \sup\braces{\k_\a \where \a < \l} \,.
+  }
+}
+\sol{
+  \begin{lem}\label{lem:infsp:ocleq}
+    If $\k$ and $\l$ are cardinal numbers and $\k \leq \l$ in the ordinal ordering (since $\k$ and $\l$ are also ordinals), then also $\k \leq \l$ in the cardinal sense of ordering.
+  \end{lem}
+  \qproof{
+    A proof of this is quite simple.
+    Since $\k \leq \l$ in the ordinal sense, either $\k < \l$ (in the ordinal sense) or $\k = \l$.
+    In the former case $\k \in \l$ by the definition of ordinal ordering so that also $\k \ss \l$ since $\l$ is transitive (since it is an ordinal).
+    In the case where $\k = \l$ then obviously $\k \ss \l$.
+    Hence in either case $\k \ss \l$ so that $\k \leq \l$ in the cardinal sense since clearly the identity function on $\k$ is an injection from $\k$ to $\l$.
+  }
+
+  \def\suma{\sum_{\a < \l}}
+  \mainthrm
+  \qproof{
+    First note that $\sup\braces{\k_\a \where \a < \l}$ refers to the ordinal supremum, which is well defined since every cardinal is also an ordinal (though the converse is not true).
+    In particular the cardinal numbers are exactly the initial ordinals.
+    In order to avoid ambiguity in what follows we shall set $\b = \k$ and $\b_\a = \k_\a$ for each $\a < \l$.
+    When referring to ordinal ordering we use $\b$ and $\b_\a$ and, when referring to cardinal ordering, use $\k$ and $\k_\a$.
+
+    We show first that $\k = \b = \sup\braces{\b_\a \where \a < \l}$ is actually a cardinal number, for which it suffices to show that $\b$ is an initial ordinal.
+    So consider any ordinal $\g < \b$.
+    Then it follows that $\g$ is not an upper bound of $\braces{\b_\a}_{\a < \l}$ so that there is an $\a < \l$ where $\g < \b_\a$.
+    Since $\b_\a$ is an initial ordinal, we have $\abs{\g} < \abs{\b_\a} = \k_\a$.
+    We also have that $\b_\a \leq \b$ (since $\b$ is an upper bound of $\braces{\b_\a}_{\a < \l}$) so that $\k_\a = \abs{\b_\a} \leq \abs{\b}$ by Lemma~\ref{lem:infsp:ocleq}
+    Therefore we have $\abs{\g} < \k_\a \leq \abs{\b}$, which shows that $\b$ is an initial ordinal since $\g < \b$ was arbitrary.
+    Hence $\k$ is indeed a cardinal number.
+
+    Proceeding to prove the actual result, clearly we have that $\k_\a \leq \k$ for each $\a < \l$ by Lemma~\ref{lem:infsp:ocleq} since $\b_\a \leq \b$ (since $\b$ is an upper bound of $\braces{\b_\a}_{\a < \l}$).
+    It then follows from Exercises~9.1.2 and 9.1.4 that
+    \gath{
+      \suma \k_\a \leq \suma \k = \l \cdot \k \,.
+    }
+    Since each $\k_\a$ is nonzero, we have that $1 \leq \k_\a$ for all $\a < \l$ and hence
+    \gath{
+      \l = \l \cdot 1 = \suma 1 \leq \suma \k_\a \,,
+    }
+    where we again have used Exercises~9.1.2 and 9.1.4.
+
+    Now, let $\b_s = \k_s = \suma \k_\a$.
+    Also let $\angles{A_\a \where \a < \l}$ be mutually disjoint sets where $\abs{A_\a} = \k_\a$ for each $\a < \l$, then it follows by definition that $\k_s = \suma \k_\a = \abs{\bigcup_{\a < \l} A_\a}$.
+    Then, for any $\g < \l$, we clearly have $A_\g \ss \bigcup_{\a < \l} A_\a$ so that $\k_\g = \abs{A_\g} \leq \abs{\bigcup_{\a < \l} A_\a} = \k_s$.
+    It then follows from Lemma~\ref{lem:aleph:initle} that $\b_\g \leq \b_s$.
+    Since $\g$ was arbitrary this shows that $\k_s$ is an upper bound of $\braces{\b_\a}_{\a < \l}$.
+    Then, since $\b$ is the \emph{least} upper bound of $\braces{\b_\a}_{\a < \l}$, we have that $\b \leq \b_s$ so that $\k \leq \k_s$ by Lemma~\ref{lem:infsp:ocleq}.
+    
+
+    Since $\l$ is infinite, it follows from Corollary~7.2.2 that $\l \cdot \k$ is the greater of $\l$ and $\k$.
+    It then follows that $\l \cdot \k \leq \suma \k_\a$ since we have shown that both $\l \leq \suma \k_\a$ and $\k \leq \k_s = \suma \k_\a$.
+    Hence, since we have shown that both $\suma \k_\a \leq \l \cdot \k$ and $\l \cdot \k \leq \suma \k_\a$, it follows from the Cantor-Bernstein Theorem that $\suma \k_\a = \l \cdot \k$ as desired.
+  }
+}
+
 \end{questions}
 \end{document}
