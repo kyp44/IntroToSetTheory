@@ -124,52 +124,44 @@
   Prove that $\k + \k + \cdots \text{($\l$ times)} = \l \cdot \k$.
 }
 \sol{
-  \begin{lem}\label{lem:infsp:fsumal}
-    $\sum_{k < n} \al_\a = \al_\a$ for any natural $n \geq 1$ and any ordinal $\a$.
-  \end{lem}
+  \def\una{\bigcup_{\a < \l}}
   \qproof{
-    Consider any ordinal $\a$.
-    We then show the result for any natural $n$ by induction on $n$.
-    For $n=1$ we clearly have $\sum_{k < n} \al_\a = \sum_{k < 1} \al_\a = \al_\a$ since the sum has only one term (the $k=0$ term).
-    Now assume that $\sum_{k < n} \al_\a = \al_\a$.
-    Then clearly
+    First, if $\l = 0$ then, by convention, we have
     \gath{
-      \sum_{k < n+1} \al_\a = \sum_{k < n} \al_\a + \al_\a = \al_\a + \al_\a = \al_\a
+      \k + \k + \cdots \text{($\l$ times)} = \k + \k + \cdots \text{(0 times)} = 0 = 0 \cdot \k = \l \cdot \k
     }
-    by the induction hypothesis and Corollary~7.2.3.
-    This completes the induction.
-  }
-
-  \mainprob
-  \qproof{
-    Case: $\l$ is finite.
-    Then clearly $\l$ is a natural number.
-    If $\k$ is also finite then the result follows from normal natural number arithmetic since this coincides with finite cardinal arithmetic.
-
-    If $\k$ is infinite then $\k = \al_\a$ for some ordinal $\a$.
-    Then, if $\l = 0$, by convention we have
+    regardless of what $\k$ is.
+    So assume in what follows that $\l > 0$ so $\l \geq 1$.
+    
+    For each $\a < \l$, define $A_\a = \braces{(\a, \b) \where \b \in \k}$.
+    Consider then any $\a_1 < \l$ and $\a_2 < \l$ where $\a_1 \neq \a_2$.
+    Suppose that both $(x,y) \in A_{\a_1}$ and $(x,y) \in A_{\a_2}$.
+    It then follows that $x = \a_1$ and $x = \a_2$ so that $x = \a_1 = \a_2$, which contradicts our assumption that $\a_1 \neq \a_2$!
+    So it must be that no such $(x,y)$ exists so that $A_{\a_1}$ and $A_{\a_2}$ are disjoint.
+    Since $\a_1$ and $\a_2$ were arbitrary, this shows that $\angles{A_\a \where \a < \l}$ are mutually disjoint sets.
+    We also clearly have that $\abs{A_\a} = \k$ for each $\a < \l$.
+    It therefore follows from the definition of cardinal summation that
     \gath{
-      \k + \k + \cdots \text{($\l$ times)} = \sum_{n < \l} \k = \sum_{n < 0} \k = 0 = 0 \cdot \al_\a = \l \cdot \k \,.
-    }
-    If $\l > 0$ then $\l \geq 1$ so that it follows from Lemma~\ref{lem:infsp:fsumal} that
-    \gath{
-      \k + \k + \cdots \text{($\l$ times)} = \sum_{n < \l} \k = \sum_{n < \l} \al_\a = \al_\a = \l \cdot \al_\a = \l \cdot \k \,,
-    }
-    where we have also used Corollary~7.2.2 since $\l$ is a natural number.
-
-    Case: $\l$ is infinite.
-    If $\k = 0$ then clearly $\angles{\es \where \a < \l}$ is a set of mutually disjoint sets (since $\es \cap \es = \es$) where $\abs{\es} = 0 = \k$.
-    Since obviously $\bigcup_{\a < \l} \es = \es$, we have by definition that 
-    \gath{
-      \k + \k + \cdots \text{($\l$ times)} = \sum_{\a < \l} \k = \abs{\bigcup_{\a < \l} \es} = \abs{\es} = 0 = \l \cdot 0 = \l \cdot \k \,.
-    }
-    If $\k$ is nonzero then we can apply Theorem~9.1.3, according to which
-    \gath{
-      \k + \k + \cdots \text{($\l$ times)} = \sum_{\a < \l} \k = \l \cdot \sup\braces{\k \where \a < \l}
-      = \l \cdot \sup\braces{\k} = \l \cdot \k \,.
+      \k + \k + \cdots \text{($\l$ times)} = \sum_{\a < \l} \k = \abs{\una A_\a} \,.
     }
 
-    Thus in all cases and sub-cases the result has been shown.
+    Now we show that $\una A_\a = \l \times \k$.
+    First consider any $(x,y) \in \una$ so that there is an $\a < \l$ where $(x,y) \in A_\a$.
+    We then have that $x = \a$ and $y \in \k$.
+    Therefore $x = \a < \l$ so that $x \in \l$ by the definition of $<$ for ordinal numbers.
+    Hence $x \in \l$ and $y \in \k$ so that $(x,y) \in \l \times \k$, which shows that $\una A_\a \ss \l \times \k$ since $(x,y)$ was arbitrary.
+    Now consider any $(x,y) \in \l \times \k$ so that $x \in \l$ and $y \in \k$.
+    Let $\a = x \in \l$ so that $\a < \l$.
+    Hence $(x,y) = (\a, y)$ for $\a < \l$ and $y \in \k$, which shows that $(x,y) \in A_\a$ so that clearly $(x,y) \in \una A_\a$.
+    This shows that $\l \times \k \ss \una A_\a$ since again $(x,y)$ was arbitrary.
+    Thus $\una A_\a = \l \times \k$ as desired.
+
+    Putting all this together, we have
+    \gath{
+      \k + \k + \cdots \text{($\l$ times)} = \sum_{\a < \l} \k = \abs{\una A_\a} = \abs{\l \times \k} 
+      = \l \cdot \k
+    }
+    by the definition of cardinal multiplication since obviously $\abs{\l} = \l$ and $\abs{\k} = \k$.
   }
 }
 
@@ -208,5 +200,150 @@
     This is easy to see by considering $i$ and $j$ in $I$ where $i \neq j$.
     Then, if $(x,y) \in B \times A_i$ and also $(x,y) \in B \times A_j$, it follows that $y \in A_i$ and $y \in A_j$, which cannot be since $i \neq j$ and $\angles{A_i \where i \in I}$ are mutually disjoint.
     Hence it must be that there is no such ordered pair $(x,y)$ so that $B \times A_i$ and $B \times A_j$ are disjoint, which proves the result since $i$ and $j$ were arbitrary.
+  }
+}
+
+\def\sumi{\sum_{i \in I}}
+\def\uni{\bigcup_{i \in I}}
+\exercise{6}{
+  $\abs{\uni A_i} \leq \sumi \abs{A_i}$.
+}
+\sol{
+  \qproof{
+    First let $\angles{B_i \where i \in I}$ be mutually disjoint sets where $\abs{B_i} = \abs{A_i}$ for every $i \in I$.
+    It then follows that $\sumi \abs{A_i} = \abs{\uni B_i}$ by definition.
+    For each $i \in I$ we can choose a bijection $f_i$ from $A_i$ to $B_i$ by the Axiom of Choice since $\abs{A_i} = \abs{B_i}$.
+    We construct a function $f : \uni A_i \to \uni B_i$.
+    For each $x \in \uni A_i$ we have that $x \in A_j$ for some $j \in I$.
+    We choose one such $j$, which requires the Axiom of Choice, and set $f(x) = f_j(x)$.
+    Clearly $f(x) = f_j(x) \in B_j$ so that then $f(x) \in \uni B_i$, which shows that $\uni B_i$ can be the codomain for $f$.
+
+    We show that $f$ is injective.
+    So consider any $x_1$ and $x_2$ in $\uni A_i$ where $x_1 \neq x_2$.
+    Then we have chosen unique $j_1$ and $j_2$ where $f(x_1) = f_{j_1}(x)$ and $f(x_2) = f_{j_2}(x)$.
+    If $j_1 = j_2$ then we have $f(x_1) = f_{j_1}(x_1) \neq f_{j_1}(x_2) = f_{j_2}(x_2) = f(x_2)$ since $f_{j_1} = f_{j_2}$ is injective and $x_1 \neq x_2$.
+    If $j_1 \neq j_2$ then $f(x_1) = f_{j_1}(x_1) \in B_{j_1}$ whereas $f(x_2) = f_{j_2}(x_2) \in B_{j_2}$.
+    Since $j_1 \neq j_2$ and $\angles{B_i \where i \in I}$ are mutually disjoint, it follows that $f(x_1) \neq f(x_2)$.
+    Since this is true in both cases and $x_1$ and $x_2$ were arbitrary, it shows that $f$ is injective.
+
+    Since $f$ is injective we, we have
+    \gath{
+      \abs{\uni A_i} \leq \abs{\uni B_i} = \sumi \abs{A_i}
+    }
+    as desired.
+  }
+}
+
+\def\uni{\bigcup_{i \in I}}
+\def\prodi{\prod_{i \in I}}
+\def\prodj{\prod_{j \in J}}
+\exercise{7}{
+  If $J_i$ ($i \in I)$ are mutually disjoint sets and $J = \uni J_i$, and if $\k_j$ ($j \in J$) are cardinals, then
+  \gath{
+    \prodi \parens{\prod_{j \in J_i} \k_j} = \prod_{j \in J} \k_j
+  }
+  (\emph{associativity} of $\prod$).
+}
+\sol{
+  \qproof{
+    Suppose that $\angles{A_j \where j \in J}$ are sets where $\abs{A_j} = \k_j$ for each $j \in J$.
+    It then follows that
+    \begin{gather}
+      \prodj \k_j = \abs{\prodj A_j} \,. \label{eqn:infsp:prodJ}
+    \end{gather}
+    Now, for any $i \in I$, set $B_i = \prod_{j \in J_i} A_j$ so that
+    \begin{gather}
+      \prod_{j \in J_i} \k_j = \abs{\prod_{j \in J_i} A_j} = \abs{B_i} \label{eqn:infsp:prodJi}
+    \end{gather}
+    by definition.
+
+    Now we construct a bijection $f$ from $\prodj A_j$ to $\prodi B_i$.
+    So consider any $a \in \prodj A_j$ so that $a = \angles{a_j \where j \in J}$ where $a_j \in A_j$ for every $j \in J$.
+    Now, for each $i \in I$, set $a_i' = \angles{a_j \where j \in J_i}$, noting that clearly $j \in J = \bigcup_{i \in I} J_i$ for each $j \in J_i$ so that $a_j$ has been defined as in the range of $a$.
+    We then have that $a_j \in A_j$ for $j \in J_i$ so that $a_i' \in \prod_{j \in J_i} A_j = B_i$.
+    So set $b = \angles{a_i' \where i \in I}$ so that clearly $b \in \prodi B_i$, and set $f(a) = b$.
+    Since $f(a) = b \in \prodi B_i$ for any $a \in \prodj A_j$, we have that $f$ is indeed a function from $\prodj A_j$ into $\prodi B_i$.
+
+    We claim first that $f$ is injective.
+    So consider any $\a$ and $\b$ in $\prodj A_j$ where $\a \neq \b$.
+    It then follows that $\a = \angles{\a_j \where j \in J}$ and $\b = \angles{\b_j \where j \in J}$ where both $\a_j$ and $\b_j$ are in $A_j$ for any $j \in J$.
+    Now, since $\a \neq \b$ it follows that there is a $j_0 \in J$ such that $\a_{j_0} \neq \b_{j_0}$.
+    Also there is an $i_0 \in I$ such that $j_0 \in J_{i_0}$ since $j_0 \in J = \bigcup_{i \in I} J_i$.
+    Now let $\a_i' = \angles{\a_j \where j \in J_i}$ and $\b_i' = \angles{\b_j \where j \in J_i}$ for $i \in I$.
+    We then have that $\a_{i_0}' \neq \b_{i_0}'$ since $j_0 \in J_{i_0}$ and $\a_{j_0} \neq \b_{j_0}$.
+    Clearly then $f(\a) = \angles{\a_i' \where i \in I}$ and $f(\b) = \angles{\b_i' \where i \in I}$ by definition so that $f(\a) \neq f(\b)$ since $i_0 \in I$ and $\a_{i_0}' \neq \b_{i_0}'$.
+    This shows that $f$ is injective since $\a$ and $\b$ were arbitrary.
+
+    We also claim that $f$ is onto.
+    Consider any $b \in \prodi B_i$ so that $b = \angles{b_i \where i \in I}$ where each $b_i \in B_i$ for $i \in I$.
+    So, for any $i \in I$, we have that $b_i \in B_i = \prod_{j \in J_i} A_j$ so that $b_i = \angles{a_{ij} \where j \in J_i}$ where each $a_{ij} \in A_j$ for $j \in J_i$.
+    Now we construct a function $g$.
+    So consider any $j_0 \in J$ so that there is a unique $i_0 \in I$ such that $j_0 \in J_{i_0}$, where the uniqueness clearly follows from the fact that $\angles{J_i \where i \in I}$ are mutually disjoint.
+    Then simply set $g(j_0) = a_{i_0 j_0} \in A_{j_0}$ so that clearly $g \in \prodj A_j$.
+    If we then set $a_i' = \angles{g(j) \where j \in J_i} = \angles{a_{ij} \where j \in J_i} = b_i$ for all $i \in I$, then $f(g) = \angles{a_i' \where i \in I} = \angles{b_i \where i \in I} = b$.
+    Since $b$ was arbitrary this shows that $f$ is indeed onto.
+
+    It may not have been obvious, but the uniqueness of $i_0 \in I$ for any $j_0 \in J$ (such that $j_0 \in J_{i_0}$) when constructing $g$ was critical for this proof.
+    To see why, suppose that for some $j_0 \in J$ there are distinct $i_1$ and $i_2$ in $I$ such that $j_0 \in J_{i_1}$ and $j_0 \in J_{i_2}$.
+    Then it could very well be that $a_{i_1 j_0} \neq a_{i_2 j_0}$ (though they would both be in $A_{j_0}$) and we would have to choose one to be $g(j_0)$.
+    Supposing we choose $g(j_0) = a_{i_1 j_0}$ then we would have $a_{i_2}' = \angles{g(j) \where j \in J_{i_2}}$ so that $a_{i_2}' \neq b_{i_2}$ since $a_{i_2}'(j_0) = g(j_0) = a_{i_1 j_0} \neq a_{i_2 j_0} = b_{i_2}(j_0)$.
+    If we had set $g(j_0) = a_{i_2 j_0}$ instead then, by the same argument, we would have $a_{i_1}' \neq b_{i_1}$.
+    Clearly in either case this would break the proof since we would have $f(g) = \angles{a_i' \where i \in I} \neq \angles{b_i \where i \in I} = b$.
+    In fact, in this case there would be no $g \in \prodj A_j$ such that $f(g) = b$ since we cannot choose a value for $g(j_0)$ for which $a_i' = b_i$ for all $i \in I$.
+    
+    Returning from our digression, we have shown that $f$ is a bijection from $\prodj A_j$ to $\prodi B_i$ so that
+    \begin{gather}
+      \abs{\prodj A_j} = \abs{\prodi B_i} \,. \label{eqn:infsp:pJpI}
+    \end{gather}
+    Therefore we have
+    \ali{
+      \prodi \parens{\prod_{j \in J_i} \k_j} &= \prodi \abs{B_i} & \text{(by \eqref{eqn:infsp:prodJi})} \\
+      &= \abs{\prodi B_i} & \text{(by the definition of cardinal product)} \\
+      &= \abs{\prodj A_j} & \text{(by \eqref{eqn:infsp:pJpI})} \\
+      &= \prodj \k_j & \text{(by \eqref{eqn:infsp:prodJ})}
+    }
+    as desired.
+  }
+}
+
+\def\prodi{\prod_{i \in I}}
+\exercise{8}{
+  If $\k_i \leq \l_i$ for all $i \in I$, then
+  \gath{
+    \prodi \k_i \leq \prodi \l_i \,.
+  }
+}
+\sol{
+  \qproof{
+    Suppose sets $\angles{A_i \where i \in I}$ and $\angles{B_i \where i \in I}$ where $\abs{A_i} = \k_i$ and $\abs{B_i} = \l_i$ for all $i \in I$.
+    Then, by the definition of the cardinal product, we have that
+    \ali{
+      \prodi \k_i &= \abs{\prodi A_i} &
+      \prodi \l_i &= \abs{\prodi B_i} \,.
+    }
+    Now, for any $i \in I$, we also have
+    \gath{
+      \abs{A_i} = \k_i \leq \l_i = \abs{B_i}
+    }
+    so that we can choose an injective $f_i : A_i \to B_i$ (with the help of the Axiom of Choice).
+
+    We then construct a function $f$ from $\prodi A_i$ to $\prodi B_i$.
+    So for any $a \in \prodi A_i$ we have that $a = \angles{a_i \where i \in I}$ where each $a_i \in A_i$.
+    Thus $a_i \in A_i = \dom(f_i)$ for each $i \in I$ so that $f_i(a_i) \in B_i$.
+    We then define $f(a) = \angles{f_i(a_i) \where i \in I}$ so that clearly $f(a) \in \prodi B_i$ and hence $f$ is a function into $\prodi B_i$.
+
+    We claim that $f$ as defined above is injective.
+    To this end, consider any $\a$ and $\b$ in $\prodi A_i$ where $\a \neq \b$.
+    It then follows that $\a = \angles{\a_i \where i \in I}$ and $\b = \angles{\b_i \where i \in I}$ where both $\a_i$ and $\b_i$ are elements of $A_i$ for each $i \in I$.
+    Since $\a \neq \b$ we must have that there is an $i_0 \in I$ such that $\a_{i_0} \neq \b_{i_0}$.
+    It then follows that $f_{i_0}(\a_{i_0}) \neq f_{i_0}(\b_{i_0})$ since $f_{i_0}$ is injective.
+    Therefore clearly $f(\a) = \angles{f_i(\a_i) \where i \in I} \neq \angles{f_i(\b_i) \where i \in I} = f(\b)$.
+    This shows that $f$ is injective since $\a$ and $\b$ were arbitrary.
+
+    Finally, since $f$ is an injective function from $\prodi A_i$ to $\prodi B_i$, we have that
+    \gath{
+      \prodi \k_i = \abs{\prodi A_i} \leq \abs{\prodi B_i} = \prodi \l_i
+    }
+    as desired.
   }
 }
