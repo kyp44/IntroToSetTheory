@@ -347,3 +347,67 @@
     as desired.
   }
 }
+
+\def\prodn{\prod_{n=0}^\infty}
+\exercise{9}{
+  Find some cardinals $\k_n$, $\l_n$ ($n \in \nats$) such that $\k_n < \l_n$ for all $n$, but $\prodn \k_n = \prodn \l_n$.
+}
+\sol{
+  Let $\k_n = 2$ and $\l_n = \al_0$ for all $n \in \nats$.
+  We claims that these satisfy the requirements.
+  \qproof{
+    Clearly $\k_n = 2 < \al_0 = \l_n$ for every $n \in \nats$.
+    However, by Exercise~9.1.10 and Theorem~5.2.2c, we then have
+    \gath{
+      \prodn \k_n = \prodn 2 = \prod_{n < \al_0} 2 = 2^{\al_0}
+      = \al_0^{\al_0} = \prod_{n < \al_0} \al_0 = \prodn \al_0 = \prodn \l_n
+    }
+  }
+}
+
+\def\proda{\prod_{\a < \l}}
+\exercise{10}{
+  Prove that $\k \cdot \k \cdot \cdots \text{($\l$ times)} = \k^\l$.
+}
+\sol{
+  \qproof{
+    First, we clearly have that
+    \gath{
+      \k \cdot \k \cdot \cdots \text{($\l$ times)} = \proda \k \,.
+    }
+    So let $A$ and $B$ be sets such that $\abs{A} = \k$ and $\abs{B} = \l$.
+    Then by definition we have $\proda \k = \abs{\proda A}$ and $\k^\l = \abs{A^B}$.
+    We also have that there is a bijective $g: \l \to B$ since $\abs{\l} = \l = \abs{B}$.
+    We construct a bijection $f$ from $A^B$ to $\proda A$.
+    So, for any $h \in A^B$ let $f(h) = h \circ g$.
+    Clearly, since $g: \l \to B$ and $h: B \to A$, it follows that $f(h) : \l \to A$ and hence clearly $f(h) \in \proda A$ (since $f(h)(\a) \in A$ for each $\a < \l$) so that $f$ is a function from $A^B$ to $\proda A$.
+
+    We also claim that $f$ is injective.
+    So consider any $h_1$ and $ h_2$ in $A^B$ where $h_1 \neq h_2$.
+    It then follows that  there must be a $b \in B$ where $h_1(b) \neq h_2(b)$.
+    Then let $\a = \inv{g}(b)$, noting that $\inv{g}$ is a bijective function from $B$ to $\l$ since $g$ is bijective.
+    We then have that
+    \ali{
+      f(h_1)(\a) &= (h_1 \circ g)(\a) = h_1(g(\a)) = h_1(g(\inv{g}(b))) = h_1(b) \\
+      &\neq h_2(b) = h_2(g(\inv{g}(b))) = h_2(g(\a)) = (h_2 \circ g)(\a) = f(h_2)(\a)
+    }
+    so that $f(h_1) \neq f(h_2)$.
+    Since $h_1$ and $h_2$ were arbitrary this shows that $f$ is indeed injective.
+
+    We also claim that $f$ is onto.
+    So consider any $h' \in \proda A$ so that $h'$ is a function from $\l$ to $A$ (since $h'(\a) \in A$ for each $\a < \l$).
+    Then let $h = h' \circ \inv{g}$ so that clearly $h$ is a function from $B$ to $A$ since $\inv{g} : B \to \l$ and $h' : \l \to A$.
+    We then have that
+    \gath{
+      f(h) = h \circ g = (h' \circ \inv{g}) \circ g = h' \circ (\inv{g} \circ g) = h' \circ i_\l = h'
+    }
+    where $i_\l$ is the identity function from $\l$ to $\l$.
+    Since $h'$ was arbitrary, this shows that $f$ is indeed onto.
+
+    Thus, since we have shown that $f$ is a bijection, it follows that
+    \gath{
+      \k \cdot \k \cdot \cdots \text{($\l$ times)} = \proda \k = \abs{\proda A} = \abs{A^B} = \k^\l
+    }
+    as desired.
+  }
+}
