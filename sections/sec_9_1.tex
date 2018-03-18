@@ -411,3 +411,110 @@
     as desired.
   }
 }
+
+\def\prodi{\prod_{i \in I}}
+\exercise{11}{
+  Prove the formula $\parens{\prodi \k_i}^\l = \prodi \parens{\k_i}^\l$.
+  [Hint: Generalize the proof of the special case $\parens{\k \cdot \l}^\mu = \k^\mu \cdot \l^\mu$, given in Theorem~1.7 of Chapter~5.]
+
+  Note that the hint differs from that in the book; see the Errata List.
+}
+\sol{
+  \qproof{
+    First suppose that $\angles{A_i \where i \in I}$ are sets where $\abs{A_i} = \k_i$ for all $i \in I$.
+    Also suppose that $B$ is a set such that $\abs{B} = \l$.
+    It then follows that
+    \gath{
+      \parens{\prodi \k_i}^\l = \abs{\prodi A_i}^\l = \abs{\parens{\prodi A_i}^B}
+    }
+    and
+    \gath{
+      \prodi \k_i^\l = \prodi \abs{A_i^B} = \abs{\prodi A_i^B} \,.
+    }
+    We then aim to construct a bijection $F$ from $\prodi A_i^B$ to $\parens{\prodi A_i}^B$, which clearly would show the result since we would have by the above that
+    \gath{
+      \parens{\prodi \k_i}^\l = \abs{\parens{\prodi A_i}^B} = \abs{\prodi A_i^B} = \prodi \k_i^\l  \,.
+    }
+
+    So suppose that $f \in \prodi A_i^B$ so that $f_i = f(i) \in A_i^B$ for every $i \in I$.
+    Then define a function $g$ such that, for any $b \in B$, $g(b) = \angles{f_i(b) \where i \in I}$.
+    We then have that, for any $i \in I$, $f_i(b) \in A_i$ since $f_i$ is a function from $B$ to $A_i$.
+    Therefore $g(b) \in \prodi A_i$, and hence $g$ is a function from $B$ to $\prodi A_i$ so that $g \in \parens{\prodi A_i}^B$.
+    Naturally then we set $F(f) = g$ so that $F$ is indeed a function from $\prodi A_i^B$ to $\parens{\prodi A_i}^B$.
+
+    To show that $F$ is injective consider any $f$ and $f'$ in $\prodi A_i^B$ where $f \neq f'$.
+    It then follows that there is an $i_0 \in I$ such that $f_{i_0} = f(i_0) \neq f'(i_0) = f_{i_0}'$.
+    Then, since $f_{i_0}$ and $f_{i_0}'$ are both in $A_{i_0}^B$, it follows that they are both functions from $B$ to $A_{i_0}$.
+    Since $f_{i_0} \neq f_{i_0}'$ we have that there is a $b \in B$ such that $f_{i_0}(b) \neq f_{i_0}'(b)$.
+    We then have that $g(b) = \angles{f_i(b) \where i \in I} \neq \angles{f_i'(b) \where i \in I} = g'(b)$ since $f_{i_0}(b) \neq f_{i_0}'(b)$ and $i_0 \in I$.
+    Therefore $F(f) = g \neq g' = F(f')$, which shows that $F$ is injective since $f$ and $f'$ were arbitrary.
+
+    To show that $F$ is also onto, consider any $g' \in \parens{\prodi A_i}^B$ so that $g'$ is a function from $B$ to $\prodi A_i$.
+    Therefore, for any $b \in B$, $g'(b)$ is a function on $I$ such that $g'(b)(i) \in A_i$ for each $i \in I$.
+    Clearly we have $g'(b) = \angles{g'(b)(i) \where i \in I}$.
+    Then, for each $i \in I$, we define a function $f_i$ on $B$ such that $f_i(b) = g'(b)(i)$.
+    Then, since $f_i(b) = g'(b)(i) \in A_i$, clearly each $f_i$ is a function from $B$ to $A_i$.
+    Therefore $f_i \in A_i^B$.
+    We then set $f = \angles{f_i \where i \in I}$ so that clearly $f \in \prodi A_i^B$.
+    Now, we then set $g = F(f)$ so that, by the definition of $F$, $g$ is a function on $B$ such $g(b) = \angles{f_i(b) \where i \in I}$ for any $b \in B$.
+    We then have that $g(b) = \angles{f_i(b) \where i \in I} = \angles{g'(b)(i) \where i \in I} = g'(b)$ by the definition of each $f_i$.
+    Since $b \in B$ was arbitrary, this shows that $F(f) = g = g'$.
+    Thus $F$ is onto since $g'$ was arbitrary.
+
+    We have shown that $F$ is a bijection so that the result follows as described above.
+  }
+}
+
+\def\prodi{\prod_{i \in I}}
+\def\sumi{\sum_{i \in I}}
+\def\uni{\bigcup_{i \in I}}
+\exercise{12}{
+  Prove the formula
+  \gath{
+    \prodi \parens{\k^{\l_i}} = \k^{\sumi \l_i} \,.
+  }
+  [Hint: Generalize the proof of the special case $\k^\l \cdot \k^\mu = \k^{\l + \mu}$ given in Theorem~1.7(a) of Chapter~5.]
+}
+\sol{
+  \qproof{
+    First, suppose that $A$ is a set such that $\abs{A} = \k$, and that $\angles{B_i \where i \in I}$ are mutually disjoint sets such that $\abs{B_i} = \l_i$ for each $i \in I$.
+    Then, by the definitions of cardinal products and sums, we have
+    \gath{
+      \prodi \parens{\k^{\l_i}} = \prodi \abs{A^{B_i}} = \abs{\prodi A^{B_i}}
+    }
+    and
+    \gath{
+      \k^{\sumi \l_i} = \k^{\abs{\uni B_i}} = \abs{A^{\uni B_i}} \,.
+    }
+    We now construct a bijective function F from $\prodi A^{B_i}$ to $A^{\uni B_i}$, which clearly shows the desired result since we then have
+    \gath{
+      \prodi \parens{\k^{\l_i}} = \abs{\prodi A^{B_i}} = \abs{A^{\uni B_i}} = \k^{\sumi \l_i} \,.
+    }
+
+    So, for any $f = \angles{f_i \where i \in I} \in \prodi A^{B_i}$, we have that each $f_i$ is a function from $B_i$ to $A$.
+    It then follows from the fact that $\angles{B_i \where i \in I}$ are mutually disjoint that $\braces{f_i}_{i \in I}$ is a compatible system of functions.
+    We then that $g = \uni f_i$ is a function from $\uni \dom(f_i) = \uni B_i$ to $A$ by Theorem~2.3.12.
+    Hence $g \in A^{\uni B_i}$, and we of course set $F(f) = g$ so that $F$ is a function from $\prodi A^{B_i}$ to $A^{\uni B_i}$.
+
+    To show that $F$ is injective, consider any $f$ and $f'$ in $\prodi A^{B_i}$ where $f \neq f'$.
+    Let $g = F(f)$ and $g' = F(f')$.
+    It then follows that there is an $i_0 \in I$ such that $f_{i_0} \neq f_{i_0}'$.
+    Then, it has to be that there is a $b \in B_{i_0}$ where $f_{i_0}(b) \neq f_{i_0}'(b)$.
+    Clearly also $b \in \uni B_i$ since $i_0 \in I$ so that $b \in \dom(g)$ and $b \in \dom(g')$ (since by the definition of $F$ we have that $g$ and $g'$ are functions with domain $\uni B_i$).
+    Moreover, we have that $g(b) = f_{i_0}(b)$ and $g'(b) = f_{i_0}'(b)$, which again follows from the fact that $\angles{B_i \where i \in I}$ are mutually disjoint or equivalently that $\braces{f_i}_{i \in I}$ is a compatible system.
+    Hence we have $g(b) = f_{i_0}(b) \neq f_{i_0}'(b) = g'(b)$ so that $F(f) = g \neq g' = F(f')$.
+    This shows that $F$ is injective since $f$ and $f'$ were arbitrary.
+
+    To see that $F$ is onto, consider any $g' \in A^{\uni B_i}$.
+    For each $i \in I$, define $f_i = g' \rest B_i$, which is clearly a function from $B_i$ to $A$ so that $f_i \in A^{B_i}$.
+    Then let $f = \angles{f_i \where i \in I}$ so that $F(f) = g = \uni f_i$, and clearly $f \in \prodi A^{B_i} = \dom(F)$.
+    Now consider any $(x,y) \in g = \uni f_i$ so that there is an $i_0 \in I$ where $(x,y) \in f_{i_0} = g' \rest B_{i_0}$.
+    Therefore $(x,y) \in g'$ since obviously $g' \rest B_{i_0} \ss g'$.
+    Consider next any $(x,y) \in g'$ so that $x \in \dom(g') = \uni B_i$ and $y = g'(x)$.
+    Then there is an $i_0 \in I$ where $x \in B_{i_0}$ so that $(x,y) \in g' \rest B_{i_0} = f_{i_0}$.
+    Hence clearly $(x,y) \in \uni f_i = g$ since $i_0 \in I$.
+    Therefore $g \ss g'$ and $g' \ss g$ so that $F(f) = g = g'$, which shows that $F$ is onto since $g'$ was arbitrary.
+
+    We have thus shown that $F$ is a bijection so that the result follows.
+  }
+}
