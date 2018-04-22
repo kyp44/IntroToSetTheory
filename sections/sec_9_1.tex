@@ -1,5 +1,11 @@
 \subsection{Infinite Sums and Products of Cardinal Numbers}
 
+% Macros useful for this section
+\def\uni{\bigcup_{i \in I}}
+\def\sumi{\sum_{i \in I}}
+\def\prodi{\prod_{i \in I}}
+\def\prodj{\prod_{j \in J}}
+
 \newcommand\unaj[1]{\bigcup_{j \in J_{#1}} A_j}
 \exercise{1}{
   If $J_i$ ($i \in I$) are mutually disjoint sets and  $J = \bigcup_{i \in I} J_i$, and if $\k_j$ ($j \in J$) are cardinals, then
@@ -165,8 +171,6 @@
   }
 }
 
-\def\sumi{\sum_{i \in I}}
-\def\uni{\bigcup_{i \in I}}
 \exercise{5}{
   Prove the \emph{distributive} law:
   \gath{
@@ -203,8 +207,6 @@
   }
 }
 
-\def\sumi{\sum_{i \in I}}
-\def\uni{\bigcup_{i \in I}}
 \exercise{6}{
   $\abs{\uni A_i} \leq \sumi \abs{A_i}$.
 }
@@ -234,9 +236,7 @@
   }
 }
 
-\def\uni{\bigcup_{i \in I}}
-\def\prodi{\prod_{i \in I}}
-\def\prodj{\prod_{j \in J}}
+
 \exercise{7}{
   If $J_i$ ($i \in I)$ are mutually disjoint sets and $J = \uni J_i$, and if $\k_j$ ($j \in J$) are cardinals, then
   \gath{
@@ -306,7 +306,6 @@
   }
 }
 
-\def\prodi{\prod_{i \in I}}
 \exercise{8}{
   If $\k_i \leq \l_i$ for all $i \in I$, then
   \gath{
@@ -412,7 +411,6 @@
   }
 }
 
-\def\prodi{\prod_{i \in I}}
 \exercise{11}{
   Prove the formula $\parens{\prodi \k_i}^\l = \prodi \parens{\k_i}^\l$.
   [Hint: Generalize the proof of the special case $\parens{\k \cdot \l}^\mu = \k^\mu \cdot \l^\mu$, given in Theorem~1.7 of Chapter~5.]
@@ -465,9 +463,6 @@
   }
 }
 
-\def\prodi{\prod_{i \in I}}
-\def\sumi{\sum_{i \in I}}
-\def\uni{\bigcup_{i \in I}}
 \exercise{12}{
   Prove the formula
   \gath{
@@ -517,4 +512,202 @@
 
     We have thus shown that $F$ is a bijection so that the result follows.
   }
+}
+
+\def\uni{\bigcup_{i \in I}}
+\def\prodi{\prod_{i \in I}}
+\exercise{13}{
+  Prove that if $1 < \k_i \leq \l_i$ for all $i \in I$, then $\sumi \k_i \leq \prodi \l_i$.
+}
+\sol{
+  \begin{lem}\label{lem:cardar:csucc}
+    If $A$ is a set and $n < \abs{A}$ for a finite cardinal (i.e. natural number) $n$, then $n+1 \leq \abs{A}$.
+  \end{lem}
+  \qproof{
+    Since $n < \abs{A}$, it follows that there is an injective function $f: n \to A$ but that $f$ cannot be onto.
+    Thus there is an $a \in A$ such that $a \notin \ran(f)$.
+    Noting that $n+1 = n \cup \braces{n}$, for any $k \in n+1$, define a mapping $g$ by
+    \gath{
+      g(k) = \begin{cases}
+        f(k) & k \in n \\
+        a & k = n \,.
+      \end{cases}
+    }
+    Clearly in either of these cases we have that $g(k) \in A$ so that $g$ is in fact a function from $n+1$ into $A$.
+
+    To see that $g$ is injective, consider any $k_1$ and $k_2$ in $n+1$ where $k_1 \neq k_2$.
+    If $k_1 = n$ then $g(k_1) = a$ and it has to be that $k_2 \in n$ since $k_2 \neq k_1 = n$.
+    Hence clearly $g(k_2) = f(k_2) \in \ran(f)$ whereas $g(k_1) = a \notin \ran(f)$ so that $g(k_1) \neq g(k_2)$.
+    If $k_1 \in n$ but $k_2 = n$ then this is analogous the previous case, so assume that also $k_2 \in n$.
+    Here clearly $g(k_1) = f(k_1) \neq f(k_2) = g(k_2)$ since $f$ is injective and $k_1 \neq k_2$.
+    Therefore, in all cases we have that $g(k_1) \neq g(k_2)$, which shows that $g$ is injective since $k_1$ and $k_2$ were arbitrary.
+
+    The existence of the injection $g$ thus shows that that $n+1 \leq \abs{A}$ as desired.
+  }
+  
+  \mainprob
+
+  \qproof{
+    Suppose that $\angles{A_i \where i \in I}$ are mutually disjoint sets where $\abs{A_i} = \k_i$ for every $i \in I$, and that $\angles{B_i \where i \in I}$ are sets where $\abs{B_i} = \l_i$ for each $i \in I$.
+    Since we have $\abs{A_i} = \k_i \leq \l_i = \abs{B_i}$ , we can assume that $A_i \ss B_i$ (for every $i \in I$).
+    We show the result by constructing an injective function that maps $\uni A_i$ into $\prodi B_i$, since we clearly would then have
+    \gath{
+      \sum_{i \in I} \k_i = \abs{\uni A_i} \leq \abs{\prodi B_i} = \prodi \l_i
+    }
+    by the definitions of cardinal sum and product, which is the desired result.
+
+    First, if $I = \es$ then we have that $\sum_{i \in I} \k_i = \abs{\bigcup_{i \in \es} A_i} = \abs{\es} = 0$.
+    The only function with domain $I = \es$ is $\es$ itself so that $\prodi \l_i = \abs{\prod_{i \in \es} B_i} = \abs{\braces{\es}} = 1$.
+    Hence clearly $\sumi \k_i = 0 \leq 1 = \prodi \l_i$ so that the hypothesis is true.
+    So assume in what follows that $I \neq \es$ so that there is an $i_0 \in I$.
+
+    Now, for every $i \in I$, since $1 < \k_i \leq \l_i = \abs{B_i}$, it follows from Lemma~\ref{lem:cardar:csucc} that $2 \leq \abs{B_i}$.
+    Hence, for each $i \in I$ we can choose two distinct elements $\a_i$ and $\b_i$ from $B_i$, though this requires the Axiom of Choice.
+    So, for any $x \in \uni A_i$, there is an $i_x \in I$ such that $x \in A_{i_x}$.
+    Them, for any $i \in I$, set
+    \gath{
+      a_i = \begin{cases}
+        x & i = i_x \\
+        \a_i & i \neq i_x \text{ and } i = i_0 \text{ and } x = \a_{i_x} \\
+        \b_i & i \neq i_x \text{ and } i = i_0 \text{ and } x \neq \a_{i_x} \\
+        \b_i & i \neq i_x \text{ and } i \neq i_0 \text{ and } x = \a_{i_x} \\
+        \a_i & i \neq i_x \text{ and } i \neq i_0 \text{ and } x \neq \a_{i_x}
+      \end{cases}
+    }
+    and let $f(x) = \angles{a_i \where i \in I}$.
+    Clearly, for any such $x$ and $i \in I$, we have $a_i = x \in A_{i_x} = A_i$ if $i = i_x$ so that $a_i \in B_i$ since $A_i \ss B_i$.
+    In the other cases either $a_i = \a_i \in B_i$ or $a_i = \b_i \in B_i$.
+    Therefore $f(x) = \angles{a_i \where i \in I} \in \prodi B_i$ so that $f$ is a function from $\uni A_i$ into $\prodi B_i$.
+
+    We also claim that $f$ is injective.
+    To see this, consider $x$ and $y$ in $\uni A_i$ where $x \neq y$, and let $i_x$ and $i_y$ be those elements of $I$ such that $x \in A_{i_x}$ and $y \in A_{i_y}$.
+    Also let $f(x) = \angles{a_i \where i \in I}$ and $f(y) = \angles{b_i \where i \in I}$.
+
+    The following involves a lot of messy case work, so we shall number the cases for easy reference:
+    \begin{enumerate}
+    \item Case: $i_x = i_y$.
+      Then $a_{i_x} = x \neq y = b_{i_y} = b_{i_x}$.
+    \item Case: $i_x \neq i_y$.
+      \begin{enumerate}
+      \item Case: $i_x \neq i_0$ and $i_y \neq i_0$.
+        \begin{enumerate}
+        \item Case: $a_{i_x} = x = \a_{i_x}$.
+          \begin{enumerate}
+          \item Case: $b_{i_y} = y = \a_{i_y}$.
+            Then, since $i_x \neq i_y$ and $i_x \neq i_0$ and $y = \a_{i_y}$, we have $b_{i_x} = \b_{i_x} \neq \a_{i_x} = a_{i_x}$.
+          \item Case: $b_{i_y} = y \neq \a_{i_y}$.
+            Then, since $i_0 \neq i_x$ and $i_0 = i_0$ and $x = \a_{i_x}$, we have $a_{i_0} = \a_{i_0}$.
+            Also, since $i_0 \neq i_y$ and $i_0 = i_0$ and $y \neq \a_{i_y}$, we have $b_{i_0} = \b_{i_0} \neq \a_{i_0} = a_{i_0}$.
+          \end{enumerate}
+        \item Case: $a_{i_x} = x \neq \a_{i_x}$.
+          \begin{enumerate}
+          \item Case: $b_{i_y} = y = \a_{i_y}$.
+            This is analogous to case 2.a.i.B with $a_{i_x} = x$ and $b_{i_y} = y$ reversed so that again $a_{i_0} \neq b_{i_0}$.
+          \item Case: $b_{i_y} = y \neq \a_{i_y}$.
+            Then, since $i_x \neq i_y$ and $i_x \neq i_0$ and $y \neq \a_{i_y}$, we have $b_{i_x} = \a_{i_x} \neq a_{i_x}$.
+          \end{enumerate}
+        \end{enumerate}
+      \item Case: $i_x \neq i_0$ and $i_y = i_0$.
+        \begin{enumerate}
+        \item Case: $a_{i_x} = x = \a_{i_x}$.
+          \begin{enumerate}
+          \item Case: $b_{i_y} = y = \a_{i_y}$.
+            Since $i_x \neq i_y$ and $i_x \neq i_0$ and $y = \a_{i_y}$, we have $b_{i_x} = \b_{i_x} \neq \a_{i_x} = a_{i_x}$.
+          \item Case: $b_{i_y} = y \neq \a_{i_y}$.
+            Since $i_y \neq i_x$ and $i_y = i_0$ and $x = \a_{i_x}$, we have $a_{i_y} = \a_{i_y} \neq b_{i_y}$.
+          \end{enumerate}
+        \item Case: $a_{i_x} = x \neq \a_{i_x}$.
+          \begin{enumerate}
+          \item Case: $b_{i_y} = y = \a_{i_y}$.
+            Since $i_y \neq i_x$ and $i_y = i_0$ and $x \neq \a_{i_x}$, we have $a_{i_y} = \b_{i_y} \neq \a_{i_y} = b_{i_y}$.
+          \item Case: $b_{i_y} = y \neq \a_{i_y}$.
+            Since $i_x \neq i_y$ and $i_x \neq i_0$ and $y \neq \a_{i_y}$, we have $b_{i_x} = \a_{i_x} \neq a_{i_x}$.
+          \end{enumerate}
+        \end{enumerate}
+      \item Case: $i_x = i_0$ and $i_y \neq i_0$.
+        This is analogous  to the previous case 2.b with the roles of $i_x$ and $i_y$ reversed.
+      \item Case: $i_x = i_0$ and $i_y = i_0$.
+        This is impossible since $i_x \neq i_y$.
+      \end{enumerate}
+    \end{enumerate}
+    Thus, in all cases, there is an $i \in I$ such that $a_i \neq b_i$ so that clearly $f(x) = \angles{a_i \where i \in I} \neq \angles{b_i \where i \in I} = f(y)$.
+    This shows that $f$ is injective since $x$ and $y$ were arbitrary.
+    This completes the proof as described above.
+  }
+}
+
+\def\prodI{\prod_{\a \in I}}
+\def\prodJ{\prod_{\a \in J}}
+\exercise{14}{
+  Evaluate the cardinality of $\prod_{0 < \a < \w_1} \a$.
+  [Answer: $2^{\al_1}$.]
+}
+\sol{
+  \begin{lem} \label{lem:cardar:al2}
+    If $\a$ and $\b$ are ordinals and $\a \leq \b$, then $\al_\a^{\al_\b} = 2^{\al_\b}$.
+  \end{lem}
+  \qproof{
+    First we have that
+    \gath{
+      2^{\al_\b} \leq \al_\a^{\al_\b}
+    }
+    by property (n) after Lemma~5.6.1 since clearly $2 \leq \al_\a$.
+    We also have
+    \ali{
+      \al_\a^{\al_\b} &\leq \parens{2^{\al_\a}}^{\al_\b} & \text{(again by property (n), and Theorems~5.1.8 and 5.1.9)} \\
+      &= 2^{\al_\a \cdot \al_\b} & \text{(by Theorem~5.1.7b)} \\
+      &= 2^{\al_\b} \,. & \text{(by Corollary~7.2.2 since $\a \leq \b$)}
+    }
+    Hence it follows from the \cbthrm{} that $\al_\a^{\al_\b} = 2^{\al_\b}$ as desired.
+  }
+
+  \mainprob
+  
+  We claim that $\abs{\prod_{0 < \a < \w_1} \a} = 2^{\al_1}$.
+  \qproof{
+    First, let $I = \braces{\a \where 0 < \a < \w_1}$ so that clearly $\prod_{0 < \a < \w_1} \a = \prodI \a$.
+    It is trivial to show that the mapping
+    \gath{
+      f(\a) = \begin{cases}
+        \a+1 & 0 \leq \a < \w_0 \\
+        \a & \w_0 \leq \a < \w_1
+      \end{cases}
+    }
+    for $\a \in \w_1$ is a bijection from $\w_1$ to $I$, and hence $\abs{I} = \abs{\w_1} = \al_1$.
+    Also, since $\a < \w_1$ for any $\a \in I$, it follows from Lemma~\ref{lem:aleph:alephadd:alephlt} that $\abs{\a} \leq \al_0$.
+    Therefore, we first have
+    \ali{
+      \abs{\prodI \a} &= \prodI \abs{\a} & \text{(by the definition of the cardinal product)} \\
+      &\leq \prodI \al_0 & \text{(by Exercise~9.1.8 since $\abs{\a} \leq \al_0$ for all $\a \in I$)} \\
+      &= \al_0^{\abs{I}} & \text{(by Exercise~9.1.10)} \\
+      &= \al_0^{\al_1} & \text{(since we have shown that $\abs{I} = \al_1$)} \\
+      &= 2^{\al_1} \,. & \text{(by Lemma~\ref{lem:cardar:al2})}
+    }
+    Now, let $J = \braces{\a \where 1 < \a < \w_1}$.
+    For any $a = \angles{a_2, a_3, \ldots, a_\w, a_{\w+1},\ldots} = \angles{a_\a \where \a \in J} \in \prodJ \a$, it is easy to show that the function that maps this to $b = \angles{0, a_2, a_3, \ldots, a_\w, a_{\w+1}, \ldots} \in \prodI \a$ is bijective so that $\abs{\prodJ \a} = \abs{\prodI \a}$.
+    It should also be clear that $\abs{J} = \abs{I} = \al_1$.
+    Lastly, we clearly have $2 \leq \abs{a}$ for all $a \in J$ since $1 < \a$.
+    We then have
+    \ali{
+      2^{\al_1} &= 2^{\abs{J}} & \text{(since $\abs{J} = \al_1$)} \\
+      &= \prodJ 2 & \text{(by Exercise~9.1.10)} \\
+      &\leq \prodJ \abs{\a} & \text{(by Exercise~9.1.8 since $2 \leq \abs{\a}$ for all $\a \in J$)} \\
+      &= \abs{\prodJ \a} & \text{(by the definition of the cardinal product)} \\
+      &= \abs{\prodI \a} & \text{(by what was shown above)}
+    }
+    It therefore follows from the \cbthrm{} that $\abs{\prod_{0 < \a < \w_1} \a} = \abs{\prodI \a} = 2^{\al_1}$ as desired.
+  }
+}
+
+\exercise{15}{
+  Justify the existence of the function $f$ in the proof of Lemma~9.1.2 in detail by the axioms of set theory.
+}
+\sol{
+  First, for any $i \in I$, we know that $\abs{A_i} = \abs{A_i'}$ so that there exists a bijection from $A_i$ onto $A_i'$.
+  It was shown in Exercise~2.3.9a that the set $A_i'^{A_i}$ exists so that $B_i = \braces{h_i \in A_i'^{A_i} \where \text{$h_i$ is a bijection}}$ exists by the Axiom Schema of Comprehension.
+  Clearly then $B_i \neq \es$ for every $i \in I$.
+  Since $B_i$ is uniquely defined for each $i \in I$, it follows from the Axiom Schemas of Replacement and Comprehension that the set $\braces{B_i \where i \in I}$ exists, which is a system of nonempty sets.
+  It then follows from Exercise~2.3.9b that $\prod_{i \in I} B_i$ exists, and by the Axiom of Choice that there is an $F \in \prod_{i \in I} B_i$, i.e. $F = \angles{f_i \where i \in I}$ in the notation of the proof.
+  Now $F$ is a function on $I$ in which $F(i) = f_i \in B_i$ for every $i \in I$.
+  By an application of the Axiom Schema of Comprehension, $\ran(F) = \braces{f_i \where i \in I}$ exists, and we have that $f = \bigcup \ran(F)$, which exists by the Axiom of Union, noting that then $f = \bigcup_{i \in I} f_i$ as in the proof.
 }

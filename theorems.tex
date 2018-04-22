@@ -1047,7 +1047,91 @@
 
     Since $\l$ is infinite, it follows from Corollary~7.2.2 that $\l \cdot \k$ is the greater of $\l$ and $\k$.
     It then follows that $\l \cdot \k \leq \suma \k_\a$ since we have shown that both $\l \leq \suma \k_\a$ and $\k \leq \k_s = \suma \k_\a$.
-    Hence, since we have shown that both $\suma \k_\a \leq \l \cdot \k$ and $\l \cdot \k \leq \suma \k_\a$, it follows from the Cantor-Bernstein Theorem that $\suma \k_\a = \l \cdot \k$ as desired.
+    Hence, since we have shown that both $\suma \k_\a \leq \l \cdot \k$ and $\l \cdot \k \leq \suma \k_\a$, it follows from the \cbthrm{} that $\suma \k_\a = \l \cdot \k$ as desired.
+  }
+}
+
+\def\prodi{\prod_{i \in I}}
+\def\sumi{\sum_{i \in I}}
+\def\uni{\bigcup_{i \in I}}
+\theorem{7}{
+  (K{\"o}nig's Theorem)
+  If $\k_i$ and $\l_i$ ($i \in I$) are cardinal numbers, and if $\k_i < \l_i$ for all $i \in I$, then
+  \gath{
+    \sumi \k_i < \prodi \l_i \,.
+  }
+}
+\sol{
+  \qproof{
+    First, we show that $\sumi \k_i \leq \prodi \l_i$.
+    So let $\angles{A_i \where i \in I}$ and $\angles{B_i \where i \in I}$ be systems of sets where $\abs{A_i} = \k_i$ and $\abs{B_i} = \l_i$ for all $i \in I$.
+    Also suppose that $\angles{A_i \where i \in I}$ are mutually disjoint.
+    Since, for any $i \in I$, we have that $\abs{A_i} = \k_i < \l_i = \abs{B_i}$, we can clearly assume that $A_i \pss B_i$ (since, if not, then each $A_i$ will still be equipotent to some proper subset of $B_i$).
+    Hence we have
+    \ali{
+      \sumi \k_i &= \abs{\uni A_i} &
+      \prodi \l_i &= \abs{\prodi B_i}
+    }
+    by the definition of the cardinal sum and product.
+    We now construct an injective function $f$ from $\uni A_i$ into $\prodi B_i$, the existence of which then shows that
+    \gath{
+      \sumi \k_i = \abs{\uni A_i} \leq \abs{\prodi B_i} = \prodi \l_i \,.
+    }
+
+    So do this, we first note that $B_i - A_i \neq \es$ (since $A_i \pss B_i$) for all $i \in I$, so that we can choose any $d_i \in B_i - A_i$ for each $i \in I$ (which requires the Axiom of Choice).
+    Now, let $x$ be any element of $\uni A_i$ so that there is a unique $i_x \in I$ (unique because $\angles{A_i \where i \in I}$ are mutually disjoint) such that $x \in A_{i_x}$.
+    We then set $f(x) = \angles{a_i \where i \in I}$ where
+    \gath{
+      a_i = \begin{cases}
+        x & i = i_x \\
+        d_i & i \neq i_x
+      \end{cases}
+    }
+    for any $i \in I$.
+    Clearly, when $i = i_x$, we have $a_i = x \in A_{i_x}$ so that $a_i \in B_{i_x} = B_i$ since $A_{i_x} \pss B_{i_x}$.
+    If $i \neq i_x$ then we have that $a_i = d_i \in B_i - A_i$ so that obviously $a_i \in B_i$ as well.
+    Thus clearly $f(x) = \angles{a_i \where i \in I} \in \prodi B_i$ so that $f$ is a function from $\uni A_i$ to $\prodi B_i$.
+
+    Now consider any $x$ and $y$ in $\uni A_i$ where $x \neq y$, and let $f(x) = \angles{a_i \where i \in I}$ and $f(y) = \angles{b_i \where i \in I}$.
+    If $i_x = i_y$ then we have $a_{i_x} = x \neq y = b_{i_y} = b_{i_x}$.
+    On the other hand, if $i_x \neq i_y$, then $a_{i_x} = x \in A_{i_x}$ while $b_{i_x} = d_{i_x} \in B_{i_x} - A_{i_x}$ so that $b_{i_x} \notin A_{i_x}$.
+    Hence it has to be that $a_{i_x} \neq b_{i_x}$ here to.
+    This, in both cases, we clearly have that $f(x) = \angles{a_i \where i \in I} \neq \angles{b_i \where i \in I} = f(y)$ since $a_{i_x} \neq b_{i_x}$ and $i_x \in I$.
+    This clearly shows that $f$ is injective since $x$ and $y$ were arbitrary, which of course shows that indeed $\sumi \k_i \leq \prodi \l_i$.
+
+    Now let us show that $\sumi \k_i < \prodi \l_i$.
+    To this end, suppose that $\angles{B_i \where i \in I}$ are sets such that $\abs{B_i} = \l_i$ for all $i \in I$.
+    Suppose for the moment that $\sumi \k_i$ and $\prodi \l_i$ are actually equal, and let $\angles{A_i \where i \in I}$ be mutually disjoint sets where $\abs{A_i} = \k_i$ for each $i \in I$.
+    It would then follow that there is a bijection $f$ from $\uni A_i$ to $\prodi B_i$.
+    We then have that $X_i = f[A_i]$ is a subset of $\prodi B_i$ for each $i \in I$.
+    Furthermore, suppose $i$ and $j$ in $I$ where $i \neq j$ and that $b \in X_i \cap X_j$.
+    Since $f$ is a bijection, it follows that $\inv{f}$ is also a bijective function so that $\inv{f}[X_i] = \inv{f}[f[A_i]] = A_i$ and $\inv{f}[X_j] = \inv{f}[f[A_j]] = A_j$.
+    Hence we would have that $\inf{f}(b) \in A_i$ since $b \in X_i$ and $\inv{f}(b) \in A_j$ since $b \in X_j$, but this violates the supposition that $\angles{A_i \where i \in I}$ are mutually disjoint since $i \neq j$.
+    So it must be that $\angles{X_i \where i \in I}$ are also mutually disjoint.
+
+    Since each $X_i$ is a subset of $\prodi B_i$, clearly we have that $\uni X_i \ss \prodi B_i$.
+    Then, for any $b \in \prodi B_i$ we have that $\inv{f}(b) \in \uni A_i$ so that there is an $i_0 \in I$ where $\inv{f}(b) \in A_{i_0}$.
+    Then clearly we have that $b = f(\inv{f}(b)) \in X_{i_0}$ since $X_{i_0} = f[A_{i_0}]$.
+    Hence clearly $b \in \uni X_i$ since $i_0 \in I$.
+    There for $\prodi B_i \ss \uni X_i$ also so that in fact $\uni X_i = \prodi B_i$.
+    Moreover, clearly since $f$ is a bijection, we have that $\abs{X_i} = \abs{f[A_i]} = \abs{A_i} = \k_i$ for all $i \in I$.
+    Therefore we have shown that $\sumi \k_i = \prodi \l_i$ implies that there are mutually disjoint subsets $\angles{X_i \where i \in I}$ of $\prodi B_i$ such that $\abs{X_i} = \k_i$ for all $i \in I$ and $\uni X_i = \prodi B_i$.
+    We show by contradiction that this situation is impossible, from which it follows that $\sumi \k_i \neq \prodi \l_i$ (and therefore the desired result follows since it has already been shown that $\sumi \k_i \leq \prodi \l_i$).
+
+    So suppose that there are such mutually disjoint subsets $\angles{X_i \where i \in I}$ of $\prodi B_i$.
+    For each $i \in I$, we let $A_i = \braces{a_i \where \angles{a_j \where j \in I} \in X_i}$.
+    Then, for any $x \in A_i$, there is an $a \in X_i$ where $x = a(i)$.
+    It then follows that $x \in B_i$ since $a \in X_i \ss \prodi B_i$.
+    Thus $A_i \ss B_i$.
+    We also clearly have $\abs{A_i} \leq \abs{X_i} = \k_i < \l_i = \abs{B_i}$ so that $A_i \pss B_i$.
+    Thus there is a $b_i$ such that $b_i \in B_i$ but $b_i \notin A_i$.
+    So we define $b = \angles{b_i \where i \in I}$ so that clearly $b \in \prodi B_i$.
+    However, for any $j \in I$, we have that $b_j \notin A_j$.
+    If it were the case that $b \in X_j$ then we would have that $b(j) = b_j \in A_j$ by the definition of $A_j$.
+    So it has to be that $b \notin X_j$ since we know that $b_j \notin A_j$.
+    Since $j$ was arbitrary, it follows that $b \notin X_i$ for all $i \in I$, and hence $b \notin \uni X_i$.
+    But, since $b \in \prodi B_i$, this contradicts the fact that $\uni X_i = \prodi B_i$.
+    The result follows from this contradiction as described above.
   }
 }
 
