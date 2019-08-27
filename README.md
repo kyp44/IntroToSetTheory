@@ -10,6 +10,9 @@ I do intend to eventually go back and start typing up my solutions to the earlie
 The `python` directory contains some quick and dirty Python scripts that were used to gain insight while working on some of the exercises.
 These are not really documented at all and so probably will not be of interest to anyone else.
 
+Other Documents
+---------------
+
 When doing exercises it can be useful to see a list of lemmas that have been written as part of the solutions.
 Running the `lemmas.py` Python script will build `lemmas_content.tex` that contains these lemmas.
 You can then build a lemma list document by compiling `lemmas.tex`, which includes `lemmas_content.tex`.
@@ -20,6 +23,9 @@ Many of these more detailed proofs also have their own lemmas, some of which are
 Such lemmas resided in their own `.tex` files in the `shared` directory so they can be included in both documents.
 
 Lastly, I have also been keeping a list of errata in the book, which can be compiled from 'errata.tex'.
+
+Miscellaneous
+-------------
 
 Please submit an issue if you discover any errors in any of the proofs or any typos.
 
