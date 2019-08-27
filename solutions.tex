@@ -6,8 +6,14 @@
 \title{
   \booktitle \\
   \ \\
-  Solutions Manual
+  Solutions Manual \\
+  \ \\
+  \ \\
+  by Dan Whitman
 }
+
+% So pages will break inside long equation environments
+\allowdisplaybreaks
 
 % Lemmas/Corollaries environments
 \newtheorem{lem}{Lemma}[subsubsection]
@@ -16,6 +22,24 @@
 \newtheorem{thrm}[lem]{Theorem}
 
 \begin{document}
+
+% Setup section (chapter)  format
+\titleformat{\section} % command
+[hang] % shape
+{\bfseries \Large} % format
+{Chapter \thesection} % label
+{12pt} % sep
+{} % before-code
+{} % after-code
+
+% Setup subsection format
+\titleformat{\subsection} % command
+[hang] % shape
+{\bfseries \large} % format
+{\S \thesubsection} % label
+{12pt} % sep
+{} % before-code
+{} % after-code
 
 % Question label format
 \newcommand\setqf[1]{\qformat{\hspace{0.5cm} \textbf{Exercise \thesubsection.\thequestion #1} \hfill \vrule depth 1em width 0pt}}
@@ -26,8 +50,12 @@
   \maketitle
 \end{titlingpage}
 
+\tableofcontents
+\newpage
+
 % Apparently need this to get page number on the first real page
 \cfoot{Page \thepage}
+\setcounter{page}{1}
 
 % Start content
 \begin{questions}
