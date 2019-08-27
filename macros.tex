@@ -111,7 +111,12 @@
     \theorem{#1}{#3}
     \setqf{}
 }
-\newcommand\sol[1]{\begin{solution} #1 \end{solution}}
+\newcommand\sol[1]{
+  \begin{solution}
+
+    #1
+  \end{solution}
+}
 
 % Main problem and theorem labels
 \def\mainprob{\textbf{Main Problem.}}
