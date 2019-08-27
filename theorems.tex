@@ -10,7 +10,28 @@
   \booktitle \\
   \ \\
   Theorems Document
+  \ \\
+  \ \\
+  by Dan Whitman
 }
+
+% Setup section (chapter)  format
+\titleformat{\section} % command
+[hang] % shape
+{\bfseries \Large} % format
+{Chapter \thesection} % label
+{12pt} % sep
+{} % before-code
+{} % after-code
+
+% Setup subsection format
+\titleformat{\subsection} % command
+[hang] % shape
+{\bfseries \large} % format
+{\S \thesubsection} % label
+{12pt} % sep
+{} % before-code
+{} % after-code
 
 % Question label format
 \newcommand\setqf[1]{\qformat{\hspace{0.5cm} \textbf{Theorem \thesubsection.\thequestion #1} \hfill \vrule depth 1em width 0pt}}
