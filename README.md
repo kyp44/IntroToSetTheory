@@ -22,7 +22,7 @@ A document with these proofs can be built by compiling `theorems.tex`.
 Many of these more detailed proofs also have their own lemmas, some of which are also used in the solutions manual or vice versa.
 Such lemmas resided in their own `.tex` files in the `shared` directory so they can be included in both documents.
 
-Lastly, I have also been keeping a list of errata in the book, which can be compiled from 'errata.tex'.
+Lastly, I have also been keeping a list of errata in the book, which can be compiled from `errata.tex`.
 
 Miscellaneous
 -------------
