@@ -1,123 +1,188 @@
 \subsection{The Axioms}
 
 \exercise{1}{
-  Show that the set of all $x$ such that $x \in A$ and $x \notin B$ exists.
+	Show that the set of all $x$ such that $x \in A$ and $x \notin B$ exists.
 }
 \sol{
-  \qproof{
-    $A$ is a given extant set.
-    So let $\propP{x, B}$ be the property that $x \in A$ and $x \notin B$ so that clearly $\propP{x, B}$ implies that $x \in A$.
-    Then, by was expounded just before Example~1.3.13, the set
-    \gath{
-      \braces{x \where \propP{x, B}} = \braces{x \where x \in A \land x \notin B}
-    }
-    uniquely exists, which is of course the set we seek.
-  }
+	\qproof{
+		$A$ is a given extant set.
+		So let $\propP{x, B}$ be the property that $x \in A$ and $x \notin B$ so that clearly $\propP{x, B}$ implies that $x \in A$.
+		Then, by was expounded just before Example~1.3.13, the set
+		\gath{
+			\braces{x \where \propP{x, B}} = \braces{x \where x \in A \land x \notin B}
+		}
+		uniquely exists, which is of course the set we seek.
+	}
 }
 
 \exercise{2}{
-  Replace the Axiom of Existence by the following weaker postulate:
+	Replace the Axiom of Existence by the following weaker postulate:
 
-  Weak Axiom of Existence: Some set exists.
+	Weak Axiom of Existence: Some set exists.
 
-  Prove the Axiom of Existence using the Weak Axiom of Existence and the Comprehension Schema.
-  [Hint: Let $A$ be a set known to exist; consider $\braces{x \in A \where x \neq x}$.]
+	Prove the Axiom of Existence using the Weak Axiom of Existence and the Comprehension Schema.
+		[Hint: Let $A$ be a set known to exist; consider $\braces{x \in A \where x \neq x}$.]
 }
 \sol{
-  \qproof{
-    Invoking the Weak Axiom of Existence, suppose that $A$ is a set that exists.
-    Let $\propP(x)$ denote the proprty $x \neq x$, noting that clearly $P(x)$ is false no matter the $x$, since otherwise identity would be violated.
-    Then the set $B = \braces{x \in A \where \propP{x}}$ uniquely exists by the Axiom Schema of Comprehension and Lemma~1.3.4.
+	\qproof{
+		Invoking the Weak Axiom of Existence, suppose that $A$ is a set that exists.
+		Let $\propP(x)$ denote the proprty $x \neq x$, noting that clearly $P(x)$ is false no matter the $x$, since otherwise identity would be violated.
+		Then the set $B = \braces{x \in A \where \propP{x}}$ uniquely exists by the Axiom Schema of Comprehension and Lemma~1.3.4.
 
-    Now consider any $x$.
-    If $x \notin A$, then clearly $x \notin B$ either.
-    If $x \in A$, then again $x \notin B$ since the property $\propP{x}$ is false (since it is false for \emph{any} $x$).
-    Hence, in both cases $x \notin B$, which shows that
-    \gath{
-      \forall x (x \notin B) \bic \lnot \exists x (x \in A)
-    }
-    since $x$ was arbitrary.
-    This of course means that $B = \es$ is the unique empty set, proving the Axiom of Existence since $B$ was shown to exist.
-  }
+		Now consider any $x$.
+		If $x \notin A$, then clearly $x \notin B$ either.
+		If $x \in A$, then again $x \notin B$ since the property $\propP{x}$ is false (since it is false for \emph{any} $x$).
+		Hence, in both cases $x \notin B$, which shows that
+		\gath{
+			\forall x (x \notin B) \bic \lnot \exists x (x \in A)
+		}
+		since $x$ was arbitrary.
+		This of course means that $B = \es$ is the unique empty set, proving the Axiom of Existence since $B$ was shown to exist.
+	}
 }
 
 \exercise{3}{
-  (a) Prove that a ``set of all sets'' does not exist.
-  [Hint: if $V$ is a set of all sets, consider $\braces{x \in V \where x \notin x}$.]
-  
-  (b) Prove that for any set $A$ there is some $x \notin A$.
+	(a) Prove that a ``set of all sets'' does not exist.
+		[Hint: if $V$ is a set of all sets, consider $\braces{x \in V \where x \notin x}$.]
+
+	(b) Prove that for any set $A$ there is some $x \notin A$.
 }
 \sol{
-  (a) \qproof{
-    Suppose that a set of all sets exists, and denote such a set by $V$.
-    Then, since the property $\propP{x}$ defined by $x \notin x$ is a perfectly valid property, the set $W = \braces{x \in V \where \propP{x}}$ uniquely exists by the Axiom Schema of Comprehension and Lemma~1.3.3.
-    Of course, it must be that either $W \in W$ or $W \notin W$, noting that $W \in V$ since $W$ is a set.
-    If $W \in W$ then it must be that $\propP{W}$ by the definition of $W$ since $W \in V$.
-    However, $\propP{W}$ means that $W \notin W$, which is a contradiction.
-    Hence, it must be that $W \notin W$, but in this case $\propP{W}$ is true so that $W \in W$ by definition since $W \in V$, which is again a contradiction.
-    Since a contradiction occurs no matter what, it must be that our original supposition that a set of all sets exists is untrue.
-  }
+	(a) \qproof{
+		Suppose that a set of all sets exists, and denote such a set by $V$.
+		Then, since the property $\propP{x}$ defined by $x \notin x$ is a perfectly valid property, the set $W = \braces{x \in V \where \propP{x}}$ uniquely exists by the Axiom Schema of Comprehension and Lemma~1.3.3.
+		Of course, it must be that either $W \in W$ or $W \notin W$, noting that $W \in V$ since $W$ is a set.
+		If $W \in W$ then it must be that $\propP{W}$ by the definition of $W$ since $W \in V$.
+		However, $\propP{W}$ means that $W \notin W$, which is a contradiction.
+		Hence, it must be that $W \notin W$, but in this case $\propP{W}$ is true so that $W \in W$ by definition since $W \in V$, which is again a contradiction.
+		Since a contradiction occurs no matter what, it must be that our original supposition that a set of all sets exists is untrue.
+	}
 
-  (b) \qproof{
-    Suppose that $A$ is a set.
-    Jumping ahead for a minute, Exercise~1.3.6 below shows that $\pset{A}$, which uniquely exists by the Axiom of Power Set, is not a subset of $A$.
-    Therefore, there must be some $x \in \pset{A}$ such that $x \notin A$, which proves our result.
-    This is because, by the definition of subset, we have the following logical equivalences:
-    \ali{
-      \pset{A} \not\ss A &\bic \lnot \forall x \squares{x \in \pset{A} \imp x \in A} \\
-      &\bic \exists x \lnot \squares{x \in \pset{A} \imp x \in A} \\
-      &\bic \exists x \lnot \squares{x \notin \pset{A} \lor x \in A} \\
-      &\bic \exists x \squares{x \in \pset{A} \land x \notin A}.
-    }
-  }
+	(b) \qproof{
+		Suppose that $A$ is a set.
+		To avoid duplicating effort, we jump ahead a bit and utilize the result of Exercise~1.3.6 below.
+		There it is proved that $\pset{A}$, which uniquely exists by the Axiom of Power Set, is not a subset of $A$.
+		Therefore, there must be some $x \in \pset{A}$ such that $x \notin A$, which proves our result.
+		This is because, by the definition of subset, we have the following logical equivalences:
+		\ali{
+			\pset{A} \not\ss A &\bic \lnot \forall x \squares{x \in \pset{A} \to x \in A} \\
+			&\bic \exists x \lnot \squares{x \in \pset{A} \to x \in A} \\
+			&\bic \exists x \lnot \squares{x \notin \pset{A} \lor x \in A} \\
+			&\bic \exists x \squares{x \in \pset{A} \land x \notin A}.
+		}
+	}
 }
 
 \exercise{4}{
-  Let $A$ and $B$ be sets.
-  Show that there exists a unique set $C$ such that $x \in C$ if and only if either $x \in A$ and $x \notin B$ or $x \in B$ and $x \notin B$.
+	Let $A$ and $B$ be sets.
+	Show that there exists a unique set $C$ such that $x \in C$ if and only if either $x \in A$ and $x \notin B$ or $x \in B$ and $x \notin B$.
 }
 \sol{
-  Since $A$ and $B$ are sets, the set $A \cup B$ uniquely exists by the Axiom of Union.
-  Now let $\propP{x}$ be the property defined by $x \in A$ and $x \notin B$ or $x \in B$ and $x \notin B$.
-  Consider any $x$ such that $\propP{x}$ holds.
-  If $x \in A$ and $x \notin B$, then obviously $x \in A$.
-  On the other hand, if $x \in B$ and $x \notin A$, the obviously $x \in B$.
-  Thus, in either case, $x \in A$ or $x \in B$ so that $x \in A \cup B$.
-  Therefore, $\propP{x}$ implies that $x \in A \cup B$.
-  Therefore, clearly the set we seek is $C = \braces{x \where \propP{x}} = \braces{x \in A \cup B \where \propP{x}}$, which uniquely exists by the Axiom Schema of Comprehension.
+	\qproof{
+		Since $A$ and $B$ are sets, the set $A \cup B$ uniquely exists by the Axiom of Union.
+		Now let $\propP{x}$ be the property defined by $x \in A$ and $x \notin B$ or $x \in B$ and $x \notin B$.
+		Consider any $x$ such that $\propP{x}$ holds.
+		If $x \in A$ and $x \notin B$, then obviously $x \in A$.
+		On the other hand, if $x \in B$ and $x \notin A$, then obviously $x \in B$.
+		Thus, in either case, $x \in A$ or $x \in B$ so that $x \in A \cup B$.
+		Therefore, $\propP{x}$ implies that $x \in A \cup B$.
+		Therefore, clearly the set we seek is $C = \braces{x \where \propP{x}} = \braces{x \in A \cup B \where \propP{x}}$, which uniquely exists by the Axiom Schema of Comprehension.
+	}
+
+	It is worth noting that the set $C$ here is called the \emph{symmetric difference} of $A$ and $B$ and is introduced in the next section.
 }
 
 \exercise{5}{
-  (a) Given $A$, $B$, and $C$, there is a set $P$ such that $x \in P$ if and only if $x = A$ or $x = B$ or $x = C$.
+	(a) Given $A$, $B$, and $C$, there is a set $P$ such that $x \in P$ if and only if $x = A$ or $x = B$ or $x = C$.
 
-  (b) Generalize to four elements.
+	(b) Generalize to four elements.
 }
 \sol{
-  TODO
+	(a) \qproof{
+		By the Axiom of Pair, the sets $D = \braces{A, B}$ and $E = \braces{C}$ uniquely exist.
+		Then, by the Axiom of Union the set $P = D \cup E$ uniquely exists, which we claim is exactly the set we seek.
+
+		($\to$) Suppose that $x \in P = D \cup E$ so that $x \in D$ or $x \in E$.
+		If $x \in D = \braces{A, B}$ then either $x = A$ or $x = B$.
+		On the other hand, if $x \in E = \braces{C}$ then it must be that $x = C$.
+		So in all cases it is true that $x = A$ or $x = B$ or $x = C$ as desired.
+
+
+		($\leftarrow$) Suppose that $x = A$ or $x = B$ or $x = C$.
+		In the first two cases clearly $x \in D = \braces{A, B}$ so that $x \in D \cup E = P$.
+		In the last case $x = C$ so that clearly $x \in E = \braces{C}$ so that again $x \in D \cup E = P$.
+		Note that $x \in P$ in both cases.
+
+		This proves the results, and we can denote our set $P$ by $\braces{A, B, C}$.
+	}
+
+	(b) \qproof{
+		Suppose that the four elements are $A$, $B$, $C$, and $D$.
+		That is, we want to prove the existence of a set $P$ such that $x \in P$ if and only if $x = A$, $x = B$, $x = C$, or $x = D$.
+		By part (a) just above, the set $E = \braces{A, B, C}$ exists as does $F = \braces{D}$ by the Axiom of Pair.
+		Predictably, our set is then $P = E \cup F$ which exists by the Axiom of Union.
+		We can denote this set $P$ in kind by $\braces{A, B, C, D}$.
+		The proof that $P$ is the set we seek is directly analogous to the corresponding proof in part (a), so we do not repeat it here.
+	}
 }
 
 \exercise{6}{
-  Show that $\pset{X} \ss X$ is false for any $X$.
-  In particular, $\pset{X} \neq X$ for any $X$.
-  This proves again that a ``set of all sets'' does not exist.
-  [Hint: Let $Y = \braces{u \in X \where u \notin u}$; $Y \in \pset{X}$ but $Y \notin X$.]
+	Show that $\pset{X} \ss X$ is false for any $X$.
+	In particular, $\pset{X} \neq X$ for any $X$.
+	This proves again that a ``set of all sets'' does not exist.
+		[Hint: Let $Y = \braces{u \in X \where u \notin u}$; $Y \in \pset{X}$ but $Y \notin X$.]
 }
 \sol{
-  TODO
+	\qproof{
+		Following the hint, let $Y = \braces{u \in X \where u \notin u}$.
+		Clearly $Y \ss X$ so that $Y \in \pset{X}$ since any element in $Y$ must also be in $X$.
+		Now suppose that also $Y \in X$.
+		We treat two cases.
+
+		Case: $Y \in Y$. Then $Y \in X$ and $Y \notin Y$ by the definition of $Y$.
+		This is of course a contradiction.
+
+		Case: $Y \notin Y$. Then, since we supposed that $Y \in X$, the property in the definition of $Y$ is satisfied so that $Y \in Y$.
+		This is again a contradiction.
+
+		Since both exhaustive cases result in a contradiction, our supposition that $Y \in X$ cannot be true!
+		So, since $Y \in \pset{X}$ but $Y \notin X$, this suffices to show that $\pset{X}$ is not a subset of $X$ as desired by the definition of inclusion.
+	}
+
+	This can also serve as a lemma to prove (differently than Exercise~1.3.3a) that a ``set of all sets'' cannot exist.
+	To see this, suppose that $V$ is such a set.
+	Clearly then $\pset{V}$ is a set that contains other sets.
+	However, it was just shown that there is a $Y \in \pset{V}$ such that $Y \notin V$.
+	But $Y$ is a \emph{set}, so it must be in $V$ by definition, a contradiction.
 }
 
 \exercise{7}{
-  The Axiom of Pair, the Axiom of Union, and the Axiom of Power Set can be replaced by the following weaker versions.
+	The Axiom of Pair, the Axiom of Union, and the Axiom of Power Set can be replaced by the following weaker versions.
 
-  Weak Axiom of Pair: For any $A$ and $B$, there is a set $C$ such that $A \in C$ and $B \in C$.
-  
-  Weak Axiom of Union: For any $S$, there exists $U$ such that if $X \in A$ and $A \in S$, then $X \in U$.
+	Weak Axiom of Pair: For any $A$ and $B$, there is a set $C$ such that $A \in C$ and $B \in C$.
 
-  Weak Axiom of Power Set: For any set $S$, there exists $P$ such that $X \ss S$ implies $X \in P$.
+	Weak Axiom of Union: For any $S$, there exists $U$ such that if $X \in A$ and $A \in S$, then $X \in U$.
 
-  Prove the Axiom of Pair, the Axiom of Union, and the Axiom of Power Set using these weaker versions.
-  [Hint: Use also the Comprehension Schema.]
+	Weak Axiom of Power Set: For any set $S$, there exists $P$ such that $X \ss S$ implies $X \in P$.
+
+	Prove the Axiom of Pair, the Axiom of Union, and the Axiom of Power Set using these weaker versions.
+		[Hint: Use also the Comprehension Schema.]
 }
 \sol{
-  TODO
+	The Axiom of Pair
+	\qproof {
+		Suppose that $A$ and $B$ are sets and define the property $\propP{x}$ by $x = A$ or $x = B$.
+		Now let $C$ be a set guaranteed to exist by the Weak Axiom of Pair such that $A \in C$ and $B \in C$.
+		Now suppose that $\propP{x}$ holds for $x$, hence $x = A$ or $x = B$.
+		If $x = A$ then $x \in C$ since $A \in C$.
+		Similarly, in the other case in which $x = B$ then also $x \in C$ since $B \in C$.
+		Hence, in both cases $x \in C$ so that $\propP{x}$ implies that $x \in C$.
+		Therefore, the set $P = \braces{x \where \propP{x}}$ = $\braces{x \in C \where \propP{x}}$ exists by the Axiom Schema of Comprehension.
+		Of course $P$ is exactly the set guaranteed to exist by the (normal) Axiom of Pair, proving the result.
+	}
+
+	The Axiom of Union
+	\qproof{
+		TODO
+	}
 }
