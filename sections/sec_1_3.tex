@@ -1,5 +1,7 @@
 \subsection{The Axioms}
 
+\def\axcomp{Axiom Schema of Comprehension}
+
 \exercise{1}{
 	Show that the set of all $x$ such that $x \in A$ and $x \notin B$ exists.
 }
@@ -26,8 +28,8 @@
 \sol{
 	\qproof{
 		Invoking the Weak Axiom of Existence, suppose that $A$ is a set that exists.
-		Let $\propP(x)$ denote the proprty $x \neq x$, noting that clearly $P(x)$ is false no matter the $x$, since otherwise identity would be violated.
-		Then the set $B = \braces{x \in A \where \propP{x}}$ uniquely exists by the Axiom Schema of Comprehension and Lemma~1.3.4.
+		Let $\propP(x)$ denote the proprty $x \neq x$, noting that clearly $\propP{x}$ is false no matter the $x$, since otherwise identity would be violated.
+		Then the set $B = \braces{x \in A \where \propP{x}}$ uniquely exists by the \axcomp{} and Lemma~1.3.4.
 
 		Now consider any $x$.
 		If $x \notin A$, then clearly $x \notin B$ either.
@@ -50,7 +52,7 @@
 \sol{
 	(a) \qproof{
 		Suppose that a set of all sets exists, and denote such a set by $V$.
-		Then, since the property $\propP{x}$ defined by $x \notin x$ is a perfectly valid property, the set $W = \braces{x \in V \where \propP{x}}$ uniquely exists by the Axiom Schema of Comprehension and Lemma~1.3.3.
+		Then, since the property $\propP{x}$ defined by $x \notin x$ is a perfectly valid property, the set $W = \braces{x \in V \where \propP{x}}$ uniquely exists by the \axcomp{} and Lemma~1.3.3.
 		Of course, it must be that either $W \in W$ or $W \notin W$, noting that $W \in V$ since $W$ is a set.
 		If $W \in W$ then it must be that $\propP{W}$ by the definition of $W$ since $W \in V$.
 		However, $\propP{W}$ means that $W \notin W$, which is a contradiction.
@@ -86,7 +88,7 @@
 		On the other hand, if $x \in B$ and $x \notin A$, then obviously $x \in B$.
 		Thus, in either case, $x \in A$ or $x \in B$ so that $x \in A \cup B$.
 		Therefore, $\propP{x}$ implies that $x \in A \cup B$.
-		Therefore, clearly the set we seek is $C = \braces{x \where \propP{x}} = \braces{x \in A \cup B \where \propP{x}}$, which uniquely exists by the Axiom Schema of Comprehension.
+		Therefore, clearly the set we seek is $C = \braces{x \where \propP{x}} = \braces{x \in A \cup B \where \propP{x}}$, which uniquely exists by the \axcomp{}.
 	}
 
 	It is worth noting that the set $C$ here is called the \emph{symmetric difference} of $A$ and $B$ and is introduced in the next section.
@@ -169,6 +171,14 @@
 		[Hint: Use also the Comprehension Schema.]
 }
 \sol{
+	All the below proofs follow the same basic structure:
+	\begin{enumerate}
+		\item Establish a property $\propP{x}$ that exactly matches the defining property of the set guaranteed to exist by the normal axiom.
+		\item Instantiate the set $C$ that exists by the weak form of the axiom.
+		\item Show that $\propP{x} \to x \in C$ for all $x$.
+		\item This proves that the set $\braces{x \where \propP{x}}$ exists by the \axcomp{}, which is exactly the set asserted to exist by the normal axiom.
+	\end{enumerate}
+
 	The Axiom of Pair
 	\qproof {
 		Suppose that $A$ and $B$ are sets and define the property $\propP{x}$ by $x = A$ or $x = B$.
@@ -177,12 +187,27 @@
 		If $x = A$ then $x \in C$ since $A \in C$.
 		Similarly, in the other case in which $x = B$ then also $x \in C$ since $B \in C$.
 		Hence, in both cases $x \in C$ so that $\propP{x}$ implies that $x \in C$.
-		Therefore, the set $P = \braces{x \where \propP{x}}$ = $\braces{x \in C \where \propP{x}}$ exists by the Axiom Schema of Comprehension.
+		Therefore, the set $P = \braces{x \where \propP{x}}$ = $\braces{x \in C \where \propP{x}}$ exists by the \axcomp{}.
 		Of course $P$ is exactly the set guaranteed to exist by the (normal) Axiom of Pair, proving the result.
 	}
 
 	The Axiom of Union
 	\qproof{
-		TODO
+		Let $S$ be any set and define the property $\propP{x}$ as $x \in A$ for some $A \in S$.
+		Now let $C$ be a set guaranteed to exist by the Weak Axiom of Union so that, for every $A \in S$, $x \in A$ implies that $x \in C$ also.
+		Suppose that $\propP{x}$ holds for $x$ so that there is a particular $A \in S$ such that $x \in A$.
+		Then, since $A \in S$ and $x \in A$, it follows from the Weak Axiom of Union that $x \in C$.
+		Hence, we have established that $\propP{x}$ implies that $x \in C$.
+		Therefore, by the \axcomp{}, the set $\braces{x \where \propP{X}} = \braces{x \in C \where \propP{x}}$ exists, which is exactly the set guaranteed to exist by the (normal) Axiom of Union.
+	}
+
+	The Axiom of Power Set
+	\qproof{
+		Let $S$ be any set and define the property $\propP{X}$ by $X \ss S$.
+		Now let $C$ be a set that exists by the Weak Axiom of Power Set so that $X \ss S$ implies that $X \in C$ for all $X$.
+		Next, suppose that $\propP{X}$ holds for $X$ so that $X \ss S$.
+		Then, by the above, we have that $X \in C$ so that clearly $\propP{X}$ implies that $X \in C$.
+		Then the set $P = \braces{X \where \propP{X}} = \braces{X \in C \where \propP{X}}$ exists by the \axcomp{}.
+		Of course $P$ is exactly the set guaranteed to exist be the (normal) Axiom of Power Set, proving our result.
 	}
 }
