@@ -57,124 +57,124 @@
 
 \begin{questions}
 
-\setcounter{section}{6-1}
-\section{Ordinal Numbers}
+  \setcounter{section}{6-1}
+  \section{Ordinal Numbers}
 
-\setcounter{subsection}{4-1}
-\subsection{Transfinite Induction and Recursion}
+  \setcounter{subsection}{4-1}
+  \subsection{Transfinite Induction and Recursion}
 
-\def\P{\prop{P}}
-\def\G{\prop{G}}
-\def\R{\prop{R}}
-\def\F{\prop{F}}
-\theorem{5}{
-  Let $\G$ be an operation; then the property $\P(x,y)$ defined by
-  \begin{enumerate}
-  \item $x$ is an ordinal number and $y = t(x)$ for some computation of length $x$ (with respect to $\G$), or
-  \item $x$ is not an ordinal and $y = \es$.
-  \end{enumerate}
-  defines an operation $\F$ such that $\F(\a) = \G(\F \rest \a)$ for all ordinals $\a$.
-
-  Note that, for ordinal $\a$, we say that $t$ is a computation of length $\a$ if $t$ is a transfinite sequence whose domain is $\a+1$ and such that, for all $\b \leq \a$, we have $t(\b) = \G(t \rest \b)$.
-}
-\sol{
-  \qproof{
-    Suppose that $\G$ is an operation, which is to say that for each $x$ there is unique $y$ such that $y = \G(x)$.
-
-    Now we define the property $\P(x,y)$ as described above.
-    We prove that $\P$ defines an operation.
-    Hence we have to show that  for any $x$ there is a unique $y$ such that $\P(x,y)$ holds.
-    So consider any set $\a$.
-    If $\a$ is not an ordinal than clearly $\P(\a,\es)$ holds and $\es$ is unique.
-    So suppose that $\a$ is an ordinal.
-    Then it suffices to show that there is a unique computation of length $\a$ (with respect to $\G$) since this will make $y = t(\a)$ unique.
-    We show this via transfinite induction.
-
-    So assume that for all $\b < \a$ that there is a unique computation of length $\b$ and we show that there exists a unique computation of length $\a$, which completes the proof that $\P$ defines an operation.
-
-    \emph{Existence.} First define a property $\R(x,y)$ such that $\R(x,y)$ holds if and only if
+  \def\P{\prop{P}}
+  \def\G{\prop{G}}
+  \def\R{\prop{R}}
+  \def\F{\prop{F}}
+  \theorem{5}{
+    Let $\G$ be an operation; then the property $\P(x,y)$ defined by
     \begin{enumerate}
-    \item $x$ is an ordinal where $x < \a$ and $y$ is a computation of length $x$ (with respect to $\G$), or
-    \item $x$ is is an ordinal and $x \geq \a$ and $y = \es$, or
-    \item $x$ is not an ordinal and $y = \es$ \,.
+      \item $x$ is an ordinal number and $y = t(x)$ for some computation of length $x$ (with respect to $\G$), or
+      \item $x$ is not an ordinal and $y = \es$.
     \end{enumerate}
-    Clearly by the induction hypothesis this property has a unique $y$ for every $x$.
-    Hence we can apply the Axiom Schema of Replacement, according to which there is a set $T$ such that for every $\b \in \a$ (so that $\b < \a$) there is a $t$ in $T$ such that $\R(\b, t)$ holds.
-    That is
-    $$
-    T = \braces{t \where t \text{ is the unique computation of length $\b$ for all $\b < \a$}}
-    $$
-    Now, $T$ is a system of transfinite sequences (which are functions) so define $\bar{t} = \bigcup T$ and let $\t = \bar{t} \cup \braces{(\a, \G(\bar{t}))}$.
+    defines an operation $\F$ such that $\F(\a) = \G(\F \rest \a)$ for all ordinals $\a$.
 
-    \emph{Claim 1:} $\dom(\t) = \a+1$.
-    So consider any $\b \in \dom(\t)$.
-    Clearly if $\b = \a$ then $\b \in \a+1$.
-    On the other hand if $\b \in \dom(\bar{t})$ then there is a $t \in T$ such that $\b \in \dom(t)$.
-    But since $t$ is a computation of length $\g$ and $\g < \a$ it follows that $\b \leq \g < \a < \a+1$ so that $\b \in \a+1$.
-    Hence since $\b$ was arbitrary $\dom(\t) \ss \a+1$.
-
-    Now consider any $\b \in \a+1$ so that $\b \leq \a$.
-    If $\b = \a$ then clearly by definition $\b \in \dom(\t)$.
-    On the other hand if $\b \neq \a$ then $\b < \a$.
-    So consider the $t \in T$ where $t$ is the unique computation of length $\b$ (which exists since $\b < \a$).
-    Then clearly $\b \in \dom(t)$ so that $\b \in \dom(\bar{t})$.
-    From this it follows that clearly $\b \in \dom(\t)$ so that $\a+1 \ss \dom(\t)$ since $\b$ was arbitrary.
-    This proves the claim.
-    
-    \emph{Claim 2:} $\t$ is a function.
-    Consider any $\b \in \dom(\t) = \a+1$ so that again $\b \leq \a$.
-    If $\b = \a$ then clearly $\t(\b) = \t(\a) = \G(\bar{t})$ is unique since $\G$ is an operation.
-    On the other hand if $\b < \a$ then $\t$ is a function so long as $\bar{t}$ is, and this is the case so long as $T$ is a compatible system of functions since $\bar{t} = \bigcup T$.
-    We show this presently.
-
-    So consider any arbitrary $t_1, t_2 \in T$ where $t_1$ is the computation of length $\b_1$ and $t_2$ is the computation of length $\b_2$.
-    Without loss of generality we can assume that $\b_1 \leq \b_2$.
-    We must show that $t_1(\g) = t_2(\g)$ for all $\g \leq \b_1$.
-    This we show by transfinite induction.
-    So suppose that $t_1(\d) = t_2(\d)$ for all $\d < \g \leq \b_1$.
-    Then clearly $t_1 \rest \g = t_2 \rest \g$ and since $\G$ is an operation we have $t_1(\g) = \G(t_1 \rest \g) = \G(t_2 \rest \g) = t_2(\g)$.
-    This completes the proof of the claim.
-
-    \emph{Claim 3:} $\t(\b) = \G(\t \rest \b)$ for all $\b \leq \a$.
-    So consider any $\b \leq \a$.
-    If $\b = \a$ then then since $\bar{t} = \t \rest \a$ we clearly have $\t(\b) = \t(\a) = \G(\bar{t}) = \G(\t \rest \a) = \G(\t \rest \b)$ by the definition of $\t$.
-    On the other hand if $\b < \a$ then let $t \in T$ be the computation of length $\b$ (which exists since $\b < \a$).
-    Then $\t(\beta) = t(\b) = \G(t \rest \b) = \G(\t \rest \b)$ since $t$ is a computation (with respect to $\G$) and clearly $t \ss \t$.
-
-    Claims 1 through 3 show that $\t$ is a computation of length $\a$ and hence that such a computation exists.
-
-    \emph{Uniqueness.} Now let $\s$ be another computation of length $\a$.
-    We show that $\s = \t$, which proves uniqueness.
-    Since both $\s$ and $\t$ are functions with $\dom(\s) = \a+1 = \dom(\t)$ it suffices to show that $\s(\g) = \t(\g)$ for all $\g \leq \a$.
-    We show this once again by using transfinite induction.
-    So suppose that $\s(\d) = \t(\d)$ for all $\d < \g \leq \a$.
-    It then follows that $\s \rest \g = \t \rest \g$.
-    Then since $\s$ and $\t$ are computations we have that $\s(\g) = \G(\s \rest \g) = \G(\t \rest \g) = \t(\g)$, thereby completing the uniqueness proof.
-
-    This completes the proof that $\P$ defines an operation.
-
-    So let $\F$ be the operation defined by $\P$.
-    The last thing we need to show to complete the proof of the entire theorem is that $\F(\a) = \G(\F \rest \a)$ for all ordinals $\a$, noting that we are treating $\F$ as a function even though it is an operation.
-    Thus, for any set $X$, $\F \rest X$ denotes the set $\braces{(x, \F(x)) \where x \in X}$, which forms a function with domain $X$.
-    The range of this function is a set whose existence is guaranteed by the Axiom Schema of Replacement since $\F$ is an operation.
-
-    So consider any ordinal $\a$ and a computation $t$ of length $\a$.
-    Then clearly for any $\b \in \a$ we have that $t_\b = t \rest (\b+1)$ is a computation of length $\b$.
-    Since this computation is the unique computation of length $\b$, by the definition of $\F$ as it relates to $\P$ we have $\F(\b) = t_\b(\b) = t(\b)$.
-    Since $\b$ was arbitrary this shows that $\F \rest \a = t \rest \a$.
-    
-    So for any ordinal $\a$ let $t$ be the unique computation of length $\a$.
-    Then clearly we have $\F(\a) = t(\a) = \G(t \rest \a) = \G(\F \rest \a)$ by what was just shown above.
+    Note that, for ordinal $\a$, we say that $t$ is a computation of length $\a$ if $t$ is a transfinite sequence whose domain is $\a+1$ and such that, for all $\b \leq \a$, we have $t(\b) = \G(t \rest \b)$.
   }
-}
+  \sol{
+    \qproof{
+      Suppose that $\G$ is an operation, which is to say that for each $x$ there is unique $y$ such that $y = \G(x)$.
 
-\subsection{Ordinal Arithmetic}
+      Now we define the property $\P(x,y)$ as described above.
+      We prove that $\P$ defines an operation.
+      Hence we have to show that  for any $x$ there is a unique $y$ such that $\P(x,y)$ holds.
+      So consider any set $\a$.
+      If $\a$ is not an ordinal than clearly $\P(\a,\es)$ holds and $\es$ is unique.
+      So suppose that $\a$ is an ordinal.
+      Then it suffices to show that there is a unique computation of length $\a$ (with respect to $\G$) since this will make $y = t(\a)$ unique.
+      We show this via transfinite induction.
 
-\theorem{3}{
-  Let $(W_1, <_1)$ and $(W_2, <_2)$ be well-ordered sets, isomorphic to ordinals $\a_1$ and $\a_2$, respectively, and let $(W, <)$ be the sum of $(W_1, <_1)$ and $(W_2, <_2)$.
-  Then $(W, <)$ is isomorphic to $\a_1 + \a_2$.
-}
-\sol{
+      So assume that for all $\b < \a$ that there is a unique computation of length $\b$ and we show that there exists a unique computation of length $\a$, which completes the proof that $\P$ defines an operation.
+
+      \emph{Existence.} First define a property $\R(x,y)$ such that $\R(x,y)$ holds if and only if
+      \begin{enumerate}
+        \item $x$ is an ordinal where $x < \a$ and $y$ is a computation of length $x$ (with respect to $\G$), or
+        \item $x$ is is an ordinal and $x \geq \a$ and $y = \es$, or
+        \item $x$ is not an ordinal and $y = \es$.
+      \end{enumerate}
+      Clearly by the induction hypothesis this property has a unique $y$ for every $x$.
+      Hence we can apply the Axiom Schema of Replacement, according to which there is a set $T$ such that for every $\b \in \a$ (so that $\b < \a$) there is a $t$ in $T$ such that $\R(\b, t)$ holds.
+      That is
+      $$
+        T = \braces{t \where t \text{ is the unique computation of length $\b$ for all $\b < \a$}}
+      $$
+      Now, $T$ is a system of transfinite sequences (which are functions) so define $\bar{t} = \bigcup T$ and let $\t = \bar{t} \cup \braces{(\a, \G(\bar{t}))}$.
+
+      \emph{Claim 1:} $\dom(\t) = \a+1$.
+      So consider any $\b \in \dom(\t)$.
+      Clearly if $\b = \a$ then $\b \in \a+1$.
+      On the other hand if $\b \in \dom(\bar{t})$ then there is a $t \in T$ such that $\b \in \dom(t)$.
+      But since $t$ is a computation of length $\g$ and $\g < \a$ it follows that $\b \leq \g < \a < \a+1$ so that $\b \in \a+1$.
+      Hence since $\b$ was arbitrary $\dom(\t) \ss \a+1$.
+
+      Now consider any $\b \in \a+1$ so that $\b \leq \a$.
+      If $\b = \a$ then clearly by definition $\b \in \dom(\t)$.
+      On the other hand if $\b \neq \a$ then $\b < \a$.
+      So consider the $t \in T$ where $t$ is the unique computation of length $\b$ (which exists since $\b < \a$).
+      Then clearly $\b \in \dom(t)$ so that $\b \in \dom(\bar{t})$.
+      From this it follows that clearly $\b \in \dom(\t)$ so that $\a+1 \ss \dom(\t)$ since $\b$ was arbitrary.
+      This proves the claim.
+
+      \emph{Claim 2:} $\t$ is a function.
+      Consider any $\b \in \dom(\t) = \a+1$ so that again $\b \leq \a$.
+      If $\b = \a$ then clearly $\t(\b) = \t(\a) = \G(\bar{t})$ is unique since $\G$ is an operation.
+      On the other hand if $\b < \a$ then $\t$ is a function so long as $\bar{t}$ is, and this is the case so long as $T$ is a compatible system of functions since $\bar{t} = \bigcup T$.
+      We show this presently.
+
+      So consider any arbitrary $t_1, t_2 \in T$ where $t_1$ is the computation of length $\b_1$ and $t_2$ is the computation of length $\b_2$.
+      Without loss of generality we can assume that $\b_1 \leq \b_2$.
+      We must show that $t_1(\g) = t_2(\g)$ for all $\g \leq \b_1$.
+      This we show by transfinite induction.
+      So suppose that $t_1(\d) = t_2(\d)$ for all $\d < \g \leq \b_1$.
+      Then clearly $t_1 \rest \g = t_2 \rest \g$ and since $\G$ is an operation we have $t_1(\g) = \G(t_1 \rest \g) = \G(t_2 \rest \g) = t_2(\g)$.
+      This completes the proof of the claim.
+
+      \emph{Claim 3:} $\t(\b) = \G(\t \rest \b)$ for all $\b \leq \a$.
+      So consider any $\b \leq \a$.
+      If $\b = \a$ then then since $\bar{t} = \t \rest \a$ we clearly have $\t(\b) = \t(\a) = \G(\bar{t}) = \G(\t \rest \a) = \G(\t \rest \b)$ by the definition of $\t$.
+      On the other hand if $\b < \a$ then let $t \in T$ be the computation of length $\b$ (which exists since $\b < \a$).
+      Then $\t(\beta) = t(\b) = \G(t \rest \b) = \G(\t \rest \b)$ since $t$ is a computation (with respect to $\G$) and clearly $t \ss \t$.
+
+      Claims 1 through 3 show that $\t$ is a computation of length $\a$ and hence that such a computation exists.
+
+      \emph{Uniqueness.} Now let $\s$ be another computation of length $\a$.
+      We show that $\s = \t$, which proves uniqueness.
+      Since both $\s$ and $\t$ are functions with $\dom(\s) = \a+1 = \dom(\t)$ it suffices to show that $\s(\g) = \t(\g)$ for all $\g \leq \a$.
+      We show this once again by using transfinite induction.
+      So suppose that $\s(\d) = \t(\d)$ for all $\d < \g \leq \a$.
+      It then follows that $\s \rest \g = \t \rest \g$.
+      Then since $\s$ and $\t$ are computations we have that $\s(\g) = \G(\s \rest \g) = \G(\t \rest \g) = \t(\g)$, thereby completing the uniqueness proof.
+
+      This completes the proof that $\P$ defines an operation.
+
+      So let $\F$ be the operation defined by $\P$.
+      The last thing we need to show to complete the proof of the entire theorem is that $\F(\a) = \G(\F \rest \a)$ for all ordinals $\a$, noting that we are treating $\F$ as a function even though it is an operation.
+      Thus, for any set $X$, $\F \rest X$ denotes the set $\braces{(x, \F(x)) \where x \in X}$, which forms a function with domain $X$.
+      The range of this function is a set whose existence is guaranteed by the Axiom Schema of Replacement since $\F$ is an operation.
+
+      So consider any ordinal $\a$ and a computation $t$ of length $\a$.
+      Then clearly for any $\b \in \a$ we have that $t_\b = t \rest (\b+1)$ is a computation of length $\b$.
+      Since this computation is the unique computation of length $\b$, by the definition of $\F$ as it relates to $\P$ we have $\F(\b) = t_\b(\b) = t(\b)$.
+      Since $\b$ was arbitrary this shows that $\F \rest \a = t \rest \a$.
+
+      So for any ordinal $\a$ let $t$ be the unique computation of length $\a$.
+      Then clearly we have $\F(\a) = t(\a) = \G(t \rest \a) = \G(\F \rest \a)$ by what was just shown above.
+    }
+  }
+
+  \subsection{Ordinal Arithmetic}
+
+  \theorem{3}{
+    Let $(W_1, <_1)$ and $(W_2, <_2)$ be well-ordered sets, isomorphic to ordinals $\a_1$ and $\a_2$, respectively, and let $(W, <)$ be the sum of $(W_1, <_1)$ and $(W_2, <_2)$.
+    Then $(W, <)$ is isomorphic to $\a_1 + \a_2$.
+  }
+  \sol{
   \begin{lem}\label{lem:ord:isord}
     Any initial segment of an ordinal is also an ordinal.
   \end{lem}
@@ -194,35 +194,35 @@
 
     This shows by definition that $\b$ is an ordinal.
   }
-  
+
   \begin{lem}\label{lem:ord:isiso}
     Suppose that $(W, \prec)$ is a well ordered set isomorphic to ordinal $\a$ and $W[a]$ is an initial segment of $W$ isomorphic to ordinal $\b$.
     If $f$ is the isomorphism from $\a$ to $W$ and $g$ the isomorphism from $\b$ to $W[a]$ then:
     \begin{enumerate}
-    \item $\b < \a$
-    \item $f \rest \b = g$
-    \item $f(\b) = a$
+      \item $\b < \a$
+      \item $f \rest \b = g$
+      \item $f(\b) = a$
     \end{enumerate}
   \end{lem}
   \qproof{
-    Consider $h = \inv{f} \circ g : \b \to \a$, which is clearly an isomorphism since $f$ and $g$ are.
-    We also claim that $h$ maps $\b$ onto an initial segment of $\a$, i.e. $h[\b]$ is an initial segment of $\a$.
-    So consider any $x \in h[\b]$, noting that $x \in \a$ since clearly $h[\b] \ss \a$.
-    Thus $x$ is an ordinal by Lemma~6.2.8.
-    So consider any ordinal $y < x$.
-    Now since $x \in h[\b]$ there is a $\g \in \b$ such that $h(\g) = x$.
-    Hence we have
-    \gath{
-      \inv{f}(g(\g)) = x \\
-      g(\g) = f(x)
-    }
-    and $f(x) = g(\g) \in W[a]$ since $\g \in \b$.
-    Also since $y < x$ and $f$ is an isomorphism we have $f(y) \prec f(x)$ so that $f(y) \in W[a]$ since $W[a]$ is an initial segment and $f(x) \in W[a]$.
-    Then since $g$ is onto there is a $\d \in \b$ such that
-    \gath{
-      g(\d) = f(y) \\
-      \inv{f}(g(\d)) = y \\
-      h(\d) = y \,,
+  Consider $h = \inv{f} \circ g : \b \to \a$, which is clearly an isomorphism since $f$ and $g$ are.
+  We also claim that $h$ maps $\b$ onto an initial segment of $\a$, i.e. $h[\b]$ is an initial segment of $\a$.
+  So consider any $x \in h[\b]$, noting that $x \in \a$ since clearly $h[\b] \ss \a$.
+  Thus $x$ is an ordinal by Lemma~6.2.8.
+  So consider any ordinal $y < x$.
+  Now since $x \in h[\b]$ there is a $\g \in \b$ such that $h(\g) = x$.
+  Hence we have
+  \gath{
+  \inv{f}(g(\g)) = x \\
+  g(\g) = f(x)
+  }
+  and $f(x) = g(\g) \in W[a]$ since $\g \in \b$.
+  Also since $y < x$ and $f$ is an isomorphism we have $f(y) \prec f(x)$ so that $f(y) \in W[a]$ since $W[a]$ is an initial segment and $f(x) \in W[a]$.
+  Then since $g$ is onto there is a $\d \in \b$ such that
+  \gath{
+    g(\d) = f(y) \\
+    \inv{f}(g(\d)) = y \\
+    h(\d) = y,
     }
     which shows that $y \in h[\b]$.
     Since $y < x$ was arbitrary this shows that $h[\b]$ is an initial segment of $\a$ by definition.
@@ -237,644 +237,644 @@
     \gath{
       h(x) = \inv{f}(g(x)) = x \\
       g(x) = f(x)
+      }
+      so that clearly (2) follows since $x$ was arbitrary.
+
+      Now, let $W' = W - W[a]$, noting that this is not empty since $W[a] \pss W$.
+      Consider any $x \in W'$ so that since $x \notin W[a]$ but $x \in W$ we have that $x \succeq a$.
+      Since $x$ was arbitrary and clearly $a \in W'$ this shows that $a$ is the least element of $W'$.
+
+      Now let $X = \a - \b$, which is also nonempty since $\b \pss \a$.
+      Consider any $x \in X$ so that $x \in \a$ but $x \notin \b$.
+      Thus $x \geq \b$ so that $\b$ is the least element of $X$ since since $x$ was arbitrary and clearly $\b \in X$.
+
+      Now we claim that $f \rest X$ is an isomorphism from $X$ to $W'$.
+      So consider any $x \in X$ so that $x \notin \b$.
+      Suppose that $f(x) \in W[a]$.
+      Then there is a $\g \in \b$ such that $g(\g) = f(x)$.
+      But also since $f \rest \b = g$ it follows that $f(\g) = g(\g) = f(x)$.
+      Then since $f$ is injective it follows that $\g = x$.
+      But this is a contradiction since we have that $x \notin \b$ but $\g \in \b$, so it has to be that $f(x) \notin W[a]$.
+      Hence since clearly $f(x) \in W$ we have that $f(x) \in W'$.
+
+      Also for any $x$ and $y$ in $X$ where $x < y$ we clearly have $(f \rest X)(x) = f(x) < f(y) = (f \rest X)(y)$ since $f$ is an isomorphism.
+      Thus $f \rest X$ is an isomorphism and therefore also injective.
+      We need only show that $f \rest X$ is surjective as well.
+      So consider any $b \in W'$ so that $b \in W$ but $b \notin W[a]$.
+      Since $f$ is surjective there is a $\g \in \a$ such that $f(\g) = b$.
+      Suppose that $\g \in \b$ so that since $f \rest \b = g$ we have $g(\g) = f(\g) = b \in W[a]$, a contradiction.
+      Hence $\g \notin \b$ so that $\g \in X$.
+      Since we have also shown that $f(\g) = b$ and $b$ was arbitrary this shows that $f \rest X$ is surjective.
+
+      Thus we have proven that $f \rest X$ is an isomorphism between $X$ and $W'$.
+      Then since $\b$ is the least element of $X$ and $a$ is the least element of $W'$ it follows that $f(\b) = (f \rest X)(\b) = a$, which shows (3) and thus the entire lemma.
     }
-    so that clearly (2) follows since $x$ was arbitrary.
-    
-    Now, let $W' = W - W[a]$, noting that this is not empty since $W[a] \pss W$.
-    Consider any $x \in W'$ so that since $x \notin W[a]$ but $x \in W$ we have that $x \succeq a$.
-    Since $x$ was arbitrary and clearly $a \in W'$ this shows that $a$ is the least element of $W'$.
 
-    Now let $X = \a - \b$, which is also nonempty since $\b \pss \a$.
-    Consider any $x \in X$ so that $x \in \a$ but $x \notin \b$.
-    Thus $x \geq \b$ so that $\b$ is the least element of $X$ since since $x$ was arbitrary and clearly $\b \in X$.
+    \mainthrm
+    \qproof{
+      We assume that $W_1$ and $W_2$ are disjoint and that $(W,<)$ is their sum as defined in Lemma~4.4.5.
+      We prove the result by transfinite induction on $\a_2$, in particular the version of induction in 6.4.3.
 
-    Now we claim that $f \rest X$ is an isomorphism from $X$ to $W'$.
-    So consider any $x \in X$ so that $x \notin \b$.
-    Suppose that $f(x) \in W[a]$.
-    Then there is a $\g \in \b$ such that $g(\g) = f(x)$.
-    But also since $f \rest \b = g$ it follows that $f(\g) = g(\g) = f(x)$.
-    Then since $f$ is injective it follows that $\g = x$.
-    But this is a contradiction since we have that $x \notin \b$ but $\g \in \b$, so it has to be that $f(x) \notin W[a]$.
-    Hence since clearly $f(x) \in W$ we have that $f(x) \in W'$.
+      So for $\a_2 = 0$ we have that $W_2 = \es$ so $W = W_1 \cup \es = W_1$, which is clearly isomorphic to $\a_1 = \a_1 + 0 = \a_1 + \a_2$.
 
-    Also for any $x$ and $y$ in $X$ where $x < y$ we clearly have $(f \rest X)(x) = f(x) < f(y) = (f \rest X)(y)$ since $f$ is an isomorphism.
-    Thus $f \rest X$ is an isomorphism and therefore also injective.
-    We need only show that $f \rest X$ is surjective as well.
-    So consider any $b \in W'$ so that $b \in W$ but $b \notin W[a]$.
-    Since $f$ is surjective there is a $\g \in \a$ such that $f(\g) = b$.
-    Suppose that $\g \in \b$ so that since $f \rest \b = g$ we have $g(\g) = f(\g) = b \in W[a]$, a contradiction.
-    Hence $\g \notin \b$ so that $\g \in X$.
-    Since we have also shown that $f(\g) = b$ and $b$ was arbitrary this shows that $f \rest X$ is surjective.
+      Now suppose that $\a_2 = \b+1$ for some ordinal $\b$ so that $W_2$ has a greatest element $a$.
+      Noting that $a$ is clearly also the greatest element of $W$, also assume then that $W[a]$ is isomorphic to $\a_1 + \b$.
+      Then we have clearly that $W$ is isomorphic to $(\a_1 + \b) + 1$ (i.e. the successor of $\a_1 + \b$).
+      But then by Definition 6.5.1b we have $(\a_1 + \b) + 1 = \a_1 + (\b+ 1) = \a_1 + \a_2$.
 
-    Thus we have proven that $f \rest X$ is an isomorphism between $X$ and $W'$.
-    Then since $\b$ is the least element of $X$ and $a$ is the least element of $W'$ it follows that $f(\b) = (f \rest X)(\b) = a$, which shows (3) and thus the entire lemma.
-  }
+      Lastly, suppose that $\a_2$ is a limit ordinal and that for each $\b < \a_2$ there is an isomorphism $f_\b$ from $\a_1 + \b$ to $W[a_\b]$ where $a_\b \in W_2$.
+      We note that each $f_\b$ is unique.
+      Then let $f = \bigcup_{\b < \a_2} f_\b$.
 
-  \mainthrm
-  \qproof{
-    We assume that $W_1$ and $W_2$ are disjoint and that $(W,<)$ is their sum as defined in Lemma~4.4.5.
-    We prove the result by transfinite induction on $\a_2$, in particular the version of induction in 6.4.3.
+      First we claim that $f$ is a function, which is the case so long as $\braces{f_\b \where \b < \a_2}$ is a compatible system of functions.
+      So consider any $\b_1 < \a_2$ and $\b_2 < \a_2$.
+      Without loss of generality we can assume that $\b_1 \leq \b_2$.
+      Clearly if $\b_1 = \b_2$ then $f_{\b_1} = f_{\b_2}$ since the function is unique so suppose that $\b_1 < \b_2$.
+      Then by Lemma~6.5.4a $\a_1 + \b_1 < \a_1 + \b_2$.
+      From this it follows that $W[a_{\b_1}]$ is an initial segment of $W[a_{\b_2}]$
+      From Lemma~\ref{lem:ord:isiso} part (2) above it follows that $f_{\b_2} \rest (\a_1 + \b_1) = f_{\b_1}$.
+      Since $\b_1$ and $\b_2$ were arbitrary this shows that the system is compatible and thus that $f$ is a function.
 
-    So for $\a_2 = 0$ we have that $W_2 = \es$ so $W = W_1 \cup \es = W_1$, which is clearly isomorphic to $\a_1 = \a_1 + 0 = \a_1 + \a_2$.
+      We also show that  $\dom f = \a_1 + \a_2$.
+      So first consider any $\g \in \a_1 + \a_2$ so that we have $\g = \a_1 + \b$ for some $\b < \a_2$ and hence that $\g \in (\a_1 + \b) + 1 = \a_1 + (\b + 1)$.
+      Thus $\g \in \dom f_{\b+1}$ so that clearly also $\g \in \dom f$, noting that clearly $\b+1 < \a_2$ as well since $\a_2$ is a limit ordinal.
+      Hence since $\g$ was arbitrary $\a_1 + \a_2 \ss \dom f$.
+      Now suppose that $\g \in \dom f$ so that there is a $\b < \a_2$ such that $\g \in \dom f_\b$.
+      It then follows by the definition of $f_\b$ that $\g \in \a_1 + \b$ for some $\b < \a_2$.
+      Then clearly $\a_1 + \b < \a_1 + \a_2$ so that $\a_1 + \b \in \a_1 + \a_2$ and $\a_1 + \b \ss \a_1 + \a_2$ since $\a_1 + \a_2$ is transitive (since it is an ordinal).
+      Thus also $\g \in \a_1 + \a_2$.
+      Hence $\dom f \ss \a_1 + \a_2$ since $\g$ was arbitrary.
+      This shows that $\dom f = \a_1 + \a_2$.
 
-    Now suppose that $\a_2 = \b+1$ for some ordinal $\b$ so that $W_2$ has a greatest element $a$.
-    Noting that $a$ is clearly also the greatest element of $W$, also assume then that $W[a]$ is isomorphic to $\a_1 + \b$.
-    Then we have clearly that $W$ is isomorphic to $(\a_1 + \b) + 1$ (i.e. the successor of $\a_1 + \b$).
-    But then by Definition 6.5.1b we have $(\a_1 + \b) + 1 = \a_1 + (\b+ 1) = \a_1 + \a_2$.
+      We also show that $\ran f = W$, which also shows that $f$ is onto.
+      So consider any $b \in \ran f$.
+      Then there is a $\b < \a_2$ where $b \in \ran f_\b$.
+      Hence $b \in W[a_\b]$ for some $a_\b \in W$.
+      Since this is an initial segment of $W$ clearly also $b \in W$.
+      Thus $\ran f \ss W$ since $b$ was arbitrary.
+      Now consider any $b \in W$.
+      If $b \in W_1$ then let $g$ be the isomorphism from $\a_1$ to $W_1$ so that there is a $\g \in \a_1$ such that $g(\g) = b$.
+      Clearly also $\g \in a_1 + 1$ and since $W_1$ is an initial segment of $W$ by Lemma~\ref{lem:ord:isiso}, part 2 we have that $f_1 \rest \a_1 = g$ so that $f_1(\g) = b$ as well.
+      Thus $b \in \ran f_1$ so that clearly $b \in \ran f$ also.
+      On the other hand if $b \in W_2$ then let $g$ denote the isomorphism from $\a_2$ to $W_2$ so that there is a $\g \in \a_2$ such that $g(\g) = b$, which exists since $g$ is onto.
+      Since $\a_2$ is a limit ordinal we have that $\g+1 \in \a_2$ so that $\g+1 < \a_2$.
+      Then $f_{\g+1}$ is an isomorphism from $\a_1 + (\g+1)$ to $W[a_{\g+1}]$.
+      Thus $f_{\g+1}(\a_1 + \g) = g(\g) = b \in W[a_{\g+1}]$ since $\a_1 + \g \in (\a_1 + \g) + 1 = \a_1 + (\g+1)$.
+      Hence $b \in \ran f_{\g+1}$ so that also $b \in \ran f$.
+      Hence since $b$ was arbitrary and $b \in \ran f$ in all cases it follows that $W \ss \ran f$, which shows that $\ran f = W$ as desired.
 
-    Lastly, suppose that $\a_2$ is a limit ordinal and that for each $\b < \a_2$ there is an isomorphism $f_\b$ from $\a_1 + \b$ to $W[a_\b]$ where $a_\b \in W_2$.
-    We note that each $f_\b$ is unique.
-    Then let $f = \bigcup_{\b < \a_2} f_\b$.
-
-    First we claim that $f$ is a function, which is the case so long as $\braces{f_\b \where \b < \a_2}$ is a compatible system of functions.
-    So consider any $\b_1 < \a_2$ and $\b_2 < \a_2$.
-    Without loss of generality we can assume that $\b_1 \leq \b_2$.
-    Clearly if $\b_1 = \b_2$ then $f_{\b_1} = f_{\b_2}$ since the function is unique so suppose that $\b_1 < \b_2$.
-    Then by Lemma~6.5.4a $\a_1 + \b_1 < \a_1 + \b_2$.
-    From this it follows that $W[a_{\b_1}]$ is an initial segment of $W[a_{\b_2}]$
-    From Lemma~\ref{lem:ord:isiso} part (2) above it follows that $f_{\b_2} \rest (\a_1 + \b_1) = f_{\b_1}$.
-    Since $\b_1$ and $\b_2$ were arbitrary this shows that the system is compatible and thus that $f$ is a function.
-
-    We also show that  $\dom f = \a_1 + \a_2$.
-    So first consider any $\g \in \a_1 + \a_2$ so that we have $\g = \a_1 + \b$ for some $\b < \a_2$ and hence that $\g \in (\a_1 + \b) + 1 = \a_1 + (\b + 1)$.
-    Thus $\g \in \dom f_{\b+1}$ so that clearly also $\g \in \dom f$, noting that clearly $\b+1 < \a_2$ as well since $\a_2$ is a limit ordinal.
-    Hence since $\g$ was arbitrary $\a_1 + \a_2 \ss \dom f$.
-    Now suppose that $\g \in \dom f$ so that there is a $\b < \a_2$ such that $\g \in \dom f_\b$.
-    It then follows by the definition of $f_\b$ that $\g \in \a_1 + \b$ for some $\b < \a_2$.
-    Then clearly $\a_1 + \b < \a_1 + \a_2$ so that $\a_1 + \b \in \a_1 + \a_2$ and $\a_1 + \b \ss \a_1 + \a_2$ since $\a_1 + \a_2$ is transitive (since it is an ordinal).
-    Thus also $\g \in \a_1 + \a_2$.
-    Hence $\dom f \ss \a_1 + \a_2$ since $\g$ was arbitrary.
-    This shows that $\dom f = \a_1 + \a_2$.
-
-    We also show that $\ran f = W$, which also shows that $f$ is onto.
-    So consider any $b \in \ran f$.
-    Then there is a $\b < \a_2$ where $b \in \ran f_\b$.
-    Hence $b \in W[a_\b]$ for some $a_\b \in W$.
-    Since this is an initial segment of $W$ clearly also $b \in W$.
-    Thus $\ran f \ss W$ since $b$ was arbitrary.
-    Now consider any $b \in W$.
-    If $b \in W_1$ then let $g$ be the isomorphism from $\a_1$ to $W_1$ so that there is a $\g \in \a_1$ such that $g(\g) = b$.
-    Clearly also $\g \in a_1 + 1$ and since $W_1$ is an initial segment of $W$ by Lemma~\ref{lem:ord:isiso}, part 2 we have that $f_1 \rest \a_1 = g$ so that $f_1(\g) = b$ as well.
-    Thus $b \in \ran f_1$ so that clearly $b \in \ran f$ also.
-    On the other hand if $b \in W_2$ then let $g$ denote the isomorphism from $\a_2$ to $W_2$ so that there is a $\g \in \a_2$ such that $g(\g) = b$, which exists since $g$ is onto.
-    Since $\a_2$ is a limit ordinal we have that $\g+1 \in \a_2$ so that $\g+1 < \a_2$.
-    Then $f_{\g+1}$ is an isomorphism from $\a_1 + (\g+1)$ to $W[a_{\g+1}]$.
-    Thus $f_{\g+1}(\a_1 + \g) = g(\g) = b \in W[a_{\g+1}]$ since $\a_1 + \g \in (\a_1 + \g) + 1 = \a_1 + (\g+1)$.
-    Hence $b \in \ran f_{\g+1}$ so that also $b \in \ran f$.
-    Hence since $b$ was arbitrary and $b \in \ran f$ in all cases it follows that $W \ss \ran f$, which shows that $\ran f = W$ as desired.
-    
-    Finally we show that $f$ is an isomorphism.
-    So consider any $\g_1$ and $\g_2$ in $\a_1 + \a_2$ where $\g_1 < \g_2$.
-    Then we have that $\g_2 = \a_1 + \b$ for some ordinal $\b$ and that $\g_1 < \g_2 < \g_2 + 1 = (\a_1 + \b) + 1 = \a_1 + (\b + 1)$.
-    From this it follows that $\g_1$ and $\g_2$ are both in $\dom f_{\b+1} = \g_2 + 1$.
-    Thus since $f_{\b+1}$ is an isomorphism we clearly have that
-    $$
-    f(\g_1) = f_{\b+1}(\g_1) < f_{\b+1}(\g_2)= f(\g_2)
-    $$
-    so that $f$ is an isomorphism as well since $\g_1$ and $\g_2$ were arbitrary.
-    Thus $\a_1 + \a_2$ is isomorphic to $W$ in this case as well, which proves the entire theorem.
-  }
-}
-
-\subsection{The Normal Form}
-
-\theorem{1}{
-  The ordinal functions $\a + \b$, $\a \cdot \b$, and $\a^\b$ are \emph{continuous} in the second variable: If $\g$ is a limit ordinal and $\b = \sup_{\n < \g} \b_\n$, then
-  \ali{
-    \a + \b &= \sup_{\n < \g}\parens{\a + \b_\n}, &
-    \a \cdot \b &= \sup_{\n < \g}\parens{\a \cdot \b_\n}, &
-    \a^\b &= \sup_{\n < \g} \a^{\b_\n}
-  }
-}
-\sol{
-  \begin{lem}\label{lem:ord:gesup}
-    Suppose that $A$ is a nonempty set of ordinals where $\a$ is the greatest element of $A$ and that $f$ is a non-decreasing function on $A$ whose range is a set of ordinals.
-    Then
-    $$
-    f(\a) = \sup_{\b \in A} f(\b) \,.
-    $$
-  \end{lem}
-  \qproof{
-    Consider any $\b \in A$ so that $\b \leq \a$ since $\a$ is the greatest element of $A$.
-    It then follows that $f(\b) \leq f(\a)$ since $f$ is non-decreasing.
-    Since $\b$ was arbitrary this shows that $f(\a)$ is the greatest element of the set $f(A) = \braces{f(\g) \where \g \in A}$.
-    Therefore by the remarks after the proof of Theorem~6.2.6 in the text it follows that $f(\a) = \sup{f(A)}$ as desired.
-  }
-
-  \input{shared/lem_ord_lub}
-
-  \begin{lem}\label{lem:ord:ngesup}
-    Suppose that $A$ and $B$ are sets of ordinals and that $f$ is a non-decreasing function defined on $A \cup B$ whose range is a set of ordinals.
-    Also suppose that neither $A$ nor $B$ have greatest elements and that $\sup{A} = \sup{B}$.
-    Then
-    $$
-    \sup_{\a \in A} f(\a) = \sup_{\b \in B} f(\b) \,.
-    $$
-  \end{lem}
-  \qproof{
-    First we denote $f(A) = \braces{f(\a) \where \a \in A}$ and $f(B) = \braces{f(\b) \where \b \in B}$ so that we must show that $\sup{f(A)} = \sup{f(B)}$.
-    We show this by proving that $\sup{f(A)}$ has the least upper bound property of the set $f(B)$, from which the result follows from Lemma~\ref{lem:ord:lub}.
-
-    So first consider any $f(\b)$ in $f(B)$ so that $\b \in B$.
-    Then $\b \leq \sup{B} = \sup{A}$.
-    Moreover it has to be that $\b < \sup{B} = \sup{A}$ since $B$ has no greatest element (since if $\b = \sup{B}$ then it would be the greatest element of $B$).
-    Thus $\b$ is not an upper bound of $A$ so that there is an $\a \in A$ such that $\b < \a$.
-    Then, since $f$ is non-decreasing, we have $f(\b) \leq f(\a) \leq \sup{f(A)}$.
-    Hence $\sup{f(A)}$ is an upper bound of $f(B)$ since $f(\b)$ was arbitrary.
-
-    Now consider any $\g < \sup{f(A)}$.
-    Then $\g$ is not an upper bound of $f(A)$ so that there is an $\a \in A$ such that $\g < f(\a)$.
-    Since $A$ has no greatest element it follows that $\a < \sup{A} = \sup{B}$ so that it is not an upper bound of $B$.
-    Hence there is a $\b \in B$ such that $\a < \b$.
-    It then follows that $f(\a) \leq f(\b)$ since $f$ is non-decreasing.
-    Thus $\g < f(\a) \leq f(\b)$.
-    This shows that $\g$ is not an upper bound of $f(B)$ and thus the result since $g < \sup{f(A)}$ was arbitrary.
-  }
-
-  \mainthrm
-
-  Suppose that $\g$ is a nonzero limit ordinal, $\braces{\b_\n}$ is a transfinite sequence of ordinals where $\n < \g$, and $\b = \sup_{\n < \g} \b_\n$.
-
-  For what follows let $A = \braces{\b_\n \where \n < \g}$, i.e. the range of the sequence, so that clearly then $\b = \sup_{\n < \g} \b_\n = \sup{A}$.
-  Note also that $A$ is nonempty since the domain of the sequence is a nonzero ordinal.
-
-  First we show that $\a + \b = \sup_{\n < \g} \parens{\a + \b_\n}$ for any ordinal $\a$.
-  \qproof{
-    First note that the function $f(\d) = \a + \d$ defined for any $\d \leq \b$ is non-decreasing by Lemma~6.5.4.
-    With this notation we aim to show that $\a + \b = \sup_{\d \in A} f(\d)$.
-
-    In the first case suppose that $\b \in A$ so that clearly $\b$ is the greatest element of $A$ (since it is an upper bound of $A$).
-    The result then follows from Lemma~\ref{lem:ord:gesup}.
-
-    On the other hand suppose that $\b \notin A$.
-    It then follows that $A$ has no greatest element and then by Exercise~6.2.7 that $\b$ is a limit ordinal.
-    Note that $\b \neq 0$ since if that were the case then $A = \es$, which is not possible since it is the range of a sequence indexed by a nonzero ordinal.
-    Hence we have by Definition~6.5.1c that
-    $$
-    \a + \b = \sup_{\d < \b} \parens{\a + \d} = \sup_{\d < \b} f(\d) \,.
-    $$
-    The result then follows from Lemma~\ref{lem:ord:ngesup} since $f$ is non-decreasing and by the remarks after Theorem~6.2.10 we have that
-    $$
-    \sup_{\d < \b} \d = \b = \sup{A}
-    $$
-    since $\b$ is a limit ordinal.
-  }
-
-  The proof that $\a \cdot \b = \sup_{\n < \g} \parens{\a \cdot \b_\n}$ is analogous, noting that the function $f(\d) = \a \cdot \d$ is non-decreasing by Exercise~6.5.7 (even clearly when $\a = 0$ since non-decreasing is not strict like it would be if we required that the function be increasing).
-
-  Similarly, the proof for the exponential function, i.e. that $\a^\b = \sup_{\n < \g} \a^{\b_\n}$, is also analogous.
-  However this is only valid for $\a > 1$, which is not mentioned in the text.
-  This is because ordinal exponentiation is only non-decreasing for $\a > 0$ since $0^1 = 0 < 1 = 0^0$.
-  That it is non-decreasing follows trivially from what is shown in Exercise~6.5.14b.
-  The following is a counterexample that shows that the assertion does not hold for $\a = 0$, even though exponentiation not being non-decreasing does not necessarily mean it is false (it just means our proof does not work for $\a = 0$).
-
-  Suppose that our transfinite sequence is indexed by $\g = \w$ (i.e. it is an ordinary sequence) and that the sequence is $\braces{\b_\n} = \braces{1, 0, 0, 0, \ldots}$.
-  We then clearly have that
-  $$
-  \b = \sup_{\n < \g} \b_\n = \sup_{\n < \w} \b_\n = \sup \braces{1, 0, 0, 0, \ldots} = 1
-  $$
-  so that $\a^\b = 0^1 = 0$.
-  However, we also have
-  $$
-  \sup_{\n < \g} \a^{\b_\n} = \sup_{\n < \w} 0^{\b_\n} = \sup\braces{0^1, 0^0, 0^0, 0^0, \ldots} = \sup\braces{0, 1, 1, 1, \ldots} = 1 \,.
-  $$
-  Hence the result does not hold since $\a^\b = 0 \neq 1 = \sup_{\n < \g} \a^{\b_\n}$.
-}
-
-\section{Alephs}
-
-\subsection{Initial Ordinals}
-
-\theorem{7}{
-  The Hartogs number of $A$ exists for all $A$.
-}
-\sol{
-  \qproof{
-  	For every well-ordered set $(W,R)$ where $W \ss A$ there is a unique ordinal $\a$ such that $(\a,<)$ is isomorphic to $(W,R)$ by Theorem~6.3.1.
-    Then by the Axiom Schema of Replacement there is a set $H$ such that $\a \in H$ if and only if it is the ordinal isomorphic to a well-ordering $R \ss \pset{A \times A}$ of some $W \ss A$.
-
-    We claim that $H$ contains all ordinals that are equipotent to some subset of $A$.
-    So consider any such ordinal $\a$ and let $f$ be the bijection from $\a$ to $W \ss A$.
-    Then let
-    $$
-    R = \braces{(f(\b), f(\g)) \where (\b, \g) \in \a \times \a \land \b < \g}
-    $$
-    so that clearly $f$ is an isomorphism from $(\a, <)$ to $(W, R)$.
-    Hence by definition $\a \in H$ as desired.
-
-    Thus the set
-    $$
-    h(A) = \braces{\a \in H \where \text{$\a$ is equipotent to some subset of $A$}}
-    $$
-    exists by the Axiom Schema of Comprehension.
-    We claim that this is the Hartogs numbers.
-    To justify this we need to show that it is an ordinal and that it is the least ordinal which is not equipotent to a subset of $A$.
-
-    First since $H$ was defined to be a set of ordinals and $h(A) \ss H$ it follows that it also is a set of ordinals and thus well-ordered by Theorem~6.2.6d.
-    Now consider any $\a \in h(A)$ so that $\a \in H$ so that there is a $W \ss A$ and well ordering $R \ss \pset{A \times A}$ such that $(\a, <)$ is isomorphic to $(W,R)$.
-    Let $f$ be that isomorphism.
-    Now consider any $\b \in \a$ so that $\b \ss \a$ since $\a$ is an ordinal (and therefore transitive).
-    Then let $g = f \rest \b$ and $X = f[\b]$.
-    Then clearly $g$ is an isomorphism from $(\b,<)$ to $(X,R)$ so that $\b \in H$.
-    Moreover since $g$ is bijective and $X \ss W \ss A$ clearly $\b$ is equipotent to a subset of $A$.
-    Hence $\b \in h(A)$.
-    Since $\b \in \a$ was arbitrary this shows that $\a \ss h(A)$ so that $h(A)$ is transitive.
-    Hence $h(A)$ satisfies the definition of an ordinal number.
-
-    Now suppose that $h(A)$ itself is equipotent to some subset of $A$.
-    Then $h(A) \in H$ since $H$ was shown to contain all such ordinals.
-    Then also by definition $h(A) \in h(A)$, which contradicts Lemma~6.2.7.
-    So it must be that $h(A)$ is in fact not equipotent to any subset of $A$.
-    Clearly also for any $\a < h(A)$ we have $\a \in h(A)$ since $h(A)$ is an ordinal.
-    But then by definition $\a$ is equipotent to a subset of $A$.
-    This shows that $h(A)$ is the least ordinal that is not equipotent to a subset of $A$ and hence is the Hartogs number.
-  }
-}
-
-\theorem{8}{
-  We show the remark after Definition~7.1.8 that $\abs{\w_\a} < \abs{\w_\b}$ for ordinals $\a$ and $\b$ where $\a < \b$.
-}
-\sol{
-  \input{shared/lem_aleph_wolege}
-  \input{shared/cor_aleph_wonlegt}
-
-  \mainthrm
-  
-  \qproof{
-    We show this by induction.
-    First for $\a$ we have by definition that $\w_{\a+1} = h(\w_\a)$.
-    Since it has been shown that $\abs{h(\w_\a)} \nleq \abs{\w_\a}$ it follows from Corollary~\ref{cor:aleph:wonlegt} that $\abs{\w_{\a+1}} = \abs{h(\w_\a)} > \abs{\w_\a}$ since $\w_\a$ and $h(\w_\a)$ are ordinals and therefore well-ordered.
-    Hence $\abs{\w_\a} < \abs{\w_{\a+1}}$.
-
-    Now suppose that $\a$ is a nonzero limit ordinal and consider any $\g < \a$.
-    Then $\g + 1 < \a$ since $\a$ is a limit ordinal.
-    Then since $\w_\a$ is an upper bound of $\braces{\w_\b \where \b < \a}$ it follows that $\w_{\g+1} \leq \w_\a$ since $\g+1 < \a$.
-    From this it clearly follows that $\abs{\w_{\g+1}} \leq \abs{\w_\a}$.
-    We also have by what was just shown that $\abs{\w_\g} < \abs{\w_{\g+1}}$.
-    Hence by Exercise~4.1.2a we have $\abs{\w_\g} < \abs{\w_\a}$.
-    Since $\g < \a$ was arbitrary this completes the induction and the result follows.
-  }
-}
-
-\theorem{9}{
-  We show part (b): If $\W$ is an infinite initial ordinal number, then $\W = \w_\a$ for some $\a$.
-}
-\sol{
-  \input{shared/lem_aleph_infwo_succ}
-  \input{shared/lem_aleph_initlimit}
-  \input{shared/lem_ord_expin_sups}
-  
-  \begin{lem}\label{lem:aleph:alewa}
-    $\a \leq \w_\a$ for every ordinal $\a$.
-  \end{lem}
-  \qproof{
-    We show this by induction on $\a$.
-    Clearly for $\a = 0$ we have $\a = 0 \leq \w = \w_0 = \w_\a$.
-    Now suppose that $\a \leq \a_\w$.
-    Then by Exercise~6.5.8 we have that $\a + 1 \leq \w_\a + 1$.
-    Then, since $h(\w_\a)$ is an initial ordinal by Lemma~7.1.6 and clearly is infinite, it follows that $h(\w_\a)$ is a limit ordinal by Lemma~\ref{lem:aleph:initlimit}.
-    Since clearly $\w_\a < h(\w_\a)$ we then have that $\w_\a + 1 < h(\w_\a)$ as well.
-    Hence we have
-    $$
-    \a + 1 \leq  \w_\a + 1 < h(\w_\a) = \w_{\a+1}
-    $$
-    so that $\a+1 \leq \w_{\a+1}$ is true.
-
-    Now suppose that $\a$ is a nonzero limit ordinal and that $\g \leq \w_\g$ for all $\g < \a$.
-    Since $\a$ is a limit ordinal it follows that $\a = \sup\braces{\g \where \g < \a}$ and by definition we have that $\w_\a = \sup\braces{\w_\g \where \g < \a}$.
-    It then follows from these and the induction hypothesis that
-    $$
-    \a = \sup\braces{\g \where \g < \a} \leq \sup\braces{\w_\g \where \g < \a} = \w_\a
-    $$
-    by Lemma~\ref{lem:ord:expin:sups}.
-    This completes the inductive proof.
-  }
-
-  \input{shared/lem_aleph_initle}
-  \input{shared/lem_aleph_initltwa}
-
-  \mainthrm
-  \qproof{
-    Let $\W$ be any infinite initial ordinal.
-    Then by Lemma~\ref{lem:aleph:alewa} we have
-    $$
-    \W < \W + 1 \leq \w_{\W+1} \,.
-    $$
-    Hence there is an $\a$ such that $\W < \w_\a$.
-    It then follows from Lemma~\ref{lem:aleph:initltwa} that there is a $\g < \a$ such that $\W = \w_\g$.
-  }
-}
-
-\section{The Axiom of Choice}
-
-\subsection{The Axiom of Choice and its Equivalents}
-
-\theorem{13}{
-  The following statements are equivalent:
-
-  (a) (The Axiom of Choice) There exists a choice function for every system of sets.
-
-  (b) (The Well-Ordering Principle) Every set can be well-ordered.
-
-  (c) (Zorn's Lemma) If every chain in a partially ordered set has an upper bound, then the partially ordered set has a maximal element.
-}
-\sol{
-  \input{shared/lem_aoc_notin}
-    
-  \mainthrm
-  \def\fb{\overline{f}}
-  \def\fbb{\bar{\bar{f}}}
-  \qproof{
-    The equivalence of (a) and (b) follows immediately from Theorem~8.1.1; therefore it suffices to show the equivalence of (a) and (c).
-
-    \emph{(a) implies (c).}
-    Suppose that $(A \prece)$ is a partially ordered set in which every chain has an upper bound.
-    Then by Lemma~\ref{lem:aoc:notin} there is a $b \notin A$, and by (a) there is a choice function $g$ on $\pset{A}$.
-    We then define a transfinite sequence $\angles{a_\a \where \a < h(A)}$ by transfinite recursion.
-    Given the transfinite sequence $\angles{a_\x \where \x < \a}$ for an $\a < h(A)$ we define the set $A_\a = \braces{a \in A \where a_\x \prec a \text{ for all } \x < \a}$.
-    We then set
-    \gath{
-      a_\a = \begin{cases}
-        g(A_\a) & \text{if $a_\x \neq b$ for all $\x < \a$ and $A_\a \neq \es$} \\
-        b & \text{otherwise} \,,
-      \end{cases}
+      Finally we show that $f$ is an isomorphism.
+      So consider any $\g_1$ and $\g_2$ in $\a_1 + \a_2$ where $\g_1 < \g_2$.
+      Then we have that $\g_2 = \a_1 + \b$ for some ordinal $\b$ and that $\g_1 < \g_2 < \g_2 + 1 = (\a_1 + \b) + 1 = \a_1 + (\b + 1)$.
+      From this it follows that $\g_1$ and $\g_2$ are both in $\dom f_{\b+1} = \g_2 + 1$.
+      Thus since $f_{\b+1}$ is an isomorphism we clearly have that
+      $$
+        f(\g_1) = f_{\b+1}(\g_1) < f_{\b+1}(\g_2)= f(\g_2)
+      $$
+      so that $f$ is an isomorphism as well since $\g_1$ and $\g_2$ were arbitrary.
+      Thus $\a_1 + \a_2$ is isomorphic to $W$ in this case as well, which proves the entire theorem.
     }
-    noting that clearly $A_\a$ is in the domain of $g$ since $A_\a \ss A$.
-
-    We can justify the recursive definition of this sequence as follows.
-    First, let $B = A \cup \braces{b}$ and $S = \bigcup_{\a < h(A)} B^\a$ be the set of all transfinite sequences of elements $B$ of length less than $h(A)$.
-    We then define a function $G: S \to B$.
-    For any transfinite sequence $F \in S$ there is an $\a < h(A)$ such that $F \in B^\a$, and we let $A_F = \braces{a \in A \where F(\x) \prec a \text{ for all } \x < \a}$.
-    We then simply set
-    \gath{
-      G(F) = \begin{cases}
-        g(A_F) & \text{if $F(\x) \neq b$ for all $\x < \a$ and $A_F \neq \es$} \\
-        b & \text{otherwise} \,.
-      \end{cases}
-    }
-    It then follows from Theorem~6.4.4 that there is a function $f$ such that $f(\a) = G(f \rest \a)$ for all $\a < h(A)$.
-    Clearly based on our definition of $G$ this $f$ is exactly the transfinite sequence constructed above.
-
-    Returning to our main proof, we claim that there is an $\a < h(A)$ such that $a_\a = b$.
-    To see this, suppose to the contrary that $a_\a \neq b$ for all $\a < h(A)$ so that it has to be that each $a_\a \in A$.
-    Consider now any $\a < h(A)$ and $\b < h(A)$ where $\a \neq \b$.
-    Without loss of generality we can assume that $\a < \b$.
-    Clearly then, by definition, we have that $a_\b \in A_\b$ so that $a_\x \prec a_\b$ for all $\x < \b$.
-    But since $\a < \b$, we have that $a_\a \prec a_\b$ so that $a_\a \neq a_\b$.
-    Since $\a$ and $\b$ were arbitrary, this shows that the sequence is an injective function from $h(A)$ to $A$.
-    However, this would mean that $h(A)$ is equipotent to some subset of $A$, which contradicts the definition of the Hartogs number.
-    Hence it has to be that $a_\a = b$ for some $\a < h(A)$.
-
-    So let $\l < h(A)$ be the least ordinal such that $a_\l = b$ and let $C = \braces{a_\x \where \x < \l}$.
-    We claim that $C$ is a chain in $(A, \prece)$.
-    So consider any $a_\a$ and $a_\b$ in $C$ so that $\a < \l$ and $\b < \l$
-    Without loss of generality we can assume that $\a \leq \b$.
-    If $\a = \b$ then obviously $a_\a = a_\b$ so that $a_a \prece a_\b$ clearly holds.
-    If $\a < \b$ then, by what was shown above, we have that $a_\a \prec a_\b$ so that $a_\a \prece a_\b$ again holds.
-    Hence, in every case, $a_\a$ and $a_\b$ are comparable in $\prece$, which shows that $C$ is a chain since $a_\a$ and $a_\b$ were arbitrary.
-
-    Thus, since $C$ is a chain, it has an upper bound $c \in A$.
-    We claim that $c$ is also a maximal element of $A$.
-    To show this, suppose that there is an $a \in A$ such that $c \prec a$.
-    Now consider any $\x < \l$.
-    Then, since $c$ is an upper bound of $C$, we have that $a_\x \prece c \prec a$ so that $a_\x \prec a$ since orders are transitive.
-    It then follows from the definition of $A_\l$ that $a \in A_\l$ so that $A_\l \neq \es$.
-    Also note that, by the definition of $\l$, we have that $a_\x \neq b$ for any $\x < \l$.
-    Thus, by the recursive definition of the sequence, it follows that $a_\l = g(A_\l) \neq b$, which contradicts the definition of $\l$ (as the least ordinal such that $a_\l = b$).
-    So it has to be that there is no such element $a$, which shows that $c$ is in fact a maximal element of $A$.
-
-    \emph{(c) implies (a).}
-    Suppose that $T$ is any system of sets.
-    Then, supposing that $\es \in T$, $S = T - \braces{\es}$ is a system of nonempty sets.
-    If we can show that $S$ has a choice function $g$ then $f = g \cup \braces{(\es, \es)}$ is clearly a choice function for $T$.
-    Thus it suffices to show that any system $S$ of nonempty sets has a choice function.
-
-    So let $S$ be such a system.
-    Let $F$ be the system of functions $f$ for which $\dom{f} \ss S$ and $f(X) \in X$ holds for any $X \in \dom{f}$.
-    Note that $F \in \pset{\pset{S \times \bigcup S}}$, which exists by the Axiom of Power Set and the Axiom of Union.
-    We claim that $F$ is ordered by $\ss$.
-    Hence we must show that $\ss$ is reflexive, asymmetric, and transitive.
-    Since, for any $f \in F$, we obviously have that $f \ss f$, clearly $\ss$ is reflexive.
-    Also, clearly if we have $f \ss g$ and $g \ss f$ then $f=g$ so that $\ss$ is asymmetric.
-    Lastly, if $f \ss g$ and $g \ss h$, then obviously $f \ss h$ as well so that $\ss$ is transitive.
-    Hence $\ss$ is a (partial) order on $F$.
-
-    Now suppose that $F_0$ is a linearly ordered subset of $F$.
-    We claim that $F_0$ is a compatible set of functions.
-    Consider any $f$ and $g$ in $F_0$.
-    Since $\ss$ is a linear ordering of $F_0$ we have that either $f \ss g$ or $g \ss f$.
-    Without loss of generality, we can assume that $f \ss g$.
-    Then clearly $f \cup g = g$.
-    Since this is a function, it follows from Lemma~2.3.11a that $f$ and $g$ are compatible.
-    Since $f$ and $g$ were arbitrary, this shows that $F_0$ is a compatible system.
-    It then follows from Theorem~2.3.12 that $f_0 = \bigcup F_0$ is a function and that it extends every $g \in F_0$ and hence is compatible with them all.
-
-    We also claim that $f_0 \in F$.
-    First consider any $X \in \dom{f_0}$ so that it has to be that $X \in \dom{g}$ for some $g \in F_0$.
-    Then, since also clearly $g \in F$ (since $F_0 \ss F$), it follows that $g(X) \in X$.
-    Thus also $f_0(X) = g(X) \in X$ since $f_0$ and $g$ are compatible.
-    We also have that $\dom{g} \ss S$ (since $g \in F$) so that $X \in S$.
-    Since $X$ was arbitrary this shows that $\dom{f_0} \ss S$ and hence that $f_0 \in F$.
-    Lastly, clearly $f_0$ is an upper bound of $F_0$ in $(F, \ss)$ since $g \ss \bigcup F_0 = f_0$ for any $g \in F_0$.
-
-    Therefore the conditions of Zorn's Lemma are satisfied so that $F_0$ has a maximal element $\fb$.
-    We claim that $\dom{\fb} = S$.
-    If this were not the case then it would have to be that $\dom{\fb} \pss S$ since we know that $\dom{\fb} \ss S$ since $\fb \in F_0 \ss F$.
-    Thus there would be an $X \in S$ where $X \notin \dom{\fb}$.
-    Consider choose $x \in X$ so that clearly the function $\fbb = \fb \cup \braces{(X, x)} \in F$.
-    However, we would also clearly have that $\fb \ss \fbb$ but $\fb \neq \fbb$, which would contradict the maximality of $\fb$.
-    So it has to be that $\dom{\fb} = S$.
-    Clearly then $\fb$ is a choice function for $S$ since, for any $X \in S$, we have that $\fb(X) \in X$ since $\fb \in F$.
   }
-}
 
-\subsection{The Axiom of Choice in Mathematics}
+  \subsection{The Normal Form}
 
-\theoremapp{10}{*}{
-  Let $p$ be a sublinear functional on the vector space $V$, and let $f_0$ be a linear functional defined on a subspace $V_0$ of $V$ such that $f_0(v) \leq p(v)$ for all $v \in V_0$.
-  Then there is a linear functional $f$ defined on $V$ such that $f \supseteq f_0$ and $f(v) \leq p(v)$ for all $v \in V$.
-}
-\sol{
-  \begin{lem}\label{lem:aoc:subspace}
-    If $\famF$ is a nonempty system of subspaces of a vector space $V$ over scalar field $K$ that is linearly ordered by $\ss$, then $\bigcup \famF$ is also a subspace of $V$.
-  \end{lem}
-  \qproof{
-    First, since $\famF$ is nonempty, there is a subspace $W \in \famF$.
-    Since $W$ is a subspace, it follows that the zero vector $0$ is in $W$.
-    Hence clearly $0 \in \bigcup \famF$ since $W \in \famF$.
-    
-    Now consider any vectors $v_1$ and $v_2$ in $\bigcup \famF$.
-    Then there are subspaces (of $V$) $V_1$ and $V_2$ in $\famF$ such that $v_1 \in V_1$ and $v_2 \in V_2$.
-    Since $\ss$ linearly orders $\famF$ we have that either $V_1 \ss V_2$ or $V_2 \ss V_1$.
-    Without loss of generality we can assume that $V_1 \ss V_2$ since the other case is analogous.
-    Thus we have that both $v_1$ and $v_2$ are in $V_2$ since $v_1 \in V_1 \ss V_2$.
-    Since $V_2$ is a subspace it follows that $v_1 + v_2 \in V_2$ so that clearly also $v_1 + v_2 \in \famF$ since $V_2 \in \famF$.
-
-    Lastly, consider a vector $v \in \bigcup \famF$ and scalar $c \in K$.
-    Then there is a subspace $W \in \famF$ such that $v \in W$.
-    It then follows that $cv \in W$ so that clearly $cv \in \bigcup \famF$.
-
-    This shows that $\bigcup \famF$ is a subspace of $V$ as desired.
-  }
-  
-  \mainthrm
-  \qproof{
-    Let $F$ be the set of all linear functionals $g$ defined on some subspace $W$ of $V$ such that
-    \gath{
-      f_0 \ss g \text{ and } g(v) \leq p(v) \text{ for all } v \in W \,.
-    }
-    Let $F_0 \ss F$ be linearly ordered by $\ss$.
-    If $F_0 = \es$ then $f_0$ is an $\ss$-upper bound of $F_0$ since clearly $f_0 \in F$ (with subspace $V_0$).
-    So assume that $F_0$ is nonempty so that $g_0 = \bigcup F_0$ is clearly an $\ss$-upper bound of $F_0$.
-    It is trivial to show that $F_0$ is a compatible system of functions since it is linearly ordered by $\ss$.
-    Hence $g_0 = \bigcup F_0$ is a function with $\dom(g_0) = \bigcup_{g \in F_0} \dom(g)$ by Theorem~2.3.12 where $g_0$ extends all $g \in F_0$.
-
-    We also show that $\braces{\dom(g) \where g \in F_0}$ is a set of subspaces of $V$ that is linearly ordered by $\ss$.
-    Consider any $g$ and $h$ in $F_0$.
-    Then either $g \ss h$ or $h \ss g$.
-    Without loss of generality we can assume that the former is the case ($g \ss h$) since the other case is analogous.
-    Now consider any $v \in \dom(g)$ so that clearly $(v, g(v)) \in g$.
-    Then we have $(v, g(v)) \in h$ since $g \ss h$.
-    Thus $v \in \dom(h)$ as well so that $\dom(g) \ss \dom(h)$ since $v$ was arbitrary.
-    The result then follows since $g$ and $h$ were arbitrary.
-    
-    Having shown this, it follows from Lemma~\ref{lem:aoc:subspace} that $\dom(g_0) = \bigcup \braces{\dom(g) \where g \in F_0}$ is also a subspace of $V$.
-    Now we show that $g_0$ is a linear functional.
-    So consider any $u$ and $v$ in $\dom(g_0)$ and $\a$ and $\b$ in $\reals$.
-    Then there is a $g$ and $g'$ in $F_0$ where $u \in \dom(g)$ and $v \in \dom(g')$.
-    Since we showed that $\braces{\dom(g) \where g \in F_0}$ is linearly ordered by $\ss$, we have that either $\dom(g) \ss \dom(g')$ or $g' \ss g$.
-    If $\dom(g) \ss \dom(g)'$ then both $u$ and $v$ are in $\dom(g')$ since $u \in \dom(g) \ss \dom(g')$.
-    Thus $\a \cdot u + \b \cdot v \in \dom(g')$ since $g'$ is a linear functional since $g' \in F_0 \ss F$.
-    Hence clearly $\a \cdot u + \b \cdot v \in \dom(g_0)$ since $g' \in F_0$.
-    We then also have that
-    \gath{
-      g_0(\a \cdot u + \b \cdot v) = g'(\a \cdot u + \b \cdot v) = \a \cdot g'(u) + \b \cdot g'(v) = \a \cdot g_0(u) + \b \cdot g_0(v)
-    }
-    since $g_0$ extends $g'$.
-    The case in which $\dom(g') \ss \dom(g)$ is analogous, thereby showing that $g_0$ is a linear functional on the subspace $\dom(g_0)$.
-
-    We also clearly have that $f_0 \ss g_0$.
-    To see this, note that, since $F_0 \neq \es$, there is a $g \in F_0$ so that $g \in F$ since $F_0 \ss F$.
-    Therefore $f_0 \ss g$ by the definition of $F$.
-    We also clearly have that have that $g \ss g_0$ since $g_0 = \bigcup F_0$ and $g \in F_0$.
-    Therefore $f_0 \ss g \ss g_0$ as desired.
-
-    Now we show that $g_0(v) \leq p(v)$ for all $v \in \dom(g_0)$.
-    So consider any such $v$ so that there is a $g \in F_0$ such that $v \in \dom(g)$ since it was shown above that $\dom(g_0) = \bigcup_{g \in F_0} \dom(g)$.
-    Thus also $g \in F$ since $F_0 \ss F$.
-    It then follows that $g(v) \leq p(v)$ by the definition of $F$.
-    However, since $g_0$ extends $g$, we have that $g_0(v) = g(v) \leq p(v)$.
-    This shows the result since $v$ was arbitrary.
-
-    We have therefore shown all of the facts required to conclude that indeed $g_0 \in F$ by the definition of $F$.
-    Since $g_0$ is an upper bound of $F_0$ and $F_0$ was arbitrary, this shows that the conditions of Zorn's Lemma have been satisfied so that $F$ has a $\ss$-maximal element $f$.
-    We claim that $f$ is our linear functional on $V$ such that $f_0 \ss f$ and $f(v) \leq p(v)$ for all $v \in V$.
-
-    Clearly all we must show is that $\dom(f) = V$ since the rest is true by virtue of $f$ being in $F$.
-    We know that $\dom(f)$ is a subspace of $V$ since $f \in F$ so that $\dom(f) \ss V$.
-    Assume to the contrary that $\dom(f) \neq V$ so that $\dom(f) \pss V$ and there is a $u \in V - \dom(f)$.
-    Then let $W$ be the subspace of $V$ spanned by $\dom(f) \cup \braces{u}$.
-    It follows then that every vector $w \in W$ can be uniquely expressed as $w = x + \a \cdot u$ for $x \in \dom(f)$ and $\a \in \reals$.
-    So define the function
-    \gath{
-      f_c(w) = f(x) + \a \cdot c
-    }
-    for each $w \in W$ (where $w = x + \a \cdot u$) and a $c \in \reals$.
-
-    First we show that $f_c$ is a linear functional on $W$ for any choice of $c$.
-    Clearly $f_c : W \to \reals$ since $\ran(f) \ss \reals$ and $\a$ and $c$ are real (so that $f_c(w) = f(x) + \a \cdot c$ is clearly real).
-    Now consider any $w$ and $v$ in $W$ and $a$ and $b$ in $\reals$.
-    Then there are unique $x,y \in \dom(f)$ and $\a,\b \in \reals$ where $w = x + \a \cdot u$ and $v = y + \b \cdot u$.
-    We then have
-    \gath{
-      a\cdot w + b \cdot v = a \cdot (x + \a \cdot u) + b \cdot (y + \b \cdot u) = (a\cdot x + b \cdot y) + (a \a + b \b) \cdot u \,,
-    }
-    noting that $a \cdot x + b \cdot y \in \dom(f)$ since $\dom(f)$ is a subspace and $x$ and $y$ are in $\dom(f)$, and $a\a + b \b \in \reals$.
-    It then follows that
+  \theorem{1}{
+    The ordinal functions $\a + \b$, $\a \cdot \b$, and $\a^\b$ are \emph{continuous} in the second variable: If $\g$ is a limit ordinal and $\b = \sup_{\n < \g} \b_\n$, then
     \ali{
-      f_c(a \cdot w + b \cdot v) &= f(a\cdot x + b \cdot y) + (a \a + b \b) c = a f(x) + bf(y) + a \a c + b \b c \\
-      &= a \squares{f(x) + \a c} + b \squares{f(y) + \b c} = a f_c(w) + b f_c(v)
+      \a + \b &= \sup_{\n < \g}\parens{\a + \b_\n}, &
+      \a \cdot \b &= \sup_{\n < \g}\parens{\a \cdot \b_\n}, &
+      \a^\b &= \sup_{\n < \g} \a^{\b_\n}
     }
-    so that $f_c$ is indeed a linear functional on $W$.
-
-    Now consider any $(x, a) \in f$ so that clearly the vector $x$ is in $\dom(f)$.
-    Then also $x \in W$ since $W = \dom(f) \cup \braces{u}$.
-    Also clearly $x = x + 0 \cdot u$ so that $f_c(x) = f(x) + 0 \cdot c = f(x) = a$.
-    Hence $(x, a) \in f_c$ so that $f \ss f_c$ since $(x,a)$ was arbitrary.
-    However we also clearly have that $u \in W$ but $u \notin \dom(f)$ so that $(u, f_c(u)) \in f_c$ but $(u, f_c) \notin f$.
-    Therefore $f \neq f_c$ so that $f \pss f_c$.
-    This also clearly implies that $f_0 \ss f_c$ since $f_0 \ss f \pss f_c$.
-
-    Now, for all $v$ and $t$ in $\dom(f)$ we have
-    \gath{
-      f(v) + f(t) = f(v + t) \leq p(v + t) = p(\squares{v - u} + \squares{t + u}) \leq p(v-u) + p(t+u)
-    }
-    by the linear properties of $f$ and $p$.
-    Hence
-    \gath{
-      f(v) - p(v-u) \leq p(t+u) - f(t) \,.
-    }
-    Since $v$ was arbitrary, it follows that the set $\braces{f(v) - p(v-u) \where v \in \dom(f)}$ has an upper bound so that $A = \sup\braces{f(v) - p(v-u) \where v \in \dom(f)}$ exists.
-    Similarly, since $t$ was arbitrary, the set $\braces{p(t + u) - f(t) \where t \in \dom(f)}$ has a lower bound so that $B = \inf\braces{p(t + u) - f(t) \where t \in \dom(f)}$ exists.
-    We then also clearly have that $A \leq B$.
-    So let $c = (A + B) / 2$ so that $A \leq c \leq B$.
-
-    Now consider any $w \in W$ so that $w = x + \a \cdot c$ for some $x \in \dom(f)$ and $\a \in \reals$.
-
-    Case: $\a = 0$.
-    Then
-    \gath{
-      f_c(w) = f_c(x + \a \cdot u) = f(x) + \a c = f(x) + 0 = f(x) \leq p(x) = p(x + \a \cdot u) = p(w) \,.
-    }
-
-    Case: $\a > 0$.
-    Then $1/\a \cdot x \in \dom(f)$ so that based on the definition of $c$ we have
-    \gath{
-      c \leq B \leq p\parens{\frac{1}{\a} \cdot x + u} - f\parens{\frac{1}{\a} \cdot x}
-    }
-    Then, since $\a > 0$, $f$ is linear functional, and $p$ is a sublinear functional, it follows that
-    \gath{
-      \a c \leq \a \cdot p\parens{\frac{1}{\a} \cdot x + u} - \a \cdot f\parens{\frac{1}{\a} \cdot x} \\
-      \a c \leq p(x + \a \cdot u) - f(x) \\
-      f(x) + \a c \leq p(x + \a \cdot u) \\
-      f_c(w) \leq p(w) \,.
-    }
-
-    Case: $\a < 0$.
-    Then, again $-1/\a \cdot x \in \dom(f)$ so that based on the definition of $c$ we have
-    \gath{
-      f\parens{-\frac{1}{\a} \cdot x} - p\parens{-\frac{1}{\a} \cdot x - u} \leq A \leq c \,.
-    }
-    Then, since $-\a > 0$, $f$ is a linear functional, and $p$ is a sublinear functional, we have
-    \gath{
-      -\a \cdot f\parens{-\frac{1}{\a} \cdot x} - (-\a) \cdot p\parens{-\frac{1}{\a} \cdot x - u} \leq -\a c \\
-      f(x) - p(x + \a \cdot u) \leq -\a c \\
-      f(x) + \a c \leq p(x + \a \cdot u) \\
-      f_c(w) \leq p(w) \,.
-    }
-
-    Thus in all cases we have $f_c(w) \leq p(w)$.
-    Since $w \in W$ was arbitrary, this completes the proof that $f_c \in F$.
-    But since $f \pss f_c$, this contradicts the fact that $f$ is a $\ss$-maximal element of $F$.
-    Hence it must be that in fact $\dom(f) = V$, thereby completing the overall proof.
   }
-}
+  \sol{
+    \begin{lem}\label{lem:ord:gesup}
+      Suppose that $A$ is a nonempty set of ordinals where $\a$ is the greatest element of $A$ and that $f$ is a non-decreasing function on $A$ whose range is a set of ordinals.
+      Then
+      $$
+        f(\a) = \sup_{\b \in A} f(\b).
+      $$
+    \end{lem}
+    \qproof{
+      Consider any $\b \in A$ so that $\b \leq \a$ since $\a$ is the greatest element of $A$.
+      It then follows that $f(\b) \leq f(\a)$ since $f$ is non-decreasing.
+      Since $\b$ was arbitrary this shows that $f(\a)$ is the greatest element of the set $f(A) = \braces{f(\g) \where \g \in A}$.
+      Therefore by the remarks after the proof of Theorem~6.2.6 in the text it follows that $f(\a) = \sup{f(A)}$ as desired.
+    }
 
-\theoremapp{14}{*}{
+    \input{shared/lem_ord_lub}
+
+    \begin{lem}\label{lem:ord:ngesup}
+      Suppose that $A$ and $B$ are sets of ordinals and that $f$ is a non-decreasing function defined on $A \cup B$ whose range is a set of ordinals.
+      Also suppose that neither $A$ nor $B$ have greatest elements and that $\sup{A} = \sup{B}$.
+      Then
+      $$
+        \sup_{\a \in A} f(\a) = \sup_{\b \in B} f(\b).
+      $$
+    \end{lem}
+    \qproof{
+      First we denote $f(A) = \braces{f(\a) \where \a \in A}$ and $f(B) = \braces{f(\b) \where \b \in B}$ so that we must show that $\sup{f(A)} = \sup{f(B)}$.
+      We show this by proving that $\sup{f(A)}$ has the least upper bound property of the set $f(B)$, from which the result follows from Lemma~\ref{lem:ord:lub}.
+
+      So first consider any $f(\b)$ in $f(B)$ so that $\b \in B$.
+      Then $\b \leq \sup{B} = \sup{A}$.
+      Moreover it has to be that $\b < \sup{B} = \sup{A}$ since $B$ has no greatest element (since if $\b = \sup{B}$ then it would be the greatest element of $B$).
+      Thus $\b$ is not an upper bound of $A$ so that there is an $\a \in A$ such that $\b < \a$.
+      Then, since $f$ is non-decreasing, we have $f(\b) \leq f(\a) \leq \sup{f(A)}$.
+      Hence $\sup{f(A)}$ is an upper bound of $f(B)$ since $f(\b)$ was arbitrary.
+
+      Now consider any $\g < \sup{f(A)}$.
+      Then $\g$ is not an upper bound of $f(A)$ so that there is an $\a \in A$ such that $\g < f(\a)$.
+      Since $A$ has no greatest element it follows that $\a < \sup{A} = \sup{B}$ so that it is not an upper bound of $B$.
+      Hence there is a $\b \in B$ such that $\a < \b$.
+      It then follows that $f(\a) \leq f(\b)$ since $f$ is non-decreasing.
+      Thus $\g < f(\a) \leq f(\b)$.
+      This shows that $\g$ is not an upper bound of $f(B)$ and thus the result since $g < \sup{f(A)}$ was arbitrary.
+    }
+
+    \mainthrm
+
+    Suppose that $\g$ is a nonzero limit ordinal, $\braces{\b_\n}$ is a transfinite sequence of ordinals where $\n < \g$, and $\b = \sup_{\n < \g} \b_\n$.
+
+    For what follows let $A = \braces{\b_\n \where \n < \g}$, i.e. the range of the sequence, so that clearly then $\b = \sup_{\n < \g} \b_\n = \sup{A}$.
+    Note also that $A$ is nonempty since the domain of the sequence is a nonzero ordinal.
+
+    First we show that $\a + \b = \sup_{\n < \g} \parens{\a + \b_\n}$ for any ordinal $\a$.
+    \qproof{
+      First note that the function $f(\d) = \a + \d$ defined for any $\d \leq \b$ is non-decreasing by Lemma~6.5.4.
+      With this notation we aim to show that $\a + \b = \sup_{\d \in A} f(\d)$.
+
+      In the first case suppose that $\b \in A$ so that clearly $\b$ is the greatest element of $A$ (since it is an upper bound of $A$).
+      The result then follows from Lemma~\ref{lem:ord:gesup}.
+
+      On the other hand suppose that $\b \notin A$.
+      It then follows that $A$ has no greatest element and then by Exercise~6.2.7 that $\b$ is a limit ordinal.
+      Note that $\b \neq 0$ since if that were the case then $A = \es$, which is not possible since it is the range of a sequence indexed by a nonzero ordinal.
+      Hence we have by Definition~6.5.1c that
+      $$
+        \a + \b = \sup_{\d < \b} \parens{\a + \d} = \sup_{\d < \b} f(\d).
+      $$
+      The result then follows from Lemma~\ref{lem:ord:ngesup} since $f$ is non-decreasing and by the remarks after Theorem~6.2.10 we have that
+      $$
+        \sup_{\d < \b} \d = \b = \sup{A}
+      $$
+      since $\b$ is a limit ordinal.
+    }
+
+    The proof that $\a \cdot \b = \sup_{\n < \g} \parens{\a \cdot \b_\n}$ is analogous, noting that the function $f(\d) = \a \cdot \d$ is non-decreasing by Exercise~6.5.7 (even clearly when $\a = 0$ since non-decreasing is not strict like it would be if we required that the function be increasing).
+
+    Similarly, the proof for the exponential function, i.e. that $\a^\b = \sup_{\n < \g} \a^{\b_\n}$, is also analogous.
+    However this is only valid for $\a > 1$, which is not mentioned in the text.
+    This is because ordinal exponentiation is only non-decreasing for $\a > 0$ since $0^1 = 0 < 1 = 0^0$.
+    That it is non-decreasing follows trivially from what is shown in Exercise~6.5.14b.
+    The following is a counterexample that shows that the assertion does not hold for $\a = 0$, even though exponentiation not being non-decreasing does not necessarily mean it is false (it just means our proof does not work for $\a = 0$).
+
+    Suppose that our transfinite sequence is indexed by $\g = \w$ (i.e. it is an ordinary sequence) and that the sequence is $\braces{\b_\n} = \braces{1, 0, 0, 0, \ldots}$.
+    We then clearly have that
+    $$
+      \b = \sup_{\n < \g} \b_\n = \sup_{\n < \w} \b_\n = \sup \braces{1, 0, 0, 0, \ldots} = 1
+    $$
+    so that $\a^\b = 0^1 = 0$.
+    However, we also have
+    $$
+      \sup_{\n < \g} \a^{\b_\n} = \sup_{\n < \w} 0^{\b_\n} = \sup\braces{0^1, 0^0, 0^0, 0^0, \ldots} = \sup\braces{0, 1, 1, 1, \ldots} = 1.
+    $$
+    Hence the result does not hold since $\a^\b = 0 \neq 1 = \sup_{\n < \g} \a^{\b_\n}$.
+  }
+
+  \section{Alephs}
+
+  \subsection{Initial Ordinals}
+
+  \theorem{7}{
+    The Hartogs number of $A$ exists for all $A$.
+  }
+  \sol{
+    \qproof{
+      For every well-ordered set $(W,R)$ where $W \ss A$ there is a unique ordinal $\a$ such that $(\a,<)$ is isomorphic to $(W,R)$ by Theorem~6.3.1.
+      Then by the Axiom Schema of Replacement there is a set $H$ such that $\a \in H$ if and only if it is the ordinal isomorphic to a well-ordering $R \ss \pset{A \times A}$ of some $W \ss A$.
+
+      We claim that $H$ contains all ordinals that are equipotent to some subset of $A$.
+      So consider any such ordinal $\a$ and let $f$ be the bijection from $\a$ to $W \ss A$.
+      Then let
+      $$
+        R = \braces{(f(\b), f(\g)) \where (\b, \g) \in \a \times \a \land \b < \g}
+      $$
+      so that clearly $f$ is an isomorphism from $(\a, <)$ to $(W, R)$.
+      Hence by definition $\a \in H$ as desired.
+
+      Thus the set
+      $$
+        h(A) = \braces{\a \in H \where \text{$\a$ is equipotent to some subset of $A$}}
+      $$
+      exists by the Axiom Schema of Comprehension.
+      We claim that this is the Hartogs numbers.
+      To justify this we need to show that it is an ordinal and that it is the least ordinal which is not equipotent to a subset of $A$.
+
+      First since $H$ was defined to be a set of ordinals and $h(A) \ss H$ it follows that it also is a set of ordinals and thus well-ordered by Theorem~6.2.6d.
+      Now consider any $\a \in h(A)$ so that $\a \in H$ so that there is a $W \ss A$ and well ordering $R \ss \pset{A \times A}$ such that $(\a, <)$ is isomorphic to $(W,R)$.
+      Let $f$ be that isomorphism.
+      Now consider any $\b \in \a$ so that $\b \ss \a$ since $\a$ is an ordinal (and therefore transitive).
+      Then let $g = f \rest \b$ and $X = f[\b]$.
+      Then clearly $g$ is an isomorphism from $(\b,<)$ to $(X,R)$ so that $\b \in H$.
+      Moreover since $g$ is bijective and $X \ss W \ss A$ clearly $\b$ is equipotent to a subset of $A$.
+      Hence $\b \in h(A)$.
+      Since $\b \in \a$ was arbitrary this shows that $\a \ss h(A)$ so that $h(A)$ is transitive.
+      Hence $h(A)$ satisfies the definition of an ordinal number.
+
+      Now suppose that $h(A)$ itself is equipotent to some subset of $A$.
+      Then $h(A) \in H$ since $H$ was shown to contain all such ordinals.
+      Then also by definition $h(A) \in h(A)$, which contradicts Lemma~6.2.7.
+      So it must be that $h(A)$ is in fact not equipotent to any subset of $A$.
+      Clearly also for any $\a < h(A)$ we have $\a \in h(A)$ since $h(A)$ is an ordinal.
+      But then by definition $\a$ is equipotent to a subset of $A$.
+      This shows that $h(A)$ is the least ordinal that is not equipotent to a subset of $A$ and hence is the Hartogs number.
+    }
+  }
+
+  \theorem{8}{
+    We show the remark after Definition~7.1.8 that $\abs{\w_\a} < \abs{\w_\b}$ for ordinals $\a$ and $\b$ where $\a < \b$.
+  }
+  \sol{
+    \input{shared/lem_aleph_wolege}
+    \input{shared/cor_aleph_wonlegt}
+
+    \mainthrm
+
+    \qproof{
+      We show this by induction.
+      First for $\a$ we have by definition that $\w_{\a+1} = h(\w_\a)$.
+      Since it has been shown that $\abs{h(\w_\a)} \nleq \abs{\w_\a}$ it follows from Corollary~\ref{cor:aleph:wonlegt} that $\abs{\w_{\a+1}} = \abs{h(\w_\a)} > \abs{\w_\a}$ since $\w_\a$ and $h(\w_\a)$ are ordinals and therefore well-ordered.
+      Hence $\abs{\w_\a} < \abs{\w_{\a+1}}$.
+
+      Now suppose that $\a$ is a nonzero limit ordinal and consider any $\g < \a$.
+      Then $\g + 1 < \a$ since $\a$ is a limit ordinal.
+      Then since $\w_\a$ is an upper bound of $\braces{\w_\b \where \b < \a}$ it follows that $\w_{\g+1} \leq \w_\a$ since $\g+1 < \a$.
+      From this it clearly follows that $\abs{\w_{\g+1}} \leq \abs{\w_\a}$.
+      We also have by what was just shown that $\abs{\w_\g} < \abs{\w_{\g+1}}$.
+      Hence by Exercise~4.1.2a we have $\abs{\w_\g} < \abs{\w_\a}$.
+      Since $\g < \a$ was arbitrary this completes the induction and the result follows.
+    }
+  }
+
+  \theorem{9}{
+    We show part (b): If $\W$ is an infinite initial ordinal number, then $\W = \w_\a$ for some $\a$.
+  }
+  \sol{
+    \input{shared/lem_aleph_infwo_succ}
+    \input{shared/lem_aleph_initlimit}
+    \input{shared/lem_ord_expin_sups}
+
+    \begin{lem}\label{lem:aleph:alewa}
+      $\a \leq \w_\a$ for every ordinal $\a$.
+    \end{lem}
+    \qproof{
+      We show this by induction on $\a$.
+      Clearly for $\a = 0$ we have $\a = 0 \leq \w = \w_0 = \w_\a$.
+      Now suppose that $\a \leq \a_\w$.
+      Then by Exercise~6.5.8 we have that $\a + 1 \leq \w_\a + 1$.
+      Then, since $h(\w_\a)$ is an initial ordinal by Lemma~7.1.6 and clearly is infinite, it follows that $h(\w_\a)$ is a limit ordinal by Lemma~\ref{lem:aleph:initlimit}.
+      Since clearly $\w_\a < h(\w_\a)$ we then have that $\w_\a + 1 < h(\w_\a)$ as well.
+      Hence we have
+      $$
+        \a + 1 \leq  \w_\a + 1 < h(\w_\a) = \w_{\a+1}
+      $$
+      so that $\a+1 \leq \w_{\a+1}$ is true.
+
+      Now suppose that $\a$ is a nonzero limit ordinal and that $\g \leq \w_\g$ for all $\g < \a$.
+      Since $\a$ is a limit ordinal it follows that $\a = \sup\braces{\g \where \g < \a}$ and by definition we have that $\w_\a = \sup\braces{\w_\g \where \g < \a}$.
+      It then follows from these and the induction hypothesis that
+      $$
+        \a = \sup\braces{\g \where \g < \a} \leq \sup\braces{\w_\g \where \g < \a} = \w_\a
+      $$
+      by Lemma~\ref{lem:ord:expin:sups}.
+      This completes the inductive proof.
+    }
+
+    \input{shared/lem_aleph_initle}
+    \input{shared/lem_aleph_initltwa}
+
+    \mainthrm
+    \qproof{
+      Let $\W$ be any infinite initial ordinal.
+      Then by Lemma~\ref{lem:aleph:alewa} we have
+      $$
+        \W < \W + 1 \leq \w_{\W+1}.
+      $$
+      Hence there is an $\a$ such that $\W < \w_\a$.
+      It then follows from Lemma~\ref{lem:aleph:initltwa} that there is a $\g < \a$ such that $\W = \w_\g$.
+    }
+  }
+
+  \section{The Axiom of Choice}
+
+  \subsection{The Axiom of Choice and its Equivalents}
+
+  \theorem{13}{
+    The following statements are equivalent:
+
+    (a) (The Axiom of Choice) There exists a choice function for every system of sets.
+
+    (b) (The Well-Ordering Principle) Every set can be well-ordered.
+
+    (c) (Zorn's Lemma) If every chain in a partially ordered set has an upper bound, then the partially ordered set has a maximal element.
+  }
+  \sol{
+    \input{shared/lem_aoc_notin}
+
+    \mainthrm
+    \def\fb{\overline{f}}
+    \def\fbb{\bar{\bar{f}}}
+    \qproof{
+      The equivalence of (a) and (b) follows immediately from Theorem~8.1.1; therefore it suffices to show the equivalence of (a) and (c).
+
+      \emph{(a) implies (c).}
+      Suppose that $(A \prece)$ is a partially ordered set in which every chain has an upper bound.
+      Then by Lemma~\ref{lem:aoc:notin} there is a $b \notin A$, and by (a) there is a choice function $g$ on $\pset{A}$.
+      We then define a transfinite sequence $\angles{a_\a \where \a < h(A)}$ by transfinite recursion.
+      Given the transfinite sequence $\angles{a_\x \where \x < \a}$ for an $\a < h(A)$ we define the set $A_\a = \braces{a \in A \where a_\x \prec a \text{ for all } \x < \a}$.
+      We then set
+      \gath{
+        a_\a = \begin{cases}
+          g(A_\a) & \text{if $a_\x \neq b$ for all $\x < \a$ and $A_\a \neq \es$} \\
+          b       & \text{otherwise},
+        \end{cases}
+      }
+      noting that clearly $A_\a$ is in the domain of $g$ since $A_\a \ss A$.
+
+      We can justify the recursive definition of this sequence as follows.
+      First, let $B = A \cup \braces{b}$ and $S = \bigcup_{\a < h(A)} B^\a$ be the set of all transfinite sequences of elements $B$ of length less than $h(A)$.
+      We then define a function $G: S \to B$.
+      For any transfinite sequence $F \in S$ there is an $\a < h(A)$ such that $F \in B^\a$, and we let $A_F = \braces{a \in A \where F(\x) \prec a \text{ for all } \x < \a}$.
+      We then simply set
+      \gath{
+        G(F) = \begin{cases}
+          g(A_F) & \text{if $F(\x) \neq b$ for all $\x < \a$ and $A_F \neq \es$} \\
+          b      & \text{otherwise}.
+        \end{cases}
+      }
+      It then follows from Theorem~6.4.4 that there is a function $f$ such that $f(\a) = G(f \rest \a)$ for all $\a < h(A)$.
+      Clearly based on our definition of $G$ this $f$ is exactly the transfinite sequence constructed above.
+
+      Returning to our main proof, we claim that there is an $\a < h(A)$ such that $a_\a = b$.
+      To see this, suppose to the contrary that $a_\a \neq b$ for all $\a < h(A)$ so that it has to be that each $a_\a \in A$.
+      Consider now any $\a < h(A)$ and $\b < h(A)$ where $\a \neq \b$.
+      Without loss of generality we can assume that $\a < \b$.
+      Clearly then, by definition, we have that $a_\b \in A_\b$ so that $a_\x \prec a_\b$ for all $\x < \b$.
+      But since $\a < \b$, we have that $a_\a \prec a_\b$ so that $a_\a \neq a_\b$.
+      Since $\a$ and $\b$ were arbitrary, this shows that the sequence is an injective function from $h(A)$ to $A$.
+      However, this would mean that $h(A)$ is equipotent to some subset of $A$, which contradicts the definition of the Hartogs number.
+      Hence it has to be that $a_\a = b$ for some $\a < h(A)$.
+
+      So let $\l < h(A)$ be the least ordinal such that $a_\l = b$ and let $C = \braces{a_\x \where \x < \l}$.
+      We claim that $C$ is a chain in $(A, \prece)$.
+      So consider any $a_\a$ and $a_\b$ in $C$ so that $\a < \l$ and $\b < \l$
+      Without loss of generality we can assume that $\a \leq \b$.
+      If $\a = \b$ then obviously $a_\a = a_\b$ so that $a_a \prece a_\b$ clearly holds.
+      If $\a < \b$ then, by what was shown above, we have that $a_\a \prec a_\b$ so that $a_\a \prece a_\b$ again holds.
+      Hence, in every case, $a_\a$ and $a_\b$ are comparable in $\prece$, which shows that $C$ is a chain since $a_\a$ and $a_\b$ were arbitrary.
+
+      Thus, since $C$ is a chain, it has an upper bound $c \in A$.
+      We claim that $c$ is also a maximal element of $A$.
+      To show this, suppose that there is an $a \in A$ such that $c \prec a$.
+      Now consider any $\x < \l$.
+      Then, since $c$ is an upper bound of $C$, we have that $a_\x \prece c \prec a$ so that $a_\x \prec a$ since orders are transitive.
+      It then follows from the definition of $A_\l$ that $a \in A_\l$ so that $A_\l \neq \es$.
+      Also note that, by the definition of $\l$, we have that $a_\x \neq b$ for any $\x < \l$.
+      Thus, by the recursive definition of the sequence, it follows that $a_\l = g(A_\l) \neq b$, which contradicts the definition of $\l$ (as the least ordinal such that $a_\l = b$).
+      So it has to be that there is no such element $a$, which shows that $c$ is in fact a maximal element of $A$.
+
+      \emph{(c) implies (a).}
+      Suppose that $T$ is any system of sets.
+      Then, supposing that $\es \in T$, $S = T - \braces{\es}$ is a system of nonempty sets.
+      If we can show that $S$ has a choice function $g$ then $f = g \cup \braces{(\es, \es)}$ is clearly a choice function for $T$.
+      Thus it suffices to show that any system $S$ of nonempty sets has a choice function.
+
+      So let $S$ be such a system.
+      Let $F$ be the system of functions $f$ for which $\dom{f} \ss S$ and $f(X) \in X$ holds for any $X \in \dom{f}$.
+      Note that $F \in \pset{\pset{S \times \bigcup S}}$, which exists by the Axiom of Power Set and the Axiom of Union.
+      We claim that $F$ is ordered by $\ss$.
+      Hence we must show that $\ss$ is reflexive, asymmetric, and transitive.
+      Since, for any $f \in F$, we obviously have that $f \ss f$, clearly $\ss$ is reflexive.
+      Also, clearly if we have $f \ss g$ and $g \ss f$ then $f=g$ so that $\ss$ is asymmetric.
+      Lastly, if $f \ss g$ and $g \ss h$, then obviously $f \ss h$ as well so that $\ss$ is transitive.
+      Hence $\ss$ is a (partial) order on $F$.
+
+      Now suppose that $F_0$ is a linearly ordered subset of $F$.
+      We claim that $F_0$ is a compatible set of functions.
+      Consider any $f$ and $g$ in $F_0$.
+      Since $\ss$ is a linear ordering of $F_0$ we have that either $f \ss g$ or $g \ss f$.
+      Without loss of generality, we can assume that $f \ss g$.
+      Then clearly $f \cup g = g$.
+      Since this is a function, it follows from Lemma~2.3.11a that $f$ and $g$ are compatible.
+      Since $f$ and $g$ were arbitrary, this shows that $F_0$ is a compatible system.
+      It then follows from Theorem~2.3.12 that $f_0 = \bigcup F_0$ is a function and that it extends every $g \in F_0$ and hence is compatible with them all.
+
+      We also claim that $f_0 \in F$.
+      First consider any $X \in \dom{f_0}$ so that it has to be that $X \in \dom{g}$ for some $g \in F_0$.
+      Then, since also clearly $g \in F$ (since $F_0 \ss F$), it follows that $g(X) \in X$.
+      Thus also $f_0(X) = g(X) \in X$ since $f_0$ and $g$ are compatible.
+      We also have that $\dom{g} \ss S$ (since $g \in F$) so that $X \in S$.
+      Since $X$ was arbitrary this shows that $\dom{f_0} \ss S$ and hence that $f_0 \in F$.
+      Lastly, clearly $f_0$ is an upper bound of $F_0$ in $(F, \ss)$ since $g \ss \bigcup F_0 = f_0$ for any $g \in F_0$.
+
+      Therefore the conditions of Zorn's Lemma are satisfied so that $F_0$ has a maximal element $\fb$.
+      We claim that $\dom{\fb} = S$.
+      If this were not the case then it would have to be that $\dom{\fb} \pss S$ since we know that $\dom{\fb} \ss S$ since $\fb \in F_0 \ss F$.
+      Thus there would be an $X \in S$ where $X \notin \dom{\fb}$.
+      Consider choose $x \in X$ so that clearly the function $\fbb = \fb \cup \braces{(X, x)} \in F$.
+      However, we would also clearly have that $\fb \ss \fbb$ but $\fb \neq \fbb$, which would contradict the maximality of $\fb$.
+      So it has to be that $\dom{\fb} = S$.
+      Clearly then $\fb$ is a choice function for $S$ since, for any $X \in S$, we have that $\fb(X) \in X$ since $\fb \in F$.
+    }
+  }
+
+  \subsection{The Axiom of Choice in Mathematics}
+
+  \theoremapp{10}{*}{
+    Let $p$ be a sublinear functional on the vector space $V$, and let $f_0$ be a linear functional defined on a subspace $V_0$ of $V$ such that $f_0(v) \leq p(v)$ for all $v \in V_0$.
+    Then there is a linear functional $f$ defined on $V$ such that $f \supseteq f_0$ and $f(v) \leq p(v)$ for all $v \in V$.
+  }
+  \sol{
+    \begin{lem}\label{lem:aoc:subspace}
+      If $\famF$ is a nonempty system of subspaces of a vector space $V$ over scalar field $K$ that is linearly ordered by $\ss$, then $\bigcup \famF$ is also a subspace of $V$.
+    \end{lem}
+    \qproof{
+      First, since $\famF$ is nonempty, there is a subspace $W \in \famF$.
+      Since $W$ is a subspace, it follows that the zero vector $0$ is in $W$.
+      Hence clearly $0 \in \bigcup \famF$ since $W \in \famF$.
+
+      Now consider any vectors $v_1$ and $v_2$ in $\bigcup \famF$.
+      Then there are subspaces (of $V$) $V_1$ and $V_2$ in $\famF$ such that $v_1 \in V_1$ and $v_2 \in V_2$.
+      Since $\ss$ linearly orders $\famF$ we have that either $V_1 \ss V_2$ or $V_2 \ss V_1$.
+      Without loss of generality we can assume that $V_1 \ss V_2$ since the other case is analogous.
+      Thus we have that both $v_1$ and $v_2$ are in $V_2$ since $v_1 \in V_1 \ss V_2$.
+      Since $V_2$ is a subspace it follows that $v_1 + v_2 \in V_2$ so that clearly also $v_1 + v_2 \in \famF$ since $V_2 \in \famF$.
+
+      Lastly, consider a vector $v \in \bigcup \famF$ and scalar $c \in K$.
+      Then there is a subspace $W \in \famF$ such that $v \in W$.
+      It then follows that $cv \in W$ so that clearly $cv \in \bigcup \famF$.
+
+      This shows that $\bigcup \famF$ is a subspace of $V$ as desired.
+    }
+
+    \mainthrm
+    \qproof{
+      Let $F$ be the set of all linear functionals $g$ defined on some subspace $W$ of $V$ such that
+      \gath{
+        f_0 \ss g \text{ and } g(v) \leq p(v) \text{ for all } v \in W.
+      }
+      Let $F_0 \ss F$ be linearly ordered by $\ss$.
+      If $F_0 = \es$ then $f_0$ is an $\ss$-upper bound of $F_0$ since clearly $f_0 \in F$ (with subspace $V_0$).
+      So assume that $F_0$ is nonempty so that $g_0 = \bigcup F_0$ is clearly an $\ss$-upper bound of $F_0$.
+      It is trivial to show that $F_0$ is a compatible system of functions since it is linearly ordered by $\ss$.
+      Hence $g_0 = \bigcup F_0$ is a function with $\dom(g_0) = \bigcup_{g \in F_0} \dom(g)$ by Theorem~2.3.12 where $g_0$ extends all $g \in F_0$.
+
+      We also show that $\braces{\dom(g) \where g \in F_0}$ is a set of subspaces of $V$ that is linearly ordered by $\ss$.
+      Consider any $g$ and $h$ in $F_0$.
+      Then either $g \ss h$ or $h \ss g$.
+      Without loss of generality we can assume that the former is the case ($g \ss h$) since the other case is analogous.
+      Now consider any $v \in \dom(g)$ so that clearly $(v, g(v)) \in g$.
+      Then we have $(v, g(v)) \in h$ since $g \ss h$.
+      Thus $v \in \dom(h)$ as well so that $\dom(g) \ss \dom(h)$ since $v$ was arbitrary.
+      The result then follows since $g$ and $h$ were arbitrary.
+
+      Having shown this, it follows from Lemma~\ref{lem:aoc:subspace} that $\dom(g_0) = \bigcup \braces{\dom(g) \where g \in F_0}$ is also a subspace of $V$.
+      Now we show that $g_0$ is a linear functional.
+      So consider any $u$ and $v$ in $\dom(g_0)$ and $\a$ and $\b$ in $\reals$.
+      Then there is a $g$ and $g'$ in $F_0$ where $u \in \dom(g)$ and $v \in \dom(g')$.
+      Since we showed that $\braces{\dom(g) \where g \in F_0}$ is linearly ordered by $\ss$, we have that either $\dom(g) \ss \dom(g')$ or $g' \ss g$.
+      If $\dom(g) \ss \dom(g)'$ then both $u$ and $v$ are in $\dom(g')$ since $u \in \dom(g) \ss \dom(g')$.
+      Thus $\a \cdot u + \b \cdot v \in \dom(g')$ since $g'$ is a linear functional since $g' \in F_0 \ss F$.
+      Hence clearly $\a \cdot u + \b \cdot v \in \dom(g_0)$ since $g' \in F_0$.
+      We then also have that
+      \gath{
+        g_0(\a \cdot u + \b \cdot v) = g'(\a \cdot u + \b \cdot v) = \a \cdot g'(u) + \b \cdot g'(v) = \a \cdot g_0(u) + \b \cdot g_0(v)
+      }
+      since $g_0$ extends $g'$.
+      The case in which $\dom(g') \ss \dom(g)$ is analogous, thereby showing that $g_0$ is a linear functional on the subspace $\dom(g_0)$.
+
+      We also clearly have that $f_0 \ss g_0$.
+      To see this, note that, since $F_0 \neq \es$, there is a $g \in F_0$ so that $g \in F$ since $F_0 \ss F$.
+      Therefore $f_0 \ss g$ by the definition of $F$.
+      We also clearly have that have that $g \ss g_0$ since $g_0 = \bigcup F_0$ and $g \in F_0$.
+      Therefore $f_0 \ss g \ss g_0$ as desired.
+
+      Now we show that $g_0(v) \leq p(v)$ for all $v \in \dom(g_0)$.
+      So consider any such $v$ so that there is a $g \in F_0$ such that $v \in \dom(g)$ since it was shown above that $\dom(g_0) = \bigcup_{g \in F_0} \dom(g)$.
+      Thus also $g \in F$ since $F_0 \ss F$.
+      It then follows that $g(v) \leq p(v)$ by the definition of $F$.
+      However, since $g_0$ extends $g$, we have that $g_0(v) = g(v) \leq p(v)$.
+      This shows the result since $v$ was arbitrary.
+
+      We have therefore shown all of the facts required to conclude that indeed $g_0 \in F$ by the definition of $F$.
+      Since $g_0$ is an upper bound of $F_0$ and $F_0$ was arbitrary, this shows that the conditions of Zorn's Lemma have been satisfied so that $F$ has a $\ss$-maximal element $f$.
+      We claim that $f$ is our linear functional on $V$ such that $f_0 \ss f$ and $f(v) \leq p(v)$ for all $v \in V$.
+
+      Clearly all we must show is that $\dom(f) = V$ since the rest is true by virtue of $f$ being in $F$.
+      We know that $\dom(f)$ is a subspace of $V$ since $f \in F$ so that $\dom(f) \ss V$.
+      Assume to the contrary that $\dom(f) \neq V$ so that $\dom(f) \pss V$ and there is a $u \in V - \dom(f)$.
+      Then let $W$ be the subspace of $V$ spanned by $\dom(f) \cup \braces{u}$.
+      It follows then that every vector $w \in W$ can be uniquely expressed as $w = x + \a \cdot u$ for $x \in \dom(f)$ and $\a \in \reals$.
+      So define the function
+      \gath{
+        f_c(w) = f(x) + \a \cdot c
+      }
+      for each $w \in W$ (where $w = x + \a \cdot u$) and a $c \in \reals$.
+
+      First we show that $f_c$ is a linear functional on $W$ for any choice of $c$.
+      Clearly $f_c : W \to \reals$ since $\ran(f) \ss \reals$ and $\a$ and $c$ are real (so that $f_c(w) = f(x) + \a \cdot c$ is clearly real).
+      Now consider any $w$ and $v$ in $W$ and $a$ and $b$ in $\reals$.
+      Then there are unique $x,y \in \dom(f)$ and $\a,\b \in \reals$ where $w = x + \a \cdot u$ and $v = y + \b \cdot u$.
+      We then have
+      \gath{
+        a\cdot w + b \cdot v = a \cdot (x + \a \cdot u) + b \cdot (y + \b \cdot u) = (a\cdot x + b \cdot y) + (a \a + b \b) \cdot u,
+      }
+      noting that $a \cdot x + b \cdot y \in \dom(f)$ since $\dom(f)$ is a subspace and $x$ and $y$ are in $\dom(f)$, and $a\a + b \b \in \reals$.
+      It then follows that
+      \ali{
+        f_c(a \cdot w + b \cdot v) &= f(a\cdot x + b \cdot y) + (a \a + b \b) c = a f(x) + bf(y) + a \a c + b \b c \\
+        &= a \squares{f(x) + \a c} + b \squares{f(y) + \b c} = a f_c(w) + b f_c(v)
+      }
+      so that $f_c$ is indeed a linear functional on $W$.
+
+      Now consider any $(x, a) \in f$ so that clearly the vector $x$ is in $\dom(f)$.
+      Then also $x \in W$ since $W = \dom(f) \cup \braces{u}$.
+      Also clearly $x = x + 0 \cdot u$ so that $f_c(x) = f(x) + 0 \cdot c = f(x) = a$.
+      Hence $(x, a) \in f_c$ so that $f \ss f_c$ since $(x,a)$ was arbitrary.
+      However we also clearly have that $u \in W$ but $u \notin \dom(f)$ so that $(u, f_c(u)) \in f_c$ but $(u, f_c) \notin f$.
+      Therefore $f \neq f_c$ so that $f \pss f_c$.
+      This also clearly implies that $f_0 \ss f_c$ since $f_0 \ss f \pss f_c$.
+
+      Now, for all $v$ and $t$ in $\dom(f)$ we have
+      \gath{
+        f(v) + f(t) = f(v + t) \leq p(v + t) = p(\squares{v - u} + \squares{t + u}) \leq p(v-u) + p(t+u)
+      }
+      by the linear properties of $f$ and $p$.
+      Hence
+      \gath{
+        f(v) - p(v-u) \leq p(t+u) - f(t).
+      }
+      Since $v$ was arbitrary, it follows that the set $\braces{f(v) - p(v-u) \where v \in \dom(f)}$ has an upper bound so that $A = \sup\braces{f(v) - p(v-u) \where v \in \dom(f)}$ exists.
+      Similarly, since $t$ was arbitrary, the set $\braces{p(t + u) - f(t) \where t \in \dom(f)}$ has a lower bound so that $B = \inf\braces{p(t + u) - f(t) \where t \in \dom(f)}$ exists.
+      We then also clearly have that $A \leq B$.
+      So let $c = (A + B) / 2$ so that $A \leq c \leq B$.
+
+      Now consider any $w \in W$ so that $w = x + \a \cdot c$ for some $x \in \dom(f)$ and $\a \in \reals$.
+
+      Case: $\a = 0$.
+      Then
+      \gath{
+        f_c(w) = f_c(x + \a \cdot u) = f(x) + \a c = f(x) + 0 = f(x) \leq p(x) = p(x + \a \cdot u) = p(w).
+      }
+
+      Case: $\a > 0$.
+      Then $1/\a \cdot x \in \dom(f)$ so that based on the definition of $c$ we have
+      \gath{
+        c \leq B \leq p\parens{\frac{1}{\a} \cdot x + u} - f\parens{\frac{1}{\a} \cdot x}
+      }
+      Then, since $\a > 0$, $f$ is linear functional, and $p$ is a sublinear functional, it follows that
+      \gath{
+        \a c \leq \a \cdot p\parens{\frac{1}{\a} \cdot x + u} - \a \cdot f\parens{\frac{1}{\a} \cdot x} \\
+        \a c \leq p(x + \a \cdot u) - f(x) \\
+        f(x) + \a c \leq p(x + \a \cdot u) \\
+        f_c(w) \leq p(w).
+      }
+
+      Case: $\a < 0$.
+      Then, again $-1/\a \cdot x \in \dom(f)$ so that based on the definition of $c$ we have
+      \gath{
+        f\parens{-\frac{1}{\a} \cdot x} - p\parens{-\frac{1}{\a} \cdot x - u} \leq A \leq c.
+      }
+      Then, since $-\a > 0$, $f$ is a linear functional, and $p$ is a sublinear functional, we have
+      \gath{
+        -\a \cdot f\parens{-\frac{1}{\a} \cdot x} - (-\a) \cdot p\parens{-\frac{1}{\a} \cdot x - u} \leq -\a c \\
+        f(x) - p(x + \a \cdot u) \leq -\a c \\
+        f(x) + \a c \leq p(x + \a \cdot u) \\
+        f_c(w) \leq p(w).
+      }
+
+      Thus in all cases we have $f_c(w) \leq p(w)$.
+      Since $w \in W$ was arbitrary, this completes the proof that $f_c \in F$.
+      But since $f \pss f_c$, this contradicts the fact that $f$ is a $\ss$-maximal element of $F$.
+      Hence it must be that in fact $\dom(f) = V$, thereby completing the overall proof.
+    }
+  }
+
+  \theoremapp{14}{*}{
     There is no function $\mu : \pset{\reals} \to \clop{0, \infty} \cup \braces{\infty}$ with the following properties:
     \begin{enumerate}
-    \item[\ilab{0}] $\mu([a,b]) = b - a$ for any $a$ and $b$ in $\reals$ where $a < b$.
-    \item[\ilab{i}] $\mu(\es) = 0$ and $\mu(\reals) = \infty$.
-    \item[\ilab{ii}] If $\braces{A_n}_{n=0}^\infty$ is a collection of mutually disjoint subsets of $\reals$, then
-      \gath{
-        \mu\parens{\bigcup_{n=0}^\infty A_n} = \sum_{n=0}^\infty \mu(A_n) \,.
-      }
-    \item[\ilab{iii}] If $a \in \reals$, $A \ss \reals$, and $A + a = \braces{x + a \where x \in A}$, then $\mu(A + a) = \mu(A)$.
-    \item[\ilab{iv}] If $A \cap B = \es$ then $\mu(A \cup B) = \mu(A) + \mu(B)$.
-    \item[\ilab{v}] If $A \ss B$ then $\mu(A) \leq \mu(B)$.
+      \item[\ilab{0}] $\mu([a,b]) = b - a$ for any $a$ and $b$ in $\reals$ where $a < b$.
+      \item[\ilab{i}] $\mu(\es) = 0$ and $\mu(\reals) = \infty$.
+      \item[\ilab{ii}] If $\braces{A_n}_{n=0}^\infty$ is a collection of mutually disjoint subsets of $\reals$, then
+        \gath{
+          \mu\parens{\bigcup_{n=0}^\infty A_n} = \sum_{n=0}^\infty \mu(A_n).
+        }
+      \item[\ilab{iii}] If $a \in \reals$, $A \ss \reals$, and $A + a = \braces{x + a \where x \in A}$, then $\mu(A + a) = \mu(A)$.
+      \item[\ilab{iv}] If $A \cap B = \es$ then $\mu(A \cup B) = \mu(A) + \mu(B)$.
+      \item[\ilab{v}] If $A \ss B$ then $\mu(A) \leq \mu(B)$.
     \end{enumerate}
-}
-\sol{
+  }
+  \sol{
   \begin{lem}\label{lem:aoc:intun}
     If $\braces{A_{i}}_{i \in I}$ is an indexed system of sets and $B$ is another set, then
     \gath{
@@ -904,261 +904,261 @@
 
   \mainthrm
   \qproof{
-    Suppose to the contrary that there is such a function $\mu$.
-    We define the relation $\approx$ on $\reals$ by:
-    \gath{
-      \text{$x \approx y$ if and only if $x - y$ is a rational number.}
-    }
-    First we show that $\approx$ is an equivalence relation, which is straightforward.
-    First consider any $x \in \reals$ so that clearly $x - x = 0 \in \rats$ so that by definition $x \approx x$.
-    Hence $\approx$ is reflexive since $x$ was arbitrary.
-    Now consider any $x$ and $y$ in $\reals$ such that $x \approx y$.
-    Then $z = x - y \in \rats$ by definition.
-    Clearly also then $y - x = -(x - y) = -z \in \rats$ as well since $z \in \rats$ so that $y \approx x$.
-    Thus $\approx$ is also symmetric.
-    Lastly, consider $x$, $y$, and $z$ in $\reals$ where $x \approx y$ and $y \approx z$.
-    Then $a = x - y \in \rats$ and $b = y - z \in \rats$.
-    We then clearly have that
-    \gath{
-      x - z = x - y + y - z = (x - y) + (y - z) = a + b \in \rats
-    }
-    since $a$ and $b$ are both rational.
-    Thus $x \approx z$ so that $\approx$ is transitive.
-    We have therefore shown that $\approx$ is indeed an equivalence relation.
-
-    We then know that $\approx$ partitions $\reals$ into equivalence classes, and that by the Axiom of Choice and Theorem~8.1.3 the partition has a set of representatives $X$.
-    Let
-    \gath{
-      R = \bigcup \braces{X + r \where r \in \rats}
-    }
-    and we show that $R = \reals$.
-    First consider any $y \in R$ so that there is an $r \in \rats$ where $y \in X + r$.
-    From this is follows that there is an $x \in X$ such that $y = x + r$.
-    Clearly then, since $x \in \reals$ (since $X \ss R$) and $r \in \rats$, we have that $y \in \reals$ so that $R \ss \reals$ since $y$ was arbitrary.
-    Now consider any real $y$.
-    Then since $X$ is a set of representatives of a partition of $\reals$, it follows that there is an $x \in X$ such that $y \in \eclass{x}{\approx}$.
-    Then we have that $y \approx x$ so that $r = y - x \in \rats$ by the definition of $\approx$.
-    Thus $y = x + r$ where $x \in X$ so that $y \in X + r$.
-    Since $r \in \rats$ it follows that $y \in R$ so that $R \ss \reals$ since $y$ was arbitrary.
-    This shows that $R = \reals$ as desired.
-
-    Now we show that $X + r$ and $X + q$ are disjoint for rationals $r$ and $q$ where $r \neq q$.
-    To see this, suppose that this is not the case and that there is a $y$ where $y \in X + r$ and $y \in X + q$.
-    Then there is an $x_1 \in X$ where $y = x_1 + r$ and an $x_2 \in X$ where $y = x_2 + q$.
-    Now, it cannot be that $x_1 = x_2$ for then we would have that $y = x_1 + r = x_1 + q$, from which it follows that $r = q$, which we know is not the case.
-    So it must be that $x_1 \neq x_2$, which means that $x_1$ and $x_2$ are in different equivalent classes since $X$ is a set of representatives of disjoint equivalence classes.
-    In particular this means that $x_1 \not \approx x_2$ so that $x_1 - x_2 \notin \rats$.
-    We then have
-    \ali{
-      y = x_1 + r &= x_2 + q \\
-      x_1 - x_2 &= q - r \,,
-    }
-    but this is a contradiction since we have shown that the left side is irrational but the right side is clearly rational since $q$ and $r$ are.
-    It therefore must be that $X + r$ and $X + q$ are indeed disjoint.
-
-    Now suppose for the moment that $\mu(X) = 0$.
-    It then follows from property iii) that $\mu(X + q) = \mu(X) = 0$ for any rational $q$.
-    Then, since we showed that $R = \reals$, we have that
-    \gath{
-      \mu(\reals) = \mu(R) = \mu\parens{\bigcup \braces{X + r \where r \in \rats}} = \sum_{r \in \rats} \mu(X + r) = \sum_{r \in \rats} 0 = 0
-    }
-    by property ii), noting that this applies because $\rats$ is countable.
-    This contradicts property i), according to which $\mu(\reals) = \infty$.
-    So it must be that $\mu(X) > 0$.
-
-    Suppose next that $\mu(X \cap [a, b]) = 0$ for every closed interval $[a,b]$.
-    Let $A_n = [n, n+1]$ for $n \in \ints$ so that clearly $\bigcup_{n \in \ints} A_n = \reals$.
-    We also have that $\mu(X \cap A_n) = 0$ for any $n \in \ints$ since each $A_n$ is a closed interval.
-    It follows from Lemma~\ref{lem:aoc:intun} that
-    \gath{
-      \bigcup_{n \in \ints} (X \cap A_n) = X \cap \parens{\bigcup_{n \in \ints} A_n} = X \cap \reals = X
-    }
-    since $X \ss \reals$.
-    We then have
-    \gath{
-      \mu(X) = \mu\parens{\bigcup_{n \in \ints} (X \cap A_n)} = \sum_{n \in \ints} (X + A_n) = \sum_{n \in \ints} 0 = 0
-    }
-    by property ii) since $\ints$ is countable.
-    As before, this contradicts property i) so that it has to be that there is a closed interval $[a,b]$ such that $\mu(X \cap [a,b]) > 0$.
-
-    Let $Y = X \cap [a,b]$ and $P = \rats \cap [0,1]$.
-    Next we show that the sets $\braces{Y + q}_{q \in P}$ are mutually disjoint.
-    Suppose the contrary so that there are $p$ and $q$ in $P$ where $p \neq q$ and a $z$ such that $z \in Y + p$ and $y \in Y + q$.
-    Then there is a $y_1 \in Y$ where $z = y_1 + p$ and a $y_2 \in Y$ such that $z = y_2 + q$.
-    We then have that $y_1$ and $y_2$ are both in $X$ so that $z = y_1 + p \in X + p$ and $z = y_2 + q \in X + q$.
-    But since $p \neq q$, this is not possible since we have shown above that $X + p$ and $X + q$ are disjoint.
-    So it has to be that $\braces{Y + q}_{q \in P}$ are mutually disjoint sets.
-
-    We then have that
-    \gath{
-      \mu\parens{\bigcup_{q \in P} (Y + p)} = \sum_{q \in P} \mu(Y + p) = \sum_{q \in P} \mu(Y)
-    }
-    by properties ii) and iii), noting that clearly $P = \rats \cap [0,1]$ is countably infinite.
-    Since $\mu(Y) > 0$ this is an infinite sum of a positive constant so that the result diverges and is thus $\infty$.
-
-    Now consider any $z \in \bigcup_{q \in P} (Y + p)$ so that there is a $q \in P$ such that $z \in Y + q$.
-    Then there is an $y \in Y$ such that $z = y + q$.
-    It follows that $y \in [a, b]$ so that $a \leq y \leq b$.
-    We also have that $0 \leq q \leq 1$ since $q \in P = \rats \cap [0,1]$.
-    We then have that $z = y + q \leq b + q \leq b + 1$.
-    Also clearly $z = y + q \geq a + q \geq a + 0 = a$.
-    Therefore $a \leq z \leq b+1$ so that $z \in [a, b+1]$, which shows that $\bigcup_{q \in P} (Y + p) \ss [a, b+1]$ since $z$ was arbitrary.
-    However, this implies that
-    \gath{
-      \infty = \mu\parens{\bigcup_{q \in P} (Y + p)} \leq \mu([a,b+1]) = b+1-a
-    }
-    by properties v) and 0).
-    This clearly a contradiction though since $b+1-a$ is finite.
-    Thus our initial assumption that there exists such a function $\mu$ must be incorrect.
-  }
-}
-
-\section{Arithmetic of Cardinal Numbers}
-\subsection{Infinite Sums and Products of Cardinal Numbers}
-
-\theorem{3}{
-  Let $\l$ be an infinite cardinal, let $\k_\a$ ($\a < \l$) be nonzero cardinal numbers, and let $\k = \sup\braces{\k_\a \where \a < \l}$.
-  Then
+  Suppose to the contrary that there is such a function $\mu$.
+  We define the relation $\approx$ on $\reals$ by:
   \gath{
-    \sum_{\a < \l} \k_\a = \l \cdot \k = \l \cdot \sup\braces{\k_\a \where \a < \l} \,.
+    \text{$x \approx y$ if and only if $x - y$ is a rational number.}
   }
-}
-\sol{
-  \begin{lem}\label{lem:infsp:ocleq}
-    If $\k$ and $\l$ are cardinal numbers and $\k \leq \l$ in the ordinal ordering (since $\k$ and $\l$ are also ordinals), then also $\k \leq \l$ in the cardinal sense of ordering.
-  \end{lem}
-  \qproof{
-    A proof of this is quite simple.
-    Since $\k \leq \l$ in the ordinal sense, either $\k < \l$ (in the ordinal sense) or $\k = \l$.
-    In the former case $\k \in \l$ by the definition of ordinal ordering so that also $\k \ss \l$ since $\l$ is transitive (since it is an ordinal).
-    In the case where $\k = \l$ then obviously $\k \ss \l$.
-    Hence in either case $\k \ss \l$ so that $\k \leq \l$ in the cardinal sense since clearly the identity function on $\k$ is an injection from $\k$ to $\l$.
-  }
-
-  \def\suma{\sum_{\a < \l}}
-  \mainthrm
-  \qproof{
-    First note that $\sup\braces{\k_\a \where \a < \l}$ refers to the ordinal supremum, which is well defined since every cardinal is also an ordinal (though the converse is not true).
-    In particular the cardinal numbers are exactly the initial ordinals.
-    In order to avoid ambiguity in what follows we shall set $\b = \k$ and $\b_\a = \k_\a$ for each $\a < \l$.
-    When referring to ordinal ordering we use $\b$ and $\b_\a$ and, when referring to cardinal ordering, use $\k$ and $\k_\a$.
-
-    We show first that $\k = \b = \sup\braces{\b_\a \where \a < \l}$ is actually a cardinal number, for which it suffices to show that $\b$ is an initial ordinal.
-    So consider any ordinal $\g < \b$.
-    Then it follows that $\g$ is not an upper bound of $\braces{\b_\a}_{\a < \l}$ so that there is an $\a < \l$ where $\g < \b_\a$.
-    Since $\b_\a$ is an initial ordinal, we have $\abs{\g} < \abs{\b_\a} = \k_\a$.
-    We also have that $\b_\a \leq \b$ (since $\b$ is an upper bound of $\braces{\b_\a}_{\a < \l}$) so that $\k_\a = \abs{\b_\a} \leq \abs{\b}$ by Lemma~\ref{lem:infsp:ocleq}
-    Therefore we have $\abs{\g} < \k_\a \leq \abs{\b}$, which shows that $\b$ is an initial ordinal since $\g < \b$ was arbitrary.
-    Hence $\k$ is indeed a cardinal number.
-
-    Proceeding to prove the actual result, clearly we have that $\k_\a \leq \k$ for each $\a < \l$ by Lemma~\ref{lem:infsp:ocleq} since $\b_\a \leq \b$ (since $\b$ is an upper bound of $\braces{\b_\a}_{\a < \l}$).
-    It then follows from Exercises~9.1.2 and 9.1.4 that
-    \gath{
-      \suma \k_\a \leq \suma \k = \l \cdot \k \,.
-    }
-    Since each $\k_\a$ is nonzero, we have that $1 \leq \k_\a$ for all $\a < \l$ and hence
-    \gath{
-      \l = \l \cdot 1 = \suma 1 \leq \suma \k_\a \,,
-    }
-    where we again have used Exercises~9.1.2 and 9.1.4.
-
-    Now, let $\b_s = \k_s = \suma \k_\a$.
-    Also let $\angles{A_\a \where \a < \l}$ be mutually disjoint sets where $\abs{A_\a} = \k_\a$ for each $\a < \l$, then it follows by definition that $\k_s = \suma \k_\a = \abs{\bigcup_{\a < \l} A_\a}$.
-    Then, for any $\g < \l$, we clearly have $A_\g \ss \bigcup_{\a < \l} A_\a$ so that $\k_\g = \abs{A_\g} \leq \abs{\bigcup_{\a < \l} A_\a} = \k_s$.
-    It then follows from Lemma~\ref{lem:aleph:initle} that $\b_\g \leq \b_s$.
-    Since $\g$ was arbitrary this shows that $\k_s$ is an upper bound of $\braces{\b_\a}_{\a < \l}$.
-    Then, since $\b$ is the \emph{least} upper bound of $\braces{\b_\a}_{\a < \l}$, we have that $\b \leq \b_s$ so that $\k \leq \k_s$ by Lemma~\ref{lem:infsp:ocleq}.
-    
-
-    Since $\l$ is infinite, it follows from Corollary~7.2.2 that $\l \cdot \k$ is the greater of $\l$ and $\k$.
-    It then follows that $\l \cdot \k \leq \suma \k_\a$ since we have shown that both $\l \leq \suma \k_\a$ and $\k \leq \k_s = \suma \k_\a$.
-    Hence, since we have shown that both $\suma \k_\a \leq \l \cdot \k$ and $\l \cdot \k \leq \suma \k_\a$, it follows from the \cbthrm{} that $\suma \k_\a = \l \cdot \k$ as desired.
-  }
-}
-
-\def\prodi{\prod_{i \in I}}
-\def\sumi{\sum_{i \in I}}
-\def\uni{\bigcup_{i \in I}}
-\theorem{7}{
-  (K{\"o}nig's Theorem)
-  If $\k_i$ and $\l_i$ ($i \in I$) are cardinal numbers, and if $\k_i < \l_i$ for all $i \in I$, then
+  First we show that $\approx$ is an equivalence relation, which is straightforward.
+  First consider any $x \in \reals$ so that clearly $x - x = 0 \in \rats$ so that by definition $x \approx x$.
+  Hence $\approx$ is reflexive since $x$ was arbitrary.
+  Now consider any $x$ and $y$ in $\reals$ such that $x \approx y$.
+  Then $z = x - y \in \rats$ by definition.
+  Clearly also then $y - x = -(x - y) = -z \in \rats$ as well since $z \in \rats$ so that $y \approx x$.
+  Thus $\approx$ is also symmetric.
+  Lastly, consider $x$, $y$, and $z$ in $\reals$ where $x \approx y$ and $y \approx z$.
+  Then $a = x - y \in \rats$ and $b = y - z \in \rats$.
+  We then clearly have that
   \gath{
-    \sumi \k_i < \prodi \l_i \,.
+    x - z = x - y + y - z = (x - y) + (y - z) = a + b \in \rats
   }
-}
-\sol{
-  \qproof{
-    First, we show that $\sumi \k_i \leq \prodi \l_i$.
-    So let $\angles{A_i \where i \in I}$ and $\angles{B_i \where i \in I}$ be systems of sets where $\abs{A_i} = \k_i$ and $\abs{B_i} = \l_i$ for all $i \in I$.
-    Also suppose that $\angles{A_i \where i \in I}$ are mutually disjoint.
-    Since, for any $i \in I$, we have that $\abs{A_i} = \k_i < \l_i = \abs{B_i}$, we can clearly assume that $A_i \pss B_i$ (since, if not, then each $A_i$ will still be equipotent to some proper subset of $B_i$).
-    Hence we have
-    \ali{
-      \sumi \k_i &= \abs{\uni A_i} &
-      \prodi \l_i &= \abs{\prodi B_i}
-    }
-    by the definition of the cardinal sum and product.
-    We now construct an injective function $f$ from $\uni A_i$ into $\prodi B_i$, the existence of which then shows that
-    \gath{
-      \sumi \k_i = \abs{\uni A_i} \leq \abs{\prodi B_i} = \prodi \l_i \,.
-    }
+  since $a$ and $b$ are both rational.
+  Thus $x \approx z$ so that $\approx$ is transitive.
+  We have therefore shown that $\approx$ is indeed an equivalence relation.
 
-    So do this, we first note that $B_i - A_i \neq \es$ (since $A_i \pss B_i$) for all $i \in I$, so that we can choose any $d_i \in B_i - A_i$ for each $i \in I$ (which requires the Axiom of Choice).
-    Now, let $x$ be any element of $\uni A_i$ so that there is a unique $i_x \in I$ (unique because $\angles{A_i \where i \in I}$ are mutually disjoint) such that $x \in A_{i_x}$.
-    We then set $f(x) = \angles{a_i \where i \in I}$ where
-    \gath{
-      a_i = \begin{cases}
-        x & i = i_x \\
-        d_i & i \neq i_x
-      \end{cases}
-    }
-    for any $i \in I$.
-    Clearly, when $i = i_x$, we have $a_i = x \in A_{i_x}$ so that $a_i \in B_{i_x} = B_i$ since $A_{i_x} \pss B_{i_x}$.
-    If $i \neq i_x$ then we have that $a_i = d_i \in B_i - A_i$ so that obviously $a_i \in B_i$ as well.
-    Thus clearly $f(x) = \angles{a_i \where i \in I} \in \prodi B_i$ so that $f$ is a function from $\uni A_i$ to $\prodi B_i$.
-
-    Now consider any $x$ and $y$ in $\uni A_i$ where $x \neq y$, and let $f(x) = \angles{a_i \where i \in I}$ and $f(y) = \angles{b_i \where i \in I}$.
-    If $i_x = i_y$ then we have $a_{i_x} = x \neq y = b_{i_y} = b_{i_x}$.
-    On the other hand, if $i_x \neq i_y$, then $a_{i_x} = x \in A_{i_x}$ while $b_{i_x} = d_{i_x} \in B_{i_x} - A_{i_x}$ so that $b_{i_x} \notin A_{i_x}$.
-    Hence it has to be that $a_{i_x} \neq b_{i_x}$ here to.
-    This, in both cases, we clearly have that $f(x) = \angles{a_i \where i \in I} \neq \angles{b_i \where i \in I} = f(y)$ since $a_{i_x} \neq b_{i_x}$ and $i_x \in I$.
-    This clearly shows that $f$ is injective since $x$ and $y$ were arbitrary, which of course shows that indeed $\sumi \k_i \leq \prodi \l_i$.
-
-    Now let us show that $\sumi \k_i < \prodi \l_i$.
-    To this end, suppose that $\angles{B_i \where i \in I}$ are sets such that $\abs{B_i} = \l_i$ for all $i \in I$.
-    Suppose for the moment that $\sumi \k_i$ and $\prodi \l_i$ are actually equal, and let $\angles{A_i \where i \in I}$ be mutually disjoint sets where $\abs{A_i} = \k_i$ for each $i \in I$.
-    It would then follow that there is a bijection $f$ from $\uni A_i$ to $\prodi B_i$.
-    We then have that $X_i = f[A_i]$ is a subset of $\prodi B_i$ for each $i \in I$.
-    Furthermore, suppose $i$ and $j$ in $I$ where $i \neq j$ and that $b \in X_i \cap X_j$.
-    Since $f$ is a bijection, it follows that $\inv{f}$ is also a bijective function so that $\inv{f}[X_i] = \inv{f}[f[A_i]] = A_i$ and $\inv{f}[X_j] = \inv{f}[f[A_j]] = A_j$.
-    Hence we would have that $\inf{f}(b) \in A_i$ since $b \in X_i$ and $\inv{f}(b) \in A_j$ since $b \in X_j$, but this violates the supposition that $\angles{A_i \where i \in I}$ are mutually disjoint since $i \neq j$.
-    So it must be that $\angles{X_i \where i \in I}$ are also mutually disjoint.
-
-    Since each $X_i$ is a subset of $\prodi B_i$, clearly we have that $\uni X_i \ss \prodi B_i$.
-    Then, for any $b \in \prodi B_i$ we have that $\inv{f}(b) \in \uni A_i$ so that there is an $i_0 \in I$ where $\inv{f}(b) \in A_{i_0}$.
-    Then clearly we have that $b = f(\inv{f}(b)) \in X_{i_0}$ since $X_{i_0} = f[A_{i_0}]$.
-    Hence clearly $b \in \uni X_i$ since $i_0 \in I$.
-    There for $\prodi B_i \ss \uni X_i$ also so that in fact $\uni X_i = \prodi B_i$.
-    Moreover, clearly since $f$ is a bijection, we have that $\abs{X_i} = \abs{f[A_i]} = \abs{A_i} = \k_i$ for all $i \in I$.
-    Therefore we have shown that $\sumi \k_i = \prodi \l_i$ implies that there are mutually disjoint subsets $\angles{X_i \where i \in I}$ of $\prodi B_i$ such that $\abs{X_i} = \k_i$ for all $i \in I$ and $\uni X_i = \prodi B_i$.
-    We show by contradiction that this situation is impossible, from which it follows that $\sumi \k_i \neq \prodi \l_i$ (and therefore the desired result follows since it has already been shown that $\sumi \k_i \leq \prodi \l_i$).
-
-    So suppose that there are such mutually disjoint subsets $\angles{X_i \where i \in I}$ of $\prodi B_i$.
-    For each $i \in I$, we let $A_i = \braces{a_i \where \angles{a_j \where j \in I} \in X_i}$.
-    Then, for any $x \in A_i$, there is an $a \in X_i$ where $x = a(i)$.
-    It then follows that $x \in B_i$ since $a \in X_i \ss \prodi B_i$.
-    Thus $A_i \ss B_i$.
-    We also clearly have $\abs{A_i} \leq \abs{X_i} = \k_i < \l_i = \abs{B_i}$ so that $A_i \pss B_i$.
-    Thus there is a $b_i$ such that $b_i \in B_i$ but $b_i \notin A_i$.
-    So we define $b = \angles{b_i \where i \in I}$ so that clearly $b \in \prodi B_i$.
-    However, for any $j \in I$, we have that $b_j \notin A_j$.
-    If it were the case that $b \in X_j$ then we would have that $b(j) = b_j \in A_j$ by the definition of $A_j$.
-    So it has to be that $b \notin X_j$ since we know that $b_j \notin A_j$.
-    Since $j$ was arbitrary, it follows that $b \notin X_i$ for all $i \in I$, and hence $b \notin \uni X_i$.
-    But, since $b \in \prodi B_i$, this contradicts the fact that $\uni X_i = \prodi B_i$.
-    The result follows from this contradiction as described above.
+  We then know that $\approx$ partitions $\reals$ into equivalence classes, and that by the Axiom of Choice and Theorem~8.1.3 the partition has a set of representatives $X$.
+  Let
+  \gath{
+    R = \bigcup \braces{X + r \where r \in \rats}
   }
-}
+  and we show that $R = \reals$.
+  First consider any $y \in R$ so that there is an $r \in \rats$ where $y \in X + r$.
+  From this is follows that there is an $x \in X$ such that $y = x + r$.
+  Clearly then, since $x \in \reals$ (since $X \ss R$) and $r \in \rats$, we have that $y \in \reals$ so that $R \ss \reals$ since $y$ was arbitrary.
+  Now consider any real $y$.
+  Then since $X$ is a set of representatives of a partition of $\reals$, it follows that there is an $x \in X$ such that $y \in \eclass{x}{\approx}$.
+  Then we have that $y \approx x$ so that $r = y - x \in \rats$ by the definition of $\approx$.
+  Thus $y = x + r$ where $x \in X$ so that $y \in X + r$.
+  Since $r \in \rats$ it follows that $y \in R$ so that $R \ss \reals$ since $y$ was arbitrary.
+  This shows that $R = \reals$ as desired.
+
+  Now we show that $X + r$ and $X + q$ are disjoint for rationals $r$ and $q$ where $r \neq q$.
+  To see this, suppose that this is not the case and that there is a $y$ where $y \in X + r$ and $y \in X + q$.
+  Then there is an $x_1 \in X$ where $y = x_1 + r$ and an $x_2 \in X$ where $y = x_2 + q$.
+  Now, it cannot be that $x_1 = x_2$ for then we would have that $y = x_1 + r = x_1 + q$, from which it follows that $r = q$, which we know is not the case.
+  So it must be that $x_1 \neq x_2$, which means that $x_1$ and $x_2$ are in different equivalent classes since $X$ is a set of representatives of disjoint equivalence classes.
+  In particular this means that $x_1 \not \approx x_2$ so that $x_1 - x_2 \notin \rats$.
+  We then have
+  \ali{
+    y = x_1 + r &= x_2 + q \\
+    x_1 - x_2 &= q - r,
+  }
+  but this is a contradiction since we have shown that the left side is irrational but the right side is clearly rational since $q$ and $r$ are.
+  It therefore must be that $X + r$ and $X + q$ are indeed disjoint.
+
+  Now suppose for the moment that $\mu(X) = 0$.
+  It then follows from property iii) that $\mu(X + q) = \mu(X) = 0$ for any rational $q$.
+  Then, since we showed that $R = \reals$, we have that
+  \gath{
+    \mu(\reals) = \mu(R) = \mu\parens{\bigcup \braces{X + r \where r \in \rats}} = \sum_{r \in \rats} \mu(X + r) = \sum_{r \in \rats} 0 = 0
+  }
+  by property ii), noting that this applies because $\rats$ is countable.
+  This contradicts property i), according to which $\mu(\reals) = \infty$.
+  So it must be that $\mu(X) > 0$.
+
+  Suppose next that $\mu(X \cap [a, b]) = 0$ for every closed interval $[a,b]$.
+  Let $A_n = [n, n+1]$ for $n \in \ints$ so that clearly $\bigcup_{n \in \ints} A_n = \reals$.
+  We also have that $\mu(X \cap A_n) = 0$ for any $n \in \ints$ since each $A_n$ is a closed interval.
+  It follows from Lemma~\ref{lem:aoc:intun} that
+  \gath{
+    \bigcup_{n \in \ints} (X \cap A_n) = X \cap \parens{\bigcup_{n \in \ints} A_n} = X \cap \reals = X
+  }
+  since $X \ss \reals$.
+  We then have
+  \gath{
+    \mu(X) = \mu\parens{\bigcup_{n \in \ints} (X \cap A_n)} = \sum_{n \in \ints} (X + A_n) = \sum_{n \in \ints} 0 = 0
+  }
+  by property ii) since $\ints$ is countable.
+  As before, this contradicts property i) so that it has to be that there is a closed interval $[a,b]$ such that $\mu(X \cap [a,b]) > 0$.
+
+  Let $Y = X \cap [a,b]$ and $P = \rats \cap [0,1]$.
+  Next we show that the sets $\braces{Y + q}_{q \in P}$ are mutually disjoint.
+  Suppose the contrary so that there are $p$ and $q$ in $P$ where $p \neq q$ and a $z$ such that $z \in Y + p$ and $y \in Y + q$.
+  Then there is a $y_1 \in Y$ where $z = y_1 + p$ and a $y_2 \in Y$ such that $z = y_2 + q$.
+  We then have that $y_1$ and $y_2$ are both in $X$ so that $z = y_1 + p \in X + p$ and $z = y_2 + q \in X + q$.
+  But since $p \neq q$, this is not possible since we have shown above that $X + p$ and $X + q$ are disjoint.
+  So it has to be that $\braces{Y + q}_{q \in P}$ are mutually disjoint sets.
+
+  We then have that
+  \gath{
+    \mu\parens{\bigcup_{q \in P} (Y + p)} = \sum_{q \in P} \mu(Y + p) = \sum_{q \in P} \mu(Y)
+  }
+  by properties ii) and iii), noting that clearly $P = \rats \cap [0,1]$ is countably infinite.
+  Since $\mu(Y) > 0$ this is an infinite sum of a positive constant so that the result diverges and is thus $\infty$.
+
+  Now consider any $z \in \bigcup_{q \in P} (Y + p)$ so that there is a $q \in P$ such that $z \in Y + q$.
+  Then there is an $y \in Y$ such that $z = y + q$.
+  It follows that $y \in [a, b]$ so that $a \leq y \leq b$.
+  We also have that $0 \leq q \leq 1$ since $q \in P = \rats \cap [0,1]$.
+  We then have that $z = y + q \leq b + q \leq b + 1$.
+  Also clearly $z = y + q \geq a + q \geq a + 0 = a$.
+  Therefore $a \leq z \leq b+1$ so that $z \in [a, b+1]$, which shows that $\bigcup_{q \in P} (Y + p) \ss [a, b+1]$ since $z$ was arbitrary.
+  However, this implies that
+  \gath{
+    \infty = \mu\parens{\bigcup_{q \in P} (Y + p)} \leq \mu([a,b+1]) = b+1-a
+  }
+  by properties v) and 0).
+  This clearly a contradiction though since $b+1-a$ is finite.
+  Thus our initial assumption that there exists such a function $\mu$ must be incorrect.
+  }
+  }
+
+  \section{Arithmetic of Cardinal Numbers}
+  \subsection{Infinite Sums and Products of Cardinal Numbers}
+
+  \theorem{3}{
+    Let $\l$ be an infinite cardinal, let $\k_\a$ ($\a < \l$) be nonzero cardinal numbers, and let $\k = \sup\braces{\k_\a \where \a < \l}$.
+    Then
+    \gath{
+      \sum_{\a < \l} \k_\a = \l \cdot \k = \l \cdot \sup\braces{\k_\a \where \a < \l}.
+    }
+  }
+  \sol{
+    \begin{lem}\label{lem:infsp:ocleq}
+      If $\k$ and $\l$ are cardinal numbers and $\k \leq \l$ in the ordinal ordering (since $\k$ and $\l$ are also ordinals), then also $\k \leq \l$ in the cardinal sense of ordering.
+    \end{lem}
+    \qproof{
+      A proof of this is quite simple.
+      Since $\k \leq \l$ in the ordinal sense, either $\k < \l$ (in the ordinal sense) or $\k = \l$.
+      In the former case $\k \in \l$ by the definition of ordinal ordering so that also $\k \ss \l$ since $\l$ is transitive (since it is an ordinal).
+      In the case where $\k = \l$ then obviously $\k \ss \l$.
+      Hence in either case $\k \ss \l$ so that $\k \leq \l$ in the cardinal sense since clearly the identity function on $\k$ is an injection from $\k$ to $\l$.
+    }
+
+    \def\suma{\sum_{\a < \l}}
+    \mainthrm
+    \qproof{
+      First note that $\sup\braces{\k_\a \where \a < \l}$ refers to the ordinal supremum, which is well defined since every cardinal is also an ordinal (though the converse is not true).
+      In particular the cardinal numbers are exactly the initial ordinals.
+      In order to avoid ambiguity in what follows we shall set $\b = \k$ and $\b_\a = \k_\a$ for each $\a < \l$.
+      When referring to ordinal ordering we use $\b$ and $\b_\a$ and, when referring to cardinal ordering, use $\k$ and $\k_\a$.
+
+      We show first that $\k = \b = \sup\braces{\b_\a \where \a < \l}$ is actually a cardinal number, for which it suffices to show that $\b$ is an initial ordinal.
+      So consider any ordinal $\g < \b$.
+      Then it follows that $\g$ is not an upper bound of $\braces{\b_\a}_{\a < \l}$ so that there is an $\a < \l$ where $\g < \b_\a$.
+      Since $\b_\a$ is an initial ordinal, we have $\abs{\g} < \abs{\b_\a} = \k_\a$.
+      We also have that $\b_\a \leq \b$ (since $\b$ is an upper bound of $\braces{\b_\a}_{\a < \l}$) so that $\k_\a = \abs{\b_\a} \leq \abs{\b}$ by Lemma~\ref{lem:infsp:ocleq}
+      Therefore we have $\abs{\g} < \k_\a \leq \abs{\b}$, which shows that $\b$ is an initial ordinal since $\g < \b$ was arbitrary.
+      Hence $\k$ is indeed a cardinal number.
+
+      Proceeding to prove the actual result, clearly we have that $\k_\a \leq \k$ for each $\a < \l$ by Lemma~\ref{lem:infsp:ocleq} since $\b_\a \leq \b$ (since $\b$ is an upper bound of $\braces{\b_\a}_{\a < \l}$).
+      It then follows from Exercises~9.1.2 and 9.1.4 that
+      \gath{
+        \suma \k_\a \leq \suma \k = \l \cdot \k.
+      }
+      Since each $\k_\a$ is nonzero, we have that $1 \leq \k_\a$ for all $\a < \l$ and hence
+      \gath{
+        \l = \l \cdot 1 = \suma 1 \leq \suma \k_\a,
+      }
+      where we again have used Exercises~9.1.2 and 9.1.4.
+
+      Now, let $\b_s = \k_s = \suma \k_\a$.
+      Also let $\angles{A_\a \where \a < \l}$ be mutually disjoint sets where $\abs{A_\a} = \k_\a$ for each $\a < \l$, then it follows by definition that $\k_s = \suma \k_\a = \abs{\bigcup_{\a < \l} A_\a}$.
+      Then, for any $\g < \l$, we clearly have $A_\g \ss \bigcup_{\a < \l} A_\a$ so that $\k_\g = \abs{A_\g} \leq \abs{\bigcup_{\a < \l} A_\a} = \k_s$.
+      It then follows from Lemma~\ref{lem:aleph:initle} that $\b_\g \leq \b_s$.
+      Since $\g$ was arbitrary this shows that $\k_s$ is an upper bound of $\braces{\b_\a}_{\a < \l}$.
+      Then, since $\b$ is the \emph{least} upper bound of $\braces{\b_\a}_{\a < \l}$, we have that $\b \leq \b_s$ so that $\k \leq \k_s$ by Lemma~\ref{lem:infsp:ocleq}.
+
+
+      Since $\l$ is infinite, it follows from Corollary~7.2.2 that $\l \cdot \k$ is the greater of $\l$ and $\k$.
+      It then follows that $\l \cdot \k \leq \suma \k_\a$ since we have shown that both $\l \leq \suma \k_\a$ and $\k \leq \k_s = \suma \k_\a$.
+      Hence, since we have shown that both $\suma \k_\a \leq \l \cdot \k$ and $\l \cdot \k \leq \suma \k_\a$, it follows from the \cbthrm{} that $\suma \k_\a = \l \cdot \k$ as desired.
+    }
+  }
+
+  \def\prodi{\prod_{i \in I}}
+  \def\sumi{\sum_{i \in I}}
+  \def\uni{\bigcup_{i \in I}}
+  \theorem{7}{
+    (K{\"o}nig's Theorem)
+    If $\k_i$ and $\l_i$ ($i \in I$) are cardinal numbers, and if $\k_i < \l_i$ for all $i \in I$, then
+    \gath{
+      \sumi \k_i < \prodi \l_i.
+    }
+  }
+  \sol{
+    \qproof{
+      First, we show that $\sumi \k_i \leq \prodi \l_i$.
+      So let $\angles{A_i \where i \in I}$ and $\angles{B_i \where i \in I}$ be systems of sets where $\abs{A_i} = \k_i$ and $\abs{B_i} = \l_i$ for all $i \in I$.
+      Also suppose that $\angles{A_i \where i \in I}$ are mutually disjoint.
+      Since, for any $i \in I$, we have that $\abs{A_i} = \k_i < \l_i = \abs{B_i}$, we can clearly assume that $A_i \pss B_i$ (since, if not, then each $A_i$ will still be equipotent to some proper subset of $B_i$).
+      Hence we have
+      \ali{
+        \sumi \k_i &= \abs{\uni A_i} &
+        \prodi \l_i &= \abs{\prodi B_i}
+      }
+      by the definition of the cardinal sum and product.
+      We now construct an injective function $f$ from $\uni A_i$ into $\prodi B_i$, the existence of which then shows that
+      \gath{
+        \sumi \k_i = \abs{\uni A_i} \leq \abs{\prodi B_i} = \prodi \l_i.
+      }
+
+      So do this, we first note that $B_i - A_i \neq \es$ (since $A_i \pss B_i$) for all $i \in I$, so that we can choose any $d_i \in B_i - A_i$ for each $i \in I$ (which requires the Axiom of Choice).
+      Now, let $x$ be any element of $\uni A_i$ so that there is a unique $i_x \in I$ (unique because $\angles{A_i \where i \in I}$ are mutually disjoint) such that $x \in A_{i_x}$.
+      We then set $f(x) = \angles{a_i \where i \in I}$ where
+      \gath{
+        a_i = \begin{cases}
+          x   & i = i_x    \\
+          d_i & i \neq i_x
+        \end{cases}
+      }
+      for any $i \in I$.
+      Clearly, when $i = i_x$, we have $a_i = x \in A_{i_x}$ so that $a_i \in B_{i_x} = B_i$ since $A_{i_x} \pss B_{i_x}$.
+      If $i \neq i_x$ then we have that $a_i = d_i \in B_i - A_i$ so that obviously $a_i \in B_i$ as well.
+      Thus clearly $f(x) = \angles{a_i \where i \in I} \in \prodi B_i$ so that $f$ is a function from $\uni A_i$ to $\prodi B_i$.
+
+      Now consider any $x$ and $y$ in $\uni A_i$ where $x \neq y$, and let $f(x) = \angles{a_i \where i \in I}$ and $f(y) = \angles{b_i \where i \in I}$.
+      If $i_x = i_y$ then we have $a_{i_x} = x \neq y = b_{i_y} = b_{i_x}$.
+      On the other hand, if $i_x \neq i_y$, then $a_{i_x} = x \in A_{i_x}$ while $b_{i_x} = d_{i_x} \in B_{i_x} - A_{i_x}$ so that $b_{i_x} \notin A_{i_x}$.
+      Hence it has to be that $a_{i_x} \neq b_{i_x}$ here to.
+      This, in both cases, we clearly have that $f(x) = \angles{a_i \where i \in I} \neq \angles{b_i \where i \in I} = f(y)$ since $a_{i_x} \neq b_{i_x}$ and $i_x \in I$.
+      This clearly shows that $f$ is injective since $x$ and $y$ were arbitrary, which of course shows that indeed $\sumi \k_i \leq \prodi \l_i$.
+
+      Now let us show that $\sumi \k_i < \prodi \l_i$.
+      To this end, suppose that $\angles{B_i \where i \in I}$ are sets such that $\abs{B_i} = \l_i$ for all $i \in I$.
+      Suppose for the moment that $\sumi \k_i$ and $\prodi \l_i$ are actually equal, and let $\angles{A_i \where i \in I}$ be mutually disjoint sets where $\abs{A_i} = \k_i$ for each $i \in I$.
+      It would then follow that there is a bijection $f$ from $\uni A_i$ to $\prodi B_i$.
+      We then have that $X_i = f[A_i]$ is a subset of $\prodi B_i$ for each $i \in I$.
+      Furthermore, suppose $i$ and $j$ in $I$ where $i \neq j$ and that $b \in X_i \cap X_j$.
+      Since $f$ is a bijection, it follows that $\inv{f}$ is also a bijective function so that $\inv{f}[X_i] = \inv{f}[f[A_i]] = A_i$ and $\inv{f}[X_j] = \inv{f}[f[A_j]] = A_j$.
+      Hence we would have that $\inf{f}(b) \in A_i$ since $b \in X_i$ and $\inv{f}(b) \in A_j$ since $b \in X_j$, but this violates the supposition that $\angles{A_i \where i \in I}$ are mutually disjoint since $i \neq j$.
+      So it must be that $\angles{X_i \where i \in I}$ are also mutually disjoint.
+
+      Since each $X_i$ is a subset of $\prodi B_i$, clearly we have that $\uni X_i \ss \prodi B_i$.
+      Then, for any $b \in \prodi B_i$ we have that $\inv{f}(b) \in \uni A_i$ so that there is an $i_0 \in I$ where $\inv{f}(b) \in A_{i_0}$.
+      Then clearly we have that $b = f(\inv{f}(b)) \in X_{i_0}$ since $X_{i_0} = f[A_{i_0}]$.
+      Hence clearly $b \in \uni X_i$ since $i_0 \in I$.
+      There for $\prodi B_i \ss \uni X_i$ also so that in fact $\uni X_i = \prodi B_i$.
+      Moreover, clearly since $f$ is a bijection, we have that $\abs{X_i} = \abs{f[A_i]} = \abs{A_i} = \k_i$ for all $i \in I$.
+      Therefore we have shown that $\sumi \k_i = \prodi \l_i$ implies that there are mutually disjoint subsets $\angles{X_i \where i \in I}$ of $\prodi B_i$ such that $\abs{X_i} = \k_i$ for all $i \in I$ and $\uni X_i = \prodi B_i$.
+      We show by contradiction that this situation is impossible, from which it follows that $\sumi \k_i \neq \prodi \l_i$ (and therefore the desired result follows since it has already been shown that $\sumi \k_i \leq \prodi \l_i$).
+
+      So suppose that there are such mutually disjoint subsets $\angles{X_i \where i \in I}$ of $\prodi B_i$.
+      For each $i \in I$, we let $A_i = \braces{a_i \where \angles{a_j \where j \in I} \in X_i}$.
+      Then, for any $x \in A_i$, there is an $a \in X_i$ where $x = a(i)$.
+      It then follows that $x \in B_i$ since $a \in X_i \ss \prodi B_i$.
+      Thus $A_i \ss B_i$.
+      We also clearly have $\abs{A_i} \leq \abs{X_i} = \k_i < \l_i = \abs{B_i}$ so that $A_i \pss B_i$.
+      Thus there is a $b_i$ such that $b_i \in B_i$ but $b_i \notin A_i$.
+      So we define $b = \angles{b_i \where i \in I}$ so that clearly $b \in \prodi B_i$.
+      However, for any $j \in I$, we have that $b_j \notin A_j$.
+      If it were the case that $b \in X_j$ then we would have that $b(j) = b_j \in A_j$ by the definition of $A_j$.
+      So it has to be that $b \notin X_j$ since we know that $b_j \notin A_j$.
+      Since $j$ was arbitrary, it follows that $b \notin X_i$ for all $i \in I$, and hence $b \notin \uni X_i$.
+      But, since $b \in \prodi B_i$, this contradicts the fact that $\uni X_i = \prodi B_i$.
+      The result follows from this contradiction as described above.
+    }
+  }
 
 \end{questions}
 \end{document}

@@ -16,42 +16,42 @@
 }
 \sol{
   \qproof{
-  Suppose that $\angles{A_j \where j \in J}$ are mutually disjoint sets where $\abs{A_j} = \k_j$ for every $j \in J$.
-  Then, by definition, we have that
-  \begin{gather}
-    \sum_{j \in J} \k_j = \abs{\unaj{}} \,. \label{eqn:infsp:sumkjall}
-  \end{gather}
-  Now let $S = \braces{J_i \where i \in I}$, from which it is trivial to show that $\bigcup S = J$.
-  It follows from Exercise~2.3.10 that
-  \begin{gather}
-    \unaj{} = \bigcup_{a \in \bigcup S} A_a = \bigcup_{C \in S} \parens{\bigcup_{a \in C} A_a}
-    = \bigcup_{i \in I} \parens{\unaj{i}} \,. \label{eqn:infsp:dun}
-  \end{gather}
-  We claim that the sets $\angles{\unaj{i} \where i \in I}$ are mutually disjoint.
-  So consider any $i_1$ and $i_2$ in $I$ where $i_1 \neq i_2$, and suppose that $\unaj{i_1}$ and $\unaj{i_2}$ are \emph{not} disjoint so that there is an $x$ where $x \in \unaj{i_1}$ and $x \in \unaj{i_2}$.
-  Then there is a $j_1 \in J_{i_1}$ where $x \in A_{j_1}$ and a $j_2 \in J_{i_2}$ where $x \in A_{j_2}$.
-  Now, since $\angles{J_i \where i \in I}$ are mutually disjoint and $i_1 \neq i_2$, it follows that $J_{i_1}$ and $J_{i_2}$ are disjoint.
-  Therefore it has to be that $j_1 \neq j_2$ (since $j_1 \in J_{i_1}$ and $j_2 \in J_{i_2}$).
-  But then $A_{j_1}$ and $A_{j_2}$ are not disjoint (since $x$ is in both) despite the fact that $j_1 \neq j_2$, which contradicts the fact that $\angles{A_j \where j \in J}$ are mutually disjoint.
-  So it must be that in that $\unaj{i_1}$ and $\unaj{i_2}$ are disjoint, which proves the result since $i_1$ and $i_2$ were arbitrary.
+    Suppose that $\angles{A_j \where j \in J}$ are mutually disjoint sets where $\abs{A_j} = \k_j$ for every $j \in J$.
+    Then, by definition, we have that
+    \begin{gather}
+      \sum_{j \in J} \k_j = \abs{\unaj{}}. \label{eqn:infsp:sumkjall}
+    \end{gather}
+    Now let $S = \braces{J_i \where i \in I}$, from which it is trivial to show that $\bigcup S = J$.
+    It follows from Exercise~2.3.10 that
+    \begin{gather}
+      \unaj{} = \bigcup_{a \in \bigcup S} A_a = \bigcup_{C \in S} \parens{\bigcup_{a \in C} A_a}
+      = \bigcup_{i \in I} \parens{\unaj{i}}. \label{eqn:infsp:dun}
+    \end{gather}
+    We claim that the sets $\angles{\unaj{i} \where i \in I}$ are mutually disjoint.
+    So consider any $i_1$ and $i_2$ in $I$ where $i_1 \neq i_2$, and suppose that $\unaj{i_1}$ and $\unaj{i_2}$ are \emph{not} disjoint so that there is an $x$ where $x \in \unaj{i_1}$ and $x \in \unaj{i_2}$.
+    Then there is a $j_1 \in J_{i_1}$ where $x \in A_{j_1}$ and a $j_2 \in J_{i_2}$ where $x \in A_{j_2}$.
+    Now, since $\angles{J_i \where i \in I}$ are mutually disjoint and $i_1 \neq i_2$, it follows that $J_{i_1}$ and $J_{i_2}$ are disjoint.
+    Therefore it has to be that $j_1 \neq j_2$ (since $j_1 \in J_{i_1}$ and $j_2 \in J_{i_2}$).
+    But then $A_{j_1}$ and $A_{j_2}$ are not disjoint (since $x$ is in both) despite the fact that $j_1 \neq j_2$, which contradicts the fact that $\angles{A_j \where j \in J}$ are mutually disjoint.
+    So it must be that in that $\unaj{i_1}$ and $\unaj{i_2}$ are disjoint, which proves the result since $i_1$ and $i_2$ were arbitrary.
 
-  Since $\angles{\unaj{i} \where i \in I}$ have been shown to be mutually disjoint, it follows by definition that
-  \begin{gather}
-    \sum_{i \in I} \abs{\unaj{i}} = \abs{\bigcup_{i \in I} \parens{\unaj{i}}} \,. \label{eqn:infsp:sumunaj}
-  \end{gather}
-  Lastly, we also clearly have that $\angles{A_j \where j \in J_i}$ are mutually disjoint for any $i \in I$ (since $\angles{A_j \where j \in J}$ are mutually disjoint) so that
-  \begin{gather}
-    \sum_{j \in J_i} \k_j = \abs{\unaj{i}} \,. \label{eqn:infsp:sumkj}
-  \end{gather}
+    Since $\angles{\unaj{i} \where i \in I}$ have been shown to be mutually disjoint, it follows by definition that
+    \begin{gather}
+      \sum_{i \in I} \abs{\unaj{i}} = \abs{\bigcup_{i \in I} \parens{\unaj{i}}}. \label{eqn:infsp:sumunaj}
+    \end{gather}
+    Lastly, we also clearly have that $\angles{A_j \where j \in J_i}$ are mutually disjoint for any $i \in I$ (since $\angles{A_j \where j \in J}$ are mutually disjoint) so that
+    \begin{gather}
+      \sum_{j \in J_i} \k_j = \abs{\unaj{i}}. \label{eqn:infsp:sumkj}
+    \end{gather}
 
-  Putting this all together, we have
-  \ali{
-    \sum_{j \in J} \k_j &= \abs{\unaj{}} & \text{(by \eqref{eqn:infsp:sumkjall})} \\
-    &= \abs{\bigcup_{i \in I} \parens{\unaj{i}}} & \text{(by \eqref{eqn:infsp:dun})} \\
-    &= \sum_{i \in I} \abs{\unaj{i}} & \text{(by \eqref{eqn:infsp:sumunaj})} \\
-    &= \sum_{i \in I} \parens{\sum_{j \in J_i} \k_j} & \text{(by \eqref{eqn:infsp:sumkj})}
-  }
-  as desired.
+    Putting this all together, we have
+    \ali{
+      \sum_{j \in J} \k_j &= \abs{\unaj{}} & \text{(by \eqref{eqn:infsp:sumkjall})} \\
+      &= \abs{\bigcup_{i \in I} \parens{\unaj{i}}} & \text{(by \eqref{eqn:infsp:dun})} \\
+      &= \sum_{i \in I} \abs{\unaj{i}} & \text{(by \eqref{eqn:infsp:sumunaj})} \\
+      &= \sum_{i \in I} \parens{\sum_{j \in J_i} \k_j} & \text{(by \eqref{eqn:infsp:sumkj})}
+    }
+    as desired.
   }
 }
 
@@ -66,7 +66,7 @@
     It then follows by definition that
     \ali{
       \sum_{i \in I} \k_i &= \abs{\un A_i} &
-      \sum_{i \in I} \l_i &= \abs{\un B_i} \,.
+      \sum_{i \in I} \l_i &= \abs{\un B_i}.
     }
     Now, we have $\abs{A_i} = \k_i \leq \l_i = \abs{B_i}$ so that there is an injective function $f_i : A_i \to B_i$ for all $i \in I$.
     With the help of the Axiom of Choice, we can choose one of these functions for each $i \in I$ and form the system of functions $\braces{f_i}_{i \in I}$.
@@ -87,7 +87,7 @@
     Since $x \in A_i$ and $x \in A_j$ but $i \neq j$, this contradicts the fact that $\angles{A_i \where i \in I}$ are mutually disjoint.
     Hence it must be that $j = i$ so that $(x, f(x)) \in f_j = f_i$.
     From this of course it follows that $f_i(x) = f(x)$ as desired.
-    
+
     We also claim that $f(x) \in \un B_i$ for any $x \in \un A_i$ so that $\un B_i$ can be the codomain of $f$.
     This is easy to show: consider any $x \in \un A_i$ so that there is an $i \in I$ where $x \in A_i$.
     It then follows that $f(x) = f_i(x) \in B_i$ since $f_i$ is a function from $A_i$ to $B_i$.
@@ -138,7 +138,7 @@
     }
     regardless of what $\k$ is.
     So assume in what follows that $\l > 0$ so $\l \geq 1$.
-    
+
     For each $\a < \l$, define $A_\a = \braces{(\a, \b) \where \b \in \k}$.
     Consider then any $\a_1 < \l$ and $\a_2 < \l$ where $\a_1 \neq \a_2$.
     Suppose that both $(x,y) \in A_{\a_1}$ and $(x,y) \in A_{\a_2}$.
@@ -148,7 +148,7 @@
     We also clearly have that $\abs{A_\a} = \k$ for each $\a < \l$.
     It therefore follows from the definition of cardinal summation that
     \gath{
-      \k + \k + \cdots \text{($\l$ times)} = \sum_{\a < \l} \k = \abs{\una A_\a} \,.
+      \k + \k + \cdots \text{($\l$ times)} = \sum_{\a < \l} \k = \abs{\una A_\a}.
     }
 
     Now we show that $\una A_\a = \l \times \k$.
@@ -164,7 +164,7 @@
 
     Putting all this together, we have
     \gath{
-      \k + \k + \cdots \text{($\l$ times)} = \sum_{\a < \l} \k = \abs{\una A_\a} = \abs{\l \times \k} 
+      \k + \k + \cdots \text{($\l$ times)} = \sum_{\a < \l} \k = \abs{\una A_\a} = \abs{\l \times \k}
       = \l \cdot \k
     }
     by the definition of cardinal multiplication since obviously $\abs{\l} = \l$ and $\abs{\k} = \k$.
@@ -174,7 +174,7 @@
 \exercise{5}{
   Prove the \emph{distributive} law:
   \gath{
-    \l \cdot \parens{\sumi \k_i} = \sumi \parens{\l \cdot \k_i} \,.
+    \l \cdot \parens{\sumi \k_i} = \sumi \parens{\l \cdot \k_i}.
   }
 }
 \sol{
@@ -189,7 +189,7 @@
       (x, y) \in B \times \uni A_i &\bic x \in B \land \exists i \in I (y \in A_i) \\
       &\bic \exists i \in I (x \in B \land y \in A_i) \\
       &\bic \exists i \in I ((x,y) \in B \times A_i) \\
-      &\bic (x,y) \in \uni (B \times A_i) \,.
+      &\bic (x,y) \in \uni (B \times A_i).
     }
     We then have
     \ali{
@@ -249,7 +249,7 @@
     Suppose that $\angles{A_j \where j \in J}$ are sets where $\abs{A_j} = \k_j$ for each $j \in J$.
     It then follows that
     \begin{gather}
-      \prodj \k_j = \abs{\prodj A_j} \,. \label{eqn:infsp:prodJ}
+      \prodj \k_j = \abs{\prodj A_j}. \label{eqn:infsp:prodJ}
     \end{gather}
     Now, for any $i \in I$, set $B_i = \prod_{j \in J_i} A_j$ so that
     \begin{gather}
@@ -290,10 +290,10 @@
     If we had set $g(j_0) = a_{i_2 j_0}$ instead then, by the same argument, we would have $a_{i_1}' \neq b_{i_1}$.
     Clearly in either case this would break the proof since we would have $f(g) = \angles{a_i' \where i \in I} \neq \angles{b_i \where i \in I} = b$.
     In fact, in this case there would be no $g \in \prodj A_j$ such that $f(g) = b$ since we cannot choose a value for $g(j_0)$ for which $a_i' = b_i$ for all $i \in I$.
-    
+
     Returning from our digression, we have shown that $f$ is a bijection from $\prodj A_j$ to $\prodi B_i$ so that
     \begin{gather}
-      \abs{\prodj A_j} = \abs{\prodi B_i} \,. \label{eqn:infsp:pJpI}
+      \abs{\prodj A_j} = \abs{\prodi B_i}. \label{eqn:infsp:pJpI}
     \end{gather}
     Therefore we have
     \ali{
@@ -309,7 +309,7 @@
 \exercise{8}{
   If $\k_i \leq \l_i$ for all $i \in I$, then
   \gath{
-    \prodi \k_i \leq \prodi \l_i \,.
+    \prodi \k_i \leq \prodi \l_i.
   }
 }
 \sol{
@@ -318,7 +318,7 @@
     Then, by the definition of the cardinal product, we have that
     \ali{
       \prodi \k_i &= \abs{\prodi A_i} &
-      \prodi \l_i &= \abs{\prodi B_i} \,.
+      \prodi \l_i &= \abs{\prodi B_i}.
     }
     Now, for any $i \in I$, we also have
     \gath{
@@ -372,7 +372,7 @@
   \qproof{
     First, we clearly have that
     \gath{
-      \k \cdot \k \cdot \cdots \text{($\l$ times)} = \proda \k \,.
+      \k \cdot \k \cdot \cdots \text{($\l$ times)} = \proda \k.
     }
     So let $A$ and $B$ be sets such that $\abs{A} = \k$ and $\abs{B} = \l$.
     Then by definition we have $\proda \k = \abs{\proda A}$ and $\k^\l = \abs{A^B}$.
@@ -413,7 +413,7 @@
 
 \exercise{11}{
   Prove the formula $\parens{\prodi \k_i}^\l = \prodi \parens{\k_i}^\l$.
-  [Hint: Generalize the proof of the special case $\parens{\k \cdot \l}^\mu = \k^\mu \cdot \l^\mu$, given in Theorem~1.7 of Chapter~5.]
+    [Hint: Generalize the proof of the special case $\parens{\k \cdot \l}^\mu = \k^\mu \cdot \l^\mu$, given in Theorem~1.7 of Chapter~5.]
 
   Note that the hint differs from that in the book; see the Errata List.
 }
@@ -427,11 +427,11 @@
     }
     and
     \gath{
-      \prodi \k_i^\l = \prodi \abs{A_i^B} = \abs{\prodi A_i^B} \,.
+      \prodi \k_i^\l = \prodi \abs{A_i^B} = \abs{\prodi A_i^B}.
     }
     We then aim to construct a bijection $F$ from $\prodi A_i^B$ to $\parens{\prodi A_i}^B$, which clearly would show the result since we would have by the above that
     \gath{
-      \parens{\prodi \k_i}^\l = \abs{\parens{\prodi A_i}^B} = \abs{\prodi A_i^B} = \prodi \k_i^\l  \,.
+      \parens{\prodi \k_i}^\l = \abs{\parens{\prodi A_i}^B} = \abs{\prodi A_i^B} = \prodi \k_i^\l .
     }
 
     So suppose that $f \in \prodi A_i^B$ so that $f_i = f(i) \in A_i^B$ for every $i \in I$.
@@ -466,7 +466,7 @@
 \exercise{12}{
   Prove the formula
   \gath{
-    \prodi \parens{\k^{\l_i}} = \k^{\sumi \l_i} \,.
+    \prodi \parens{\k^{\l_i}} = \k^{\sumi \l_i}.
   }
   [Hint: Generalize the proof of the special case $\k^\l \cdot \k^\mu = \k^{\l + \mu}$ given in Theorem~1.7(a) of Chapter~5.]
 }
@@ -479,11 +479,11 @@
     }
     and
     \gath{
-      \k^{\sumi \l_i} = \k^{\abs{\uni B_i}} = \abs{A^{\uni B_i}} \,.
+      \k^{\sumi \l_i} = \k^{\abs{\uni B_i}} = \abs{A^{\uni B_i}}.
     }
     We now construct a bijective function F from $\prodi A^{B_i}$ to $A^{\uni B_i}$, which clearly shows the desired result since we then have
     \gath{
-      \prodi \parens{\k^{\l_i}} = \abs{\prodi A^{B_i}} = \abs{A^{\uni B_i}} = \k^{\sumi \l_i} \,.
+      \prodi \parens{\k^{\l_i}} = \abs{\prodi A^{B_i}} = \abs{A^{\uni B_i}} = \k^{\sumi \l_i}.
     }
 
     So, for any $f = \angles{f_i \where i \in I} \in \prodi A^{B_i}$, we have that each $f_i$ is a function from $B_i$ to $A$.
@@ -530,7 +530,7 @@
     \gath{
       g(k) = \begin{cases}
         f(k) & k \in n \\
-        a & k = n \,.
+        a    & k = n.
       \end{cases}
     }
     Clearly in either of these cases we have that $g(k) \in A$ so that $g$ is in fact a function from $n+1$ into $A$.
@@ -544,7 +544,7 @@
 
     The existence of the injection $g$ thus shows that that $n+1 \leq \abs{A}$ as desired.
   }
-  
+
   \mainprob
 
   \qproof{
@@ -567,10 +567,10 @@
     Them, for any $i \in I$, set
     \gath{
       a_i = \begin{cases}
-        x & i = i_x \\
-        \a_i & i \neq i_x \text{ and } i = i_0 \text{ and } x = \a_{i_x} \\
-        \b_i & i \neq i_x \text{ and } i = i_0 \text{ and } x \neq \a_{i_x} \\
-        \b_i & i \neq i_x \text{ and } i \neq i_0 \text{ and } x = \a_{i_x} \\
+        x    & i = i_x                                                         \\
+        \a_i & i \neq i_x \text{ and } i = i_0 \text{ and } x = \a_{i_x}       \\
+        \b_i & i \neq i_x \text{ and } i = i_0 \text{ and } x \neq \a_{i_x}    \\
+        \b_i & i \neq i_x \text{ and } i \neq i_0 \text{ and } x = \a_{i_x}    \\
         \a_i & i \neq i_x \text{ and } i \neq i_0 \text{ and } x \neq \a_{i_x}
       \end{cases}
     }
@@ -585,50 +585,50 @@
 
     The following involves a lot of messy case work, so we shall number the cases for easy reference:
     \begin{enumerate}
-    \item Case: $i_x = i_y$.
-      Then $a_{i_x} = x \neq y = b_{i_y} = b_{i_x}$.
-    \item Case: $i_x \neq i_y$.
-      \begin{enumerate}
-      \item Case: $i_x \neq i_0$ and $i_y \neq i_0$.
-        \begin{enumerate}
-        \item Case: $a_{i_x} = x = \a_{i_x}$.
-          \begin{enumerate}
-          \item Case: $b_{i_y} = y = \a_{i_y}$.
-            Then, since $i_x \neq i_y$ and $i_x \neq i_0$ and $y = \a_{i_y}$, we have $b_{i_x} = \b_{i_x} \neq \a_{i_x} = a_{i_x}$.
-          \item Case: $b_{i_y} = y \neq \a_{i_y}$.
-            Then, since $i_0 \neq i_x$ and $i_0 = i_0$ and $x = \a_{i_x}$, we have $a_{i_0} = \a_{i_0}$.
-            Also, since $i_0 \neq i_y$ and $i_0 = i_0$ and $y \neq \a_{i_y}$, we have $b_{i_0} = \b_{i_0} \neq \a_{i_0} = a_{i_0}$.
-          \end{enumerate}
-        \item Case: $a_{i_x} = x \neq \a_{i_x}$.
-          \begin{enumerate}
-          \item Case: $b_{i_y} = y = \a_{i_y}$.
-            This is analogous to case 2.a.i.B with $a_{i_x} = x$ and $b_{i_y} = y$ reversed so that again $a_{i_0} \neq b_{i_0}$.
-          \item Case: $b_{i_y} = y \neq \a_{i_y}$.
-            Then, since $i_x \neq i_y$ and $i_x \neq i_0$ and $y \neq \a_{i_y}$, we have $b_{i_x} = \a_{i_x} \neq a_{i_x}$.
-          \end{enumerate}
-        \end{enumerate}
-      \item Case: $i_x \neq i_0$ and $i_y = i_0$.
-        \begin{enumerate}
-        \item Case: $a_{i_x} = x = \a_{i_x}$.
-          \begin{enumerate}
-          \item Case: $b_{i_y} = y = \a_{i_y}$.
-            Since $i_x \neq i_y$ and $i_x \neq i_0$ and $y = \a_{i_y}$, we have $b_{i_x} = \b_{i_x} \neq \a_{i_x} = a_{i_x}$.
-          \item Case: $b_{i_y} = y \neq \a_{i_y}$.
-            Since $i_y \neq i_x$ and $i_y = i_0$ and $x = \a_{i_x}$, we have $a_{i_y} = \a_{i_y} \neq b_{i_y}$.
-          \end{enumerate}
-        \item Case: $a_{i_x} = x \neq \a_{i_x}$.
-          \begin{enumerate}
-          \item Case: $b_{i_y} = y = \a_{i_y}$.
-            Since $i_y \neq i_x$ and $i_y = i_0$ and $x \neq \a_{i_x}$, we have $a_{i_y} = \b_{i_y} \neq \a_{i_y} = b_{i_y}$.
-          \item Case: $b_{i_y} = y \neq \a_{i_y}$.
-            Since $i_x \neq i_y$ and $i_x \neq i_0$ and $y \neq \a_{i_y}$, we have $b_{i_x} = \a_{i_x} \neq a_{i_x}$.
-          \end{enumerate}
-        \end{enumerate}
-      \item Case: $i_x = i_0$ and $i_y \neq i_0$.
-        This is analogous  to the previous case 2.b with the roles of $i_x$ and $i_y$ reversed.
-      \item Case: $i_x = i_0$ and $i_y = i_0$.
-        This is impossible since $i_x \neq i_y$.
-      \end{enumerate}
+      \item Case: $i_x = i_y$.
+            Then $a_{i_x} = x \neq y = b_{i_y} = b_{i_x}$.
+      \item Case: $i_x \neq i_y$.
+            \begin{enumerate}
+              \item Case: $i_x \neq i_0$ and $i_y \neq i_0$.
+                    \begin{enumerate}
+                      \item Case: $a_{i_x} = x = \a_{i_x}$.
+                            \begin{enumerate}
+                              \item Case: $b_{i_y} = y = \a_{i_y}$.
+                                    Then, since $i_x \neq i_y$ and $i_x \neq i_0$ and $y = \a_{i_y}$, we have $b_{i_x} = \b_{i_x} \neq \a_{i_x} = a_{i_x}$.
+                              \item Case: $b_{i_y} = y \neq \a_{i_y}$.
+                                    Then, since $i_0 \neq i_x$ and $i_0 = i_0$ and $x = \a_{i_x}$, we have $a_{i_0} = \a_{i_0}$.
+                                    Also, since $i_0 \neq i_y$ and $i_0 = i_0$ and $y \neq \a_{i_y}$, we have $b_{i_0} = \b_{i_0} \neq \a_{i_0} = a_{i_0}$.
+                            \end{enumerate}
+                      \item Case: $a_{i_x} = x \neq \a_{i_x}$.
+                            \begin{enumerate}
+                              \item Case: $b_{i_y} = y = \a_{i_y}$.
+                                    This is analogous to case 2.a.i.B with $a_{i_x} = x$ and $b_{i_y} = y$ reversed so that again $a_{i_0} \neq b_{i_0}$.
+                              \item Case: $b_{i_y} = y \neq \a_{i_y}$.
+                                    Then, since $i_x \neq i_y$ and $i_x \neq i_0$ and $y \neq \a_{i_y}$, we have $b_{i_x} = \a_{i_x} \neq a_{i_x}$.
+                            \end{enumerate}
+                    \end{enumerate}
+              \item Case: $i_x \neq i_0$ and $i_y = i_0$.
+                    \begin{enumerate}
+                      \item Case: $a_{i_x} = x = \a_{i_x}$.
+                            \begin{enumerate}
+                              \item Case: $b_{i_y} = y = \a_{i_y}$.
+                                    Since $i_x \neq i_y$ and $i_x \neq i_0$ and $y = \a_{i_y}$, we have $b_{i_x} = \b_{i_x} \neq \a_{i_x} = a_{i_x}$.
+                              \item Case: $b_{i_y} = y \neq \a_{i_y}$.
+                                    Since $i_y \neq i_x$ and $i_y = i_0$ and $x = \a_{i_x}$, we have $a_{i_y} = \a_{i_y} \neq b_{i_y}$.
+                            \end{enumerate}
+                      \item Case: $a_{i_x} = x \neq \a_{i_x}$.
+                            \begin{enumerate}
+                              \item Case: $b_{i_y} = y = \a_{i_y}$.
+                                    Since $i_y \neq i_x$ and $i_y = i_0$ and $x \neq \a_{i_x}$, we have $a_{i_y} = \b_{i_y} \neq \a_{i_y} = b_{i_y}$.
+                              \item Case: $b_{i_y} = y \neq \a_{i_y}$.
+                                    Since $i_x \neq i_y$ and $i_x \neq i_0$ and $y \neq \a_{i_y}$, we have $b_{i_x} = \a_{i_x} \neq a_{i_x}$.
+                            \end{enumerate}
+                    \end{enumerate}
+              \item Case: $i_x = i_0$ and $i_y \neq i_0$.
+                    This is analogous  to the previous case 2.b with the roles of $i_x$ and $i_y$ reversed.
+              \item Case: $i_x = i_0$ and $i_y = i_0$.
+                    This is impossible since $i_x \neq i_y$.
+            \end{enumerate}
     \end{enumerate}
     Thus, in all cases, there is an $i \in I$ such that $a_i \neq b_i$ so that clearly $f(x) = \angles{a_i \where i \in I} \neq \angles{b_i \where i \in I} = f(y)$.
     This shows that $f$ is injective since $x$ and $y$ were arbitrary.
@@ -640,7 +640,7 @@
 \def\prodJ{\prod_{\a \in J}}
 \exercise{14}{
   Evaluate the cardinality of $\prod_{0 < \a < \w_1} \a$.
-  [Answer: $2^{\al_1}$.]
+    [Answer: $2^{\al_1}$.]
 }
 \sol{
   \begin{lem} \label{lem:cardar:al2}
@@ -656,21 +656,21 @@
     \ali{
       \al_\a^{\al_\b} &\leq \parens{2^{\al_\a}}^{\al_\b} & \text{(again by property (n), and Theorems~5.1.8 and 5.1.9)} \\
       &= 2^{\al_\a \cdot \al_\b} & \text{(by Theorem~5.1.7b)} \\
-      &= 2^{\al_\b} \,. & \text{(by Corollary~7.2.2 since $\a \leq \b$)}
+      &= 2^{\al_\b}. & \text{(by Corollary~7.2.2 since $\a \leq \b$)}
     }
     Hence it follows from the \cbthrm{} that $\al_\a^{\al_\b} = 2^{\al_\b}$ as desired.
   }
 
   \mainprob
-  
+
   We claim that $\abs{\prod_{0 < \a < \w_1} \a} = 2^{\al_1}$.
   \qproof{
     First, let $I = \braces{\a \where 0 < \a < \w_1}$ so that clearly $\prod_{0 < \a < \w_1} \a = \prodI \a$.
     It is trivial to show that the mapping
     \gath{
       f(\a) = \begin{cases}
-        \a+1 & 0 \leq \a < \w_0 \\
-        \a & \w_0 \leq \a < \w_1
+        \a+1 & 0 \leq \a < \w_0    \\
+        \a   & \w_0 \leq \a < \w_1
       \end{cases}
     }
     for $\a \in \w_1$ is a bijection from $\w_1$ to $I$, and hence $\abs{I} = \abs{\w_1} = \al_1$.
@@ -681,7 +681,7 @@
       &\leq \prodI \al_0 & \text{(by Exercise~9.1.8 since $\abs{\a} \leq \al_0$ for all $\a \in I$)} \\
       &= \al_0^{\abs{I}} & \text{(by Exercise~9.1.10)} \\
       &= \al_0^{\al_1} & \text{(since we have shown that $\abs{I} = \al_1$)} \\
-      &= 2^{\al_1} \,. & \text{(by Lemma~\ref{lem:cardar:al2})}
+      &= 2^{\al_1}. & \text{(by Lemma~\ref{lem:cardar:al2})}
     }
     Now, let $J = \braces{\a \where 1 < \a < \w_1}$.
     For any $a = \angles{a_2, a_3, \ldots, a_\w, a_{\w+1},\ldots} = \angles{a_\a \where \a \in J} \in \prodJ \a$, it is easy to show that the function that maps this to $b = \angles{0, a_2, a_3, \ldots, a_\w, a_{\w+1}, \ldots} \in \prodI \a$ is bijective so that $\abs{\prodJ \a} = \abs{\prodI \a}$.
@@ -703,11 +703,11 @@
   Justify the existence of the function $f$ in the proof of Lemma~9.1.2 in detail by the axioms of set theory.
 }
 \sol{
-  First, for any $i \in I$, we know that $\abs{A_i} = \abs{A_i'}$ so that there exists a bijection from $A_i$ onto $A_i'$.
-  It was shown in Exercise~2.3.9a that the set $A_i'^{A_i}$ exists so that $B_i = \braces{h_i \in A_i'^{A_i} \where \text{$h_i$ is a bijection}}$ exists by the Axiom Schema of Comprehension.
-  Clearly then $B_i \neq \es$ for every $i \in I$.
-  Since $B_i$ is uniquely defined for each $i \in I$, it follows from the Axiom Schemas of Replacement and Comprehension that the set $\braces{B_i \where i \in I}$ exists, which is a system of nonempty sets.
-  It then follows from Exercise~2.3.9b that $\prod_{i \in I} B_i$ exists, and by the Axiom of Choice that there is an $F \in \prod_{i \in I} B_i$, i.e. $F = \angles{f_i \where i \in I}$ in the notation of the proof.
-  Now $F$ is a function on $I$ in which $F(i) = f_i \in B_i$ for every $i \in I$.
-  By an application of the Axiom Schema of Comprehension, $\ran(F) = \braces{f_i \where i \in I}$ exists, and we have that $f = \bigcup \ran(F)$, which exists by the Axiom of Union, noting that then $f = \bigcup_{i \in I} f_i$ as in the proof.
+First, for any $i \in I$, we know that $\abs{A_i} = \abs{A_i'}$ so that there exists a bijection from $A_i$ onto $A_i'$.
+It was shown in Exercise~2.3.9a that the set $A_i'^{A_i}$ exists so that $B_i = \braces{h_i \in A_i'^{A_i} \where \text{$h_i$ is a bijection}}$ exists by the Axiom Schema of Comprehension.
+Clearly then $B_i \neq \es$ for every $i \in I$.
+Since $B_i$ is uniquely defined for each $i \in I$, it follows from the Axiom Schemas of Replacement and Comprehension that the set $\braces{B_i \where i \in I}$ exists, which is a system of nonempty sets.
+It then follows from Exercise~2.3.9b that $\prod_{i \in I} B_i$ exists, and by the Axiom of Choice that there is an $F \in \prod_{i \in I} B_i$, i.e. $F = \angles{f_i \where i \in I}$ in the notation of the proof.
+Now $F$ is a function on $I$ in which $F(i) = f_i \in B_i$ for every $i \in I$.
+By an application of the Axiom Schema of Comprehension, $\ran(F) = \braces{f_i \where i \in I}$ exists, and we have that $f = \bigcup \ran(F)$, which exists by the Axiom of Union, noting that then $f = \bigcup_{i \in I} f_i$ as in the proof.
 }

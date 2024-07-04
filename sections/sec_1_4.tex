@@ -178,6 +178,74 @@
         \demorgproof{\cup}{\lor}{\land}{\cap}
         which proves the result.
     }
+
+    Next, we have the property $A \cap (B - C) = (A \cap B) - C$, which is visualized below:
+    \venndiag{0}{0}{0}{1}{0}{0}{0}
+    The proof of this follows from the associativity of logical conjunction.
+    \qproof{
+        For all $x$, we have
+        \ali{
+            x \in A \cap (B - C) &\bic x \in A \land x \in B - C \\
+            &\bic x \in A \land (x \in B \land x \notin C) \\
+            &\bic (x \in A \land x \in B) \land x \notin C \\
+            &\bic x \in A \cap B \land x \notin C \\
+            &\bic x \in (A \cap B) - C,
+        }
+        showing the result.
+    }
+
+    The next claim is that $A - B = \es$ if and only if $A \ss B$, for which a Venn diagram is not useful.
+    \qproof{
+        $(\to)$ First suppose that $A - B = \es$ and consider any $x \in A$.
+        Suppose that $x \notin B$.
+        Then we would have $x \in A$ but $x \notin B$ so that $x \in A - B$, contradicting the fact that $A - B = \es$.
+        Hence, it has to be that $x \in B$ so that $A \ss B$ since $x$ was arbitrary.
+
+        $(\leftarrow)$ Now suppose that $A \ss B$ but that $A - B \neq \es$ so that there is an  $x \in A - B$.
+        Therefore, $x \in A$ but $x \notin B$.
+        However, since $A \ss B$ it must also be that $x \in B$ since $x \in A$, a contradiction!
+        So it in fact has to be that $A - B = \es$ as desired.
+    }
+
+    To prove the next property, it is first useful to establish the following lemma.
+    \begin{lem}
+        For any set $A$, $A - A = \es$.
+    \end{lem}
+    \qproof{
+        This is very nearly self-evident, but suppose $A - A \neq \es$ so that there is an $x \in A - A$.
+        Then it would both be true that $x \in A$ and $x \notin A$.
+        As this is a clear contradiction, it has to be that in fact $A - A = \es$ as claimed.
+    }
+    The next property is then that $A \sd A = \es$, for which again a Venn diagram provides no insight and in fact does not really even make sense.
+    \qproof{
+        By definition and the above lemma,
+        \gath{
+            A \sd A = (A - A) \cup (A - A) = \es \cup \es = \es.
+        }
+        Clearly $\es \cup \es = \es$ since, were there an $x \in \es \cup \es$, we would have $x \in \es$ or $x \in \es$, the same impossibility in either case.
+    }
+
+    The penultimate property asserted in this section is that $A \sd B = B \sd A$.
+    \qproof{
+        This follows trivially from the commutativity of the union operation, proven above.
+        By definition, we simply have
+        \gath{
+            A \sd B = (A - B) \cup (B - A) = (B - A) \cup (A - B) = B \sd A.
+        }
+    }
+
+    The final property is $(A \sd B) \sd C = A \sd (B \sd C)$, i.e. that the symmetric difference operation is associative.
+    This set is visualized below:
+    \venndiag{1}{1}{1}{0}{0}{0}{1}
+    The proof of this is tedious and depends on several of the various properties we have proven above.
+    \qproof{
+        We have the following:
+        \ali{
+            (A \sd B) \sd C &= \squares{(A - B) \cup (B - A)} \sd C & \text{Definition of $\sd$} \\
+            &= \braces{\squares{(A - B) \cup (B - A)} - C} \cup \braces{C - \squares{(A - B) \cup (B - A)}} & \text{Definition of $\sd$} \\
+            &= A \veebar B
+        }
+    }
 }
 
 \exercise{2}{

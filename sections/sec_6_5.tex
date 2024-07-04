@@ -12,13 +12,13 @@
     For $\a = 0$ we have $0 \cdot \a = 0 \cdot 0 = 0$ by Definition~6.5.6a.
     Now suppose that $0 \cdot \a = 0$ so that we have
     $$
-    0 \cdot (\a + 1) = 0 \cdot \a + 0 = 0 + 0 = 0
+      0 \cdot (\a + 1) = 0 \cdot \a + 0 = 0 + 0 = 0
     $$
     by the induction hypothesis, Definition~6.5.6b, and Definition~6.5.1a.
     Lastly, suppose that $\a \neq 0$ is a limit ordinal and that $0 \cdot \b = 0$ for all $\b < \a$.
     Then by Definition~6.5.6c we have that
     $$
-    0 \cdot \a = \sup\braces{0 \cdot \b \where \b < \a} = \sup\braces{0 \where \b < \a} = \sup\braces{0} = 0
+      0 \cdot \a = \sup\braces{0 \cdot \b \where \b < \a} = \sup\braces{0 \where \b < \a} = \sup\braces{0} = 0
     $$
     by the induction hypothesis.
     This completes the proof.
@@ -52,13 +52,13 @@
     Then $\g$ is an upper bound of the set $\braces{\a \cdot \d \where \d < \b}$.
     But from this it follows that
     $$
-    \g \geq \sup\braces{\a \cdot \d \where \d < \b} = \a \cdot \b
+      \g \geq \sup\braces{\a \cdot \d \where \d < \b} = \a \cdot \b
     $$
     by Definition~6.5.6c, which contradicts the definition of $\g$.
     Hence the claim is true so that $\g \leq \a \cdot \d$ for some $\d < \b$.
     Then we have by Lemma~6.5.4a and the fact that $1 \leq \a$ that
     $$
-    \g + 1 \leq \a \cdot \d + 1 \leq \a \cdot \d + \a = \a \cdot (\d + 1) < \a \cdot \b
+      \g + 1 \leq \a \cdot \d + 1 \leq \a \cdot \d + \a = \a \cdot (\d + 1) < \a \cdot \b
     $$
     by Exercise~6.5.7a since $\d + 1 < \b$ since $\b$ is a limit ordinal.
     Note that we also used Definition~6.5.6b.
@@ -66,7 +66,7 @@
 
     We also have that $\a \neq 0$ and $0 < \b$ (since $0 \neq \b$) so that by Exercise~6.5.7a above and Definition~6.5.6a
     $$
-    0 = \a \cdot 0 < \a  \cdot \b \,.
+      0 = \a \cdot 0 < \a  \cdot \b.
     $$
     Thus $\a \cdot \b \neq 0$.
   }
@@ -77,7 +77,7 @@
 
     First for $\g=0$ we have
     $$
-    (\a \cdot \b) \cdot \g = (\a \cdot \b) \cdot 0 = 0 = \a \cdot 0 = \a \cdot (\b \cdot 0) = \a \cdot (\b \cdot \g) \,,
+      (\a \cdot \b) \cdot \g = (\a \cdot \b) \cdot 0 = 0 = \a \cdot 0 = \a \cdot (\b \cdot 0) = \a \cdot (\b \cdot \g),
     $$
     where we have used Definition~6.5.6a repeatedly.
     Now suppose that $(\a \cdot \b) \cdot \g = \a \cdot (\b \cdot \g)$ for ordinal $\g$.
@@ -86,12 +86,12 @@
       (\a \cdot \b) \cdot (\g+1) &= (\a \cdot \b) \cdot \g + \a \cdot \b & \text{(by Definition~6.5.6b)} \\
       &= \a \cdot (\b \cdot \g) + \a \cdot \b & \text{(by the induction hypothesis)} \\
       &= \a \cdot \squares{\b \cdot \g + \b} & \text{(by the distributive law, see Exercise~6.5.2)} \\
-      &= \a \cdot \squares{\b \cdot (\g+1)} \,. & \text{(by Definition~6.5.6b)}
+      &= \a \cdot \squares{\b \cdot (\g+1)}. & \text{(by Definition~6.5.6b)}
     }
     Now suppose that $\g \neq 0$ is a limit ordinal and $(\a \cdot \b) \cdot \d = \a \cdot (\b \cdot \d)$ for all $\d < \g$.
     First if $\b = 0$ then
     $$
-    (\a \cdot \b) \cdot \g = (\a \cdot 0) \cdot \g = 0 \cdot \g = 0 = \a \cdot 0 = \a \cdot (0 \cdot \g) = \a \cdot (\b \cdot \g)
+      (\a \cdot \b) \cdot \g = (\a \cdot 0) \cdot \g = 0 \cdot \g = 0 = \a \cdot 0 = \a \cdot (0 \cdot \g) = \a \cdot (\b \cdot \g)
     $$
     where we have used Definition~6.5.6a and Lemma~\ref{lem:ord:multzero}.
     So assume that $\b \neq 0$.
@@ -99,7 +99,7 @@
     Then, since $\b \neq 0$, by Lemma~\ref{lem:ord:multlim:right} we have that $\b \cdot \g$ is a limit ordinal and $\b \cdot \g \neq 0$.
     From this and Definition~6.5.6c we have that
     $$
-    (\a \cdot \b) \cdot \g = \sup\braces{\a \cdot (\b \cdot \d) \where \d < \g} = \sup\braces{\a \cdot \d \where \d < \b \cdot \g} = \a \cdot (\b \cdot \g)
+      (\a \cdot \b) \cdot \g = \sup\braces{\a \cdot (\b \cdot \d) \where \d < \g} = \sup\braces{\a \cdot \d \where \d < \b \cdot \g} = \a \cdot (\b \cdot \g)
     $$
     as desired.
     This completes the  inductive proof.
@@ -117,7 +117,7 @@
       \a \cdot (\b + \g) &= \a \cdot (\b + 0) = \a \cdot \b & \text{(by Definition~6.5.1a)} \\
       &= a \cdot \b + 0 & \text{(by Definition~6.5.1a)} \\
       &= \a \cdot \b + \a \cdot 0 & \text{(by Definition~6.5.6a)} \\
-      &= \a \cdot \b + \a \cdot \g \,.
+      &= \a \cdot \b + \a \cdot \g.
     }
     Now suppose that $\a \cdot (\b + \g) = \a \cdot \b + \a \cdot \g$ for ordinal $\g$.
     We then have
@@ -126,12 +126,12 @@
       &= \a \cdot (\b + \g) + \a & \text{(by Definition~6.5.6b)} \\
       &= (\a \cdot \b + \a \cdot \g) + \a & \text{(by the induction hypothesis)} \\
       &= \a \cdot \b + (\a \cdot \g + \a) & \text{(by the associativity of addition, Lemma~6.5.4c)} \\
-      &= \a \cdot \b + \a \cdot (\g + 1) \,. & \text{(by Definition~6.5.6b)}
+      &= \a \cdot \b + \a \cdot (\g + 1). & \text{(by Definition~6.5.6b)}
     }
     Lastly, suppose that $\g \neq 0$ is a limit ordinal and that $\a \cdot (\b + \d) = \a \cdot \b + \a \cdot \d$ for all $\d < \g$.
     If $\a = 0$ then we have
     $$
-    \a \cdot (\b + \g) = 0 \cdot (\b + \g) = 0 = 0 + 0 = 0 \cdot \b + 0 \cdot \g = \a \cdot \b + \a \cdot \g \,,
+      \a \cdot (\b + \g) = 0 \cdot (\b + \g) = 0 = 0 + 0 = 0 \cdot \b + 0 \cdot \g = \a \cdot \b + \a \cdot \g,
     $$
     where we have used Lemma~\ref{lem:ord:multzero} above.
     So suppose that $\a \neq 0$ so that $\a \geq 1$.
@@ -141,16 +141,16 @@
     But then by Definition~6.5.1c we have that $\b + \g = \sup\braces{\b + \d \where \d < \g}$.
     It then follows that
     $$
-    \a \cdot (\b + \g) = \sup\braces{\a \cdot \x \where \x < \b + \g} = \sup\braces{\a \cdot (\b + \d) \where \d < \g}
-    = \sup\braces{\a \cdot \b + \a \cdot \d \where \d < \g}
+      \a \cdot (\b + \g) = \sup\braces{\a \cdot \x \where \x < \b + \g} = \sup\braces{\a \cdot (\b + \d) \where \d < \g}
+      = \sup\braces{\a \cdot \b + \a \cdot \d \where \d < \g}
     $$
     by the induction hypothesis.
     Then by Definition~6.5.6c we have that $\sup\braces{\a \cdot \d \where \d < \g} = \a \cdot \g$ since $\g$ is a limit ordinal.
     It then follows from Lemma~\ref{lem:ord:multlim:right} that $\a \cdot \g$ is also a limit ordinal and $\a \cdot \g \neq 0$ since $\a \neq 0$.
     From  this and Definition~6.5.1c we have that
     $$
-    \a \cdot (\b + \g) = \sup\braces{\a \cdot \b + \a \cdot \d \where \d < \g} = \sup\braces{\a \cdot \b + \d \where \d < \a \cdot \g}
-    = \a \cdot \b + \a \cdot \g
+      \a \cdot (\b + \g) = \sup\braces{\a \cdot \b + \a \cdot \d \where \d < \g} = \sup\braces{\a \cdot \b + \d \where \d < \a \cdot \g}
+      = \a \cdot \b + \a \cdot \g
     $$
     as desired.
     This completes the inductive proof.
@@ -170,12 +170,12 @@
 
   (a) By Lemma~6.5.4c we have
   $$
-  (\w + 1) + \w = \w + (1 + \w) = \w + \w = \w \cdot 2 \,.
+    (\w + 1) + \w = \w + (1 + \w) = \w + \w = \w \cdot 2.
   $$
-  
+
   (b) We simply have
   $$
-  \w + \w^2 = \w \cdot 1 + \w \cdot \w = \w \cdot (1 + \w) = \w \cdot \w = \w^2
+    \w + \w^2 = \w \cdot 1 + \w \cdot \w = \w \cdot (1 + \w) = \w \cdot \w = \w^2
   $$
 
   (c)
@@ -186,7 +186,7 @@
     We show this by standard (as opposed to transfinite) induction on $n$.
     For $n=1$ we have
     $$
-    (\w + 1) \cdot n = (\w+1) \cdot 1 = \w + 1 = \w \cdot 1 + 1 = \w \cdot n + 1\,.
+      (\w + 1) \cdot n = (\w+1) \cdot 1 = \w + 1 = \w \cdot 1 + 1 = \w \cdot n + 1\,.
     $$
     Now suppose that $(\w + 1) \cdot n = \w \cdot n + 1$ so that we have
     \ali{
@@ -194,7 +194,7 @@
       &= (\w\cdot n + 1) + (\w + 1) & \text{(by the induction hypothesis)} \\
       &= \w \cdot n + (1 + \w) + 1 & \text{(by the associativity of addition)} \\
       &= \w \cdot n + \w + 1 \\
-      &= \w \cdot (n+1) + 1 \,. & \text{(by Definition~6.5.6b)}
+      &= \w \cdot (n+1) + 1. & \text{(by Definition~6.5.6b)}
     }
     This completes the inductive proof.
   }
@@ -205,16 +205,16 @@
   \qproof{
     Since $\w$ is a limit ordinal we have by Definition~6.5.6c
     $$
-    (\w + 1) \cdot \w = \sup\braces{(\w + 1) \cdot n \where n \in \w} = \sup\braces{\w \cdot n + 1 \where n \in \w}
+      (\w + 1) \cdot \w = \sup\braces{(\w + 1) \cdot n \where n \in \w} = \sup\braces{\w \cdot n + 1 \where n \in \w}
     $$
     by Lemma~\ref{lem:ord:wp1tn}.
     Now, since we have
     $$
-    \w \cdot n + 1 < (\w \cdot n + 1) + \w = \w \cdot n + (1 + \w) = \w \cdot n + \w = \w \cdot (n+1)
+      \w \cdot n + 1 < (\w \cdot n + 1) + \w = \w \cdot n + (1 + \w) = \w \cdot n + \w = \w \cdot (n+1)
     $$
     it is clear that we have
     $$
-    (\w + 1) \cdot \w = \sup\braces{\w \cdot n + 1 \where n \in \w} = \sup\braces{\w \cdot n \where n \in \w} = \w \cdot \w = \w^2
+      (\w + 1) \cdot \w = \sup\braces{\w \cdot n + 1 \where n \in \w} = \sup\braces{\w \cdot n \where n \in \w} = \w \cdot \w = \w^2
     $$
     by Definition~6.5.6c.
   }
@@ -223,14 +223,14 @@
 
   We have
   $$
-  (\w+1) \cdot \w^2 = (\w+1) \cdot (\w \cdot \w) = \squares{(\w+1) \cdot \w} \cdot w = \w^2 \cdot \w = \w^{2+1} = \w^3 \,,
+    (\w+1) \cdot \w^2 = (\w+1) \cdot (\w \cdot \w) = \squares{(\w+1) \cdot \w} \cdot w = \w^2 \cdot \w = \w^{2+1} = \w^3,
   $$
   where we have used Lemma~\ref{lem:ord:wp1tw} and Definition~6.5.9b.
 }
 
 \exercise{4}{
   For every ordinal $\a$, there is a unique limit ordinal $\b$ and a unique natural number $n$ such that $\a = \b + n$.
-  [Hint: $\b = \sup\braces{\g \leq \a \where \g \text{ is limit}}$.]
+    [Hint: $\b = \sup\braces{\g \leq \a \where \g \text{ is limit}}$.]
 }
 \sol{
   \begin{lem}\label{lem:ord:addlim}
@@ -254,7 +254,7 @@
     For $n = 0$ we clearly have $\b + n = \b + 0 = \b < \a$.
     So suppose that $\b + n < \a$ so that we have
     $$
-    \b + (n + 1) = (\b + n) + 1 < \a
+      \b + (n + 1) = (\b + n) + 1 < \a
     $$
     by Definition~6.5.1b.
     The inequality follows from Lemma~\ref{lem:ord:limsucc} and the induction hypothesis since $\a$ is a limit ordinal.
@@ -266,7 +266,7 @@
     \emph{Existence.}
     First for any ordinal $\a$ let
     $$
-    B = \braces{\g \in \a+1 \where \text{$\g$ is a limit ordinal}}
+      B = \braces{\g \in \a+1 \where \text{$\g$ is a limit ordinal}}
     $$
     and define $\b = \sup B$.
 
@@ -304,159 +304,159 @@
   The equation $\x + \a = \b$ may have 0, 1, or infinitely many solutions.
 }
 \sol{
-  \begin{lem}\label{lem:ord:natlt}
-    If $\a$ and $\b$ are ordinals and $n$ a natural number then $\a < \b$ if and only if $\a + n < \b + n$.
-  \end{lem}
-  \qproof{
-    ($\to$) We show this by induction on $n$.
-    So for $n=0$ and any ordinals $\a$ and $\b$ where $\a < \b$ we clearly have
-    $$
-    \a + n = \a + 0 = \a < \b = \b + 0 = \b + n \,.
-    $$
-    Now suppose that $\a + n < \b + n$ for any ordinals $\a$ and $\b$ where $\a < \b$.
-    Suppose that $\a$ and $\b$ are such ordinals so that by Lemma~\ref{lem:ord:ordleq} we have $\a + 1 \leq \b < \b + 1$.
-    Hence $\a+1$ and $\b+1$ are ordinals such that $\a+1 < \b+1$.
-    It then follows from the induction hypothesis that
-    $$
-    \a + (n+1) = \a + (1+n) = (\a + 1) + n < (\b + 1) + n = \b + (1 + n) = \b + (n+1) \,,
-    $$
-    noting that clearly natural numbers commute with respect to addition.
-    This completes the proof by induction.
+\begin{lem}\label{lem:ord:natlt}
+  If $\a$ and $\b$ are ordinals and $n$ a natural number then $\a < \b$ if and only if $\a + n < \b + n$.
+\end{lem}
+\qproof{
+  ($\to$) We show this by induction on $n$.
+  So for $n=0$ and any ordinals $\a$ and $\b$ where $\a < \b$ we clearly have
+  $$
+    \a + n = \a + 0 = \a < \b = \b + 0 = \b + n.
+  $$
+  Now suppose that $\a + n < \b + n$ for any ordinals $\a$ and $\b$ where $\a < \b$.
+  Suppose that $\a$ and $\b$ are such ordinals so that by Lemma~\ref{lem:ord:ordleq} we have $\a + 1 \leq \b < \b + 1$.
+  Hence $\a+1$ and $\b+1$ are ordinals such that $\a+1 < \b+1$.
+  It then follows from the induction hypothesis that
+  $$
+    \a + (n+1) = \a + (1+n) = (\a + 1) + n < (\b + 1) + n = \b + (1 + n) = \b + (n+1),
+  $$
+  noting that clearly natural numbers commute with respect to addition.
+  This completes the proof by induction.
 
-    ($\leftarrow$) Suppose that $\a + n < \b + n$ for ordinals $\a$ and $\b$ and natural number $n$.
-    It cannot be that $\b < \a$ for then it would follow that $\b + n < \a + n$ by what was just shown.
-    Nor can it be that $\a = \b$ since then clearly $\a + n = \b + n$.
-    Hence by the linearity of the ordinal ordering it follows that $\a < \b$.
-  }
+  ($\leftarrow$) Suppose that $\a + n < \b + n$ for ordinals $\a$ and $\b$ and natural number $n$.
+  It cannot be that $\b < \a$ for then it would follow that $\b + n < \a + n$ by what was just shown.
+  Nor can it be that $\a = \b$ since then clearly $\a + n = \b + n$.
+  Hence by the linearity of the ordinal ordering it follows that $\a < \b$.
+}
 
-  \begin{cor}\label{cor:ord:nateq}
-    If $\a$ and $\b$ are ordinals and $n$ a natural number then $\a = \b$ if and only if $\a + n = \b + n$.
-  \end{cor}
-  \qproof{
-    This follows directly from Lemma~\ref{lem:ord:natlt} in the same way as the proof of Lemma~6.5.4b.
-  }
+\begin{cor}\label{cor:ord:nateq}
+  If $\a$ and $\b$ are ordinals and $n$ a natural number then $\a = \b$ if and only if $\a + n = \b + n$.
+\end{cor}
+\qproof{
+  This follows directly from Lemma~\ref{lem:ord:natlt} in the same way as the proof of Lemma~6.5.4b.
+}
 
-  \begin{lem}\label{lem:ord:natplus}
-    If $\a \geq \w$ is an ordinal and $n$ a natural number then $n + \a = \a$.
-  \end{lem}
-  \qproof{
-    For any natural number $n$ we show this by transfinite induction on $\a$.
-    So if $\a = \w$ then as explained in the text we have $n + \a = n + \w = \w = \a$.
-    Now suppose that $n + \a = \a$ so that we have $n + (\a + 1) = (n + \a) + 1 = \a + 1$.
-    Lastly, suppose that $\a >\w$ is a limit ordinal and that $n + \g = \g$ for all $\g < \a$.
-    We then have by Definition~6.5.1c that
-    $$
+\begin{lem}\label{lem:ord:natplus}
+  If $\a \geq \w$ is an ordinal and $n$ a natural number then $n + \a = \a$.
+\end{lem}
+\qproof{
+  For any natural number $n$ we show this by transfinite induction on $\a$.
+  So if $\a = \w$ then as explained in the text we have $n + \a = n + \w = \w = \a$.
+  Now suppose that $n + \a = \a$ so that we have $n + (\a + 1) = (n + \a) + 1 = \a + 1$.
+  Lastly, suppose that $\a >\w$ is a limit ordinal and that $n + \g = \g$ for all $\g < \a$.
+  We then have by Definition~6.5.1c that
+  $$
     n + \a = \sup\braces{n + \g \where \g < \a} = \sup\braces{\g \where \g < \a} = \a
-    $$
-    by the induction hypothesis and comments in the text after Theorem~6.2.10.
-    This completes the inductive proof.
-  }
+  $$
+  by the induction hypothesis and comments in the text after Theorem~6.2.10.
+  This completes the inductive proof.
+}
 
-  \mainprob
-  \qproof{
-    In what follows suppose generally that $\a = \g + n$ and $\b = \d + m$ where $\g$ and $\d$ are limit ordinals and $n$ and $m$ are natural numbers.
-    Note that $\a$ and $\b$ can be expressed in this way uniquely by Exercise~6.5.4.
+\mainprob
+\qproof{
+In what follows suppose generally that $\a = \g + n$ and $\b = \d + m$ where $\g$ and $\d$ are limit ordinals and $n$ and $m$ are natural numbers.
+Note that $\a$ and $\b$ can be expressed in this way uniquely by Exercise~6.5.4.
 
-    Case: $\b = 0$.
-    If $\a = 0$ then clearly $\x = 0$ is the only solution since for any other $\x \neq 0$ we have $\x + \a = \x + 0 = \x \neq 0 = \b$.
-    On the other hand if $\a \neq 0$ then there is no solution since for any $\x$ we have by Lemma~6.5.4 that $\x + \a > \x + 0 = \x \geq 0 = \b$ so that $\x + \a \neq \b$.
+Case: $\b = 0$.
+If $\a = 0$ then clearly $\x = 0$ is the only solution since for any other $\x \neq 0$ we have $\x + \a = \x + 0 = \x \neq 0 = \b$.
+On the other hand if $\a \neq 0$ then there is no solution since for any $\x$ we have by Lemma~6.5.4 that $\x + \a > \x + 0 = \x \geq 0 = \b$ so that $\x + \a \neq \b$.
 
-    Case: $\b$ is a successor.
-    From this it follows that clearly $m \neq 0$ since otherwise $\b = \d + m = \d + 0 = \d$ would be a limit ordinal.
+Case: $\b$ is a successor.
+From this it follows that clearly $m \neq 0$ since otherwise $\b = \d + m = \d + 0 = \d$ would be a limit ordinal.
 
-    Now, if $\a = 0$ then clearly $\x = \b$ is the only solution so that $\x + \a = \x + 0 = \x = \b$.
+Now, if $\a = 0$ then clearly $\x = \b$ is the only solution so that $\x + \a = \x + 0 = \x = \b$.
 
-    If $\a$ is a successor then similarly $n \neq 0$.
-    Suppose that $\g = 0$ so that since $\a \leq \b$ we have $0 + n = n \leq \d + m = \b$.
-    Then if $n \leq m$ then $\x = \d + (m - n)$ is a solution since then
-    $$
-    \x + \a = [\d + (m-n)] + n = \d + [(m-n) + n] = \d + m = \b \,.
-    $$
-    Moreover clearly this is the only solution since if $\x \neq \d + (m-n)$ then
-    $$
-    \x + \a = \x + n \neq [\d + (m-n)] + n = \d + m = \b
-    $$
-    by Corollary~\ref{cor:ord:nateq}.
-    On the other hand if $n > m$ then for any ordinal $\x = \e + k$ where $\e$ is a limit ordinal and $k$ is a natural number, we have that $k + n > 0 + n = n > m$ so that clearly $k + n \neq m$.
-    From this it follows that
-    $$
-    \x + \a = (\e + k) + n = \e + (k + n) \neq \d + m = \b
-    $$
-    since both the limit ordinal and the natural number part of ordinals must be equal for the overall ordinals to be equal.
-    Hence this case has no solutions.
-    Now suppose that $\g \neq 0$.
-    Then if $n \neq m$ then there are no solutions since for any ordinal $\x$ we have
-    $$
-    \x + \a = \x + (\g + n) = (\x + \g) + n \neq \d + m
-    $$
-    since $n \neq m$ and $\x + \g$ is a limit ordinal by Lemma~\ref{lem:ord:addlim}.
-    On the other hand if $n = m$ then since $\g + n = \a \leq \b = \d + m = \d + n$ it follows from Lemma~\ref{lem:ord:natlt} and Corollary~\ref{cor:ord:nateq} that $\g \leq \d$, and since $\g \neq 0$ we have that $0 < \g \leq \d$.
+If $\a$ is a successor then similarly $n \neq 0$.
+Suppose that $\g = 0$ so that since $\a \leq \b$ we have $0 + n = n \leq \d + m = \b$.
+Then if $n \leq m$ then $\x = \d + (m - n)$ is a solution since then
+$$
+  \x + \a = [\d + (m-n)] + n = \d + [(m-n) + n] = \d + m = \b.
+$$
+Moreover clearly this is the only solution since if $\x \neq \d + (m-n)$ then
+$$
+  \x + \a = \x + n \neq [\d + (m-n)] + n = \d + m = \b
+$$
+by Corollary~\ref{cor:ord:nateq}.
+On the other hand if $n > m$ then for any ordinal $\x = \e + k$ where $\e$ is a limit ordinal and $k$ is a natural number, we have that $k + n > 0 + n = n > m$ so that clearly $k + n \neq m$.
+From this it follows that
+$$
+  \x + \a = (\e + k) + n = \e + (k + n) \neq \d + m = \b
+$$
+since both the limit ordinal and the natural number part of ordinals must be equal for the overall ordinals to be equal.
+Hence this case has no solutions.
+Now suppose that $\g \neq 0$.
+Then if $n \neq m$ then there are no solutions since for any ordinal $\x$ we have
+$$
+  \x + \a = \x + (\g + n) = (\x + \g) + n \neq \d + m
+$$
+since $n \neq m$ and $\x + \g$ is a limit ordinal by Lemma~\ref{lem:ord:addlim}.
+On the other hand if $n = m$ then since $\g + n = \a \leq \b = \d + m = \d + n$ it follows from Lemma~\ref{lem:ord:natlt} and Corollary~\ref{cor:ord:nateq} that $\g \leq \d$, and since $\g \neq 0$ we have that $0 < \g \leq \d$.
 
-    Then we have that $\x$ is a solution if and only if $\x + \g = \d$.
-    For, supposing that $\x + \g = \d$, we have
-    $$
-    \x + \a = \x + (\g + n) = (\x + \g) + n = \d + n = \d + m = \b
-    $$
-    and if it is not the case then
-    $$
-    \x + \a = \x + (\g + n) = (\x + \g) + n \neq \d + n = \d + m = \b
-    $$
-    by Corollary~\ref{cor:ord:nateq}.
-    Since $\g$ and $\d$ are both nonzero limit ordinals it then follows from the final case below (where both $\a$ and $\b$ are nonzero limit ordinals) there are either zero or infinite such $\x$.
+Then we have that $\x$ is a solution if and only if $\x + \g = \d$.
+For, supposing that $\x + \g = \d$, we have
+$$
+  \x + \a = \x + (\g + n) = (\x + \g) + n = \d + n = \d + m = \b
+$$
+and if it is not the case then
+$$
+  \x + \a = \x + (\g + n) = (\x + \g) + n \neq \d + n = \d + m = \b
+$$
+by Corollary~\ref{cor:ord:nateq}.
+Since $\g$ and $\d$ are both nonzero limit ordinals it then follows from the final case below (where both $\a$ and $\b$ are nonzero limit ordinals) there are either zero or infinite such $\x$.
 
-    If $\a$ is a nonzero limit ordinal then clearly there are no solutions since, for any ordinal $\x$, Lemma~\ref{lem:ord:addlim} tells us that $\x + \a$ is a limit ordinal whereas $\b$ is a successor so that it has to be that $\x + \a \neq \b$.
+If $\a$ is a nonzero limit ordinal then clearly there are no solutions since, for any ordinal $\x$, Lemma~\ref{lem:ord:addlim} tells us that $\x + \a$ is a limit ordinal whereas $\b$ is a successor so that it has to be that $\x + \a \neq \b$.
 
-    Case: $\b$ is a nonzero limit ordinal.
+Case: $\b$ is a nonzero limit ordinal.
 
-    If $\a = 0$ then clearly $\x = \b$ is the only solution since $\x + \a = \x + 0 = \x$.
+If $\a = 0$ then clearly $\x = \b$ is the only solution since $\x + \a = \x + 0 = \x$.
 
-    If $\a$ is a successor ordinal then $n \neq 0$ and for any ordinal $\x$ we have that $\x + \a = \x + (\g + n) = (\x + \g) + n$, which is a successor ordinal as well since $\x + \g$ is a limit ordinal again by Lemma~\ref{lem:ord:addlim}.
-    Hence there are no solutions since $\b$ is a limit ordinal and $\x$ was arbitrary.
+If $\a$ is a successor ordinal then $n \neq 0$ and for any ordinal $\x$ we have that $\x + \a = \x + (\g + n) = (\x + \g) + n$, which is a successor ordinal as well since $\x + \g$ is a limit ordinal again by Lemma~\ref{lem:ord:addlim}.
+Hence there are no solutions since $\b$ is a limit ordinal and $\x$ was arbitrary.
 
-    Lastly, suppose that $\a$ is also a nonzero limit ordinal.
-    Suppose that there at least one solution $\x$ such that $\x + \a = \b$.
-    Now consider any natural number $k$ so that we have
-    $$
-    (\x + k) + \a = \x + (k + \a) = \x + \a = \b
-    $$
-    by Lemma~\ref{lem:ord:natplus} since $\a$ is a nonzero limit ordinal and therefore clearly $\a \geq \w$.
-    Hence $\x + k$ is also a solution and so there are an infinite number of solutions since $k$ was arbitrary.
-    Thus there are either zero solutions or an infinite number of solutions (since a nonzero number of solutions implies an infinite number of solutions).
-    This completes the case structure.
+Lastly, suppose that $\a$ is also a nonzero limit ordinal.
+Suppose that there at least one solution $\x$ such that $\x + \a = \b$.
+Now consider any natural number $k$ so that we have
+$$
+  (\x + k) + \a = \x + (k + \a) = \x + \a = \b
+$$
+by Lemma~\ref{lem:ord:natplus} since $\a$ is a nonzero limit ordinal and therefore clearly $\a \geq \w$.
+Hence $\x + k$ is also a solution and so there are an infinite number of solutions since $k$ was arbitrary.
+Thus there are either zero solutions or an infinite number of solutions (since a nonzero number of solutions implies an infinite number of solutions).
+This completes the case structure.
 
-    These results are summarized in the following table:
-    \begin{center}
-      \begin{tabular}{|c|c|c|c|c|}
-        \hline
-        $\b$ & $\a$ & Other & Other & Solutions \\
-        \hline
-        \multirow{2}{*}{0} & 0 & & & 1 ($\x = 0$) \\
-        \cline{2-5}
-        & $>0$ & & &  0 \\
-        \hline
-        \multirow{6}{*}{Successor} & 0 & & & 1 ($\x = \b$) \\
-        \cline{2-5}
-        & \multirow{4}{*}{Successor} & \multirow{2}{*}{$\g = 0$} & $n \leq m$ & 1 ($\x = \d + m - n$) \\
-        \cline{4-5}
-        & & & $n > m$ & 0 \\
-        \cline{3-5}        
-        & & \multirow{2}{*}{$\g > 0$} & $n \neq m$ & 0 \\
-        \cline{4-5}
-        & & & $n = m$ & 0 or $\infty$ \\
-        \cline{2-5}
-        & Limit $>0$ & & & 0 \\
-        \hline
-        \multirow{3}{*}{Limit $>0$} & 0 & & & 1 ($\x =\b$) \\
-        \cline{2-5}
-        & Successor & & & 0 \\
-        \cline{2-5}
-        & Limit $>0$ & & & 0 or $\infty$ \\
-        \hline
-      \end{tabular}
-    \end{center}
+These results are summarized in the following table:
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    $\b$                        & $\a$                       & Other                     & Other      & Solutions             \\
+    \hline
+    \multirow{2}{*}{0}          & 0                          &                           &            & 1 ($\x = 0$)          \\
+    \cline{2-5}
+                                & $>0$                       &                           &            & 0                     \\
+    \hline
+    \multirow{6}{*}{Successor}  & 0                          &                           &            & 1 ($\x = \b$)         \\
+    \cline{2-5}
+                                & \multirow{4}{*}{Successor} & \multirow{2}{*}{$\g = 0$} & $n \leq m$ & 1 ($\x = \d + m - n$) \\
+    \cline{4-5}
+                                &                            &                           & $n > m$    & 0                     \\
+    \cline{3-5}
+                                &                            & \multirow{2}{*}{$\g > 0$} & $n \neq m$ & 0                     \\
+    \cline{4-5}
+                                &                            &                           & $n = m$    & 0 or $\infty$         \\
+    \cline{2-5}
+                                & Limit $>0$                 &                           &            & 0                     \\
+    \hline
+    \multirow{3}{*}{Limit $>0$} & 0                          &                           &            & 1 ($\x =\b$)          \\
+    \cline{2-5}
+                                & Successor                  &                           &            & 0                     \\
+    \cline{2-5}
+                                & Limit $>0$                 &                           &            & 0 or $\infty$         \\
+    \hline
+  \end{tabular}
+\end{center}
 
-    Since this case structure is exhaustive the result follows.
-  }
+Since this case structure is exhaustive the result follows.
+}
 }
 
 \exercise{6}{
@@ -535,7 +535,7 @@
     We also have by Lemma~6.5.4 that $\b + 0 \leq \b + k = \a < \w^2$ since obviously $0 \leq k$.
     Hence $\b$ is a limit ordinal such that $\b < \w^2$ so that by Lemma~\ref{lem:ord:w2lim} there is a natural number $n$ such that $\b = \w \cdot n$, thereby proving the result since this means that $\a = \b + k = \w \cdot n + k$.
   }
-  
+
   \mainprob
 
   We claim that $\w^2$ is the first additive ordinal after $\w$.
@@ -549,8 +549,8 @@
     So again consider $\a < \w^2$ so that by Lemma~\ref{lem:ord:w2form} there are natural numbers $n$ and $k$ such that $\a = \w \cdot n + k$.
     We then have
     $$
-    \a + \w^2 = (\w \cdot n + k) + \w^2 = \w \cdot n + (k + \w^2) = \w \cdot n + \w^2 = \w \cdot n + \w \cdot \w
-    = \w \cdot (n + \w) = \w \cdot \w = \w^2
+      \a + \w^2 = (\w \cdot n + k) + \w^2 = \w \cdot n + (k + \w^2) = \w \cdot n + \w^2 = \w \cdot n + \w \cdot \w
+      = \w \cdot (n + \w) = \w \cdot \w = \w^2
     $$
     since $k + \w^2 = \w^2$ and $n + \w = \w$ by Lemma~\ref{lem:ord:natplus}.
 
@@ -559,7 +559,7 @@
     Now let $\b = \w$ so that clearly $\b < \a$.
     We then have that
     $$
-    \b + \a = \w + \w \cdot n + k = \w \cdot 1 + \w \cdot n + k = \w \cdot (1 + n) + k = \w \cdot (n+1) + k \,.
+      \b + \a = \w + \w \cdot n + k = \w \cdot 1 + \w \cdot n + k = \w \cdot (1 + n) + k = \w \cdot (n+1) + k.
     $$
     We also clearly have
     \ali{
@@ -575,7 +575,7 @@
 
 \exercise{7}{
   (a) If $\a_1$, $\a_2$, and $\b$ are ordinals and $\b \neq 0$, then $\a_1 < \a_2$ if and only if $\b \cdot \a_1 < \b \cdot \a_2$.
-  
+
   (b) For all ordinals $\a_1$, $\a_2$, and $\b \neq 0$, $\b \cdot \a_1 = \b \cdot \a_2$ if and only if $\a_1 = \a_2$.
 
 }
@@ -590,14 +590,14 @@
       \b \cdot \a_1 &\leq \b \cdot \d & \text{(by the induction hypothesis if $\a_1 < \d$ and trivially if $\a_1 = \d$)} \\
       &< \b \cdot \d + \b & \text{(by Lemma~6.5.4a since $0 < \b$)} \\
       &= \b \cdot (\d + 1) & \text{(by Definition~6.5.6b)} \\
-      &= \b \cdot \a_2 \,.
+      &= \b \cdot \a_2.
     }
     On the other hand if $\a_2$ is a limit ordinal then $\a_1 + 1 < \a_2$ since $\a_1 < \a_2$.
     Then we have that
     \ali{
       \b \cdot \a_1 &< \b \cdot (\a_1 + 1) & \text{(by the induction hypothesis since $\a_1 < \a_1 +1 < \a_2$)} \\
       &\leq \sup_{\d < \a_2} \b \cdot \d & \text{(since the supremum is an upper bound)} \\
-      &= \b \cdot \a_2 \,. & \text{(by Definition~6.5.6c)}
+      &= \b \cdot \a_2. & \text{(by Definition~6.5.6c)}
     }
     This completes the inductive proof.
 
@@ -634,12 +634,12 @@
     We show this by transfinite induction on $\g$.
     For $\g = 0$ we clearly have
     $$
-    \a + \g = \a + 0 = \a < \b = \b + 0 = \b + \g
+      \a + \g = \a + 0 = \a < \b = \b + 0 = \b + \g
     $$
     so that $\a + \g \leq \b + \g$ is true.
     Now suppose that $\a + \g \leq \b + \g$ so that we have
     $$
-    \a + (\g + 1) = (\a + \g) + 1 \leq (\b + \g) + 1 = \b + (\g + 1)
+      \a + (\g + 1) = (\a + \g) + 1 \leq (\b + \g) + 1 = \b + (\g + 1)
     $$
     by Lemma~\ref{lem:ord:natlt} and Corollary~\ref{cor:ord:nateq} since $\a + \g \leq \b + \g$ (induction hypothesis) and $1$ is a natural number.
 
@@ -649,7 +649,7 @@
     Hence there is a $\d < \g$ such that $\b + \g < \a + \d$.
     We then have that
     $$
-    \b + \d \leq \sup\braces{\b + \e \where \e < \g} = \b + \g < \a + \d \,,
+      \b + \d \leq \sup\braces{\b + \e \where \e < \g} = \b + \g < \a + \d,
     $$
     but this contradicts the induction hypothesis since $\d < \g$.
     So it has to be that $\a + \g \leq \b + \g$ as desired.
@@ -659,7 +659,7 @@
     Let $\a = 1$, $\b = 2$, and $\g = \w$.
     Then clearly $\a = 1 < 2 = \b$ but we also have
     $$
-    \a + \g = 1 + \w = \w = 2 + \w = \b + \g
+      \a + \g = 1 + \w = \w = 2 + \w = \b + \g
     $$
     so that clearly $\a + \g < \b + \g$ is not true since they are equal.
 
@@ -672,7 +672,7 @@
     We also show this by transfinite induction on $\g$.
     For $\g = 0$ we clearly have
     $$
-    \a \cdot \g = \a \cdot 0 = 0 = \b \cdot 0 = \b \cdot \g
+      \a \cdot \g = \a \cdot 0 = 0 = \b \cdot 0 = \b \cdot \g
     $$
     so that $\a \cdot \g \leq \b \cdot \g$ is true.
     Now suppose that $\a \cdot \g \leq \b \cdot \g$ so that we have
@@ -680,7 +680,7 @@
       \a \cdot (\g + 1) &= \a \cdot \g + \a & \text{(by Definition~6.5.6b)} \\
       &< \a \cdot \g + \b & \text{(by Lemma~6.5.4 since $\a < \b$)} \\
       &\leq \b \cdot \g + \b & \text{(by part (a) and the induction hypothesis)} \\
-      &= \b \cdot (\g + 1) & \text{(by Definition~6.5.6b again)} \,.
+      &= \b \cdot (\g + 1) & \text{(by Definition~6.5.6b again)}.
     }
 
     Lastly, suppose that $\g$ is a nonzero limit ordinal and that $\a \cdot \d < \b \cdot \d$ for all $\d < \g$.
@@ -690,7 +690,7 @@
     Hence there is a $\d < \g$ such that $\b \cdot \g < \a \cdot \d$.
     We then have that
     $$
-    \b \cdot \d \leq \sup\braces{\b \cdot \e \where \e < \g} = \b \cdot \g < \a \cdot \d \,,
+      \b \cdot \d \leq \sup\braces{\b \cdot \e \where \e < \g} = \b \cdot \g < \a \cdot \d,
     $$
     but this contradicts the induction hypothesis since $\d < \g$.
     So it has to be that $\a \cdot \g \leq \b \cdot \g$ as desired.
@@ -724,14 +724,14 @@
   (a)
   Let $\a = 1$, $\b = 2$, and $\g = \w$ so that
   $$
-  \a + \g = 1 + \w = \w = 2 + \w = \b + \g
+    \a + \g = 1 + \w = \w = 2 + \w = \b + \g
   $$
   by Lemma~\ref{lem:ord:natplus} but $\a = 1 < 2 = \b$ so that $\a \neq \b$.
 
   (b)
   Again let $\a = 1$, $\b = 2$, and $\g = \w$ so that $\g = \w > 0$ and
   $$
-  \a \cdot \g = 1 \cdot \w = \w = 2 \cdot \w = \b \cdot \g
+    \a \cdot \g = 1 \cdot \w = \w = 2 \cdot \w = \b \cdot \g
   $$
   by Lemma~\ref{lem:ord:natwmult}.
   Clearly though $\a = 1 < 2 = \b$ so that $\a \neq \b$.
@@ -740,11 +740,11 @@
   Here let $\a = \w$, $\b = 1$, and $\g = 2$.
   Then we have
   $$
-  (\b + \g) \cdot \a = (1 + 2) \cdot \w = 3 \cdot \w = \w
+    (\b + \g) \cdot \a = (1 + 2) \cdot \w = 3 \cdot \w = \w
   $$
   by Lemma~\ref{lem:ord:natwmult}, whereas
   $$
-  \b \cdot \a + \g \cdot \a = 1 \cdot \w + 2 \cdot \w = \w + \w = \w \cdot 2 \,,
+    \b \cdot \a + \g \cdot \a = 1 \cdot \w + 2 \cdot \w = \w + \w = \w \cdot 2,
   $$
   where we have used Lemma~\ref{lem:ord:natwmult} here as well as Example~6.5.7b.
   That $(\b + \g) \cdot \a = \w = \w \cdot 1 \neq \w \cdot 2 = \b \cdot \a + \g \cdot \a$ follows from Exercise~6.5.7b.
@@ -761,7 +761,7 @@
     Consider any ordinal $\a$.
     First we note that clearly $\a = \a + 0 < \a + \w$ by Lemma~6.5.6a since $0 < \w$.
     It also clearly follows from  Lemma~\ref{lem:ord:addlim} that $\a + \w$ is a limit ordinal.
-    
+
     Now suppose that $\b$ is any ordinal such that $\a < \b < \a + \w$.
     Since $\a < \b$ there is a unique ordinal $\g$ such that $\a + \g = \b$ by Lemma~6.5.5.
     Now, since $\a + 0 = \a < \b = \a + \g$ it follows again from Lemma~6.5.6a that $0 < \g$.
@@ -821,35 +821,35 @@
 
   (e) $\a = \e$.
 
-  [Hint: $\braces{n - 1/m \where m,n \in \nats - \braces{0}}$ is isomorphic to $\w^2$, etc.]
+    [Hint: $\braces{n - 1/m \where m,n \in \nats - \braces{0}}$ is isomorphic to $\w^2$, etc.]
 }
 \sol{
   \def\Dx{\Delta x}
 
   % This ended up not being needed but kept it in case it is ever needed since I went through the trouble of proving it
   \iffalse
-  \begin{lem}\label{lem:ord:emb:gel}
-    An ordinal $\a$ has a greatest element if and only if it is a successor ordinal.
-  \end{lem}
-  \qproof{
-    ($\to$) Suppose that $\a$ has a greatest element $\b$.
-    We claim that $\a = \b \cup \braces{\b} = \b+1$.
-    So first consider any $x \in \a$ so that $x \leq \b$ since $\b$ is the greatest element.
-    If $x = \b$ then clearly $x \in \b \cup \braces{\b}$ so assume that $x < \b$.
-    Then $x \in \b$ so that also clearly $x \in \b \cup \braces{\b}$.
-    Hence in either case $x \in \b \cup \braces{\b}$ so that $\a \ss \b \cup \braces{\b}$ since $x$ was arbitrary.
-    Now consider any $y \in \b \cup \braces{\b}$.
-    If $y = \b$ then clearly $y = \b \in \a$ since $\b$ is the greatest element of $\a$.
-    On the other hand if $y \in \b$ then since $\a$ is transitive (since it is an ordinal) and $\b \in \a$ it follows that $y \in \a$ as well.
-    Thus in either case $y \in \a$ so that $\b \cup \braces{\b} \ss \a$ since $y$ was arbitrary.
-    This shows that $\a = \b \cup \braces{\b} = \b+1$ and hence is a successor ordinal.
+    \begin{lem}\label{lem:ord:emb:gel}
+      An ordinal $\a$ has a greatest element if and only if it is a successor ordinal.
+    \end{lem}
+    \qproof{
+      ($\to$) Suppose that $\a$ has a greatest element $\b$.
+      We claim that $\a = \b \cup \braces{\b} = \b+1$.
+      So first consider any $x \in \a$ so that $x \leq \b$ since $\b$ is the greatest element.
+      If $x = \b$ then clearly $x \in \b \cup \braces{\b}$ so assume that $x < \b$.
+      Then $x \in \b$ so that also clearly $x \in \b \cup \braces{\b}$.
+      Hence in either case $x \in \b \cup \braces{\b}$ so that $\a \ss \b \cup \braces{\b}$ since $x$ was arbitrary.
+      Now consider any $y \in \b \cup \braces{\b}$.
+      If $y = \b$ then clearly $y = \b \in \a$ since $\b$ is the greatest element of $\a$.
+      On the other hand if $y \in \b$ then since $\a$ is transitive (since it is an ordinal) and $\b \in \a$ it follows that $y \in \a$ as well.
+      Thus in either case $y \in \a$ so that $\b \cup \braces{\b} \ss \a$ since $y$ was arbitrary.
+      This shows that $\a = \b \cup \braces{\b} = \b+1$ and hence is a successor ordinal.
 
-    ($\leftarrow$) Suppose that $\a$ is a successor ordinal, in  particular that $\a = \b+1 = \b \cup \braces{\b}$ for an ordinal $\b$.
-    Consider any $x \in \a$.
-    Then either $x \in \b$ so that $x < \b$ or $x = \b$.
-    Hence in either case $x \leq \b$.
-    Since $x$ was arbitrary this shows that $\b$ is the greatest element of $\a$.
-  }
+      ($\leftarrow$) Suppose that $\a$ is a successor ordinal, in  particular that $\a = \b+1 = \b \cup \braces{\b}$ for an ordinal $\b$.
+      Consider any $x \in \a$.
+      Then either $x \in \b$ so that $x < \b$ or $x = \b$.
+      Hence in either case $x \leq \b$.
+      Since $x$ was arbitrary this shows that $\b$ is the greatest element of $\a$.
+    }
   \fi
 
   \begin{lem}\label{lem:ord:emb:isord}
@@ -864,13 +864,13 @@
   \input{shared/lem_ord_lub}
 
   Next we need to build up a little theory.
-  
+
   \begin{defin}\label{def:ord:emb:emb}
     For an ordinal $\a$ we call a set $E_\a$ an \emph{embedding} of $\a$ if it has the following properties:
     \begin{enumerate}
-    \item $E_\a$ is a subset of $Q$.
-    \item $E_\a$ is order isomorphic to $\a$ under the usual ordering of the rationals.
-    \item For some $a$ and $b$ in $\rats$, $a \leq x < b$ for every $x \in E_\a$. We denote this by saying $a \leq E_\a < b$ or that $E_\a$ is an embedding \emph{in} $\clop{a,b}$.
+      \item $E_\a$ is a subset of $Q$.
+      \item $E_\a$ is order isomorphic to $\a$ under the usual ordering of the rationals.
+      \item For some $a$ and $b$ in $\rats$, $a \leq x < b$ for every $x \in E_\a$. We denote this by saying $a \leq E_\a < b$ or that $E_\a$ is an embedding \emph{in} $\clop{a,b}$.
     \end{enumerate}
     We call $U_\a$ a \emph{unit embedding} of $\a$ if it is an embedding of $\a$ in $\clop{0,1}$.
   \end{defin}
@@ -885,7 +885,7 @@
     If $x$ is the greatest element of $E_\a$ then let $\Dx = b - x$, noting that $\Dx > 0$ since $b > x$.
     We also have
     $$
-    x + \Dx = x + b - x = b \leq b \,.
+      x + \Dx = x + b - x = b \leq b.
     $$
     Then consider any $y \in \rats$ where $x < y < x + \Dx$ so that clearly $y \notin E_\a$ since otherwise $x$ would not be the greatest element of $E_\a$.
 
@@ -894,7 +894,7 @@
     Then let $\Dx = f(\b+1) - x$, noting that $\Dx > 0$ since $f(\b+1) > f(\b) = x$ since $f$ is an isomorphism.
     We also have
     $$
-    x + \Dx = x + f(\b+1) - x = f(\b+1) < b
+      x + \Dx = x + f(\b+1) - x = f(\b+1) < b
     $$
     since $f(\b+1) \in E_\a$.
     Now consider any $y \in \rats$ where $f(\b) = x < y < x + \Dx = f(\b+1)$.
@@ -928,25 +928,25 @@
       x &< y \\
       px &< py & \text{(since $p > 0$)} \\
       px + q &< py + q \\
-      f(x) &< f(y) \,.
+      f(x) &< f(y).
     }
     Hence $f$ is an isomorphism.
     Thus $F_\a$ is isomorphic to $E_\a$ so that clearly it is also isomorphic to $\a$ since $E_\a$ is, thereby showing (2).
-    
+
     Lastly for any $y \in F_\a$ we have $y = px + q$ for some $x \in E_\a$.
     We then have
     \ali{
       a &\leq x < b \\
       pa &\leq px < pb & \text{(since $p > 0$)} \\
       pa + q &\leq px + q < pb + q \\
-      pa + q &\leq  y < pb + q \,.
+      pa + q &\leq  y < pb + q.
     }
     This shows both (3) and the last statement.
   }
 
   For an embedding $E_\a$ in $\clop{a, b}$ and a unit embedding $U_\b$ for ordinals $\a$ and $\b$ we define the product
   $$
-  E_\a \cdot U_\b = \bigcup_{x \in E_\a} \parens{\Dx \cdot U_\b + x} \,,
+    E_\a \cdot U_\b = \bigcup_{x \in E_\a} \parens{\Dx \cdot U_\b + x},
   $$
   where $\Dx \in \prats$ is that guaranteed to exist by Theorem~\ref{thrm:ord:emb:dx}.
 
@@ -962,17 +962,17 @@
     Consider $\a \times \b$ with lexicographic ordering $\prec$.
     Then define a mapping $h: \a \times \b \to E_\a \cdot U_\b$ by
     $$
-    h(\d, \e) = \Delta f(\d) \cdot g(\e) + f(\d)
+      h(\d, \e) = \Delta f(\d) \cdot g(\e) + f(\d)
     $$
     for $(\d, \e) \in \a \times \b$, noting that $\Delta f(\d)$ is that guaranteed by Theorem~\ref{thrm:ord:emb:dx} since $f(\d) \in E_\a$.
-    
+
     First we claim that $h$ is surjective.
     So consider any $z \in E_\a \cdot U_\b$ so that there is an $x \in E_\a$ such that $z \in \Dx \cdot U_\b + x$.
     By definition then there is a $y \in U_\b$ such that $z = \Dx \cdot y + x$.
     Now let $\d = \inv{f}(x)$ and $\e = \inv{g}(y)$ so that $x = f(\d)$ and $y = g(\e)$, which can be done since $f$ and $g$ are bijections.
     We then have that
     $$
-    h(\d, \e) = \Delta f(\d) \cdot g(\e) + f(\d) = \Delta x \cdot y + x = z \,,
+      h(\d, \e) = \Delta f(\d) \cdot g(\e) + f(\d) = \Delta x \cdot y + x = z,
     $$
     which shows that $h$ is surjective since $z$ was arbitrary.
 
@@ -984,16 +984,16 @@
     Then since $f$ is an isomorphism $f(\d_1) < f(\d_2)$, and also by Corollary~\ref{cor:ord:emb:dxi} it follows that $f(\d_1) < f(\d_1) + \Delta f(\d_1) \leq f(\d_2)$.
     We also have that
     $$
-    \Delta f(\d_1) \cdot g(\e_1) + f(\d_1) < \Delta f(\d_1) + f(\d_1)
+      \Delta f(\d_1) \cdot g(\e_1) + f(\d_1) < \Delta f(\d_1) + f(\d_1)
     $$
     by Theorem~\ref{thrm:ord:emb:scale} since $g(\e_1) \in U_\b$ and $U_\b$ is a unit embedding.
     Also since $g(\e_2) \geq 0$ (since $g(\e_2) \in U_\b$) and $\Delta f(\d_2) > 0$ (by Theorem~\ref{thrm:ord:emb:dx}) that
     $$
-    f(\d_2) \leq \Delta f(\d_2) \cdot g(\e_2) + f(\d_2) \,.
+      f(\d_2) \leq \Delta f(\d_2) \cdot g(\e_2) + f(\d_2).
     $$
     Combining all this results in
     $$
-    h(\d_1, \e_1) = \Delta f(\d_1) \cdot g(\e_1) + f(\d_1) < \Delta f(\d_1) + f(\d_1) \leq f(\d_2) = h(\d_2, \e_2) \,.
+      h(\d_1, \e_1) = \Delta f(\d_1) \cdot g(\e_1) + f(\d_1) < \Delta f(\d_1) + f(\d_1) \leq f(\d_2) = h(\d_2, \e_2).
     $$
 
     Case: $\d_1 = \d_2$ and $\e_1 < \e_2$.
@@ -1004,9 +1004,9 @@
       \Delta f(\d_1) \cdot g(\e_1) &< \Delta f(\d_1) \cdot g(\e_2) & \text{(since $\Delta f(\d_1) > 0$)} \\
       \Delta f(\d_1) \cdot g(\e_1) + f(\d_1) &< \Delta f(\d_1) \cdot g(\e_2) + f(\d_1) \\
       \Delta f(\d_1) \cdot g(\e_1) + f(\d_1) &< \Delta f(\d_2) \cdot g(\e_2) + f(\d_2) & \text{(since $\Delta f(\d_1) = \Delta f(\d_2)$ and $f(\d_1) = f(\d_2)$)} \\
-      h(\d_1, \e_1) &< h(\d_2, \e_2) \,.
+      h(\d_1, \e_1) &< h(\d_2, \e_2).
     }
-    
+
     Thus in all cases $h(\d_1, \e_1) < h(\d_2, \e_2)$, which shows that $h$ is an isomorphism since $(\d_1, \e_1)$ and $(\d_2, \e_2)$ were arbitrary.
     Hence $E_\a \cdot U_\b$ is isomorphic to the lexicographic ordering of $\a \times \b$ and therefore also to $\b \cdot \a$ by Theorem~6.5.8.
     This shows part (2) of the embedding definition.
@@ -1025,12 +1025,12 @@
     Lastly, suppose that $f$ is the isomorphism from $\w$ to $E_\w$.
     Let
     $$
-    A_n = \Delta f(n) \cdot U_{\a_n} + f(n)
+      A_n = \Delta f(n) \cdot U_{\a_n} + f(n)
     $$
     for $n \in \w$.
     Then the set
     $$
-    E_\a = \bigcup_{n \in \w} A_n
+      E_\a = \bigcup_{n \in \w} A_n
     $$
     is an embedding of $\a$ in $\clop{a,b}$.
   \end{thrm}
@@ -1040,7 +1040,7 @@
     Then $f(n) < f(m)$ since $f$ is an isomorphism and, moreover, it follows from Corollary~\ref{cor:ord:emb:dxi} that $\Delta f(n) + f(n) \leq f(m)$.
     Hence by Theorem~\ref{thrm:ord:emb:scale} we have that
     $$
-    A_n = \Delta f(n) \cdot U_{\a_n} + f(n) < \Delta f(n) + f(n) \leq f(m) \leq \Delta f(m) \cdot U_{\a_m} + f(m) = A_m
+      A_n = \Delta f(n) \cdot U_{\a_n} + f(n) < \Delta f(n) + f(n) \leq f(m) \leq \Delta f(m) \cdot U_{\a_m} + f(m) = A_m
     $$
     since $U_{\a_n}$ and $U_{\a_m}$ are unit embeddings.
     Hence all the $A_n$ are disjoint and moreover $A_0 < A_1 < A_2 < \ldots$.
@@ -1050,18 +1050,18 @@
     We then claim that $E_\a \cap \clop{a, f(n+1)}$ for any $n \in \w$ is isomorphic to $\a_n$, which we shall show by induction on $n$.
     For $n=0$ we clearly have that $a \leq A_0 \leq \Delta f(0) + f(0) \leq f(1) \leq A_m$ for any $m \geq 1$.
     From this it follows that $E_\a \cap \clop{a, f(n+1)} = E_\a \cap \clop{a, f(1)} = A_0$, which is isomorphic to $\a_0 = \a_n$ by what was shown above.
-    
+
     Now suppose that $E_\a \cap \clop{a, f(n+1)}$ is isomorphic to $\a_n$.
     We clearly have $E_\a \cap \clop{a, f(n+2)} = \squares{E_\a \cap \clop{a, f(n+1)}} \cup \squares{E_\a \cap \clop{f(n+1), f(n+2)}}$ and that $E_\a \cap \clop{f(n+1), f(n+2)} = A_{n+1}$, which is isomorphic to $\a_{n+1}$ by what was shown above.
     Then $E_\a \cap \clop{a, f(n+2)}$ is the sum of $E_\a \cap clop{a, f(n+1)}$ and $E_\a \cap \clop{f(n+1), f(n+2)} = A_{n+1}$ so that by Theorem~6.5.3, the induction hypothesis, and the given property of $\braces{\a_n}$ it is isomorphic to $\a_n + \a_{n+1} = \a_{n+1}$.
     This completes the inductive proof.
-    
+
     We also show that $E_\a \cap \clop{a, f(n+1)}$ is an initial segment of $E_\a$ for any $n \in \w$.
     So consider any such $n$, any $x \in E_\a \cap \clop{a, f(n+1)}$, and any $y \in E_\a$ where $y < x$.
     Since $a \leq E_\a$ clearly $a \leq y$.
     We also have $y < x < f(n+1)$ (since $x \in \clop{a, f(n+1)}$).
     Hence $y \in \clop{a, f(n+1)}$ so that also $y \in E_\a \cap \clop{a, f(n+1)}$, which shows that $E_\a \cap \clop{a, f(n+1)}$ is an initial segment of $E_\a$ by definition.
-    
+
     Now we claim that $E_\a$ is a well-ordered set.
     So consider any nonempty subset $B$ of $E_\a$.
     Then there is some $x \in B$ and since $x \in E_\a$ there is an $n \in \w$ such that $x \in A_n$.
@@ -1092,16 +1092,16 @@
     Then, since $g(\d) \in E_\a \cap \clop{a, f(n+1)}$ we have that $\d \in \inv{g}[E_\a \cap \clop{a, f(n+1)}] = \a_n$ so that $\d < \a_n$.
     Hence $\d$ is not an upper bound of $C$.
     Since $\d$ was arbitrary this shows that $\g$ is in fact the least upper bound of $C$ so that $\g = \a$.
-    
+
     Parts (1) and (3) of the definition of an embedding are trivial to show by the same arguments as those used in the proof of Theorem~\ref{thrm:ord:emb:prod}.
     Hence $E_\a$ is an embedding of $\a$ in $\clop{a,b}$.
   }
-  
+
   \mainprob
 
   (a) Define $f: \w \to \rats$ by
   $$
-  f(n) = 1 - \frac{1}{n+1} = \frac{n}{n+1}
+    f(n) = 1 - \frac{1}{n+1} = \frac{n}{n+1}
   $$
   for $n \in \w$.
   Then let $U_\w = \braces{f(n) \where n \in \w}$.
@@ -1120,10 +1120,10 @@
       -\frac{1}{m+1} &> -\frac{1}{n+1} \\
       1-\frac{1}{m+1} &> 1-\frac{1}{n+1} \\
       g(m) &> g(n) \\
-      g(n) &< g(m) \,.
+      g(n) &< g(m).
     }
     Hence $g$ is an isomorphism so that $U_\w$ is indeed isomorphic to $\w$, which shows (2).
-    
+
     Lastly consider any $x \in U_\w$ so that $x = f(n) = 1 - 1/(n+1)$ for some $n \in \w$.
     Then we have
     \ali{
@@ -1132,21 +1132,21 @@
       1 &\geq \frac{1}{n+1} > 0 & \text{(since $n+1 \geq 1 > 0$)} \\
       -1 &\leq -\frac{1}{n+1} < 0 \\
       0 &\leq 1 - \frac{1}{n+1} < 1 \\
-      0 &\leq x < 1 \,.
+      0 &\leq x < 1.
     }
     Since $x$ was arbitrary this shows that $0 \leq U_\w < 1$ so that (3) holds and $U_\w$ is a unit embedding.
-    
+
     Now let $E_1 = \braces{1}$.
     Clearly this is an embedding of the ordinal 1.
     Moreover we have $0 \leq U_\w < 1 \leq E_1 < 2$ so that $U_\w$ and $E_1$ are disjoint.
     Then clearly $U_\w \cup E_1$ is the sum of $U_\w$ and $E_1$ so that it is isomorphic to $\w + 1$ by Theorem~6.5.3 and thus an embedding of $\w + 1$ since it is trivial to show that $0 \leq U_\w \cup E_1 < 2$.
   }
-  
+
   (b) Now consider the same $U_\w$ from part (a) and let $E_\w = 1 \cdot U_\w + 1$ so that by Theorem~\ref{thrm:ord:emb:scale} this is another embedding of $\w$ and $1 \leq E_\w < 2$.
   Hence we have that $0 \leq U_\w < 1 \leq E_\w < 2$ so that $U_\w$ and $E_\w$ are disjoint.
   Also clearly $E_{\w \cdot 2} = U_\w \cup E_\w$ is the sum of $U_\w$ and $E_\w$ so that it is isomorphic to $\w + \w = \w \cdot 2$ by Theorem~6.5.3.
   Hence since also $0 \leq E_{\w \cdot 2} < 2$ (it is trivial to show) it is an embedding of $\w \cdot 2$ as desired.
-  
+
   (c) Considering the same $E_{\w \cdot 2}$ from part (b) let $F_\w = 1 \cdot U_\w + 2$ so that it is yet another an embedding of $\w$ and $2 \leq F_\w < 3$ by Theorem~\ref{thrm:ord:emb:scale}.
   Then by the same arguments as in part (b) it follows that $E_{\w \cdot 2} \cup F_\w$ is an embedding of $\w \cdot 2 + \w = \w \cdot 2 + \w \cdot 1 = \w \cdot (2 + 1) = \w \cdot 3$ as desired.
 
@@ -1158,21 +1158,21 @@
   We have also already constructed $U_\w$ as a unit embedding of $\w$ in part (a).
   Now suppose we have constructed $U_{\w^n}$, a unit embedding of $\w^n$.
   Then we let $U_{\w^{n+1}} = U_\w \cdot U_{\w^n}$ so that $U_{\w^{n+1}}$ is a unit embedding of $\w^n \cdot \w = \w^{n+1}$ by Theorem~\ref{thrm:ord:emb:prod}.
-  
+
   Clearly then $\braces{\w^n}$ is a sequence of ordinals in $\w^\w$ and by definition $\w^\w = \sup_{n \in \w} \w^n$.
   We also have in hand the embedding $U_\w$ and $U_{\w^n}$ for each $n \in \w$ as just constructed recursively.
   Now consider any $n \in \w$ so that we have we have
   $$
-  \w^n + \w^{n+1} = \w^n \cdot 1 + \w^n \cdot \w = \w^n \cdot (1 + \w) = \w^n \cdot \w = \w^{n+1} \,.
+    \w^n + \w^{n+1} = \w^n \cdot 1 + \w^n \cdot \w = \w^n \cdot (1 + \w) = \w^n \cdot \w = \w^{n+1}.
   $$
   We can therefore apply Theorem~\ref{thrm:ord:emb:sup} to construct a unit embedding $U_{\w^\w}$ of $\w^\w$.
 
   (e) Here we use the operation of tetration, which we define recursively for all ordinals.
   So for all ordinals $\b$ we define:
   \begin{enumerate}
-  \item $\tet{0}{\b} = 1$
-  \item $\tet{\a+1}{\b} = \b^{\tet{\a}{\b}}$ for all $\a$
-  \item $\tet{\a}{\b} = \sup\braces{\tet{\g}{\b} \where \g < \a}$ for all limit $\a \neq 0$ \,.
+    \item $\tet{0}{\b} = 1$
+    \item $\tet{\a+1}{\b} = \b^{\tet{\a}{\b}}$ for all $\a$
+    \item $\tet{\a}{\b} = \sup\braces{\tet{\g}{\b} \where \g < \a}$ for all limit $\a \neq 0$.
   \end{enumerate}
   Thus we have $\tet{1}{\w} = \w$, $\tet{2}{\w} = \w^\w$, $\tet{3}{\w} = \w^{\w^\w}$, etc.
   We then have that $\e = \tet{\w}{\w} = \sup_{n < \w} \tet{n}{\w}$ by definition.
@@ -1215,14 +1215,14 @@
     Suppose that $\a$ is an ordinal, $\b \neq 0$ is a limit ordinal, and $\braces{\g_\d}$ for $\d < \a + \b$ is a non-decreasing transfinite sequence of ordinals.
     Then
     $$
-    \sup_{\d < \a + \b} \g_\d = \sup_{\d < \b} \g_{\a + \d} \,.
+      \sup_{\d < \a + \b} \g_\d = \sup_{\d < \b} \g_{\a + \d}.
     $$
   \end{lem}
   \qproof{
     First we note that $\a + \b$ is a nonzero limit ordinal by Lemma~\ref{lem:ord:addlim}
     Let $A = \braces{\g_\d \where \d < \a + \b}$ and
     $$
-    \g = \sup_{\d < \b} \g_{\a+\d} \,.
+      \g = \sup_{\d < \b} \g_{\a+\d}.
     $$
     We show that $\g$ is the least upper bound of $A$, which shows the result by the least upper bound property (Lemma~\ref{lem:ord:lub}).
     First consider any $\g_\d$ in $A$ so that $\d < \a + \b$.
@@ -1249,18 +1249,18 @@
     Then if $\a > 0$ we show the result by transfinite induction on $\a$.
     First if $\a = 1$ then we have
     $$
-    0^\a = 0^1 = 0^{0+1} = 0^0 \cdot 0 = 1 \cdot 0 = 0 \,,
+      0^\a = 0^1 = 0^{0+1} = 0^0 \cdot 0 = 1 \cdot 0 = 0,
     $$
     where we have used Definitions~6.5.9b and 6.5.6a.
     Now suppose that $0^\a = 0$ so that we have
     $$
-    0^{\a+1} = 0^\a \cdot 0 = 0 \,,
+      0^{\a+1} = 0^\a \cdot 0 = 0,
     $$
     where we again have used the same two definitions.
     Lastly suppose that $\a$ is a nonzero limit ordinal and that $0^\b = 0$ for all $\b < \a$.
     Then we have by Definition~6.5.9c that
     $$
-    0^\a = \sup_{\b < \a} 0^\b = \sup_{\b < \a} 0 = 0 \,,
+      0^\a = \sup_{\b < \a} 0^\b = \sup_{\b < \a} 0 = 0,
     $$
     where we have used the induction hypothesis.
   }
@@ -1276,7 +1276,7 @@
     Lastly suppose that $\a$ is a nonzero limit ordinal and that $1^\b = 1$ for all $\b < \a$.
     We then clearly have by Definition~6.5.9c that
     $$
-    1^\a = \sup_{\b < \a} 1^\b = \sup_{\b < \a} 1 = 1 \,.
+      1^\a = \sup_{\b < \a} 1^\b = \sup_{\b < \a} 1 = 1.
     $$
     This completes the inductive proof.
   }
@@ -1291,7 +1291,7 @@
     Case: $\a = 1$.
     Then by Lemma~\ref{lem:ord:exp:one} we have
     $$
-    \a^\b = 1^\b = 1 = 1^\g = \a^\g \,.
+      \a^\b = 1^\b = 1 = 1^\g = \a^\g.
     $$
 
     Case: $\a > 1$.
@@ -1309,7 +1309,7 @@
       &= \a^\b & \text{(by Definition~6.5.1a)} \\
       &= \a^\b \cdot 1 & \text{(by Example~6.5.7a )} \\
       &= \a^\b \cdot \a^0 & \text{(by Definition~6.5.9a)} \\
-      &= \a^\b \cdot \a^\g \,.
+      &= \a^\b \cdot \a^\g.
     }
     Now assume that $\a^{\b + \g} = \a^\b \cdot \a^\g$ so that we have
     \ali{
@@ -1317,29 +1317,29 @@
       &= \a^{\b+\g} \cdot \a & \text{(by Definition~6.5.9b)} \\
       &= \parens{\a^\b \cdot \a^\g} \cdot \a & \text{(by the induction hypothesis)} \\
       &= \a^\b \cdot \parens{\a^\g \cdot \a} & \text{(by the associativity of multiplication)} \\
-      &= \a^\b \cdot \a^{\g+1} \,. & \text{(by Definition~6.5.9b)}
+      &= \a^\b \cdot \a^{\g+1}. & \text{(by Definition~6.5.9b)}
     }
     Lastly suppose that $\g$ is a nonzero limit ordinal and that $\a^{\b+\d} = \a^\b \cdot \a^\d$ for all $\d < \g$.
     First if $\a = 0$ then $\a^{\b+\g} = 0^{\b+_\g} = 0$ by Lemma~\ref{lem:ord:exp:zero} since $\b+\g > 0$ since $\g > 0$.
     Hence we have
     $$
-    \a^{\b+ \g} = 0 = 0^\b \cdot 0 = 0^\b \cdot 0^\g = \a^\b \cdot \a^\g \,,
+      \a^{\b+ \g} = 0 = 0^\b \cdot 0 = 0^\b \cdot 0^\g = \a^\b \cdot \a^\g,
     $$
     where we have used Definition~6.5.6a and the fact that $0^\g = 0$ by Lemma~\ref{lem:ord:exp:zero} since $\g > 0$.
 
     On the other hand if $\a > 0$ then we have by Definition~6.5.9c that
     $$
-    \a^{\b+\g} = \sup_{\d < \b+\g} \a^\d \,.
+      \a^{\b+\g} = \sup_{\d < \b+\g} \a^\d.
     $$
     It then follows from Lemma~\ref{lem:ord:exp:gt} that $\braces{\a^\d}$ for $\d < \b + \g$ is a non-decreasing sequence since $\a > 0$.
     Thus we can apply Lemma~\ref{lem:ord:exp:sups} so that
     $$
-    \a^{\b+\g} = \sup_{\d < \b+\g} \a^\d = \sup_{\d < \g} \a^{\b + \d} = \sup_{\d < \g} \parens{\a^\b \cdot \a^\d}
+      \a^{\b+\g} = \sup_{\d < \b+\g} \a^\d = \sup_{\d < \g} \a^{\b + \d} = \sup_{\d < \g} \parens{\a^\b \cdot \a^\d}
     $$
     by the induction hypothesis.
     It then follows from statement (6.6.1) in the text that
     $$
-    \a^{\b+\g} = \sup_{\d < \g} \parens{\a^\b \cdot \a^\d} = \a^\b \cdot \sup_{\d < \g} \a^\d = \a^\b \cdot \a^\g
+      \a^{\b+\g} = \sup_{\d < \g} \parens{\a^\b \cdot \a^\d} = \a^\b \cdot \sup_{\d < \g} \a^\d = \a^\b \cdot \a^\g
     $$
     by Definition~6.5.9c.
     This completes the transfinite induction.
@@ -1352,14 +1352,14 @@
     \ali{
       \parens{\a^\b}^\g &= \parens{\a^\b}^0 = 1 & \text{(by Definition~6.5.9a)} \\
       &= \a^0 & \text{(again by Definition~6.5.9a)} \\
-      &= \a^{\b \cdot 0} = \a^{\b \cdot \g} \,. & \text{(by Definition~6.5.6a)}
+      &= \a^{\b \cdot 0} = \a^{\b \cdot \g}. & \text{(by Definition~6.5.6a)}
     }
     Next suppose that $\parens{\a^\b}^\g = \a^{\b \cdot \g}$ so that we have
     \ali{
       \parens{\a^\b}^{\g+1} &= \parens{\a^\b}^\g \cdot \a^\b & \text{(by Definition~6.5.9b)} \\
       &= \a^{\b \cdot \g} \cdot \a^\b & \text{(by the induction hypothesis)} \\
       &= \a^{\b \cdot \g + \b} & \text{(by part a)} \\
-      &= \a^{\b \cdot \parens{\g + 1}} \,. & \text{(by Definition~6.5.6b)}
+      &= \a^{\b \cdot \parens{\g + 1}}. & \text{(by Definition~6.5.6b)}
     }
     Lastly, suppose that $\g$ is a nonzero limit ordinal and that $\parens{\a^\b}^\d = \a^{\b \cdot \d}$ for all $\d < \g$.
 
@@ -1371,7 +1371,7 @@
       &= 1 & \text{(by Lemma~\ref{lem:ord:exp:one})} \\
       &= 0^0 & \text{(by Definition~6.5.9a)} \\
       &= 0^{0 \cdot \g} & \text{(by Lemma~\ref{lem:ord:multzero})} \\
-      &= \a^{\b \cdot \g} \,.
+      &= \a^{\b \cdot \g}.
     }
     On the other hand if $\b > 0$ then first we note that $0 = \b \cdot 0 < \b \cdot \g$ by Definition~6.5.6a and Exercise~6.5.7a since both $\b \neq 0$ and $0 < \g$.
     We then have
@@ -1380,7 +1380,7 @@
       &= 0^\g & \text{(by Lemma~\ref{lem:ord:exp:zero} since $\b > 0$)} \\
       &= 0 & \text{(by Lemma~\ref{lem:ord:exp:zero} again since $\g > 0$)} \\
       &= 0^{\b \cdot \g} & \text{(by Lemma~\ref{lem:ord:exp:zero} yet again since $\b \cdot \g > 0$ as shown above)} \\
-      &= \a^{\b \cdot \g} \,.
+      &= \a^{\b \cdot \g}.
     }
     Case: $\a > 0$.
     Then we have
@@ -1410,7 +1410,7 @@
     So first suppose that $\a \leq \b$.
     Then for $\g = 0$ we clearly have
     $$
-    \a^\g = \a^0 = 1 = \b^0 = \b^\g \,,
+      \a^\g = \a^0 = 1 = \b^0 = \b^\g,
     $$
     where we have used Definition~6.5.9a twice.
     Then $\a^\g \leq \b^\g$ clearly holds.
@@ -1420,7 +1420,7 @@
       \a^{\g+1} &= \a^\g \cdot \a & \text{(by Definition~6.5.9b}) \\
       &\leq \b^\g \cdot \a & \text{(follows from Exercise~6.5.8b and the induction hypothesis)} \\
       &\leq \b^\g \cdot \b & \text{(follows from Exercise~6.5.7 since $\a \leq \b$)} \\
-      &= \b^{\g + 1} \,. & \text{(by Definition~6.5.9b)}
+      &= \b^{\g + 1}. & \text{(by Definition~6.5.9b)}
     }
     Lastly suppose that $\g$ is a nonzero limit ordinal and that $\a^\d \leq \b^\d$ for all $\d < \g$.
     We then have
@@ -1431,7 +1431,7 @@
     }
     which completes the transfinite induction.
   }
-  
+
   (b)
   \qproof{
     Suppose that $\a > 1$.
@@ -1446,7 +1446,7 @@
       &= \a^\d \cdot 1 \\
       &< \a^\d \cdot \a & \text{(by Exercise~6.5.7a since $1 < \a$ and $\a^\d \neq 0$)} \\
       &= \a^{\d+1} & \text{(by Definition~6.5.9b)} \\
-      &= \a^\g \,.
+      &= \a^\g.
     }
     Case: $\g$ is a limit ordinal.
     Here we have that $\b+1 < \g$ as well since $\b < \g$.
@@ -1454,7 +1454,7 @@
     \ali{
       \a^\b &< \a^{\b+1} & \text{(by the induction hypothesis since $\b < \b+1 < \g$)} \\
       &\leq \sup_{\d < \g} \a^\d & \text{(since the supremum is an upper bound)} \\
-      &= \a^\g \,. & \text{(by Definition~6.5.9c)}
+      &= \a^\g. & \text{(by Definition~6.5.9c)}
     }
     Thus in either case $\a^\b < \a^\g$, thereby completing the transfinite induction.
   }
@@ -1469,18 +1469,18 @@
 
   (c) $\w^\x = \x$.
 
-  [Hint for part (a): Let $\x_0 = 0$, $\x_{n+1} = \w + \x_n$, $\x = \sup\braces{\x_n \where n \in \w}$.]
+    [Hint for part (a): Let $\x_0 = 0$, $\x_{n+1} = \w + \x_n$, $\x = \sup\braces{\x_n \where n \in \w}$.]
 }
 \sol{
   \begin{lem}\label{lem:ord:props:sups}
     Suppose that $\a$ and $\g$ are a nonzero limit ordinals, that $\braces{\a_\d}$ is a transfinite sequence indexed by $\g$, and that
     $$
-    \a = \sup_{\d < \g} \a_\d \,.
+      \a = \sup_{\d < \g} \a_\d.
     $$
     Also suppose that ${\b_\d}$ is another non-decreasing transfinite sequence indexed by $\a$.
     Then
     $$
-    \sup_{\d < \a} \b_\d = \sup_{\d < \g} \b_{\a_\d} \,.
+      \sup_{\d < \a} \b_\d = \sup_{\d < \g} \b_{\a_\d}.
     $$
   \end{lem}
   \qproof{
@@ -1510,7 +1510,7 @@
     So consider any such $\a$ so that by Lemma~\ref{lem:ord:w2form} there are natural numbers $n$ and $k$ such that $\a = \w \cdot n + k$.
     Thus we have
     $$
-    \w + \a = \w + \w \cdot n + k = \w \cdot 1 + \w \cdot n + k = \w \cdot (1 + n) + k = w \cdot (n + 1) + k
+      \w + \a = \w + \w \cdot n + k = \w \cdot 1 + \w \cdot n + k = \w \cdot (1 + n) + k = w \cdot (n + 1) + k
     $$
     We then have that
     \ali{
@@ -1531,7 +1531,7 @@
   \qproof{
     First we have
     \ali{
-      \w \cdot \x = \w \cdot \w^\w = \w^1 \cdot \w^\w = \w^{1 + \w} = \w^\w = \x \,
+      \w \cdot \x = \w \cdot \w^\w = \w^1 \cdot \w^\w = \w^{1 + \w} = \w^\w = \x
     }
     where we have used Exercise~6.5.13a.
     Thus $\x = \w^2$ has the desired property.
@@ -1546,18 +1546,18 @@
     Since $m$ is the least element of $A$ it follows that $\a \geq \w^{m-1}$ since otherwise $m-1$ would be the least element of $A$.
     Hence we have
     $$
-    \w^{m-1} \leq \a < \w^m \,.
+      \w^{m-1} \leq \a < \w^m.
     $$
     It then follows from Exercise~6.5.8b that
     \ali{
       \w \cdot \w^{m-1} &\leq \w \cdot \a \\
       \w^1 \cdot \w^{m-1} &\leq \w \cdot \a \\
       \w^{1 + m - 1} &\leq \w \cdot \a & \text{(by Exercise~6.5.13a)} \\
-      \w^m &\leq \w \cdot \a \,.
+      \w^m &\leq \w \cdot \a.
     }
     Putting this together, we have that
     $$
-    \a < \w^m \leq \w \cdot \a
+      \a < \w^m \leq \w \cdot \a
     $$
     so that clearly $\w \cdot \a \neq \a$.
     Since $1 < \a < \w^\w$ was arbitrary, this shows that $\w^\w$ is the least such ordinal
@@ -1569,16 +1569,16 @@
     We show this by induction.
     For $n=0$ we have
     $$
-    \tet{n}{\w} = \tet{0}{\w} = 1 < \w = \w^1 = \w^{\tet{0}{\w}} = \tet{1}{\w} = \tet{n+1}{\w}
+      \tet{n}{\w} = \tet{0}{\w} = 1 < \w = \w^1 = \w^{\tet{0}{\w}} = \tet{1}{\w} = \tet{n+1}{\w}
     $$
     Now suppose that $\tet{n}{\w} < \tet{n+1}{\w}$ so that we have
     \ali{
       \tet{n+1}{\w} &= \w^{\tet{n}{\w}} \\
       &< \w^{\tet{n+1}{\w}} & \text{(by Exercise~6.5.14b and the induction hypothesis)} \\
-      &= \tet{n+2}{\w} \,,
+      &= \tet{n+2}{\w},
     }
     which completes the induction.
-    
+
     Returning to the main problem, we then have
     \ali{
       \w^\e &= \sup_{\a < \e} \w^\a & \text{(by Definition~6.5.9c since $\e$ is clearly a limit ordinal)} \\
@@ -1596,7 +1596,7 @@
     Then $\a < \tet{m}{\w} = \tet{0}{\w} = 1$ so that it must be that $\a = 0$.
     But then we have
     $$
-    \w^\a = \w^0 = 1 \neq 0 = \a
+      \w^\a = \w^0 = 1 \neq 0 = \a
     $$
     so that $\a$ does not have the property.
 
@@ -1605,16 +1605,16 @@
     It then follows that $\a \geq \tet{m-1}{\w}$ since otherwise $m-1$ would be the least element of $A$.
     Thus we have
     $$
-    \tet{m-1}{\w} \leq \a < \tet{m}{\w} \,.
+      \tet{m-1}{\w} \leq \a < \tet{m}{\w}.
     $$
     It then follows from Exercise~6.5.14b that
     \ali{
       \w^{\tet{m-1}{\w}} &\leq \w^\a \\
-      \tet{m}{\w} &\leq \w^\a \,.
+      \tet{m}{\w} &\leq \w^\a.
     }
     Thus we have
     $$
-    \a < \tet{m}{\w} \leq \w^{\a}
+      \a < \tet{m}{\w} \leq \w^{\a}
     $$
     so that clearly $\a$ does not have the property since $\w^\a \neq \a$.
     Since $\a$ was arbitrary and the cases exhaustive this shows that $\e$ is indeed the least such ordinal.
@@ -1633,11 +1633,11 @@
   Since ordinal addition is \emph{not} commutative we define summation notation such that each additional term is pre-added to the previous terms, i.e. added on the left.
   So, for example, we have
   $$
-  \sum_{n = 1}^5 \a_n = \a_5 + \a_4 + \a_3 + \a_2 + \a_1 \,.
+    \sum_{n = 1}^5 \a_n = \a_5 + \a_4 + \a_3 + \a_2 + \a_1.
   $$
   We also adopt the convention that
   $$
-  \sum_{k=n}^m \alpha_k = 0
+    \sum_{k=n}^m \alpha_k = 0
   $$
   any time $n > m$.
 
@@ -1655,14 +1655,14 @@
     Thus its elements can be expressed as a  strictly increasing sequence $\braces{s_k}$ for $k < n$ where each $s_k \in \b$ since $s(f) \ss \b$.
     We now set
     $$
-    h(f) = \sum_{k=0}^{n-1} \a^{s_k} \cdot f(s_k) \,,
+      h(f) = \sum_{k=0}^{n-1} \a^{s_k} \cdot f(s_k),
     $$
     noting that it could be the case that $n=0$ so that $h(f) = 0$, consistent with our convention.
 
     First we show that $h(f) \in \a^\b$ so that the range of $h$ is in fact a subset of $\a^\b$.
     We begin by showing by induction on $m$ that
     $$
-    \sum_{k=0}^m \a^{s_k} \cdot f(s_k) < \a^{s_m + 1}  \,.
+      \sum_{k=0}^m \a^{s_k} \cdot f(s_k) < \a^{s_m + 1} .
     $$
     First for $m=0$ we have
     \ali{
@@ -1673,11 +1673,11 @@
     }
     Now suppose that
     $$
-    \sum_{k=0}^m \a^{s_k} \cdot f(s_k) < \a^{s_m + 1} \,.
+      \sum_{k=0}^m \a^{s_k} \cdot f(s_k) < \a^{s_m + 1}.
     $$
     It follows from Exercise~6.5.14b that
     $$
-    \a^{s_m + 1} \leq \a^{s_{m+1}}
+      \a^{s_m + 1} \leq \a^{s_{m+1}}
     $$
     since $\braces{s_k}$ is a strictly increasing sequence so that $s_m + 1 \leq s_{m+1}$.
     We then have
@@ -1687,12 +1687,12 @@
       &\leq \a^{s_{m+1}} \cdot f(s_{m+1}) + \a^{s_{m+1}} & \text{(follows from Lemma~6.5.4 and the above)} \\
       &= \a^{s_{m+1}} \cdot \squares{f(s_{m+1}) + 1} & \text{(by Definition~6.5.6b)} \\
       &= \a^{s_{m+1}} \cdot \a & \text{(by Exercise~6.5.7 since $f(s_{m+1}) + 1 \leq \a$)} \\
-      &= \a^{s_{m+1} + 1} \,, & \text{(by Definition~6.5.9b)}
+      &= \a^{s_{m+1} + 1}, & \text{(by Definition~6.5.9b)}
     }
     which completes the induction.
     Hence we have
     $$
-    h(f) = \sum_{k=0}^{n-1} \a^{s_k} \cdot f(s_k) < \a^{s_{n-1} + 1} \leq \a^\b
+      h(f) = \sum_{k=0}^{n-1} \a^{s_k} \cdot f(s_k) < \a^{s_{n-1} + 1} \leq \a^\b
     $$
     by Exercise~6.5.14b since $s_{n-1} + 1 \leq \b$ since $s_{n-1} < \b$.
     Clearly then $h(f) \in \a^\b$ by definition of ordinal ordering.
@@ -1718,58 +1718,58 @@
       &\leq \a^{s_m} \cdot f(s_m) + \a^{s_m} & \text{(since $\braces{s_k}$ is an increasing sequence)} \\
       &= \a^{s_m} \cdot \squares{f(s_m) + 1} & \text{(by Definition 6.5.6b)} \\
       &\leq \a^{s_m} \cdot g(s_m) & \text{(since $f(s_m) < g(s_m)$)} \\
-      &\leq \a^{s_m} \cdot g(s_m) + \sum_{k=0}^{m-1} \a^{s_k} \cdot g(s_k) \,. & \text{(by Lemma~6.5.4)}
+      &\leq \a^{s_m} \cdot g(s_m) + \sum_{k=0}^{m-1} \a^{s_k} \cdot g(s_k). & \text{(by Lemma~6.5.4)}
     }
     Thus it follows yet again from Lemma~6.5.4a that
     \ali{
       h(f) &= \sum_{k=0}^{n-1} \a^{s_k} \cdot f(s_k) \\
       &= \sum_{k=m+1}^{n-1} \a^{s_k} \cdot f(s_k) + \a^{s_m} \cdot f(s_m) + \sum_{k=0}^{m-1} \a^{s_k} \cdot f(s_k) \\
       &< \sum_{k=m+1}^{n-1} \a^{s_k} \cdot g(s_k) + \a^{s_m} \cdot g(s_m) + \sum_{k=0}^{m-1} \a^{s_k} \cdot g(s_k) \\
-      &= \sum_{k=0}^{n-1} \a^{s_k} \cdot g(s_k) = h(g) \,,
+      &= \sum_{k=0}^{n-1} \a^{s_k} \cdot g(s_k) = h(g),
     }
     which shows that $h$ is indeed increasing.
 
     Lastly we show that $h$ is a surjective function, which then completes the proof that $h$ is an isomorphism so that $(S(\b,\a), \prec)$ is isomorphic to $(\a^\b, <)$ as desired.
     So consider any $\g \in \a^\b$ so that by definition $\g < \a^\b$.
-    
+
     We construct a function $f: \b \to \a$ recursively by first initializing $f(\x) = 0$ for all $\x \in \b$.
     We then initialize $\r = \g$ and perform the following iteratively:
 
     If $\r < \a$ then we set $f(0) = \r$, noting that by definition $\r \in \a$ and $0 \in \b$ since $\b > 0$.
-    We then terminate the iteration, noting that it could be that $f(0) = \r = 0$. 
+    We then terminate the iteration, noting that it could be that $f(0) = \r = 0$.
 
     If $\r \geq \a$ then $1 < \a \leq \r$ so that by Lemma~6.6.2 there is a greatest ordinal $\s$ such that $\a^\s \leq \r$.
     Then clearly we have $\a^\s \leq \r \leq \g < \a^\b$ so that it follows from Exercise~6.514b that $\s < \b$ since $\a > 1$ (the exercise only asserts implication in one direction but the other direction follows immediately similarly to the proof of Lemma~6.5.4a).
     Then since clearly $\a^\s \neq 0$ it follows from Theorem~6.6.3 that there are unique ordinals $\t$ and $\r'$ such that
     $$
-    \a^\s \cdot \t + \r' = \r
+      \a^\s \cdot \t + \r' = \r
     $$
     and $\r' < \a^\s$.
     We claim the following about these:
     \begin{enumerate}
-    \item $\t < \a$.
-      To the contrary, assume that $\t \geq \a$ so that we have
-      $$
-      \r = \a^\s \cdot \t + \r' \geq \a^\s \cdot \t + 0 = \a^\s \cdot \t \geq \a^\s \cdot \a = \a^{\s + 1}
-      $$
-      by Lemma~6.5.4, Exercise~6.5.7 since $\a^\s \neq 0$, and Definition~6.5.9b.
-      However, this contradicts the definition of $\s$, i.e. that it is greatest ordinal $\x$ such that $\r \geq \a^\x$.
-      Hence it must be that $\t < \a$.
+      \item $\t < \a$.
+            To the contrary, assume that $\t \geq \a$ so that we have
+            $$
+              \r = \a^\s \cdot \t + \r' \geq \a^\s \cdot \t + 0 = \a^\s \cdot \t \geq \a^\s \cdot \a = \a^{\s + 1}
+            $$
+            by Lemma~6.5.4, Exercise~6.5.7 since $\a^\s \neq 0$, and Definition~6.5.9b.
+            However, this contradicts the definition of $\s$, i.e. that it is greatest ordinal $\x$ such that $\r \geq \a^\x$.
+            Hence it must be that $\t < \a$.
 
-    \item $0 < \t$.
-      Were it the case that $\t = 0$ then we would have
-      $$
-      \r = \a^\s \cdot \t + \r' = \a^\s \cdot 0 + \r' = 0 + \r' = \r' \,.
-      $$
-      However, we then would have both $\r \geq \a^\s$ and $\r = \r' < \a^\s$, which is clearly a contradiction.
-      So it must be that $\t \neq 0$ so $\t > 0$.
+      \item $0 < \t$.
+            Were it the case that $\t = 0$ then we would have
+            $$
+              \r = \a^\s \cdot \t + \r' = \a^\s \cdot 0 + \r' = 0 + \r' = \r'.
+            $$
+            However, we then would have both $\r \geq \a^\s$ and $\r = \r' < \a^\s$, which is clearly a contradiction.
+            So it must be that $\t \neq 0$ so $\t > 0$.
 
-    \item $\r' < \r$.
-      We have
-      $$
-      \r' < \a^\s = \a^\s \cdot 1 \leq \a^\s \cdot \t = \a^\s \cdot \t + 0 \leq \a^\s \cdot \t + \r' = \r
-      $$
-      by Exercise~6.5.7 since $\a^\s \neq 0$ and Lemma~6.5.4 since $0 \leq \r'$, noting that we also just showed that $1 \leq \t$ since $0 < \t$.
+      \item $\r' < \r$.
+            We have
+            $$
+              \r' < \a^\s = \a^\s \cdot 1 \leq \a^\s \cdot \t = \a^\s \cdot \t + 0 \leq \a^\s \cdot \t + \r' = \r
+            $$
+            by Exercise~6.5.7 since $\a^\s \neq 0$ and Lemma~6.5.4 since $0 \leq \r'$, noting that we also just showed that $1 \leq \t$ since $0 < \t$.
     \end{enumerate}
 
     We therefore set $f(\s) = \t$, noting that we have shown that $\s < \b$ and $\t < \a$ (so that $\s \in \b$ and $\t \in \a$).

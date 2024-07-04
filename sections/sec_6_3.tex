@@ -8,8 +8,8 @@
   \qproof{
     Define a property $\prop{R}(x,y)$ such that $\prop{R}(x,y)$ holds if and only if
     \begin{enumerate}
-    \item $\prop{P}(x,y)$ holds, or
-    \item $y = \es$ and there is not a $z$ such that $\prop{P}(x,z)$ holds.
+      \item $\prop{P}(x,y)$ holds, or
+      \item $y = \es$ and there is not a $z$ such that $\prop{P}(x,z)$ holds.
     \end{enumerate}
     Clearly this property is such that for every $x$ there is a unique $y$ for which $\prop{R}(x,y)$ holds.
 
@@ -37,7 +37,7 @@
   \qproof{
     Define the operation $\prop{G}(x,n)$ for set a $x$ and $n \in \nats$ by
     $$
-    \prop{G}(x,n) = \braces{x} \,.
+      \prop{G}(x,n) = \braces{x}.
     $$
     Then by Theorem~6.3.6 there is a unique sequence $\angles{a_n \where n \in \nats}$ where
     \ali{
@@ -52,13 +52,13 @@
   \qproof{
     Similarly define the operation $\prop{G}(x,n)$ for a set $x$ and $n \in \nats$ by
     $$
-    \prop{G}(x,n) = \pset{x} \,,
+      \prop{G}(x,n) = \pset{x},
     $$
     noting that this set exists by the Axiom of Power Set.
     Then by Theorem~6.3.6 there is a sequence $\angles{a_n \where n \in \nats}$ defined by
     \ali{
       a_0 &= \nats \\
-      a_{n+1} &= \prop{G}(a_n, n) = \pset{a_n} \,,
+      a_{n+1} &= \prop{G}(a_n, n) = \pset{a_n},
     }
     noting that $a_0 = \nats$ exists by the Axiom of Infinity.
     Clearly then the range of $\angles{a_n}$ is the set we seek.
@@ -68,12 +68,12 @@
   \qproof{
     Define the operation $\prop{G}(x,n)$ for a set $x$ and $n \in \nats$ by
     $$
-    \prop{G}(x,n) = S(x) = x \cup \braces{x} \,,
+      \prop{G}(x,n) = S(x) = x \cup \braces{x},
     $$
     Then by Theorem~6.3.6 there is a sequence $\angles{a_n \where n \in \nats}$ defined by
     \ali{
       a_0 &= \w \\
-      a_{n+1} &= \prop{G}(a_n, n) = S(a_n) = a_n+1 \,,
+      a_{n+1} &= \prop{G}(a_n, n) = S(a_n) = a_n+1,
     }
     noting that $a_0 = \w = \nats$ exists by the Axiom of Infinity.
     Clearly then the range of $\angles{a_n}$ is $A = \braces{\w, \w+1, \w+2, \ldots}$.
@@ -86,25 +86,25 @@
   \ali{
     V_0 &= \es; \\
     V_{n+1} &= \pset{V_n} \hspace{0.5cm} (n \in \w); \\
-    V_\w &= \bigcup_{n \in \w} V_n \,.
+    V_\w &= \bigcup_{n \in \w} V_n.
   }
 }
 \sol{
   \qproof{
     Define the operation $\prop{G}(x,n)$ for a set $x$ and $n \in \nats$ by
     $$
-    \prop{G}(x,n) = \pset{x} \,,
+      \prop{G}(x,n) = \pset{x},
     $$
     noting that this set exists by the Axiom of Power Set.
     Then by Theorem~6.3.6 there is a sequence $\angles{V_n \where n \in \nats}$ defined by
     \ali{
       V_0 &= \es \\
-      V_{n+1} &= \prop{G}(V_n, n) = \pset{V_n} \,,
+      V_{n+1} &= \prop{G}(V_n, n) = \pset{V_n},
     }
     noting that $V_0 = \es$ exists by the Axiom of Existence.
     Then we let
     $$
-    V_\w = \bigcup_{n \in \w} V_n \,,
+      V_\w = \bigcup_{n \in \w} V_n,
     $$
     noting that $\w = \nats$.
     This set exists by the Axiom of Union.
@@ -120,50 +120,50 @@
 }
 \sol{
 
-  (a)
-  \qproof{
-    First we show by induction that every $V_n$ is finite (for $n \in \nats$).
-    For $n=0$ we have $V_n = V_0 = \es$, which is clearly finite.
-    Now suppose that $V_n$ is finite then we have $V_{n+1} = \pset{V_n}$, which is finite by Theorem~4.2.8.
+(a)
+\qproof{
+First we show by induction that every $V_n$ is finite (for $n \in \nats$).
+For $n=0$ we have $V_n = V_0 = \es$, which is clearly finite.
+Now suppose that $V_n$ is finite then we have $V_{n+1} = \pset{V_n}$, which is finite by Theorem~4.2.8.
 
-    Now consider any $x \in V_\w = \bigcup_{n \in \w} V_n$ so that there is an $n \in \w$ such that $x \in V_n$.
-    We note that $n \neq 0$ since $V_0 = \es$ so it cannot be that $x \in V_0 = \es$.
-    Hence $V_{n-1}$ is a set and moreover $V_n = \pset{V_{n-1}}$.
-    So since $x \in V_n$ it follows that $x \in \pset{V_{n-1}}$ so that $x \ss V_{n-1}$.
-    Thus it follows that $|x| \leq |V_{n-1}|$ so that clearly $x$ is finite since $V_{n-1}$ is (shown above).
-  }
+Now consider any $x \in V_\w = \bigcup_{n \in \w} V_n$ so that there is an $n \in \w$ such that $x \in V_n$.
+We note that $n \neq 0$ since $V_0 = \es$ so it cannot be that $x \in V_0 = \es$.
+Hence $V_{n-1}$ is a set and moreover $V_n = \pset{V_{n-1}}$.
+So since $x \in V_n$ it follows that $x \in \pset{V_{n-1}}$ so that $x \ss V_{n-1}$.
+Thus it follows that $|x| \leq |V_{n-1}|$ so that clearly $x$ is finite since $V_{n-1}$ is (shown above).
+}
 
-  (b)
-  \qproof{
-    Consider any $x \in V_w$.
-    Then by the same argument as in part (a) above it follows that $x \in V_n$ where $n \neq 0$.
-    Hence again $V_{n-1}$ is a set and $V_n = \pset{V_{n-1}}$ so that $x \ss V_{n-1}$.
-    Then for any $y \in x$ we have that $y \in V_{n-1}$, from which it follows that clearly $y \in \bigcup_{k \in \w} V_k = V_\w$.
-    Hence since $y$ was arbitrary $x \ss V_\w$, and since $x$ was arbitrary this shows that $V_\w$ is transitive by definition.
-  }
+(b)
+\qproof{
+  Consider any $x \in V_w$.
+  Then by the same argument as in part (a) above it follows that $x \in V_n$ where $n \neq 0$.
+  Hence again $V_{n-1}$ is a set and $V_n = \pset{V_{n-1}}$ so that $x \ss V_{n-1}$.
+  Then for any $y \in x$ we have that $y \in V_{n-1}$, from which it follows that clearly $y \in \bigcup_{k \in \w} V_k = V_\w$.
+  Hence since $y$ was arbitrary $x \ss V_\w$, and since $x$ was arbitrary this shows that $V_\w$ is transitive by definition.
+}
 
-  (c)
-  \qproof{
-    First we show by induction that each $V_n$ (where $n \in \w$) is transitive.
-    For $n=0$ we have $V_n = V_0 = \es$, which is clearly vacuously transitive.
-    Now suppose that $V_n$ is transitive and consider any $x \in V_{n+1} = \pset{V_n}$ so that $x \ss V_n$.
-    Now consider any $y \in x$ so that also $y \in V_n$.
-    But since $V_n$ is transitive $y \ss V_n$ so that $y \in \pset{V_n} = V_{n+1}$.
-    Hence since $y$ was arbitrary this shows that $x \ss V_{n+1}$ and since $x$ was arbitrary this shows by definition that $V_{n+1}$ is transitive, thereby completing the inductive proof.
+(c)
+\qproof{
+  First we show by induction that each $V_n$ (where $n \in \w$) is transitive.
+  For $n=0$ we have $V_n = V_0 = \es$, which is clearly vacuously transitive.
+  Now suppose that $V_n$ is transitive and consider any $x \in V_{n+1} = \pset{V_n}$ so that $x \ss V_n$.
+  Now consider any $y \in x$ so that also $y \in V_n$.
+  But since $V_n$ is transitive $y \ss V_n$ so that $y \in \pset{V_n} = V_{n+1}$.
+  Hence since $y$ was arbitrary this shows that $x \ss V_{n+1}$ and since $x$ was arbitrary this shows by definition that $V_{n+1}$ is transitive, thereby completing the inductive proof.
 
-    Now we show that $V_\w$ is inductive.
-    So  first note that $V_1 = \pset{V_0} = \pset{\es} = \braces{\es}$ so that $0 = \es \in V_1$.
-    From this is clearly follows that $0 \in \bigcup_{n \in \w} V_n = V_\w$.
+  Now we show that $V_\w$ is inductive.
+  So  first note that $V_1 = \pset{V_0} = \pset{\es} = \braces{\es}$ so that $0 = \es \in V_1$.
+  From this is clearly follows that $0 \in \bigcup_{n \in \w} V_n = V_\w$.
 
-    Now suppose that $n \in V_\w = \bigcup_{k \in \w} V_k$ so that there is an $m \in \w$ such that $n \in V_m$.
-    Since it was shown above that $V_m$ is transitive we have that $n \ss V_m$ as well.
-    So consider any $x \in n+1 = n \cup \braces{n}$.
-    If $x \in n$ then also $x \in V_m$ since $n \ss V_m$.
-    On the other hand if $x \in \braces{n}$ then $x = n \in V_m$.
-    Since $x$ was arbitrary this shows that $n+1 \ss V_m$ so that $n+1 \in \pset{V_m} = V_{m+1}$.
-    From this it clearly follows that $n+1 \in \bigcup_{k \in \w} V_k = V_\w$.
-    This shows that $V_\w$ is inductive by definition.
-  }
+  Now suppose that $n \in V_\w = \bigcup_{k \in \w} V_k$ so that there is an $m \in \w$ such that $n \in V_m$.
+  Since it was shown above that $V_m$ is transitive we have that $n \ss V_m$ as well.
+  So consider any $x \in n+1 = n \cup \braces{n}$.
+  If $x \in n$ then also $x \in V_m$ since $n \ss V_m$.
+  On the other hand if $x \in \braces{n}$ then $x = n \in V_m$.
+  Since $x$ was arbitrary this shows that $n+1 \ss V_m$ so that $n+1 \in \pset{V_m} = V_{m+1}$.
+  From this it clearly follows that $n+1 \in \bigcup_{k \in \w} V_k = V_\w$.
+  This shows that $V_\w$ is inductive by definition.
+}
 }
 
 \exercise{5}{

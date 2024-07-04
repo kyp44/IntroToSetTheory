@@ -8,7 +8,7 @@
   Prove a more general Transfinite Recursion Theorem (Double Recursion Theorem):
   Let $\G$ be an operation in two variables.
   Then there is an operation $\F$ such that $\F(\a,\b) = \G(\F \rest (\b \times \a))$ for all ordinals $\b$ and $\a$.
-  [Hint: Computations are functions on $(\b+1) \times (\a+1)$.]
+    [Hint: Computations are functions on $(\b+1) \times (\a+1)$.]
 }
 \sol{
   \qproof{
@@ -19,12 +19,12 @@
     For ordinals $\a$ and $\b$ we let $f_{\a,\b}$ be the isomorphism from the ordinal $(\b+1)\cdot(\a+1)$ to the lexicographic ordering of $(\a+1) \times (\b+1)$, which exists by Theorem~6.5.8.
     We also note that  according to Exercise~6.5.2 we have
     $$
-    (\b+1)\cdot(\a+1) = (\b+1)\cdot\a + (\b+1)\cdot 1 = (\b+1)\cdot\a + (\b+1) = \squares{(\b+1)\cdot\a + \b} + 1
+      (\b+1)\cdot(\a+1) = (\b+1)\cdot\a + (\b+1)\cdot 1 = (\b+1)\cdot\a + (\b+1) = \squares{(\b+1)\cdot\a + \b} + 1
     $$
     so that $(\b+1)\cdot(\a+1)$ is a successor ordinal.
     Then for $\g < (\b+1)\cdot(\a+1)$ define
     $$
-    X_{\a,\b,\g} : \braces{(\d,\e) \in (\a+1) \times (\b+1) \where (\d,\e) \prec f_{\a,\b}(\g)}
+      X_{\a,\b,\g} : \braces{(\d,\e) \in (\a+1) \times (\b+1) \where (\d,\e) \prec f_{\a,\b}(\g)}
     $$
 
     Then for $\g < (\b+1) \cdot (\a+1)$ we say that $t$ is a computation of length $\g$ if $t$ is a transfinite sequence whose domain is $\g+1$ and such that $t(\d) = \G(t \circ (\inv{f_{\a,\b}} \rest X_{\a,\b,\d}))$ for all $\d \leq \g$.
@@ -32,8 +32,8 @@
 
     Now we define the property $\P(x,y,z)$ such that $\P(x,y,z)$ holds if and only if
     \begin{enumerate}
-    \item $x$ and $y$ are ordinal numbers and $z = t(\inv{f_{x,y}}(x,y))$ for some computation $t$ of length $(y+1)\cdot x + y$ (with respect to $\G$), or
-    \item $x$ or $y$ is \emph{not} an ordinal and $z = \es$.
+      \item $x$ and $y$ are ordinal numbers and $z = t(\inv{f_{x,y}}(x,y))$ for some computation $t$ of length $(y+1)\cdot x + y$ (with respect to $\G$), or
+      \item $x$ or $y$ is \emph{not} an ordinal and $z = \es$.
     \end{enumerate}
 
     We prove that $\P$ defines an operation.
@@ -48,15 +48,15 @@
 
     \emph{Existence.} First define a property $\R(x,y)$ such that $\R(x,y)$ holds if and only if
     \begin{enumerate}
-    \item $x$ is an ordinal where $x < \g$ and $y$ is a computation of length $x$ (with respect to $\G$), or
-    \item $x$ is is an ordinal and $x \geq \g$ and $y = \es$, or
-    \item $x$ is not an ordinal and $y = \es$ \,.
+      \item $x$ is an ordinal where $x < \g$ and $y$ is a computation of length $x$ (with respect to $\G$), or
+      \item $x$ is is an ordinal and $x \geq \g$ and $y = \es$, or
+      \item $x$ is not an ordinal and $y = \es$.
     \end{enumerate}
     Clearly by the induction hypothesis this property has a unique $y$ for every $x$.
     Hence we can apply the Axiom Schema of Replacement, according to which there is a set $T$ such that for every $\d \in \g$ (so that $\d < \g$) there is a $t$ in $T$ such that $\R(\d, t)$ holds.
     That is
     $$
-    T = \braces{t \where t \text{ is the unique computation of length $\d$ for all $\d < \g$}}
+      T = \braces{t \where t \text{ is the unique computation of length $\d$ for all $\d < \g$}}
     $$
     Now, $T$ is a system of transfinite sequences (which are functions) so define $\bar{t} = \bigcup T$ and let $\t = \bar{t} \cup \braces{(\g, \G(\bar{t} \circ (\inv{f_{\a,\b}} \rest X_{\a,\b,\g}))}$.
 
@@ -74,7 +74,7 @@
     Then clearly $\e \in \dom(t)$ so that $\e \in \dom(\bar{t})$.
     From this it follows that clearly $\e \in \dom(\t)$ so that $\g+1 \ss \dom(\t)$ since $\e$ was arbitrary.
     This proves the claim.
-    
+
     \emph{Claim 2:} $\t$ is a function.
     Consider any $\e \in \dom(\t) = \g+1$ so that again $\e \leq \g$.
     If $\e = \g$ then clearly $\t(\e) = \t(\g) = \G(\bar{t} \circ (\inv{f_{\a,\b}} \rest X_{\a,\b,\g}))$ is unique since $\G$ is an operation.
@@ -149,16 +149,16 @@
 
     Now, define an operation $\G$ by $z = \G(x,y_u)$ if and only if either
     \begin{enumerate}
-    \item $y_u$ is a function with parameter $u$, $\dom(y_u) = 1$, and $z = 0$, or
-    \item $y_u$ is a function with parameter $u$, $\dom(y_u) = \a+1$ for some ordinal $\a$, there are $p$ and $q$ where $x = (p,q)$, $y_p(\a) = 0$, and $z = 0$ or
-    \item None of the above hold and $z = 1$.
+      \item $y_u$ is a function with parameter $u$, $\dom(y_u) = 1$, and $z = 0$, or
+      \item $y_u$ is a function with parameter $u$, $\dom(y_u) = \a+1$ for some ordinal $\a$, there are $p$ and $q$ where $x = (p,q)$, $y_p(\a) = 0$, and $z = 0$ or
+      \item None of the above hold and $z = 1$.
     \end{enumerate}
 
     Then by Theorem~6.4.9 there is an operation $\F$ such that $\F(x,\a) = \G(x, \F_x \rest \a)$ for all ordinals $\a$ and sets $x$.
 
     Then for any set $x$ we have that clearly $\F \rest 1$ is a function with domain $1$ (and parameter $x$) so that by definition
     $$
-    \F(x,1) = \G(x, \F_x \rest 1) = 0 \,.
+      \F(x,1) = \G(x, \F_x \rest 1) = 0.
     $$
     This shows (a).
 

@@ -33,308 +33,308 @@
   (n) If $\k_1 \leq \k_2$ and $\l_1 \leq \l_2$, then $\k_1^{\l_1} \leq \k_2^{\l_1}$
 }
 \sol{
-  For solutions (a) through (c) suppose that
-  \ali{
-    \k &= |K|  &
-    \l &= |L| &
-    \mu &= |M| \,,
-  }
-  where $K$, $L$, and $M$ are mutually disjoint sets.
+For solutions (a) through (c) suppose that
+\ali{
+  \k &= |K|  &
+  \l &= |L| &
+  \mu &= |M|,
+}
+where $K$, $L$, and $M$ are mutually disjoint sets.
 
-  (a)
-  \qproof{
-    It is obvious that
-    $$
+(a)
+\qproof{
+  It is obvious that
+  $$
     \k + \l = |K \cup L| = |L \cup K| = \l + \k
-    $$
-    since $K \cup L = L \cup K$ and $K$ and $L$ are disjoint.
-  }
+  $$
+  since $K \cup L = L \cup K$ and $K$ and $L$ are disjoint.
+}
 
-  (b)
-  \qproof{
-    First we note that clearly
-    $$
-    K \cup (L \cup M) = K \cup L \cup M = (K \cup L) \cup M \,.
-    $$
-    Now suppose that there is an $x \in K \cap (L \cup M)$ so that $x \in K$ and $x \in L \cup M$
-    If $x \in L$ then $x \in K \cap L$ and if $x \in M$ then $x \in K \cap M$, either of which is a contradiction since all three sets are mutually disjoint.
-    Hence $K$ and $L \cup M$ are disjoint.
-    A similar argument show that $K \cup L$ and $M$ are disjoint.
-    Thus we have the following:
-    $$
+(b)
+\qproof{
+  First we note that clearly
+  $$
+    K \cup (L \cup M) = K \cup L \cup M = (K \cup L) \cup M.
+  $$
+  Now suppose that there is an $x \in K \cap (L \cup M)$ so that $x \in K$ and $x \in L \cup M$
+  If $x \in L$ then $x \in K \cap L$ and if $x \in M$ then $x \in K \cap M$, either of which is a contradiction since all three sets are mutually disjoint.
+  Hence $K$ and $L \cup M$ are disjoint.
+  A similar argument show that $K \cup L$ and $M$ are disjoint.
+  Thus we have the following:
+  $$
     \k + (\l + \mu) = |K| + |L \cup M| = |K \cup (L \cup M)| = |(K \cup L) \cup M| = |K \cup L| + |M| = (\k + \l) + \mu
-    $$
-    as desired.
-  }
+  $$
+  as desired.
+}
 
-  (c)
-  \qproof{
-    Define the function $f: K \to K \cup L$ by simply the identity $f(k) = k$ for any $k \in K$.
-    Obviously this is an injective function so that $\k = |K| \leq |K \cup L| = \k + \l$.
-  }
+(c)
+\qproof{
+  Define the function $f: K \to K \cup L$ by simply the identity $f(k) = k$ for any $k \in K$.
+  Obviously this is an injective function so that $\k = |K| \leq |K \cup L| = \k + \l$.
+}
 
-  (d)
-  \qproof{
-    Suppose that
-    \ali{
-      \k_1 &= |K_1| &
-      \k_2 &= |K_2| &
-      \l_1 &= |L_1| &
-      \l_2 &= |L_2|
-    }
-    for sets $K_1$, $K_2$, $L_1$, and $L_2$ where $K_1 \cap L_1 = \es$ and $K_2 \cap L_2 = \es$.
-    Also suppose that $\k_1 \leq \k_2$ and $\l_1 \leq \l_2$.
-    Thus $|K_1| = \k_1 \leq \k_2 = |K_2|$ so that there is an injective function $f$ from $K_1$ to $K_2$.
-    Similarly there is an injective function $g : L_1 \to L_2$ since $|L_1| = \l_1 \leq \l_2 = |L_2|$.
-    Now define $h : K_1 \cup L_1 \to K_2 \cup L_2$ by
-    $$
-    h(x) = \begin{cases}
-      f(x) & x \in K_1 \\
-      g(x) & x \in L_1 \,.
-    \end{cases}
-    $$
-    We show that $h$ is injective so consider $x$ and $y$ in $K_1 \cup L_1$ where $x \neq y$.
-
-    Case: $x \in K_1$, $y \in K_1$.
-    Then
-    $$
-    h(x) = f(x) \neq f(y) = h(y)
-    $$
-    since $f$ is injective and $x \neq y$.
-
-    Case: $x \in L_1$, $y \in L_1$.
-    Then
-    $$
-    h(x) = g(x) \neq g(y) = h(y)
-    $$
-    since $g$ is injective and $x \neq y$.
-
-    Case: $x \in K_1$, $y \in L_1$.
-    Then we have $h(x) = f(x) \in K_2$ and $h(y) = g(y) \in L_2$ so that $h(x) \neq h(y)$ since $K_2$ and $L_2$ are disjoint.
-    Note that this is the same as the case in which $x \in L_1$ and $y \in K_1$ since we simply switch $x$ and $y$.
-
-    Since these cases are exhaustive and $h(x) \neq h(y)$ in each this shows that $h$ is injective.
-    Hence we have demonstrated that
-    $$
-    \k_1 + \l_1 = |K_1 \cup L_1| \leq |K_2 \cup L_2| = \k_2 + \l_2
-    $$
-    as desired.
-  }
-
-  For solutions (e) through (h) suppose that
+(d)
+\qproof{
+  Suppose that
   \ali{
-    \k &= |A| & \l &= |B| & \mu &= |C|
+    \k_1 &= |K_1| &
+    \k_2 &= |K_2| &
+    \l_1 &= |L_1| &
+    \l_2 &= |L_2|
   }
-  for sets $A$, $B$, and $C$.
+  for sets $K_1$, $K_2$, $L_1$, and $L_2$ where $K_1 \cap L_1 = \es$ and $K_2 \cap L_2 = \es$.
+  Also suppose that $\k_1 \leq \k_2$ and $\l_1 \leq \l_2$.
+  Thus $|K_1| = \k_1 \leq \k_2 = |K_2|$ so that there is an injective function $f$ from $K_1$ to $K_2$.
+  Similarly there is an injective function $g : L_1 \to L_2$ since $|L_1| = \l_1 \leq \l_2 = |L_2|$.
+  Now define $h : K_1 \cup L_1 \to K_2 \cup L_2$ by
+  $$
+    h(x) = \begin{cases}
+      f(x) & x \in K_1  \\
+      g(x) & x \in L_1.
+    \end{cases}
+  $$
+  We show that $h$ is injective so consider $x$ and $y$ in $K_1 \cup L_1$ where $x \neq y$.
 
-  (e)
-  \qproof{
-    First we show that $|A \times B| = |B \times A|$ by constructing a bijection $f : A \times B \to B \times A$.
-    For $(a,b) \in A \times B$ define
-    $$
-    f(a,b) = (b,a) \in B \times A \,,
-    $$
-    which is clearly a function.
-    Then for $(a,b) \in A \times B$ and $(c,d) \in A \times B$ where $f(a,b) = f(c,d)$ we have
-    $$
+  Case: $x \in K_1$, $y \in K_1$.
+  Then
+  $$
+    h(x) = f(x) \neq f(y) = h(y)
+  $$
+  since $f$ is injective and $x \neq y$.
+
+  Case: $x \in L_1$, $y \in L_1$.
+  Then
+  $$
+    h(x) = g(x) \neq g(y) = h(y)
+  $$
+  since $g$ is injective and $x \neq y$.
+
+  Case: $x \in K_1$, $y \in L_1$.
+  Then we have $h(x) = f(x) \in K_2$ and $h(y) = g(y) \in L_2$ so that $h(x) \neq h(y)$ since $K_2$ and $L_2$ are disjoint.
+  Note that this is the same as the case in which $x \in L_1$ and $y \in K_1$ since we simply switch $x$ and $y$.
+
+  Since these cases are exhaustive and $h(x) \neq h(y)$ in each this shows that $h$ is injective.
+  Hence we have demonstrated that
+  $$
+    \k_1 + \l_1 = |K_1 \cup L_1| \leq |K_2 \cup L_2| = \k_2 + \l_2
+  $$
+  as desired.
+}
+
+For solutions (e) through (h) suppose that
+\ali{
+  \k &= |A| & \l &= |B| & \mu &= |C|
+}
+for sets $A$, $B$, and $C$.
+
+(e)
+\qproof{
+  First we show that $|A \times B| = |B \times A|$ by constructing a bijection $f : A \times B \to B \times A$.
+  For $(a,b) \in A \times B$ define
+  $$
+    f(a,b) = (b,a) \in B \times A,
+  $$
+  which is clearly a function.
+  Then for $(a,b) \in A \times B$ and $(c,d) \in A \times B$ where $f(a,b) = f(c,d)$ we have
+  $$
     f(a,b) = (b,a) = f(c,d) = (d,c)
-    $$
-    so that $b=d$ and $a=c$.
-    Hence $(a,b) = (c,d)$ so that $f$ is injective.
-    Now consider any $(b,a) \in B \times A$ so that clearly $f(a,b) = (b,a)$, noting that $(a,b) \in A \times B$.
-    Clearly this shows that $f$ is surjective.
+  $$
+  so that $b=d$ and $a=c$.
+  Hence $(a,b) = (c,d)$ so that $f$ is injective.
+  Now consider any $(b,a) \in B \times A$ so that clearly $f(a,b) = (b,a)$, noting that $(a,b) \in A \times B$.
+  Clearly this shows that $f$ is surjective.
 
-    Hence $f$ is bijective so that
-    $$
+  Hence $f$ is bijective so that
+  $$
     \k \cdot \l = |A \times B| = |B \times A| = \l \cdot \k
-    $$
-    as required.
-  }
+  $$
+  as required.
+}
 
-  (f)
-  \qproof{
-    Similar part (e) above, it is trivial to find a bijection from $A \times (B \times C)$ to $(A \times B) \times C$ so that
-    $$
+(f)
+\qproof{
+  Similar part (e) above, it is trivial to find a bijection from $A \times (B \times C)$ to $(A \times B) \times C$ so that
+  $$
     \k \cdot (\l \cdot \mu) = |A \times (B \times C)| = |(A \times B) \times C| = (\k \cdot \l) \cdot \mu
-    $$
-    as desired.
-  }
+  $$
+  as desired.
+}
 
-  (g)
-  \qproof{
-    Here suppose additionally that $B \cap C = \es$.
-    First we note that since $B$ and $C$ are disjoint that $A \times B$ and $A \times C$ are also disjoint.
-    Suppose that this is not the case so that there is an $(a,b) \in A \times B$ where $(a,b) \in A \times C$ also.
-    Then clearly $b \in B$ and $b \in C$, which is a contradiction since they are disjoint.
-    Now, it is also trivial to show the equality
-    $$
-    A \times (B \cup C) = (A \times B) \cup (A \times C) \,.
-    $$
-    Hence we have that
-    $$
+(g)
+\qproof{
+  Here suppose additionally that $B \cap C = \es$.
+  First we note that since $B$ and $C$ are disjoint that $A \times B$ and $A \times C$ are also disjoint.
+  Suppose that this is not the case so that there is an $(a,b) \in A \times B$ where $(a,b) \in A \times C$ also.
+  Then clearly $b \in B$ and $b \in C$, which is a contradiction since they are disjoint.
+  Now, it is also trivial to show the equality
+  $$
+    A \times (B \cup C) = (A \times B) \cup (A \times C).
+  $$
+  Hence we have that
+  $$
     \k \cdot (\l + \mu) = \k \cdot |B \cup C| = |A \times (B \cup C)| = |(A \times B) \cup (A \times C)|
     = |A \times B| + |A \times C| = \k \cdot \l + \k \cdot \mu
-    $$
-    as desired.
-  }
+  $$
+  as desired.
+}
 
-  (h)
-  \qproof{
-    Here suppose that $\l > 0$  so that $B \neq \es$.
-    Here we construct a bijection $f: A \to A \times B$, from which it follows that
-    $$
-    \k = |A| \leq |A \times B| = \k \cdot \l \,.
-    $$
-    Since $B \neq \es$ there exists a $b \in B$.
-    So for any $a \in A$ define
-    $$
-    f(a) = (a, b) \,,
-    $$
-    which is clearly a function.
-    So for $a_1, a_2 \in A$ where $a_1 \neq a_2$ we have that
-    $$
+(h)
+\qproof{
+  Here suppose that $\l > 0$  so that $B \neq \es$.
+  Here we construct a bijection $f: A \to A \times B$, from which it follows that
+  $$
+    \k = |A| \leq |A \times B| = \k \cdot \l.
+  $$
+  Since $B \neq \es$ there exists a $b \in B$.
+  So for any $a \in A$ define
+  $$
+    f(a) = (a, b),
+  $$
+  which is clearly a function.
+  So for $a_1, a_2 \in A$ where $a_1 \neq a_2$ we have that
+  $$
     f(a_1) = (a_1, b) \neq (a_2, b) = f(a_2)
-    $$
-    so that $f$ is injective.
-  }
+  $$
+  so that $f$ is injective.
+}
 
-  (i)
-  \qproof{
-    Suppose that
-    \ali{
-      \k_1 &= |A_1| & \k_2 &= |A_2| & \l_1 &= |B_1| & \l_2 &= |B_2|
-    }
-    for sets $A_1$, $A_2$, $B_1$, and $B_2$ where $\k_1 = |A_1| \leq |A_2| = \k_2$ and $\l_1 = |B_1| \leq |B_2| = \l_2$.
-    Hence there is an injective function $f: A_1 \to A_2$ and injective function $g: B_1 \to B_2$.
-    We shall construct an injective function $h: A_1 \times B_1 \to A_2 \times B_2$ so that it immediately follows that
-    $$
-    \k_1 \cdot \l_1 = |A_1 \times B_1| \leq |A_2 \times B_2| = \k_2 \cdot \l_2
-    $$
-    as required.
-    So for $(a, b) \in A_1 \times B_1$ define
-    $$
-    h(a, b) = (f(a), g(b))
-    $$
-    Suppose then $(a, b) \in A_1 \times B_1$ and $(c, d) \in A_1 \times B_1$ where $(a,b) \neq (c,d)$.
-    If $a \neq c$ then $f(a) \neq f(c)$ since $f$ is injective so that
-    $$
-    h(a,b) = (f(a), g(b)) \neq (f(c), g(d)) = h(c,d)
-    $$
-    Similarly if $b \neq d$ then $g(b) \neq g(d)$ since $g$ is injective.
-    Hence again
-    $$
-    h(a,b) = (f(a), g(b)) \neq (f(c), g(d)) = h(c,d)
-    $$
-    Thus in all cases $h(a,b) \neq h(c,d)$ so that $h$ is injective.
-  }
-
-  (j) This is adequately proven in the text.
-
-  For solutions (k) through (m) suppose that
+(i)
+\qproof{
+  Suppose that
   \ali{
-    \k &= |A| & \l &= |B|
+    \k_1 &= |A_1| & \k_2 &= |A_2| & \l_1 &= |B_1| & \l_2 &= |B_2|
   }
-  for sets $A$ and $B$.
-  
-  (k)
-  \qproof{
-    Suppose here that $\k \geq 2$.
-    Then $2 \leq \k$ and $\k \leq \k$ so that by property (i) we have
-    $$
-    2 \cdot \k \leq \k \cdot \k \,.
-    $$
-    Then by property (j) we have
-    $$
+  for sets $A_1$, $A_2$, $B_1$, and $B_2$ where $\k_1 = |A_1| \leq |A_2| = \k_2$ and $\l_1 = |B_1| \leq |B_2| = \l_2$.
+  Hence there is an injective function $f: A_1 \to A_2$ and injective function $g: B_1 \to B_2$.
+  We shall construct an injective function $h: A_1 \times B_1 \to A_2 \times B_2$ so that it immediately follows that
+  $$
+    \k_1 \cdot \l_1 = |A_1 \times B_1| \leq |A_2 \times B_2| = \k_2 \cdot \l_2
+  $$
+  as required.
+  So for $(a, b) \in A_1 \times B_1$ define
+  $$
+    h(a, b) = (f(a), g(b))
+  $$
+  Suppose then $(a, b) \in A_1 \times B_1$ and $(c, d) \in A_1 \times B_1$ where $(a,b) \neq (c,d)$.
+  If $a \neq c$ then $f(a) \neq f(c)$ since $f$ is injective so that
+  $$
+    h(a,b) = (f(a), g(b)) \neq (f(c), g(d)) = h(c,d)
+  $$
+  Similarly if $b \neq d$ then $g(b) \neq g(d)$ since $g$ is injective.
+  Hence again
+  $$
+    h(a,b) = (f(a), g(b)) \neq (f(c), g(d)) = h(c,d)
+  $$
+  Thus in all cases $h(a,b) \neq h(c,d)$ so that $h$ is injective.
+}
+
+(j) This is adequately proven in the text.
+
+For solutions (k) through (m) suppose that
+\ali{
+  \k &= |A| & \l &= |B|
+}
+for sets $A$ and $B$.
+
+(k)
+\qproof{
+  Suppose here that $\k \geq 2$.
+  Then $2 \leq \k$ and $\k \leq \k$ so that by property (i) we have
+  $$
+    2 \cdot \k \leq \k \cdot \k.
+  $$
+  Then by property (j) we have
+  $$
     \k + \k = 2 \cdot \k \leq \k \cdot \k
-    $$
-    as desired.
-  }
+  $$
+  as desired.
+}
 
-  (l)
-  \qproof{
-    Here suppose that $\l = |B| > 0$ so that $B \neq \es$.
-    Hence there exists a $b \in B$.
-    We shall construct an injective $f: A \to A^B$, from which it follows that
-    $$
-    \k = |A| \leq |A^B| = \k^\l \,.
-    $$
-    So for any $a \in A$ define $f(a) = g$ where $g : B \to A$ is a function defined by $g(b) = a$ for all $b \in B$, noting that $g \neq \es$ since $B \neq \es$.
+(l)
+\qproof{
+  Here suppose that $\l = |B| > 0$ so that $B \neq \es$.
+  Hence there exists a $b \in B$.
+  We shall construct an injective $f: A \to A^B$, from which it follows that
+  $$
+    \k = |A| \leq |A^B| = \k^\l.
+  $$
+  So for any $a \in A$ define $f(a) = g$ where $g : B \to A$ is a function defined by $g(b) = a$ for all $b \in B$, noting that $g \neq \es$ since $B \neq \es$.
 
-    Now consider any $a_1, a_2 \in A$ where $a_1 \neq a_2$ so that for any $b \in B$ we have
-    $$
-    f(a_1)(b) = a_1 \neq a_2 = f(a_2)(b) \,.
-    $$
-    From this it follows that $f(a_1) \neq f(a_2)$ so that $f$ is injective.
-  }
+  Now consider any $a_1, a_2 \in A$ where $a_1 \neq a_2$ so that for any $b \in B$ we have
+  $$
+    f(a_1)(b) = a_1 \neq a_2 = f(a_2)(b).
+  $$
+  From this it follows that $f(a_1) \neq f(a_2)$ so that $f$ is injective.
+}
 
-  (m)
-  \qproof{
-    Here suppose that $\k = |A| > 1$ so that there are $a_1, a_2 \in A$ where $a_1 \neq a_2$.
-    We shall construct an injective function $f: B  \to A^B$ so that
-    $$
-    \l = |B| \leq |A^B| = \k^\l \,.
-    $$
-    So for any $b \in B$ define $f(b) = g$ where $g: B \to A$ is a function defined by
-    $$
+(m)
+\qproof{
+  Here suppose that $\k = |A| > 1$ so that there are $a_1, a_2 \in A$ where $a_1 \neq a_2$.
+  We shall construct an injective function $f: B  \to A^B$ so that
+  $$
+    \l = |B| \leq |A^B| = \k^\l.
+  $$
+  So for any $b \in B$ define $f(b) = g$ where $g: B \to A$ is a function defined by
+  $$
     g(c) =
     \begin{cases}
-      a_1 & c = b \\
+      a_1 & c = b    \\
       a_2 & c \neq b
     \end{cases}
-    $$
-    for $c \in B$.
-    Now suppose that $b_1, b_2 \in B$ where $b_1 \neq b_2$.
-    We then have
-    $$
+  $$
+  for $c \in B$.
+  Now suppose that $b_1, b_2 \in B$ where $b_1 \neq b_2$.
+  We then have
+  $$
     f(b_1)(b_1) = a_1 \neq a_2 = f(b_2)(b_1)
-    $$
-    since $b_1 \neq b_2$.
-    From this it follows that $f(b_1) \neq f(b_2)$ so that $f$ is injective.
-  }
+  $$
+  since $b_1 \neq b_2$.
+  From this it follows that $f(b_1) \neq f(b_2)$ so that $f$ is injective.
+}
 
-  (n)
-  \qproof{
-    Suppose that
-    \ali{
-      \k_1 &= |A_1| & \k_2 &= |A_2| & \l_1 &= |B_1| & \l_2 &= |B_2|
-    }
-    for sets $A_1$, $A_2$, $B_1$, and $B_2$ where $\k_1 = |A_1| \leq |A_2| = \k_2$ and $\l_1 = |B_1| \leq |B_2| = \l_2$.
+(n)
+\qproof{
+Suppose that
+\ali{
+  \k_1 &= |A_1| & \k_2 &= |A_2| & \l_1 &= |B_1| & \l_2 &= |B_2|
+}
+for sets $A_1$, $A_2$, $B_1$, and $B_2$ where $\k_1 = |A_1| \leq |A_2| = \k_2$ and $\l_1 = |B_1| \leq |B_2| = \l_2$.
 
-    The theorem as presented in the text is actually not true in full generality.
-    As a counterexample suppose that $A_1 = A_2 = B_1 = \es$ so that $\k_1 = \k_2 = \l_1 = 0$ and $B_2 = 1$ so that $\l_2 = 1$.
-    Then certainly the hypotheses above are true but we also have
-    $$
-    \k_1^{\l_1} = 0^0 = 1 > 0 = 0^1 = \k_2^{\l_2} \,
-    $$
-    where we have used the results of Exercises~5.1.2 and 5.1.3.
+The theorem as presented in the text is actually not true in full generality.
+As a counterexample suppose that $A_1 = A_2 = B_1 = \es$ so that $\k_1 = \k_2 = \l_1 = 0$ and $B_2 = 1$ so that $\l_2 = 1$.
+Then certainly the hypotheses above are true but we also have
+$$
+  \k_1^{\l_1} = 0^0 = 1 > 0 = 0^1 = \k_2^{\l_2}
+$$
+where we have used the results of Exercises~5.1.2 and 5.1.3.
 
-    However, if we add the restriction that $\k_2 > 0$ then it becomes true.
-    To prove this first note that this implies that $A_2 \neq \es$ so that there is an $a_2 \in A_2$.
-    Also there is an injective function $f: A_1 \to A_2$ and an injective function $g: B_1 \to B_2$.
-    We shall construct an injective $F: A_1^{B_1} \to A_2^{B_2}$, from which it follows that
-    $$
-    \k_1^{\l_1} = |A_1^{B_1}| \leq |A_2^{B_2}| = \k_2^{\l_2} \,.
-    $$
-    So for any $h_1 \in A_1^{B_1}$ define $F(h_1) = h_2$ where $h_2 \in A_2^{B_2}$ is defined by
-    $$
-    h_2(b) = \begin{cases}
-      f(h_1(g^{-1}(b))) & b \in \ran(h_1) \\
-      a_2 & b \notin \ran(h_1)
-    \end{cases}
-    $$
-    for any $b \in B_2$, noting that $g^{-1}$ is a function on $\ran(h_1)$ since $g$ is injective.
-    Clearly $F$ is a function but now we show that it is injective.
+However, if we add the restriction that $\k_2 > 0$ then it becomes true.
+To prove this first note that this implies that $A_2 \neq \es$ so that there is an $a_2 \in A_2$.
+Also there is an injective function $f: A_1 \to A_2$ and an injective function $g: B_1 \to B_2$.
+We shall construct an injective $F: A_1^{B_1} \to A_2^{B_2}$, from which it follows that
+$$
+  \k_1^{\l_1} = |A_1^{B_1}| \leq |A_2^{B_2}| = \k_2^{\l_2}.
+$$
+So for any $h_1 \in A_1^{B_1}$ define $F(h_1) = h_2$ where $h_2 \in A_2^{B_2}$ is defined by
+$$
+  h_2(b) = \begin{cases}
+    f(h_1(g^{-1}(b))) & b \in \ran(h_1)    \\
+    a_2               & b \notin \ran(h_1)
+  \end{cases}
+$$
+for any $b \in B_2$, noting that $g^{-1}$ is a function on $\ran(h_1)$ since $g$ is injective.
+Clearly $F$ is a function but now we show that it is injective.
 
-    So consider any $h_1, h_2 \in A_1^{B_1}$ where $h_1 \neq h_2$.
-    Then there is a $b_1 \in B_1$ such that $h_1(b_1) \neq h_2(b_1)$.
-    So let $b_2 = g(b_1)$ so that clearly $b_2 \in \ran(g)$ and $b_1 = g^{-1}(b_2)$.
-    Hence we have
-    $$
-    F(h_1)(b_2) = f(h_1(g^{-1}(b_2))) = f(h_1(b_1)) \neq f(h_2(b_1)) = f(h_2(g^{-1}(b_2))) = F(h_2)(b_2)
-    $$
-    since $h_1(b_1) \neq h_2(b_1)$ and $f$ is injective.
-    It thus follows that $F(h_1) \neq F(h_2)$ so that we have shown that $F$ is injective.
-  }
+So consider any $h_1, h_2 \in A_1^{B_1}$ where $h_1 \neq h_2$.
+Then there is a $b_1 \in B_1$ such that $h_1(b_1) \neq h_2(b_1)$.
+So let $b_2 = g(b_1)$ so that clearly $b_2 \in \ran(g)$ and $b_1 = g^{-1}(b_2)$.
+Hence we have
+$$
+  F(h_1)(b_2) = f(h_1(g^{-1}(b_2))) = f(h_1(b_1)) \neq f(h_2(b_1)) = f(h_2(g^{-1}(b_2))) = F(h_2)(b_2)
+$$
+since $h_1(b_1) \neq h_2(b_1)$ and $f$ is injective.
+It thus follows that $F(h_1) \neq F(h_2)$ so that we have shown that $F$ is injective.
+}
 }
 
 \exercise{2}{
@@ -346,7 +346,7 @@
 
     We claim that $A^\es = \braces{\es} = 1$ so that clearly
     $$
-    \k^0 = |A^\es| = |1| = 1 \,.
+      \k^0 = |A^\es| = |1| = 1.
     $$
     First consider any $f \in A^\es$.
     Suppose that $f \neq \es$ so that there is a $(b,a) \in f \subseteq \es \times A$.
@@ -358,19 +358,19 @@
 
     We also claim that $|A^1| = |A|$ so that
     $$
-    \k^1 = |A^1| = |A| = \k \,.
+      \k^1 = |A^1| = |A| = \k.
     $$
     To this end for any $f \in A^1$ define $F(f) = f(\es)$, noting that $1 = \braces{\es}$, so that clearly $F: A^1 \to A$.
     Now consider any $f,g \in A^1$ where $f \neq g$.
     Then it has to be that
     $$
-    F(f) = f(\es) \neq g(\es) = F(g)
+      F(f) = f(\es) \neq g(\es) = F(g)
     $$
     so that $F$ is injective.
     Now consider any $a \in A$ and define $f \in A^1$ by $f(\es) = a$.
     Then clearly
     $$
-    F(f) = f(\es) = a
+      F(f) = f(\es) = a
     $$
     so that $F$ is surjective.
     Hence we've shown that $F$ is bijective.
@@ -386,11 +386,11 @@
 
     Note first that if $\k = 0$ then by Exercise~5.1.2 it follows that
     $$
-    1^\k = 1^0 = 1 \,.
+      1^\k = 1^0 = 1.
     $$
     In the case where $\k > 0$ we claim that there is a unique $f \in 1^A$ so that clearly then
     $$
-    1^\k = |1^A| = 1 \,.
+      1^\k = |1^A| = 1.
     $$
     For existence define $f:A \to 1$ by $f(x) = \es$ for all $x \in A$ so that clearly $f \in 1^A$.
     For uniqueness consider any $f_1, f_2 \in 1^A$.
@@ -401,7 +401,7 @@
     Hence there is an $a \in A$.
     We claim that in this case that $\es^A = \es$ so that
     $$
-    0^\k = |\es^A| = |\es| = 0 \,.
+      0^\k = |\es^A| = |\es| = 0.
     $$
     So suppose that $\es^A \neq \es$ so that there \emph{is} an $f \in \es^A$.
     Then it's true that for every $a \in A$ there is a unique $b \in \es$ such that $f(a) = b$.
@@ -414,36 +414,36 @@
   Prove that $\k^\k \leq 2^{\k \cdot \k}$.
 }
 \sol{
-  \qproof{
-    Suppose that $\k = |A|$ for a set $A$.
-    Then we construct an injective $F : A^A \to 2^{A \times A}$ so that
-    $$
-    \k^\k = |A^A| \leq |2^{A \times A}| = |2|^{|A \times A|} = 2^{\k \cdot \k} \,.
-    $$
-    So for any $f \in A^A$ define $F(f) = g$ where $g \in 2^{A\times A}$ is defined by
-    $$
-    g(a_1, a_2) =
-    \begin{cases}
-      0 & f(a_1) \neq a_2 \\
-      1 & f(a_1) = a_2
-    \end{cases}
-    $$
-    for $(a_1, a_2) \in A \times A$.
-    To show that $F$ is injective consider any $f,g \in A^A$ where $f \neq g$.
-    Then there is an $a \in A$ such that $f(a) \neq g(a)$.
-    Now let $a_1 = f(a)$ and $a_2 = g(a)$ so that
-    $$
-    f(a) = a_1 \neq a_2 = g(a) \,.
-    $$
-    Since $f(a) = a_1$ it follows by definition that $F(f)(a,a_1) = 1$.
-    Similarly since $g(a) = a_2  \neq a_1$ it follows that $F(g)(a,a_1) = 0$.
-    Hence we have
-    $$
-    F(f)(a, a_1) = 1 \neq 0 = F(g)(a, a_1)
-    $$
-    so that clearly $F(f) \neq F(g)$.
-    Thus $F$ is injective.
-  }
+\qproof{
+Suppose that $\k = |A|$ for a set $A$.
+Then we construct an injective $F : A^A \to 2^{A \times A}$ so that
+$$
+  \k^\k = |A^A| \leq |2^{A \times A}| = |2|^{|A \times A|} = 2^{\k \cdot \k}.
+$$
+So for any $f \in A^A$ define $F(f) = g$ where $g \in 2^{A\times A}$ is defined by
+$$
+  g(a_1, a_2) =
+  \begin{cases}
+    0 & f(a_1) \neq a_2 \\
+    1 & f(a_1) = a_2
+  \end{cases}
+$$
+for $(a_1, a_2) \in A \times A$.
+To show that $F$ is injective consider any $f,g \in A^A$ where $f \neq g$.
+Then there is an $a \in A$ such that $f(a) \neq g(a)$.
+Now let $a_1 = f(a)$ and $a_2 = g(a)$ so that
+$$
+  f(a) = a_1 \neq a_2 = g(a).
+$$
+Since $f(a) = a_1$ it follows by definition that $F(f)(a,a_1) = 1$.
+Similarly since $g(a) = a_2  \neq a_1$ it follows that $F(g)(a,a_1) = 0$.
+Hence we have
+$$
+  F(f)(a, a_1) = 1 \neq 0 = F(g)(a, a_1)
+$$
+so that clearly $F(f) \neq F(g)$.
+Thus $F$ is injective.
+}
 }
 
 \exercise{5}{
@@ -457,14 +457,14 @@
     There is also an injective $f : A \to B$ so that $f^{-1}$ is a function from $\ran(f) \to A$.
     So let $g$ be a mapping from $B$ to $A$ defined by
     $$
-    g(b) = \begin{cases}
-      f^{-1}(b) & b \in \ran(f) \\
-      a & b \notin \ran(f) \,.
-    \end{cases}
+      g(b) = \begin{cases}
+        f^{-1}(b) & b \in \ran(f)     \\
+        a         & b \notin \ran(f).
+      \end{cases}
     $$
     To show that $g$ is onto consider any $x \in A$ and let $b = f(a)$. Thus $b \in \ran(f)$ so that
     $$
-    g(b) = f^{-1}(b) = f^{-1}(f(a)) = a \,.
+      g(b) = f^{-1}(b) = f^{-1}(f(a)) = a.
     $$
     Hence $g$ is onto since $a$ was arbitrary.
   }
@@ -472,30 +472,30 @@
 
 \exercise{6} {
   If there is a mapping of $B$ onto $A$, then $2^{\abs{A}} \leq 2^{\abs{B}}$.
-  [Hint: Given $g$ mapping $B$ onto $A$, let $f(X) = \inv{g}[X]$, for all $X \ss A$.]
+    [Hint: Given $g$ mapping $B$ onto $A$, let $f(X) = \inv{g}[X]$, for all $X \ss A$.]
 }
 \sol{
-  \qproof{
-    Suppose that $f$ is a mapping from $B$ \emph{onto} $A$.
-    We shall construct an injective $F: 2^A \to 2^B$ so that
-    $$
-    2^{|A|} = |2|^{|A|} = |2^A| \leq |2^B| = |2|^{|B|} = 2^{|B|} \,.
-    $$
-    So for any $g \in 2^A$ let $F(g) = h$ where $h \in 2^B$ is defined by
-    $$
-    h(b) = g(f(b))
-    $$
-    for $b \in B$.
-    To show that $F$ is injective consider any $g_1, g_2 \in 2^A$ where $g_1 \neq g_2$.
-    Then there is an $a \in A$ such that $g_1(a) \neq g_2(a)$.
-    Since $f : B \to A$ is onto there is a $b \in B$ such that $f(b) = a$.
-    Thus we have
-    $$
-    F(g_1)(b) = g_1(f(b)) = g_1(a) \neq g_2(a) = g_2(f(b)) = F(g_2)(b)
-    $$
-    so that $F(g_1) \neq F(g_2)$.
-    Thus $F$ is injective.
-  }
+\qproof{
+Suppose that $f$ is a mapping from $B$ \emph{onto} $A$.
+We shall construct an injective $F: 2^A \to 2^B$ so that
+$$
+  2^{|A|} = |2|^{|A|} = |2^A| \leq |2^B| = |2|^{|B|} = 2^{|B|}.
+$$
+So for any $g \in 2^A$ let $F(g) = h$ where $h \in 2^B$ is defined by
+$$
+  h(b) = g(f(b))
+$$
+for $b \in B$.
+To show that $F$ is injective consider any $g_1, g_2 \in 2^A$ where $g_1 \neq g_2$.
+Then there is an $a \in A$ such that $g_1(a) \neq g_2(a)$.
+Since $f : B \to A$ is onto there is a $b \in B$ such that $f(b) = a$.
+Thus we have
+$$
+  F(g_1)(b) = g_1(f(b)) = g_1(a) \neq g_2(a) = g_2(f(b)) = F(g_2)(b)
+$$
+so that $F(g_1) \neq F(g_2)$.
+Thus $F$ is injective.
+}
 }
 
 \exercise{7}{
@@ -525,7 +525,7 @@
     We also note that clearly $g^{-1} : X \to n$ is also a bijection.
     Now define a function $h : n \to n$ by
     $$
-    h(k) = (g^{-1} \circ f \circ g)(k) = g^{-1}(f(g(k))
+      h(k) = (g^{-1} \circ f \circ g)(k) = g^{-1}(f(g(k))
     $$
     for any $k \in n$.
     Since $g$, $f$, and $g^{-1}$ are all injective it follows from Exercise~2.3.5 that $h$ is also injective.
@@ -533,7 +533,7 @@
     We now claim that $\ran(h)$ is proper subset of $n$.
     First we note that for any $m \in n$ we have
     $$
-    g(h(m)) = g(g^{-1}(f(g(m)))) = f(g(m))
+      g(h(m)) = g(g^{-1}(f(g(m)))) = f(g(m))
     $$
     since $g$ is a function.
     Now, since $\ran(f) \subset X$ there is an $x \in X$ such that $x \notin \ran(f)$.
@@ -541,7 +541,7 @@
     Now suppose that there is an $m \in n$ such that $h(m) = k$.
     Then per the above we have
     $$
-    f(g(m)) = g(h(m)) = g(k) = x \,,
+      f(g(m)) = g(h(m)) = g(k) = x,
     $$
     which is impossible since $x \notin \ran(f)$.
     So it must be that there is no such $m$ so that $k \notin \ran(h)$
@@ -559,72 +559,72 @@
   Every countable set is Dedekind infinite.
 }
 \sol{
-  \begin{lem}\label{lem:card:equidede}
-    If sets $X$ and $Y$ are equipotent (i.e. $|X| = |Y|$) and $Y$ is Dedekind infinite then $X$ is also Dedekind infinite.
-  \end{lem}
-  \qproof{
-    Since $X$ and $Y$ are equipotent there is a bijective $f : X \to Y$ so that $\inv{f}$ is also bijective.
-    Also since $Y$ is Dedekind infinite there is a $Z \subset Y$ such that there is a bijective $g : Y \to Z$ so that $\inv{g}$ is also bijective.
-    So since $Z \subset Y$ there is a $y \in Y$ such that $y \notin Z$.
-    So let $S = X - \braces{\inv{f}(y)}$.
-    Clearly since $\inv{f}(y) \in X$ it follows that $S \subset X$ since $\inv{f}(y) \notin S$.
-    Now define $h: X \to S$ by
-    $$
-    h(x) = (\inv{f} \circ g \circ f)(x) = \inv{f}(g(f(x))))
-    $$
-    for $x \in X$.
-    Since $f$ is a function this implies that
-    $$
-    f(h(x)) = f(\inv{f}(g(f(x)))) = g(f(x)) \,.
-    $$
-    Now suppose for a moment that there is an $x \in X$ such that $h(x) = \inv{f}(y)$.
-    Then
-    $$
-    g(f(x)) = f(h(x)) = f(\inv{f}(y)) = y \,,
-    $$
-    which is impossible since $y \notin Z$ but $\ran(g) \subseteq Z$.
-    Hence there is no such $x$ so that $h$ really is a map from $X$ to $S$ (as opposed to $X$ to $X$).
+\begin{lem}\label{lem:card:equidede}
+  If sets $X$ and $Y$ are equipotent (i.e. $|X| = |Y|$) and $Y$ is Dedekind infinite then $X$ is also Dedekind infinite.
+\end{lem}
+\qproof{
+Since $X$ and $Y$ are equipotent there is a bijective $f : X \to Y$ so that $\inv{f}$ is also bijective.
+Also since $Y$ is Dedekind infinite there is a $Z \subset Y$ such that there is a bijective $g : Y \to Z$ so that $\inv{g}$ is also bijective.
+So since $Z \subset Y$ there is a $y \in Y$ such that $y \notin Z$.
+So let $S = X - \braces{\inv{f}(y)}$.
+Clearly since $\inv{f}(y) \in X$ it follows that $S \subset X$ since $\inv{f}(y) \notin S$.
+Now define $h: X \to S$ by
+$$
+  h(x) = (\inv{f} \circ g \circ f)(x) = \inv{f}(g(f(x))))
+$$
+for $x \in X$.
+Since $f$ is a function this implies that
+$$
+  f(h(x)) = f(\inv{f}(g(f(x)))) = g(f(x)).
+$$
+Now suppose for a moment that there is an $x \in X$ such that $h(x) = \inv{f}(y)$.
+Then
+$$
+  g(f(x)) = f(h(x)) = f(\inv{f}(y)) = y,
+$$
+which is impossible since $y \notin Z$ but $\ran(g) \subseteq Z$.
+Hence there is no such $x$ so that $h$ really is a map from $X$ to $S$ (as opposed to $X$ to $X$).
 
-    Now, since $\inv{f}$, $g$, and $f$ are all injective it follows from Exercise~2.3.5 that $h$ is injective as well.
-    Then consider any $s \in S$ and let $x = \inv{f}(\inv{g}(f(s)))$, noting that $\inv{g}(f(s))$ exists since $s \neq \inv{f}(y)$.
-    Then we have
-    $$
-    h(x) = \inv{f}(g(f(\inv{f}(\inv{g}(f(s))))))) = \inv{f}(g(\inv{g}(f(s)))) = \inv{f}(f(s)) = s
-    $$
-    so that $h$ is surjective since $s$ was arbitrary.
-    Hence $h$ is a bijective map from $X$ to $S$, and since $S \subset X$ this means that $X$ is Dedekind infinite.
-  }
+Now, since $\inv{f}$, $g$, and $f$ are all injective it follows from Exercise~2.3.5 that $h$ is injective as well.
+Then consider any $s \in S$ and let $x = \inv{f}(\inv{g}(f(s)))$, noting that $\inv{g}(f(s))$ exists since $s \neq \inv{f}(y)$.
+Then we have
+$$
+h(x) = \inv{f}(g(f(\inv{f}(\inv{g}(f(s))))))) = \inv{f}(g(\inv{g}(f(s)))) = \inv{f}(f(s)) = s
+$$
+so that $h$ is surjective since $s$ was arbitrary.
+Hence $h$ is a bijective map from $X$ to $S$, and since $S \subset X$ this means that $X$ is Dedekind infinite.
+}
 
-  \begin{lem}\label{lem:card:natdede}
-    $\nats$ is Dedekind infinite.
-  \end{lem}
-  \qproof{
-    Let $N = \nats - \braces{0}$ so that clearly $N$ is proper subset of $\nats$.
-    Then we define the map $f : \nats \to N$ by
-    $$
+\begin{lem}\label{lem:card:natdede}
+  $\nats$ is Dedekind infinite.
+\end{lem}
+\qproof{
+  Let $N = \nats - \braces{0}$ so that clearly $N$ is proper subset of $\nats$.
+  Then we define the map $f : \nats \to N$ by
+  $$
     f(n) = n+1
-    $$
-    for $n \in \nats$.
-    Consider any $n,m \in \nats$ where $n \neq m$.
-    Then clearly
-    \gath{
-      n \neq m \\
-      n+1 \neq m+1 \\
-      f(n) \neq f(m)
-    }
-    so that $f$ is injective.
-    Now consider any $n \in N$ so that clearly $f(n-1) = (n-1) + 1 = n$, noting that since $n \neq 0$ we have $n \geq 1$ so that $n-1 \geq 0$.
-    Hence $n-1 \in \nats$.
-    This shows that $f$ is surjective.
-    Hence $f$ is a bijection from $\nats$ onto a proper subset $N$ so that by definition $\nats$ is Dedekind infinite.
+  $$
+  for $n \in \nats$.
+  Consider any $n,m \in \nats$ where $n \neq m$.
+  Then clearly
+  \gath{
+    n \neq m \\
+    n+1 \neq m+1 \\
+    f(n) \neq f(m)
   }
+  so that $f$ is injective.
+  Now consider any $n \in N$ so that clearly $f(n-1) = (n-1) + 1 = n$, noting that since $n \neq 0$ we have $n \geq 1$ so that $n-1 \geq 0$.
+  Hence $n-1 \in \nats$.
+  This shows that $f$ is surjective.
+  Hence $f$ is a bijection from $\nats$ onto a proper subset $N$ so that by definition $\nats$ is Dedekind infinite.
+}
 
-  \mainprob
-  \qproof{
-    Suppose that $X$ is a countable set.
-    Then by definition $X$ is equipotent to $\nats$.
-    Hence since $\nats$ is Dedekind infinite (Lemma~\ref{lem:card:natdede}) it follows that $X$ is as well by Lemma~\ref{lem:card:equidede}.
-  }
+\mainprob
+\qproof{
+  Suppose that $X$ is a countable set.
+  Then by definition $X$ is equipotent to $\nats$.
+  Hence since $\nats$ is Dedekind infinite (Lemma~\ref{lem:card:natdede}) it follows that $X$ is as well by Lemma~\ref{lem:card:equidede}.
+}
 }
 
 \exercise{10}{
@@ -636,10 +636,10 @@
     Then by Exercise~5.1.9 $Y$ is Dedekind infinite so that there is a $Z \subset Y \subseteq X$ such that there is a bijective $f : Y \to Z$.
     So define the following $g: X \to X$ by
     $$
-    g(x) = \begin{cases}
-      f(x) & x \in Y \\
-      x & x \notin Y
-    \end{cases}
+      g(x) = \begin{cases}
+        f(x) & x \in Y    \\
+        x    & x \notin Y
+      \end{cases}
     $$
     for any $x \in X$.
     Now since $Z \subset Y$ there is a $y \in Y$ such that $y \notin Z$, noting that since $Y \subseteq X$, $y \in X$.
@@ -657,21 +657,21 @@
     Case: $x_1 \in Y$ and $x_2 \in Y$.
     Then
     $$
-    g(x_1) = f(x_1) \neq f(x_2) = g(x_2)
+      g(x_1) = f(x_1) \neq f(x_2) = g(x_2)
     $$
     since $f$ is injective.
 
     Case: $x_1 \notin Y$ and $x_2 \notin Y$.
     Then
     $$
-    g(x_1) = x_1 \neq x_2 = g(x_2) \,.
+      g(x_1) = x_1 \neq x_2 = g(x_2).
     $$
 
     Case: $x_1 \in Y$ and $x_2 \notin Y$.
     Then $g(x_1) = f(x_1) \in Z$ but $g(x_2) = x_2 \notin Y$ so that  $x_2 \notin Z$ either since $Z \subset Y$.
     Hence $f(x_1) \neq x_2$ so that
     $$
-    g(x_1) = f(x_1) \neq x_2 = g(x_2) \,.
+      g(x_1) = f(x_1) \neq x_2 = g(x_2).
     $$
     Thus in all cases $g(x_1) \neq g(x_2)$ so that $g$ is injective since $x_1$ and $x_2$ were arbitrary.
 
@@ -681,50 +681,50 @@
 
 \exercise{11}{
   If $X$ is Dedekind infinite, then it contains a countable subset.
-  [Hint: Let $x \in X - f[X]$; define $x_0 = x$, $x_1 = f(x_0)$, \ldots, $x_{n+1} = f(x_n)$, \ldots \,.
-    The set $\braces{x_n \where n \in \nats}$ is countable.]
+    [Hint: Let $x \in X - f[X]$; define $x_0 = x$, $x_1 = f(x_0)$, \ldots, $x_{n+1} = f(x_n)$, \ldots.
+      The set $\braces{x_n \where n \in \nats}$ is countable.]
 }
 \sol{
   \qproof{
-  Suppose that $X$ is a Dedekind infinite set.
-  Then there is a $Y \subset X$ such that there is a bijective $f : X \to Y$.
-  Since $Y \subset X$ there is an $x \in X$ such that $x \notin Y$.
-  So first define $x_0 = x$ and then for $n \in \nats$ define $x_{n+1} = f(x_n)$.
+    Suppose that $X$ is a Dedekind infinite set.
+    Then there is a $Y \subset X$ such that there is a bijective $f : X \to Y$.
+    Since $Y \subset X$ there is an $x \in X$ such that $x \notin Y$.
+    So first define $x_0 = x$ and then for $n \in \nats$ define $x_{n+1} = f(x_n)$.
 
-  We claim that $x_n \neq x_m$ for any $n,m \in \nats$ where $n \neq m$, from which it clearly follows that
-  $$
-  Z = \braces{x_n \where n \in \nats}
-  $$
-  is a countable set.
-  So consider any $n,m \in \nats$ where $n \neq m$
-  Without loss of generality we can assume that $n < m$.
-  Suppose that  $x_n = x_m$.
-  We now show by induction that $x_{n-k} = x_{m-k}$ for all $n \geq k \geq 0$.
-  If $k=0$ then we clearly have
-  $$
-  x_{n-k} = x_{n-0} = x_n = x_m = x_{m-0} = x_{m-k} \,.
-  $$
-  Now suppose that $x_{n-k} = x_{m-k}$.
-  We then have
-  $$
-  f(x_{n-(k+1)}) = f(x_{n-k-1}) = x_{n-k} = x_{m-k} = f(x_{m-k-1}) = f(x_{m-(k+1)})
-  $$
-  Since $f$ is injective this implies that $x_{n-(k+1)} = x_{m-(k+1)}$ so that inductive proof is complete.
-  So since this holds for $k=n$ we have that
-  $$
-  x_0 = x_{n-n} = x_{m-n} = f(x_{m-n-1}) \,,
-  $$
-  Noting that $m-n-1 \geq 0$ since $m \geq n +1$.
-  But $x_0 = x \notin Y$ and $f(x_{m-n-1}) \in Y$ since $f:X \to Y$ so that we have a contradiction.
-  So it must be that $x_n \neq x_m$.
-  Hence $Z$ is countable.
-  Since also clearly $Z \subseteq X$ the proof is complete.
+    We claim that $x_n \neq x_m$ for any $n,m \in \nats$ where $n \neq m$, from which it clearly follows that
+    $$
+      Z = \braces{x_n \where n \in \nats}
+    $$
+    is a countable set.
+    So consider any $n,m \in \nats$ where $n \neq m$
+    Without loss of generality we can assume that $n < m$.
+    Suppose that  $x_n = x_m$.
+    We now show by induction that $x_{n-k} = x_{m-k}$ for all $n \geq k \geq 0$.
+    If $k=0$ then we clearly have
+    $$
+      x_{n-k} = x_{n-0} = x_n = x_m = x_{m-0} = x_{m-k}.
+    $$
+    Now suppose that $x_{n-k} = x_{m-k}$.
+    We then have
+    $$
+      f(x_{n-(k+1)}) = f(x_{n-k-1}) = x_{n-k} = x_{m-k} = f(x_{m-k-1}) = f(x_{m-(k+1)})
+    $$
+    Since $f$ is injective this implies that $x_{n-(k+1)} = x_{m-(k+1)}$ so that inductive proof is complete.
+    So since this holds for $k=n$ we have that
+    $$
+      x_0 = x_{n-n} = x_{m-n} = f(x_{m-n-1}),
+    $$
+    Noting that $m-n-1 \geq 0$ since $m \geq n +1$.
+    But $x_0 = x \notin Y$ and $f(x_{m-n-1}) \in Y$ since $f:X \to Y$ so that we have a contradiction.
+    So it must be that $x_n \neq x_m$.
+    Hence $Z$ is countable.
+    Since also clearly $Z \subseteq X$ the proof is complete.
   }
 }
 
 \exercise{12}{
   If $A$ and $B$ are Dedekind infinite, the $A \cup B$ is Dedekind infinite.
-  [Hint: Use Exercise~1.11.]
+    [Hint: Use Exercise~1.11.]
 }
 \sol{
   \qproof{
@@ -737,7 +737,7 @@
 
 \exercise{13}{
   If $A$ and $B$ are Dedekind infinite, then $A \times B$ is Dedekind infinite.
-  [Hint: Use Exercise~1.11.]
+    [Hint: Use Exercise~1.11.]
 }
 \sol{
   \qproof{
@@ -747,7 +747,7 @@
     Hence $B \neq \es$ so that there is a $b \in B$.
     Clearly then the set
     $$
-    D = \braces{(a,b) \where a \in C}
+      D = \braces{(a,b) \where a \in C}
     $$
     is a countable subset of $A \times B$ so that $A \times B$ is Dedekind infinite by Exercise~5.1.10.
   }
@@ -755,8 +755,8 @@
 
 \exercise{14}{
   If $A$ is infinite, then $\pset{\pset{A}}$ is Dedekind infinite.
-  [Hint: For each $n \in \nats$, let $S_n = \braces{X \pss A \where \abs{X} = n}$.
-    The set $\braces{S_n \where n \in \nats}$ is a countable subset of $\pset{\pset{A}}$.]
+    [Hint: For each $n \in \nats$, let $S_n = \braces{X \pss A \where \abs{X} = n}$.
+      The set $\braces{S_n \where n \in \nats}$ is a countable subset of $\pset{\pset{A}}$.]
 }
 \sol{
   \begin{lem}\label{lem:card:infss}
@@ -768,11 +768,11 @@
     Now $n \in \nats$ but also $n \subseteq \nats$.
     So define the set
     $$
-    B = \braces{f(k) \where k \in n} \,.
+      B = \braces{f(k) \where k \in n}.
     $$
     Clearly $B \subseteq A$ and we show that $|B| = n$ by defining a mapping $g : n \to B$ by
     $$
-    g(k) = f(k)
+      g(k) = f(k)
     $$
     for $k \in n$.
     Since $f$ is injective clearly $g$ is.
@@ -787,17 +787,17 @@
     Suppose that $A$ is infinite.
     Then for any $n \in \nats$ define
     $$
-    S_n = \braces{X \in \pset{A} \where |X| = n} \,,
+      S_n = \braces{X \in \pset{A} \where |X| = n},
     $$
     noting that $S_n \neq \es$ by Lemma~\ref{lem:card:infss}.
     We also note that for $n,m \in \nats$ where $n \neq m$ we have $S_n \neq S_m$ since for any $X \in S_n$ and $Y \in S_m$ we have
     $$
-    |X| = n \neq m = |Y|
+      |X| = n \neq m = |Y|
     $$
     so that $X \neq Y$.
     From this it follows that
     $$
-    S = \braces{S_n \where n \in \nats}
+      S = \braces{S_n \where n \in \nats}
     $$
     is a countable set.
     Also, for an $S_n \in S$ we have that each $X \in S_n$ is in $\pset{A}$ so that $S_n \subseteq \pset{A}$.

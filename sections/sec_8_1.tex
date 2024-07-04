@@ -46,7 +46,7 @@
     \gath{
       f(B) = \begin{cases}
         \text{the least element of $B$ according to $\prece$} & B \neq \es \\
-        \es & B = \es
+        \es                                                   & B = \es
       \end{cases}
     }
     for any $B \in S$.
@@ -56,7 +56,7 @@
 
 \exercise{2}{
   If $A$ can be well-ordered, then $\pset{A}$ can be linearly ordered.
-  [Hint: Let $<$ be a well-ordering of $A$; for $X,Y \ss A$ define $X \prec Y$ if any only if the $<$-least element of $X \sd Y$ belongs to $X$.]
+    [Hint: Let $<$ be a well-ordering of $A$; for $X,Y \ss A$ define $X \prec Y$ if any only if the $<$-least element of $X \sd Y$ belongs to $X$.]
 }
 \sol{
   \qproof{
@@ -82,63 +82,63 @@
     Thus either $a = x$ or $a = y$.
     For each case we show that
     \begin{enumerate}
-    \item $a \in X$
-    \item $a \in X \sd Z$
-    \item $a$ is a lower bound of $X \sd Z$
+      \item $a \in X$
+      \item $a \in X \sd Z$
+      \item $a$ is a lower bound of $X \sd Z$
     \end{enumerate}
 
     Case: $a = x$.
     Then clearly $a = x \leq y$ so that $a < y$ since $a = x \neq y$.
     \begin{enumerate}
-    \item Clearly $a \in X$ since $a = x$.
-    \item Suppose that $a \in Z$.
-      Then, since $a = x \notin Y$, we have that $a \in Z - Y$ so that $a \in Y \sd Z$.
-      Hence $y \leq a$ since $y$ is the least element of $Y \sd Z$, but this contradicts the fact that $y > a$.
-      So it must be that in fact $a \notin Z$ so that $a \in X - Z$.
-      Thus $a \in X \sd Z$.
-    \item Now consider any $z \in X \sd Z$.
+      \item Clearly $a \in X$ since $a = x$.
+      \item Suppose that $a \in Z$.
+            Then, since $a = x \notin Y$, we have that $a \in Z - Y$ so that $a \in Y \sd Z$.
+            Hence $y \leq a$ since $y$ is the least element of $Y \sd Z$, but this contradicts the fact that $y > a$.
+            So it must be that in fact $a \notin Z$ so that $a \in X - Z$.
+            Thus $a \in X \sd Z$.
+      \item Now consider any $z \in X \sd Z$.
 
-      Case: $z \in X - Z$.
-      Then, if $z \in Y$, we have that $z \in Y - Z$ so that $z \in Y \sd Z$.
-      It then follows that $a = x \leq y \leq z$ since $y$ is the least element of $Y \sd Z$.
-      On the other hand, if $z \notin Y$, then we have $z \in X - Y$ so that $z \in X \sd Y$.
-      Hence $a = x \leq z$ since $x$ is the least element of $X \sd Y$.
+            Case: $z \in X - Z$.
+            Then, if $z \in Y$, we have that $z \in Y - Z$ so that $z \in Y \sd Z$.
+            It then follows that $a = x \leq y \leq z$ since $y$ is the least element of $Y \sd Z$.
+            On the other hand, if $z \notin Y$, then we have $z \in X - Y$ so that $z \in X \sd Y$.
+            Hence $a = x \leq z$ since $x$ is the least element of $X \sd Y$.
 
-      Case: $x \in Z - X$.
-      Then, if $z \in Y$, we have $x \in Y - X$ so $z \in X \sd Y$.
-      Then $a = x \leq z$ since $x$ is the least element of $X \sd Y$.
-      On the other hand, if $z \notin Y$, then we have $z \in Z - Y$ so that $z \in Y \sd Z$.
-      Then, as before, $a = x \leq y \leq z$ since $y$ is the least element of $Y \sd Z$.
+            Case: $x \in Z - X$.
+            Then, if $z \in Y$, we have $x \in Y - X$ so $z \in X \sd Y$.
+            Then $a = x \leq z$ since $x$ is the least element of $X \sd Y$.
+            On the other hand, if $z \notin Y$, then we have $z \in Z - Y$ so that $z \in Y \sd Z$.
+            Then, as before, $a = x \leq y \leq z$ since $y$ is the least element of $Y \sd Z$.
 
-      Hence in all cases $a \leq z$ so that $a$ is a lower bound since $z$ was arbitrary.
+            Hence in all cases $a \leq z$ so that $a$ is a lower bound since $z$ was arbitrary.
     \end{enumerate}
 
     Case: $a = y$.
     Then clearly $a = y \leq x$ so that $a < x$ since $a = y \neq x$.
     \begin{enumerate}
-    \item Suppose that $a \notin X$.
-      Then since $a = y \in Y$ we have that $a \in Y - X$ so that also $a \in X \sd Y$.
-      But then $x \leq a$ since $x$ is the least element of $X \sd Y$, which contradicts the fact that $x > a$.
-      Hence it has to be that $a \in X$.
-    \item We already know that $a = y \notin Z$ so that $a \in X - Z$ since we just showed that $a \in X$.
-      Hence $a \in X \sd Z$.
-    \item Consider any $z \in X \sd Z$.
+      \item Suppose that $a \notin X$.
+            Then since $a = y \in Y$ we have that $a \in Y - X$ so that also $a \in X \sd Y$.
+            But then $x \leq a$ since $x$ is the least element of $X \sd Y$, which contradicts the fact that $x > a$.
+            Hence it has to be that $a \in X$.
+      \item We already know that $a = y \notin Z$ so that $a \in X - Z$ since we just showed that $a \in X$.
+            Hence $a \in X \sd Z$.
+      \item Consider any $z \in X \sd Z$.
 
-      Case: $z \in X - Z$.
-      If also $z \in Y$ then clearly $z \in Y - Z$ so that $z \in Y \sd Z$.
-      It then follows that $a = y \leq z$ since $y$ is the least element of $Y \sd Z$.
-      On the other hand, if $z \notin Y$, then clearly $z \in X - Y$ so that $z \in X \sd Y$.
-      Hence $a = y \leq x \leq z$ since $x$ is the least element of $X \sd Y$.
+            Case: $z \in X - Z$.
+            If also $z \in Y$ then clearly $z \in Y - Z$ so that $z \in Y \sd Z$.
+            It then follows that $a = y \leq z$ since $y$ is the least element of $Y \sd Z$.
+            On the other hand, if $z \notin Y$, then clearly $z \in X - Y$ so that $z \in X \sd Y$.
+            Hence $a = y \leq x \leq z$ since $x$ is the least element of $X \sd Y$.
 
-      Case: $z \in Z - X$.
-      Then, if $z \in Y$, clearly $z \in Y - X$ so that $z \in X \sd Y$.
-      We then have that $a = y \leq x \leq z$ since $x$ is the least element of $X \sd Y$.
-      On the other hand, if $z \notin Y$, then $z \in Z - Y$ so that $z \in Y \sd Z$.
-      Then clearly $a = y \leq z$ since $y$ is the least element of $Y \sd Z$.
+            Case: $z \in Z - X$.
+            Then, if $z \in Y$, clearly $z \in Y - X$ so that $z \in X \sd Y$.
+            We then have that $a = y \leq x \leq z$ since $x$ is the least element of $X \sd Y$.
+            On the other hand, if $z \notin Y$, then $z \in Z - Y$ so that $z \in Y \sd Z$.
+            Then clearly $a = y \leq z$ since $y$ is the least element of $Y \sd Z$.
 
-      Hence in all cases $a \leq z$ so that $a$ is a lower bound since $z$ was arbitrary.
+            Hence in all cases $a \leq z$ so that $a$ is a lower bound since $z$ was arbitrary.
     \end{enumerate}
-    
+
     Thus in all cases we have that $a$ is the least element of $X \sd Z$ (since it is in $X \sd Z$ and also is a lower bound) and $a \in X$.
     By definition, this shows that $X \prec Z$ so that $\prec$ is transitive.
     This also shows that $\prec$ is a (strict) order.
@@ -164,7 +164,7 @@
   \input{shared/lem_aoc_notin}
 
   \mainprob
-  
+
   The proof of this is similar to the proof of Zorn's Lemma from the Axiom of Choice (part of Theorem~8.1.13 in the text).
   \qproof{
     First, by Lemma~\ref{lem:aoc:notin}, there is a $b \notin A$.
@@ -177,7 +177,7 @@
     \gath{
       a_\a = \begin{cases}
         g(A_\a) & \text{if $a_\x \neq b$ for all $\x < \a$ and $A_\a \neq \es$} \\
-        b & \text{otherwise} \,.
+        b       & \text{otherwise}.
       \end{cases}
     }
 
@@ -301,7 +301,7 @@
 \exercise{6}{
   A system of sets $A$ has \emph{finite character} if $X \in A$ if and only if every finite subset of $X$ belongs to $A$.
   Prove that Zorn's Lemma is equivalent to the following (Tukey's Lemma): Every system of sets of finite character has an $\ss$-maximal element.
-  [Hint: Use Exercise~8.1.5.]
+    [Hint: Use Exercise~8.1.5.]
 }
 \sol{
   \qproof{
@@ -350,7 +350,7 @@
     \gath{
       f(x) = \begin{cases}
         g(Y_x) & Y_x \neq \es \\
-        a & Y_x = \es
+        a      & Y_x = \es
       \end{cases}
     }
     for all $x \in A$.
@@ -426,7 +426,7 @@
     Now we construct a sequence $\angles{a_n \where n \in \w}$ by recursion:
     \ali{
       a_0 &= g(X) \\
-      a_{n+1} &= g(X_{a_n}) \,,
+      a_{n+1} &= g(X_{a_n}),
     }
     noting that the recursive step is always valid since $X_{a_n}$ is never empty, as was just shown.
     It is easy to see that this is a decreasing sequence.
@@ -451,7 +451,7 @@
 \sol{
   First we show that
   \gath{
-    \FL = \FR \,.
+    \FL = \FR.
   }
   \qproof{
     First let
@@ -486,7 +486,7 @@
 
   Now we show that
   \gath{
-    \SL = \SR \,.
+    \SL = \SR.
   }
   \qproof{
     First let
@@ -510,7 +510,7 @@
       x \notin \SL \\
       \lnot \exists t \in T \parens{x \in \bigcap_{s \in S} A_{t,s}} \\
       \lnot \exists t \in T \forall s \in S \parens{x \in A_{t,s}} \\
-      \forall t \in T \exists s \in S \parens{x \notin A_{t,s}} \,.
+      \forall t \in T \exists s \in S \parens{x \notin A_{t,s}}.
     }
     Now, let $S_t = \braces{s \in S \where x \notin A_{t,s}}$ for each $t \in T$, noting that $S_t \neq \es$ by the above for any $t \in T$.
     Then, by the Axiom of Choice, the system of sets $\braces{S_t \where t \in T}$ has a choice function $g$.
@@ -526,7 +526,7 @@
       \lnot \forall f \in S^T \parens{x \in \bigcup_{t \in T} A_{t,f(t)}} \\
       \lnot \squares{x \in \SR} \\
       x \notin \SR \\
-      x \notin R \,.
+      x \notin R.
     }
     Since $x$ was arbitrary, this shows by contrapositive that $x \in R$ implies $x \in L$ so that $R \ss L$.
   }
@@ -537,129 +537,129 @@
 }
 \sol{
   \iffalse
-  % These were part of an earlier attempted solution that did not work out
-  \begin{defin}\label{def:aoc:tranclos}
-    For a relation $R$ on a set $A$, the transitive closure $S$ of $R$ is a relation on $A$ such that
-    \begin{enumerate}
-    \item $R \ss S$,
-    \item $S$ is transitive,
-    \item For every relation $T \ss A \times A$, if $R \ss T$ and $T$ is transitive, then $S \ss T$.
-    \end{enumerate}
-    That is, $S$ is the smallest transitive relation (by $\ss$) such that $R \ss S$.
-  \end{defin}
+    % These were part of an earlier attempted solution that did not work out
+    \begin{defin}\label{def:aoc:tranclos}
+      For a relation $R$ on a set $A$, the transitive closure $S$ of $R$ is a relation on $A$ such that
+      \begin{enumerate}
+        \item $R \ss S$,
+        \item $S$ is transitive,
+        \item For every relation $T \ss A \times A$, if $R \ss T$ and $T$ is transitive, then $S \ss T$.
+      \end{enumerate}
+      That is, $S$ is the smallest transitive relation (by $\ss$) such that $R \ss S$.
+    \end{defin}
 
-  \begin{thrm}\label{def:aoc:tranclosu}
-    Suppose that $R$ is a relation on $A$ and let
-    \gath{
-      \famF = \braces{T \ss A \times A \where \text{$R \ss T$ and $T$ is transitive}} \,.
-    }
-    Then the set $S = \bigcap \famF$ is the unique transitive closure of $R$, noting that $\famF \neq \es$ since clearly $R \ss A \times A$ and $A \times A$ is transitive so that $A \times A \in \famF$.
-    For this reason we say \emph{the} transitive closure rather than \emph{a} transitive closure.
-    \qproof{
-      First we show that $S$ satisfies part (1) in the definition of a transitive closure.
-      So consider any $(x,y) \in R$ and let $T$ be an arbitrary element of $\famF$.
-      Then $R \ss T$ by the definition of $\famF$ so that $(x,y) \in T$.
-      Since $T$ was arbitrary this shows that $(x,y) \in \bigcap \famF = S$, and since $(x,y)$ was arbitrary this shows that $R \ss S$ as desired.
+    \begin{thrm}\label{def:aoc:tranclosu}
+      Suppose that $R$ is a relation on $A$ and let
+      \gath{
+        \famF = \braces{T \ss A \times A \where \text{$R \ss T$ and $T$ is transitive}}.
+      }
+      Then the set $S = \bigcap \famF$ is the unique transitive closure of $R$, noting that $\famF \neq \es$ since clearly $R \ss A \times A$ and $A \times A$ is transitive so that $A \times A \in \famF$.
+      For this reason we say \emph{the} transitive closure rather than \emph{a} transitive closure.
+      \qproof{
+        First we show that $S$ satisfies part (1) in the definition of a transitive closure.
+        So consider any $(x,y) \in R$ and let $T$ be an arbitrary element of $\famF$.
+        Then $R \ss T$ by the definition of $\famF$ so that $(x,y) \in T$.
+        Since $T$ was arbitrary this shows that $(x,y) \in \bigcap \famF = S$, and since $(x,y)$ was arbitrary this shows that $R \ss S$ as desired.
 
-      To show (2) consider any $(x,y)$ and $(y,z)$ in $S = \bigcap \famF$.
-      Then both $(x,y)$ and $(y,z)$ are in every $T \in \famF$.
-      Hence, for any arbitrary $T \in \famF$, clearly $(x,y) \in T$ and $(y,z) \in T$.
-      Then, since $T \in F$ we have that $T$ is transitive (by the definition of $\famF$) so that $(x,z) \in T$.
-      Since $T$ was arbitrary this shows that $(x,z) \in \bigcap \famF = S$ so that $S$ is transitive.
+        To show (2) consider any $(x,y)$ and $(y,z)$ in $S = \bigcap \famF$.
+        Then both $(x,y)$ and $(y,z)$ are in every $T \in \famF$.
+        Hence, for any arbitrary $T \in \famF$, clearly $(x,y) \in T$ and $(y,z) \in T$.
+        Then, since $T \in F$ we have that $T$ is transitive (by the definition of $\famF$) so that $(x,z) \in T$.
+        Since $T$ was arbitrary this shows that $(x,z) \in \bigcap \famF = S$ so that $S$ is transitive.
 
-      Now, to show part (3), consider any relation $T$ on $A$ where $R \ss T$ and $T$ is transitive.
-      Consider then any $(x,y) \in S = \bigcap \famF$ so that $(x,y) \in T'$ for every $T' \in \famF$.
-      In particular, $T \in \famF$ since $R \ss T$ and $T$ is transitive so that $(x,y) \in T$.
-      Since $(x,y)$ was arbitrary this shows that $S \ss T$ as desired.
+        Now, to show part (3), consider any relation $T$ on $A$ where $R \ss T$ and $T$ is transitive.
+        Consider then any $(x,y) \in S = \bigcap \famF$ so that $(x,y) \in T'$ for every $T' \in \famF$.
+        In particular, $T \in \famF$ since $R \ss T$ and $T$ is transitive so that $(x,y) \in T$.
+        Since $(x,y)$ was arbitrary this shows that $S \ss T$ as desired.
 
-      Lastly, to show that the transitive closure is unique let $S$ and $T$ be transitive closures of $R$.
-      Then, since $R \ss S$ (by part (1) for $S$) and $S$ is transitive (by part (2) for $S$), we have that $T \ss S$ (by part (3) for $T$).
-      By an analogous argument $S \ss T$, which shows that $S = T$ so that the transitive closure is unique.
-    }
-  \end{thrm}
+        Lastly, to show that the transitive closure is unique let $S$ and $T$ be transitive closures of $R$.
+        Then, since $R \ss S$ (by part (1) for $S$) and $S$ is transitive (by part (2) for $S$), we have that $T \ss S$ (by part (3) for $T$).
+        By an analogous argument $S \ss T$, which shows that $S = T$ so that the transitive closure is unique.
+      }
+    \end{thrm}
   \fi
 
   \qproof{
     \iffalse
-    % This was another attempted solution that did not work out
-    \def\tleq{\trianglelefteq}
-    \newcommand\lord[1]{(#1, \leq_{#1})}
-    \def\Cb{\overline{C}}
-    \def\Ab{\overline{A}}
+      % This was another attempted solution that did not work out
+      \def\tleq{\trianglelefteq}
+      \newcommand\lord[1]{(#1, \leq_{#1})}
+      \def\Cb{\overline{C}}
+      \def\Ab{\overline{A}}
 
-    Let $(A, \prece)$ be a partially ordered set.
-    We define the set
-    \ali{
-      L = \{\lord{B} \where & \text{$B \ss A$ and $\leq_B$ is a linear order on $B$ such that} \\
-      & \text{$x \prece y$ implies $x \leq_B y$ for all $x$ and $y$ in $B$}\}
-    }
-    Moreover, we define the following relation $\tleq$ on $L$:
-    \gath{
-      \text{$\lord{B} \tleq \lord{C}$ if and only if $B \ss C$ and $\leq_B \ss \leq_C$}
-    }
-    for any $\lord{B}$ and $\lord{C}$ in $L$.
+      Let $(A, \prece)$ be a partially ordered set.
+      We define the set
+      \ali{
+        L = \{\lord{B} \where & \text{$B \ss A$ and $\leq_B$ is a linear order on $B$ such that} \\
+        & \text{$x \prece y$ implies $x \leq_B y$ for all $x$ and $y$ in $B$}\}
+      }
+      Moreover, we define the following relation $\tleq$ on $L$:
+      \gath{
+        \text{$\lord{B} \tleq \lord{C}$ if and only if $B \ss C$ and $\leq_B \ss \leq_C$}
+      }
+      for any $\lord{B}$ and $\lord{C}$ in $L$.
 
-    It is easy to see that $\tleq$ is a partial order on $L$.
-    Consider any $\lord{B} \in L$.
-    Then, since obviously $B \ss B$ and $\leq_B \ss \leq_B$ we have by definition that $\lord{B} \tleq \lord{B}$ so that $\tleq$ is reflexive since $\lord{B}$ was arbitrary.
-    Now consider any $\lord{B}$ and $\lord{C}$ in $L$ where $\lord{B} \tleq \lord{C}$ and $\lord{C} \tleq \lord{B}$.
-    Then by definition we have that $B \ss C$ and $\leq_B \ss \leq_C$ as well as $C \ss B$ and $\leq_C \ss \leq_B$.
-    From this it clearly follows that $B = C$ and $\leq_B = \leq_C$ so that $\lord{B} = \lord{C}$, which shows that $\tleq$ is antisymmetric.
-    Lastly, consider any $\lord{B}$, $\lord{C}$, and $\lord{D}$ in $L$ where $\lord{B} \tleq \lord{C}$ and $\lord{C} \tleq \lord{D}$.
-    Then we have $B \ss C$ and $\leq_B \ss \leq_C$ as well as $C \ss D$ and $\leq_C \ss \leq_D$.
-    Since we know that $\ss$ is transitive we then have that $B \ss D$ and $\leq_B \ss \leq_D$ so that $\lord{B} \tleq \lord{D}$ by definition.
-    This shows that $\tleq$ is transitive as well and therefore a partial order on $L$.
+      It is easy to see that $\tleq$ is a partial order on $L$.
+      Consider any $\lord{B} \in L$.
+      Then, since obviously $B \ss B$ and $\leq_B \ss \leq_B$ we have by definition that $\lord{B} \tleq \lord{B}$ so that $\tleq$ is reflexive since $\lord{B}$ was arbitrary.
+      Now consider any $\lord{B}$ and $\lord{C}$ in $L$ where $\lord{B} \tleq \lord{C}$ and $\lord{C} \tleq \lord{B}$.
+      Then by definition we have that $B \ss C$ and $\leq_B \ss \leq_C$ as well as $C \ss B$ and $\leq_C \ss \leq_B$.
+      From this it clearly follows that $B = C$ and $\leq_B = \leq_C$ so that $\lord{B} = \lord{C}$, which shows that $\tleq$ is antisymmetric.
+      Lastly, consider any $\lord{B}$, $\lord{C}$, and $\lord{D}$ in $L$ where $\lord{B} \tleq \lord{C}$ and $\lord{C} \tleq \lord{D}$.
+      Then we have $B \ss C$ and $\leq_B \ss \leq_C$ as well as $C \ss D$ and $\leq_C \ss \leq_D$.
+      Since we know that $\ss$ is transitive we then have that $B \ss D$ and $\leq_B \ss \leq_D$ so that $\lord{B} \tleq \lord{D}$ by definition.
+      This shows that $\tleq$ is transitive as well and therefore a partial order on $L$.
 
-    Now we claim that every $\tleq$-chain of $L$ has an upper bound.
-    So let $\Cb$ be such a chain of $(L, \tleq)$ and let
-    \ali{
-      U &= \bigcup_{\lord{B} \in \Cb} B &
-      \leq_U &= \bigcup_{\lord{B} \in \Cb} \leq_B \,.
-    }
-    Now consider any $x \in U$ so that there is a $\lord{B} \in \Cb$ such that $x \in B$.
-    Then, since $\lord{B} \in \Cb$ and $\Cb \ss L$ we have that $\lord{B} \in L$ so that $B \ss A$ by definition.
-    Hence since $x \in B$ it follows that $x \in A$.
-    Since $x$ was arbitrary this shows that $U \ss A$.
+      Now we claim that every $\tleq$-chain of $L$ has an upper bound.
+      So let $\Cb$ be such a chain of $(L, \tleq)$ and let
+      \ali{
+        U &= \bigcup_{\lord{B} \in \Cb} B &
+        \leq_U &= \bigcup_{\lord{B} \in \Cb} \leq_B.
+      }
+      Now consider any $x \in U$ so that there is a $\lord{B} \in \Cb$ such that $x \in B$.
+      Then, since $\lord{B} \in \Cb$ and $\Cb \ss L$ we have that $\lord{B} \in L$ so that $B \ss A$ by definition.
+      Hence since $x \in B$ it follows that $x \in A$.
+      Since $x$ was arbitrary this shows that $U \ss A$.
 
-    Now consider any $x$ and $y$ in $U$.
-    Then there is are $\lord{B}$ and $\lord{C}$ in $\Cb$ such that $x \in B$ and $y \in C$.
-    Now, since $\Cb$ is a $\tleq$-chain we either have that $\lord{B} \tleq \lord{C}$ or $\lord{C} \tleq \lord{B}$.
-    In the former case we have that $B \ss C$ and $\leq_B \ss \leq_C$.
-    Then since $x \in B$ and $B \ss C$ we have $x \in C$.
-    Since also $y \in C$ and $\leq_C$ is a linear order on $C$ it follows that $x$ and $y$ are comparable in $\leq_C$.
-    Hence $(x,y) \in \leq_C$ or $(y,x) \in \leq_C$.
-    Since $\lord{C} \in \Cb$ it then follows that $(x,y) \in \leq_U$ or $(y,x) \in \leq_U$.
-    This shows that $\leq_U$ is a linear order on $U$ since $x$ and $y$ were arbitrary.
-    The latter case in which $\lord{C} \tleq \lord{B}$ is analogous.
+      Now consider any $x$ and $y$ in $U$.
+      Then there is are $\lord{B}$ and $\lord{C}$ in $\Cb$ such that $x \in B$ and $y \in C$.
+      Now, since $\Cb$ is a $\tleq$-chain we either have that $\lord{B} \tleq \lord{C}$ or $\lord{C} \tleq \lord{B}$.
+      In the former case we have that $B \ss C$ and $\leq_B \ss \leq_C$.
+      Then since $x \in B$ and $B \ss C$ we have $x \in C$.
+      Since also $y \in C$ and $\leq_C$ is a linear order on $C$ it follows that $x$ and $y$ are comparable in $\leq_C$.
+      Hence $(x,y) \in \leq_C$ or $(y,x) \in \leq_C$.
+      Since $\lord{C} \in \Cb$ it then follows that $(x,y) \in \leq_U$ or $(y,x) \in \leq_U$.
+      This shows that $\leq_U$ is a linear order on $U$ since $x$ and $y$ were arbitrary.
+      The latter case in which $\lord{C} \tleq \lord{B}$ is analogous.
 
-    Lastly, consider any $x$ and $y$ in $U$ where $x \prece y$.
-    Then, again, there are $\lord{B}$ and $\lord{C}$ in $\Cb$ such that $x \in B$ and $y \in C$.
-    Since $\Cb$ is a chain, by the same argument as above, we have that either $x$ and $y$ are both in $B$ or they are both in $C$.
-    In the former case, since $\lord{B} \in \Cb$ and $\Cb \ss L$, we have $\lord{B} \in L$ so that by definition $x \leq_B y$ since $x$ and $y$ are both in $B$ and $x \prece y$.
-    Hence $(x,y) \in \leq_B$ so that, by the definition of $\leq_U$ we have that $(x,y) \in \leq_U$.
+      Lastly, consider any $x$ and $y$ in $U$ where $x \prece y$.
+      Then, again, there are $\lord{B}$ and $\lord{C}$ in $\Cb$ such that $x \in B$ and $y \in C$.
+      Since $\Cb$ is a chain, by the same argument as above, we have that either $x$ and $y$ are both in $B$ or they are both in $C$.
+      In the former case, since $\lord{B} \in \Cb$ and $\Cb \ss L$, we have $\lord{B} \in L$ so that by definition $x \leq_B y$ since $x$ and $y$ are both in $B$ and $x \prece y$.
+      Hence $(x,y) \in \leq_B$ so that, by the definition of $\leq_U$ we have that $(x,y) \in \leq_U$.
 
-    Thus we have shown that $U \ss A$, $\leq_U$ is a linear order on $U$, and $x \prec y$ implies that $x \leq_U y$ for all $x$ and $y$ in $U$.
-    This shows by definition that $\lord{U} \in L$.
+      Thus we have shown that $U \ss A$, $\leq_U$ is a linear order on $U$, and $x \prec y$ implies that $x \leq_U y$ for all $x$ and $y$ in $U$.
+      This shows by definition that $\lord{U} \in L$.
 
-    Now consider any $\lord{B}$ in $\Cb$.
-    Suppose arbitrary $x \in B$ and $(y,z) \in \leq_B$.
-    Then clearly $x \in U$ and $(y,z) \in \leq_U$ by definition.
-    Hence $B \ss U$ and $\leq_B \ss \leq_U$ so that by definition $\lord{B} \tleq \lord{U}$.
-    Since $\lord{B}$ was arbitrary this shows that $\lord{U}$ is an upper bound of $\Cb$.
+      Now consider any $\lord{B}$ in $\Cb$.
+      Suppose arbitrary $x \in B$ and $(y,z) \in \leq_B$.
+      Then clearly $x \in U$ and $(y,z) \in \leq_U$ by definition.
+      Hence $B \ss U$ and $\leq_B \ss \leq_U$ so that by definition $\lord{B} \tleq \lord{U}$.
+      Since $\lord{B}$ was arbitrary this shows that $\lord{U}$ is an upper bound of $\Cb$.
 
-    Since $\Cb$ was an arbitrary chain of $(L, \tleq)$, this proves the conditions of Zorn's Lemma so that there is a maximal element of $(L, \tleq)$.
-    Call this maximal element $(\Ab, \leq)$.
-    Now, since $(\Ab, \leq) \in L$ we have that $\Ab \ss A$.
-    For a moment, suppose that $A$ is not a subset of $\Ab$ so that there is an $a \in A$ such that $a \notin \Ab$.
-    Clearly $\leq_a = \braces{(a,a)}$ is a trivial linear order on $\braces{a}$.
-    Moreover, obviously $\leq_a$ has the property that $x \leq_a y$ for any $x$ and $y$ in $\braces{a}$ where $x \prece y$.\
-    Hence it follows that $(\braces{a}, \leq_a) \in L$.
+      Since $\Cb$ was an arbitrary chain of $(L, \tleq)$, this proves the conditions of Zorn's Lemma so that there is a maximal element of $(L, \tleq)$.
+      Call this maximal element $(\Ab, \leq)$.
+      Now, since $(\Ab, \leq) \in L$ we have that $\Ab \ss A$.
+      For a moment, suppose that $A$ is not a subset of $\Ab$ so that there is an $a \in A$ such that $a \notin \Ab$.
+      Clearly $\leq_a = \braces{(a,a)}$ is a trivial linear order on $\braces{a}$.
+      Moreover, obviously $\leq_a$ has the property that $x \leq_a y$ for any $x$ and $y$ in $\braces{a}$ where $x \prece y$.\
+      Hence it follows that $(\braces{a}, \leq_a) \in L$.
     \fi
 
     Let $(A, \prece)$ be a partially ordered set.
     Define the set
     \gath{
-      P = \braces{R \ss A \times A \where \text{$R$ is a partial order of $A$ and $\prece \ss R$}} \,.
+      P = \braces{R \ss A \times A \where \text{$R$ is a partial order of $A$ and $\prece \ss R$}}.
     }
     We know that $\ss$ partially orders $P$.
     Now consider any $\ss$-chain $C$ of $P$.
@@ -775,7 +775,7 @@
     We then define a sequence recursively as follows:
     \ali{
       x_0 &= a \\
-      x_{n+1} &= g(X_{x_n}) \,,
+      x_{n+1} &= g(X_{x_n}),
     }
     noting that this is well defined since each $X_n$ is nonempty.
 
@@ -797,9 +797,9 @@
     \gath{
       g(X) =
       \begin{cases}
-        \es & X = \es \\
+        \es  & X = \es    \\
         h(X) & X \neq \es
-      \end{cases} \,,
+      \end{cases},
     }
     for any $X \in S$, noting that clearly $X \in T$ if $X \neq \es$ so that $X$ is in the domain of $h$.
     Then, for any nonempty $X \in S$, we have that $g(X) = h(X) \in X$ since $h$ is a choice function.
@@ -812,7 +812,7 @@
 
     Now define the the binary relation $R$ on $\bigcup T$ by
     \gath{
-      R = \braces{(x,y) \in \bigcup T \times \bigcup T \where \text{$x \in X_n$ and $y \in X_{n+1}$ for some $n \in \w$}} \,.
+      R = \braces{(x,y) \in \bigcup T \times \bigcup T \where \text{$x \in X_n$ and $y \in X_{n+1}$ for some $n \in \w$}}.
     }
     First, since $X_0 \in T$, it is nonempty so that there is an $x \in X_0$.
     Then clearly $x \in \bigcup T$ so that $\bigcup T$ is nonempty.
@@ -837,9 +837,9 @@
     \gath{
       h(X) = h(X_n) =
       \begin{cases}
-        h'(X_n) & n < m \\
+        h'(X_n) & n < m    \\
         x_{n-m} & n \geq m
-      \end{cases} \,.
+      \end{cases}.
     }
     We claim that $h$ is a choice function on $T$.
     So consider any $X \in T$ (which automatically means that $X \neq \es$) so that again $X = X_n$ for some $n \in \w$.
@@ -869,7 +869,7 @@
 
 \exercise{16}{
   If for any sets $A$ and $B$ either $\abs{A} \leq \abs{B}$ or $\abs{B} \leq \abs{A}$, then the Axiom of Choice holds.
-  [Hint: Compare $A$ and $B = h(A)$.]
+    [Hint: Compare $A$ and $B = h(A)$.]
 }
 \sol{
   \qproof{

@@ -2,7 +2,7 @@
 
 \exercise{1}{
   Without using the Axiom of Choice, prove that the two definitions of closure points are equivalent if $A$ is an open set.
-  [Hint: $X_n$ is open, so $X_n \cap \rats \neq \es$, and $\rats$ can be well-ordered.]
+    [Hint: $X_n$ is open, so $X_n \cap \rats \neq \es$, and $\rats$ can be well-ordered.]
 }
 \sol{
   \begin{lem}\label{lem:aoc:intopen}
@@ -30,13 +30,13 @@
     Now, since $\d > 0$, we clearly have
     \gath{
       -\d < 0 < \d \\
-      x-\d < x+\d \,.
+      x-\d < x+\d.
     }
     Since $\rats$ is dense in $\reals$ with respect to order, there is a $q \in \rats$ such that $x-\d < q < x+\d$.
     Then we have $q \in (x-\d, x+\d)$ so that also $q \in A$ since $(x-\d, x+\d) \ss A$.
     Thus $q \in \rats$ and $q \in A$ so that $q \in A \cap \rats$ as desired.
   }
-  
+
   \mainprob
   \qproof{
     A proof of this equivalence is presented in the text as Theorem~8.2.1.
@@ -53,7 +53,7 @@
       &\bic x \in A \land -1/n < x - a < 1/n \\
       &\bic x \in A \land a-1/n < x < a+1/n \\
       &\bic x \in A \land x \in I_n \\
-      &\bic x \in A \cap I_n \,.
+      &\bic x \in A \cap I_n.
     }
     for any real $x$, which of course shows that $X_n = A \cap I_n$.
     Then, since $A$ is open and $I_n$ is clearly an open interval, it follows from Lemma~\ref{lem:aoc:intopen} that $X_n$ is open as well.
@@ -87,7 +87,7 @@
     \ali{
       \abs{f(x) - f_a(x)} &\leq \abs{f(x) - f(q)} + \abs{f(q) - f_a(x)} \\
       &\leq \abs{f(x) - f(q)} + \abs{f(q) - f_a(q)} + \abs{f_a(q) - f_a(x)} \\
-      &< \e + 0 + \e = 2\e = \abs{f(x) - f_a(x)} \,,
+      &< \e + 0 + \e = 2\e = \abs{f(x) - f_a(x)},
     }
     which is a contradiction, noting that $\abs{f(q) - f_a(q)} = 0$ since $f(q) = f_a(q)$ since $q \in \rats$.
     So it must be that in fact $f = f_a$ as desired.
@@ -104,8 +104,8 @@
   Prove properties iv) and v).
   Also prove:
   \begin{enumerate}
-  \item[\ilab{vi}] $\mu(A \cup B) = \mu(A) + \mu(B) - \mu(A \cap B)$.
-  \item[\ilab{vii}] $\mu\parens{\bigcup_{n=0}^\infty A_n} \leq \sum_{n=0}^\infty \mu(A_n)$.
+    \item[\ilab{vi}] $\mu(A \cup B) = \mu(A) + \mu(B) - \mu(A \cap B)$.
+    \item[\ilab{vii}] $\mu\parens{\bigcup_{n=0}^\infty A_n} \leq \sum_{n=0}^\infty \mu(A_n)$.
   \end{enumerate}
 }
 \sol{
@@ -115,12 +115,12 @@
     \item[\ilab{i}] $\mu(\es) = 0$ and $\mu(\reals) = \infty$.
     \item[\ilab{ii}] If $\braces{A_n}_{n=0}^\infty$ is a collection of mutually disjoint subsets of $\reals$, then
       \gath{
-        \mu\parens{\bigcup_{n=0}^\infty A_n} = \sum_{n=0}^\infty \mu(A_n) \,.
+        \mu\parens{\bigcup_{n=0}^\infty A_n} = \sum_{n=0}^\infty \mu(A_n).
       }
   \end{enumerate}
   First we show
   \begin{enumerate}
-  \item[\ilab{iv}] If $A \cap B = \es$ then $\mu(A \cup B) = \mu(A) + \mu(B)$.
+    \item[\ilab{iv}] If $A \cap B = \es$ then $\mu(A \cup B) = \mu(A) + \mu(B)$.
   \end{enumerate}
   \qproof{
     Assume that $A \cap B = \es$ and define $A_0 = A$, $A_1 = B$, and $A_n = \es$ for all natural $n > 1$.
@@ -130,7 +130,7 @@
     \ali{
       \mu(A \cup B) &= \mu\parens{\bigcup_{n=0}^\infty A_n} = \sum_{n=0}^\infty \mu(A_n) = \mu(A_0) + \mu(A_1) + \sum_{n=2}^\infty \mu(A_n) \\
       &= \mu(A) + \mu(B) + \sum_{n=2}^\infty \mu(\es) = \mu(A) + \mu(B) + \sum_{n=2}^\infty 0 \\
-      &= \mu(A) + \mu(B) \,,
+      &= \mu(A) + \mu(B),
     }
     noting that we have also used property i) according to which $\mu(\es) = 0$.
     This shows the desired result.
@@ -143,10 +143,10 @@
     Clearly $A$ and $B-A$ are disjoint sets such that $A \cup (B-A) = B$ so that $\mu(A) + \mu(B-A) = \mu(B)$ by property iv).
     The result then clearly follows by subtracting $\mu(A)$ from both sides.
   }
-  
+
   Next we show
   \begin{enumerate}
-  \item[\ilab{v}] If $A \ss B$ then $\mu(A) \leq \mu(B)$.
+    \item[\ilab{v}] If $A \ss B$ then $\mu(A) \leq \mu(B)$.
   \end{enumerate}
   \qproof{
     Suppose that $A \ss B$ so that $\mu(A) + \mu(B-A) = \mu(B)$ by Lemma~\ref{lem:aoc:measmin}.
@@ -161,7 +161,7 @@
 
   Now we show
   \begin{enumerate}
-  \item[\ilab{vi}] $\mu(A \cup B) = \mu(A) + \mu(B) - \mu(A \cap B)$.
+    \item[\ilab{vi}] $\mu(A \cup B) = \mu(A) + \mu(B) - \mu(A \cap B)$.
   \end{enumerate}
   \qproof{
     Let $C = A \cap B$, $A' = A - C$, and $B' = B - C$.
@@ -180,7 +180,7 @@
 
   Lastly we show
   \begin{enumerate}
-  \item[\ilab{vii}] $\mu\parens{\bigcup_{n=0}^\infty A_n} \leq \sum_{n=0}^\infty \mu(A_n)$.
+    \item[\ilab{vii}] $\mu\parens{\bigcup_{n=0}^\infty A_n} \leq \sum_{n=0}^\infty \mu(A_n)$.
   \end{enumerate}
   \qproof{
     Supposing that we have a system of sets $\braces{A_n}_{n=0}^\infty$, first we define a sequence of corresponding sets recursively:
@@ -189,7 +189,7 @@
       A_{n+1}' &= A_{n+1} - \bigcup_{k=0}^n A_k'
     }
     Note that it is clear that $A_n' \ss A_n$ for any $n \in \nats$ so that $\mu(A_n') \leq \mu(A_n)$ by property v).
-    
+
     We now show that each of these sets are mutually disjoint.
     So consider any natural $m$ and $n$ where $m \neq n$.
     Without loss of generality, we can then assume that $m < n$.
@@ -220,9 +220,9 @@
 
 \def\defsa{
   \begin{enumerate}
-  \item[(a)] $\es \in \fs$ and $S \in \fs$.
-  \item[(b)] If $X \in \fs$ then $S - X \in \fs$.
-  \item[(c)] If $X_n \in \fs$ for all $n$, then $\bigcup_{n=0}^\infty X_n \in \fs$ and $\bigcap_{n=0}^\infty X_n \in \fs$.
+    \item[(a)] $\es \in \fs$ and $S \in \fs$.
+    \item[(b)] If $X \in \fs$ then $S - X \in \fs$.
+    \item[(c)] If $X_n \in \fs$ for all $n$, then $\bigcup_{n=0}^\infty X_n \in \fs$ and $\bigcap_{n=0}^\infty X_n \in \fs$.
   \end{enumerate}
 }
 \def\fs{\mathfrak{S}}
@@ -242,7 +242,7 @@
       &\bic x \in A \land (x \notin B \lor x \in C) \\
       &\bic (x \in A \land x \notin B) \lor (x \in A \land x \in C) \\
       &\bic X \in A - B \lor x \in A \cap C \\
-      &\bic x \in (A - B) \cup (A \cap C) \,.
+      &\bic x \in (A - B) \cup (A \cap C).
     }
   }
 
@@ -254,7 +254,7 @@
     Then it has to be that also $x \notin A$ since otherwise it would not be that $A \ss B$.
     Hence $x \in S - A$, which shows the result since $x$ was arbitrary.
   }
-  
+
   \mainprob
   \qproof{
     We must show that the above definition of $\fs$ satisfies the three parts of the definition of a $\s$-algebra:
@@ -326,11 +326,11 @@
 
 \def\defsam{
   \begin{enumerate}
-  \item[\ilab{i}] $\mu(\es) = 0$, $\mu(S) > 0$.
-  \item[\ilab{ii}] If $\braces{X_n}_{n=0}^\infty$ is a collection of mutually disjoint sets from $\fs$, then
-    \gath{
-      \mu\parens{\bigcup_{n=0}^\infty X_n} = \sum_{n=0}^\infty \mu(X_n) \,.
-    }
+    \item[\ilab{i}] $\mu(\es) = 0$, $\mu(S) > 0$.
+    \item[\ilab{ii}] If $\braces{X_n}_{n=0}^\infty$ is a collection of mutually disjoint sets from $\fs$, then
+      \gath{
+        \mu\parens{\bigcup_{n=0}^\infty X_n} = \sum_{n=0}^\infty \mu(X_n).
+      }
   \end{enumerate}
 }
 \exercise{6}{
@@ -355,7 +355,7 @@
     Hence
     \gath{
       \sum_{k=0}^\infty \mu(X_k) = \sum_{k \in \nats} \mu(X_k) = \sum_{k=0}^{n-1} \mu(X_k) + \mu(X_n) + \sum_{k=n+1}^\infty \mu(X_k)
-      = \sum_{k=0}^{n-1} 0 + 1 + \sum_{k=n+1}^\infty 0 = 1 \,.
+      = \sum_{k=0}^{n-1} 0 + 1 + \sum_{k=n+1}^\infty 0 = 1.
     }
     Thus clearly $\mu\parens{\bigcup_{n=0}^\infty X_n} = \sum_{n=0}^\infty \mu(X_n) = 1$.
 
@@ -364,7 +364,7 @@
     It also follows that $a \notin X_n$ for every natural $X_n$ so that $\mu(X_n) = 0$.
     Hence clearly
     \gath{
-      \mu\parens{\bigcup_{n=0}^\infty X_n} = 0 = \sum_{n=0}^\infty 0 = \sum_{n=0}^\infty \mu(X_n) \,.
+      \mu\parens{\bigcup_{n=0}^\infty X_n} = 0 = \sum_{n=0}^\infty 0 = \sum_{n=0}^\infty \mu(X_n).
     }
 
     Thus \ilab{ii} is shown in both cases so that $\mu$ is indeed a $\s$-additive measure on $S$ since we also showed \ilab{i}.
@@ -389,7 +389,7 @@
     Then by definition $\mu\parens{\bigcup_{n=0}^\infty X_n} = 0$, and it also has to be that $X_n = \es$ for all $n \in \nats$ so that $\mu(X_n) = 0$.
     Therefore
     \gath{
-      \sum_{n=0}^\infty \mu(X_n) = \sum_{n=0}^\infty 0 = 0 = \mu\parens{\bigcup_{n=0}^\infty X_n} \,.
+      \sum_{n=0}^\infty \mu(X_n) = \sum_{n=0}^\infty 0 = 0 = \mu\parens{\bigcup_{n=0}^\infty X_n}.
     }
 
     Case: $\bigcup_{n=0}^\infty X_n \neq \es$.
@@ -449,8 +449,8 @@
     On the other hand, if there is no such $N$, then it follows that, for every $N \in \nats$, there is a natural $n > N$ such that $X_n \neq \es$.
     At this point we need two facts from real analysis, supposing that $\angles{a_n}_{n=0}^\infty$ is a real sequence:
     \begin{enumerate}
-    \item By definition, the sequence converges to a real $a$ if, for every real $\e > 0$, there is an $N \in \nats$ such that $\abs{a_n - a} < \e$ for every natural $n \geq N$.
-    \item If the infinite series $\sum_{n=0}^\infty a_n$ converges (to a finite value) then the sequence itself must converge to zero.
+      \item By definition, the sequence converges to a real $a$ if, for every real $\e > 0$, there is an $N \in \nats$ such that $\abs{a_n - a} < \e$ for every natural $n \geq N$.
+      \item If the infinite series $\sum_{n=0}^\infty a_n$ converges (to a finite value) then the sequence itself must converge to zero.
     \end{enumerate}
     We shall show that $\sum_{n=0}^\infty \mu(X_n)$ diverges by showing that the sequence $\angles{\mu(X_n)}_{n=0}^\infty$ does \emph{not} converge to zero (i.e. the contrapositive of 2).
     So let $\e = 1/2$, noting that clearly $\e = 1/2 > 0$.
@@ -459,7 +459,7 @@
     Therefore we have shown
     \gath{
       \exists \e > 0 \forall N \in \nats \exists n \geq N \parens{\abs{\mu(X_n) - 0} \geq \e} \\
-      \lnot \forall \e > 0 \exists N \in \nats \forall n \geq N \parens{\abs{\mu(X_n) - 0} < \e} \,,
+      \lnot \forall \e > 0 \exists N \in \nats \forall n \geq N \parens{\abs{\mu(X_n) - 0} < \e},
     }
     which shows by definition that $\angles{\mu(X_n)}_{n=0}^\infty$ does not converge to zero.
     Hence $\sum_{n=0}^\infty \mu(X_n)$ diverges so that by convention $\sum_{n=0}^\infty \mu(X_n) = \infty$.
