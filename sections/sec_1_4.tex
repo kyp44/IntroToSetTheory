@@ -237,14 +237,100 @@
     The final property is $(A \sd B) \sd C = A \sd (B \sd C)$, i.e. that the symmetric difference operation is associative.
     This set is visualized below:
     \venndiag{1}{1}{1}{0}{0}{0}{1}
-    The proof of this is tedious and depends on several of the various properties we have proven above.
+    In order to prove this while avoiding great tedium, we introduce the logical ``exclusive or'' operation, also called XOR.
+    The reader may already have some familiarity with this operation, but for propositions $P$ and $Q$, we denote the XOR of $P$ and $Q$ as $P \lxor Q$.
+    The XOR operation is defined by the following truth table:
+    \begin{center}
+        \begin{tabular}{cc|c}
+            $P$ & $Q$ & $P \lxor Q$ \\
+            \hline
+            F   & F   & F           \\
+            F   & T   & T           \\
+            T   & F   & T           \\
+            T   & T   & F
+        \end{tabular}
+    \end{center}
+    \begin{lem}\label{lem:oper:xorid}
+        We claim the logical identity $P \lxor Q \bic (P \land \lnot Q) \lor (Q \land \lnot P)$
+    \end{lem}
     \qproof{
-        We have the following:
+        To prove this, we work out the truth table for the right-hand side, in which we set $R = (P \land \lnot Q) \lor (Q \land \lnot P)$ for brevity:
+        \begin{center}
+            \begin{tabular}{cc|cc|cc|c}
+                $P$ & $Q$ & $\lnot P$ & $\lnot Q$ & $P \land \lnot Q$ & $Q \land \lnot P$ & $R$ \\
+                \hline
+                F   & F   & T         & T         & F                 & F                 & F   \\
+                F   & T   & T         & F         & F                 & T                 & T   \\
+                T   & F   & F         & T         & T                 & F                 & T   \\
+                T   & T   & F         & F         & F                 & F                 & F
+            \end{tabular}
+        \end{center}
+        Since the truth table for $R$ is identical to that for $P \lxor Q$ above, this proves the identity.
+    }
+    \begin{lem}\label{lem:oper:xorassoc}
+        The logical XOR operation is associative, that is that $(P \lxor Q) \lxor R \bic P \lxor (Q \lxor R)$.
+    \end{lem}
+    \qproof{
+        This is again most easily proved via exhaustive truth tables:
+        \begin{center}
+            \begin{tabular}{ccc|c|c}
+                $P$ & $Q$ & $R$ & $P \lxor Q$ & $(P \lxor Q) \lxor R$ \\
+                \hline
+                F   & F   & F   & F           & F                     \\
+                F   & F   & T   & F           & T                     \\
+                F   & T   & F   & T           & T                     \\
+                F   & T   & T   & T           & F                     \\
+                T   & F   & F   & T           & T                     \\
+                T   & F   & T   & T           & F                     \\
+                T   & T   & F   & F           & F                     \\
+                T   & T   & T   & F           & T
+            \end{tabular}
+        \end{center}
+        \pagebreak
+        \begin{center}
+            \begin{tabular}{ccc|c|c}
+                $P$ & $Q$ & $R$ & $Q \lxor R$ & $P \lxor (Q \lxor R)$ \\
+                \hline
+                F   & F   & F   & F           & F                     \\
+                F   & F   & T   & T           & T                     \\
+                F   & T   & F   & T           & T                     \\
+                F   & T   & T   & F           & F                     \\
+                T   & F   & F   & F           & T                     \\
+                T   & F   & T   & T           & F                     \\
+                T   & T   & F   & T           & F                     \\
+                T   & T   & T   & F           & T
+            \end{tabular}
+        \end{center}
+        Since the final column of both tables are identical, this shows the desired result.
+    }
+    \begin{lem}\label{lem:oper:sdxor}
+        For sets $A$ and $B$ and any $x$, $x \in A \sd B$ if and only if $x \in A \lxor x \in B$.
+    \end{lem}
+    \qproof{
+        For any $x$, define the proposition $P$ as $x \in A$ and $Q$ as $x \in B$.
+        Then we have that
         \ali{
-            (A \sd B) \sd C &= \squares{(A - B) \cup (B - A)} \sd C & \text{Definition of $\sd$} \\
-            &= \braces{\squares{(A - B) \cup (B - A)} - C} \cup \braces{C - \squares{(A - B) \cup (B - A)}} & \text{Definition of $\sd$} \\
-            &= A \veebar B
+            x \in A \sd B &\bic x \in (A -  B) \cup (B - A) & \text{Definition of $\sd$} \\
+            &\bic x \in A - B \lor x \in B - A & \text{Definition of union} \\
+            &\bic (x \in A \land x \notin B) \lor (x \in B \land x \notin A) & \text{Definition of set difference} \\
+            &\bic (P \land \lnot Q) \lor (Q \land \lnot P) & \text{Definitions of $P$ and $Q$} \\
+            &\bic P \lxor Q & \text{Lemma~\ref{lem:oper:xorid}} \\
+            &\bic x \in A \lxor x \in B, & \text{Definitions of $P$ and $Q$}
         }
+        which of course proves the result.
+    }
+    Finally, we are ready to prove the original assertion that the symmetric difference is associative.
+    \qproof{
+        For any $x$, define the proposition $P$ as $x \in A$, $Q$ as $x \in B$ and $R$ as $x \in C$.
+        We then have that
+        \ali{
+            x \in (A \sd B) \sd C &\bic (x \in A \lxor x \in B) \lxor x \in C & \text{Lemma~\ref{lem:oper:sdxor}} \\
+            &\bic (P \lxor Q) \lxor R & \text{Definitions of $P$, $Q$, and $R$} \\
+            &\bic P \lxor (Q \lxor R) & \text{Lemma~\ref{lem:oper:xorassoc}} \\
+            &\bic x \in A \lxor (x \in B \lxor x \in C) & \text{Definitions of $P$, $Q$, and $R$} \\
+            &\bic x \in A \sd (B \sd C). & \text{Lemma~\ref{lem:oper:sdxor}}
+        }
+        This of course suffices to show that $(A \sd B) \sd C = A \sd (B \sd C)$.
     }
 }
 
@@ -261,7 +347,89 @@
     \end{enumerate}
 }
 \sol{
-    TODO
+    (a) \qproof{
+        $(\to)$ First assume that $A \ss B$.
+
+        To show that $A \cap B = A$, first consider $x \in A \cap B$, then clearly $x \in A$ so that $A \cap B \ss A$.
+        Now suppose that $x \in A$ so that also $x \in B$ since $A \ss B$.
+        Hence, $x \in A$ and $x \in B$ so that $x \in A \cap B$, showing that $A \ss A \cap B$.
+
+        Next we show that $A \cup B = B$.
+        First consider any $x \in A \cup B$.
+        If $x \in A$ then also $x \in B$ since $A \ss B$.
+        Since, in the other case, we have that $x \in B$ directly, it follows that $A \cup B \ss B$.
+        Now suppose that $x \in B$ so that clearly also $x \in A \cup B$, and so $B \ss A \cup B$ as well.
+
+        Finally, we show that $A - B = \es$.
+        To see this, assume first that $A - B \neq \es$ so that there is an $x \in A - B$.
+        Thus, $x \in A$ but $x \notin B$.
+        However, $x \in A$ implies that $x \in B$ since $A \ss B$, which is a contradiction.
+
+        $(\leftarrow)$ First suppose that $A \cap B = A$ and consider any $x \in A$ so that also $x \in A \cap B$, and hence $x \in B$ as well.
+        This shows that $A \ss B$.
+
+        Next, suppose that $A \cup B = B$ and consider any $x \in A$.
+        Then $x \in A \cup B = B$, which suffices to show that $x \in B$ and thus $A \ss B$.
+
+        Lastly, suppose that $A - B = \es$ and consider any $x \in A$.
+        Were it the case that $x \notin B$ then it would follow that $x \in A - B = \es$, an impossibility.
+        Hence, it has to be that $x \in B$ as well so that $A \ss B$ again.
+
+        This all suffices to show that
+        \gath{
+            A \ss B \bic A \cap B = A \bic A \cup B = B \bic A - B = \es
+        }
+        as desired.
+    }
+
+    (b) \qproof{
+        $(\to)$ Suppose first that $A \ss B \cap C$ and consider any $x \in A$.
+        Then also $x \in B \cap C$ so that both $x \in B$ and $x \in C$.
+        As $x$ was arbitrary, this shows that both $A \ss B$ and $A \ss C$.
+
+        $(\leftarrow)$ Now suppose that $A \ss B$ and $A \ss C$ and consider any $x \in A$.
+        Then both $x \in B$ since $A \ss B$, and $x \in C$ since $A \ss C$.
+        Therefore, $x \in B \cap C$, showing that $A \ss B \cap C$.
+    }
+
+    (c) \qproof{
+        $(\to)$ First suppose that $B \cup C \ss A$ and consider any $x \in B$.
+        Then $x \in B \cup C$ so that also $x \in A$, showing that $B \ss A$.
+        Similarly, for any $x \in C$ we have that again $x \in B \cup C$ so that $x \in A$.
+        This shows that $C \ss A$ as well.
+
+        $(\leftarrow)$ Now suppose that both $B \ss A$ and $C \ss A$ and consider any $x \in B \cup C$.
+        In the case in which $x \in B$, we have that $x \in A$ since $B \ss A$.
+        In the other case in which $x \in C$ we also have $x \in A$ since $C \ss A$ as well.
+        This shows that $B \cup C \ss A$ since $x$ was arbitrary.
+    }
+
+    (d) \qproof{
+        $(\ss)$ Suppose that $x \in A - B$ so that $x \in A$ and $x \notin B$.
+        Then of course also $x \in A \cup B$ since $x \in A$.
+        Since also $x \notin B$ it follows that $x \in (A \cup B) - B$, showing that $A - B \ss (A \cup B) - B$.
+        We also have that $x \notin A \cap B$ since $x \notin B$.
+        Hence, also $x \in A - (A \cap B)$ so that $A - B \ss A - (A \cap B)$ as well.
+
+        $(\supseteq)$ Suppose that $x \in (A \cup B) - B$.
+        Then $x \in A \cup B$ and $x \notin B$.
+        Since it must be that $x \in A$ or $x \in B$, but $x \notin B$, it must be that $x \in A$.
+        Hence, $x \in A - B$, which proves that $(A \cup B) - B \ss A - B$.
+
+        Now suppose that $x \in A - (A \cap B)$ so that $x \in A$ and $x \notin A \cap B$.
+        Since $x \in A$ it has to be that $x \notin B$ since otherwise it would be that $x \in A \cap B$.
+        Therefore, $x \in A$ and $x \notin B$ so that $x \in A - B$, showing that also $A - (A \cap B) \ss A - B$.
+
+        This all is sufficient to show that
+        \gath{
+            A - B = (A \cup B) - B = A - (A \cap B)
+        }
+        as desired.
+    }
+
+    (e) \qproof{
+        TODO
+    }
 }
 
 \exercise{3}{
@@ -290,11 +458,11 @@
     \begin{enumerate}
         \item[(a)] Set $T_1 = \braces{Y \in \pset{A} \where \text{$Y = A \cap X$ for some $X \in S$}}$, and prove $A \cap \bigcup S = \bigcup T_1$ (generalized distributive law).
         \item[(b)] Set $T_2 = \braces{Y \in \pset{A} \where \text{$Y = A - X$ for some $X \in S$}}$, and prove
-            \gath{
-                A - \bigcup S = \bigcap T_2 \\
-                A - \bigcap S = \bigcup T_2
-            }
-            (generalized De Morgan's laws).
+              \gath{
+                  A - \bigcup S = \bigcap T_2 \\
+                  A - \bigcap S = \bigcup T_2
+              }
+              (generalized De Morgan's laws).
     \end{enumerate}
 }
 \sol{
