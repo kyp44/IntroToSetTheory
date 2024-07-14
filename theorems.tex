@@ -889,15 +889,17 @@
     }
     so that we must show that $L = R$.
 
-    $(\ss)$ Consider any $x \in L$ so that there is an $i \in I$ such that $x \in B \cap A_i$.
-    Therefore $x \in B$ and $x \in A_i$.
-    Since $i \in I$ and $x \in A_i$ it follows that $x \in \bigcup_{i \in I} A_i$.
-    Therefore $x \in R$ since also $x \in B$ so that $L \ss R$ since $x$ was arbitrary.
-
-    $(\supseteq)$ Now consider any $x \in R$ so that $x \in B$ and $x \in \bigcup_{i \in I} A_i$.
-    Thus there is an $i \in I$ where $x \in A_i$.
-    Then $x \in B \cap A_i$ since also $x \in B$.
-    Since $i \in I$ it follows that $x \in L$ so that $R \ss L$ since $x$ was arbitrary.
+    \seteqproof{
+      Consider any $x \in L$ so that there is an $i \in I$ such that $x \in B \cap A_i$.
+      Therefore, $x \in B$ and $x \in A_i$.
+      Since $i \in I$ and $x \in A_i$ it follows that $x \in \bigcup_{i \in I} A_i$.
+      Therefore, $x \in R$ since also $x \in B$ so that $L \ss R$ since $x$ was arbitrary.
+    }{
+      Now consider any $x \in R$ so that $x \in B$ and $x \in \bigcup_{i \in I} A_i$.
+      Thus there is an $i \in I$ where $x \in A_i$.
+      Then $x \in B \cap A_i$ since also $x \in B$.
+      Since $i \in I$ it follows that $x \in L$ so that $R \ss L$ since $x$ was arbitrary.
+    }
 
     This shows that $L = R$ as desired.
   }

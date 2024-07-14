@@ -222,48 +222,50 @@
 }
 \sol{
   \qproof{
-    $(\to)$ First, suppose that Zorn's Lemma is true, and let $C$ be the set of all chains of $(A, \leq)$.
-    First, it is trivial to show that $\ss$ is a partial order on $C$, i.e. that it is reflexive, antisymmetric, and transitive.
-    Let $B \ss C$ be any $\ss$-chain, and let $U = \bigcup B$.
+    \bicproof{
+      First, suppose that Zorn's Lemma is true, and let $C$ be the set of all chains of $(A, \leq)$.
+      First, it is trivial to show that $\ss$ is a partial order on $C$, i.e. that it is reflexive, antisymmetric, and transitive.
+      Let $B \ss C$ be any $\ss$-chain, and let $U = \bigcup B$.
 
-    First we claim that that $U \in C$, which requires that we show that $U$ is a chain of $(A, \leq)$.
-    So consider any $x,y \in U = \bigcup B$ so that there are sets $X,Y \in B$ such that $x \in X$ and $y \in Y$.
-    Since $B$ is a $\ss$-chain it follows that either $X \ss Y$ or $Y \ss X$.
-    In the case of $X \ss Y$ then clearly both $x$ and $y$ are in $Y$ (since $x \in X$ and $X \ss Y$).
-    Then, since $Y \in C$ (since $Y \in B$ and $B \ss C$), we have that $Y$ is a $\leq$-chain.
-    Hence $x$ and $y$ are comparable in $\leq$.
-    The case in which $Y \ss X$ is analogous.
-    Since $x,y \in U$ were arbitrary, this shows that $U$ is a $\leq$-chain so that $U \in C$.
+      First we claim that that $U \in C$, which requires that we show that $U$ is a chain of $(A, \leq)$.
+      So consider any $x,y \in U = \bigcup B$ so that there are sets $X,Y \in B$ such that $x \in X$ and $y \in Y$.
+      Since $B$ is a $\ss$-chain it follows that either $X \ss Y$ or $Y \ss X$.
+      In the case of $X \ss Y$ then clearly both $x$ and $y$ are in $Y$ (since $x \in X$ and $X \ss Y$).
+      Then, since $Y \in C$ (since $Y \in B$ and $B \ss C$), we have that $Y$ is a $\leq$-chain.
+      Hence $x$ and $y$ are comparable in $\leq$.
+      The case in which $Y \ss X$ is analogous.
+      Since $x,y \in U$ were arbitrary, this shows that $U$ is a $\leq$-chain so that $U \in C$.
 
-    We also claim that $U$ is an upper bound (with respect to $\ss$) of $B$.
-    To show this, consider any $X \in B$ and any $x \in X$.
-    Then clearly $x \in \bigcup B = U$.
-    Hence $X \ss U$ since $x$ was arbitrary.
-    Since also $X \in B$ was arbitrary, this shows that $U$ is an upper bound of $B$.
+      We also claim that $U$ is an upper bound (with respect to $\ss$) of $B$.
+      To show this, consider any $X \in B$ and any $x \in X$.
+      Then clearly $x \in \bigcup B = U$.
+      Hence $X \ss U$ since $x$ was arbitrary.
+      Since also $X \in B$ was arbitrary, this shows that $U$ is an upper bound of $B$.
 
-    Thus, since $B$ was an arbitrary $\ss$-chain, this shows that every chain of $(C, \ss)$ has an upper bound.
-    It then follows from Zorn's Lemma that $C$ has a $\ss$-maximal element as desired.
+      Thus, since $B$ was an arbitrary $\ss$-chain, this shows that every chain of $(C, \ss)$ has an upper bound.
+      It then follows from Zorn's Lemma that $C$ has a $\ss$-maximal element as desired.
+    }{
+      Suppose that the set of all chains of $(A, \leq)$ has a $\ss$-maximal element for any $(A, \leq)$.
+      So consider any such ordered set $(A, \leq)$ where every chain has a upper bound.
+      Let $C$ be the set of all chains of $(A, \leq)$ so that $C$ has a $\ss$-maximal element $M$ by our initial supposition.
+      Then, since $M \in C$, it is a chain so it has an upper bound $a \in A$.
+      We claim that $a$ is a maximal element of $(A, \leq)$.
 
-    $(\leftarrow)$ Suppose that the set of all chains of $(A, \leq)$ has a $\ss$-maximal element for any $(A, \leq)$.
-    So consider any such ordered set $(A, \leq)$ where every chain has a upper bound.
-    Let $C$ be the set of all chains of $(A, \leq)$ so that $C$ has a $\ss$-maximal element $M$ by our initial supposition.
-    Then, since $M \in C$, it is a chain so it has an upper bound $a \in A$.
-    We claim that $a$ is a maximal element of $(A, \leq)$.
+      To show this, assume to the contrary that there is a $b \in A$ such that $a < b$, and let $M' = M \cup \braces{b}$.
+      Consider any $x,y \in M'$.
+      If $x,y \in M$ then clearly $x$ and $y$ are comparable in $\leq$ since $M$ is a chain.
+      On the other hand, if $x \in M$ but $y = b$, then $x \leq a$ since $a$ is an upper bound of $M$.
+      We also have that $a < b = y$ so that $x < y$ since orders are transitive.
+      The case in which $y \in M$ but $x = b$ similarly leads to $y < x$.
+      Lastly, if $x = y = b$ then clearly $x \leq y$ is true.
+      Hence in all cases $x$ and $y$ are comparable in $\leq$, which shows that $M'$ is a chain since $x$ and $y$ were arbitrary.
+      Therefore $M' \in C$.
 
-    To show this, assume to the contrary that there is a $b \in A$ such that $a < b$, and let $M' = M \cup \braces{b}$.
-    Consider any $x,y \in M'$.
-    If $x,y \in M$ then clearly $x$ and $y$ are comparable in $\leq$ since $M$ is a chain.
-    On the other hand, if $x \in M$ but $y = b$, then $x \leq a$ since $a$ is an upper bound of $M$.
-    We also have that $a < b = y$ so that $x < y$ since orders are transitive.
-    The case in which $y \in M$ but $x = b$ similarly leads to $y < x$.
-    Lastly, if $x = y = b$ then clearly $x \leq y$ is true.
-    Hence in all cases $x$ and $y$ are comparable in $\leq$, which shows that $M'$ is a chain since $x$ and $y$ were arbitrary.
-    Therefore $M' \in C$.
-
-    Now, it has to be that $b \notin M$ since, if it were, $a$ could not be an upper bound of $M$ since $a < b$ (and therefore it cannot be that $b \leq a$ since the strict ordering is asymmetric).
-    So, since $b \notin M$ it follows that $M \pss M \cup \braces{b} = M'$, which contradicts the fact that $M$ is a $\ss$-maximal element of $C$ since also $M' \in C$.
-    So it has to be that there is no such $b$ where $a < b$, which shows that $a$ is in fact a maximal element of $(A, \leq)$.
-    This proves Zorn's Lemma since $(A, \leq)$ was arbitrary.
+      Now, it has to be that $b \notin M$ since, if it were, $a$ could not be an upper bound of $M$ since $a < b$ (and therefore it cannot be that $b \leq a$ since the strict ordering is asymmetric).
+      So, since $b \notin M$ it follows that $M \pss M \cup \braces{b} = M'$, which contradicts the fact that $M$ is a $\ss$-maximal element of $C$ since also $M' \in C$.
+      So it has to be that there is no such $b$ where $a < b$, which shows that $a$ is in fact a maximal element of $(A, \leq)$.
+      This proves Zorn's Lemma since $(A, \leq)$ was arbitrary.
+    }
   }
 }
 
@@ -272,29 +274,31 @@
 }
 \sol{
   \qproof{
-    $(\to)$ Suppose Zorn's Lemma and let $A$ be a system of sets where $\bigcup B \in A$ for any $B$ that is linearly ordered by $\ss$.
-    We know that $\ss$ is a partial order on $A$.
-    So let $B$ be any $\ss$-chain of $A$.
-    Then we know that $\bigcup B \in A$, and we also claim that $\bigcup B$ is an upper bound of $B$.
-    To see this, consider any $X \in B$ and any $x \in X$, so that clearly $x \in \bigcup B$.
-    Hence $X \ss B$ since $x$ was arbitrary.
-    This shows that $\bigcup B$ is an upper bound of $B$ since $X$ was arbitrary.
-    Since $B$ was an arbitrary chain, this shows that $(A, \ss)$ is an ordered set where every chain has an upper bound.
-    Thus by Zorn's Lemma there is a $\ss$-maximal element of $A$ as desired.
+    \bicproof{
+      Suppose Zorn's Lemma and let $A$ be a system of sets where $\bigcup B \in A$ for any $B$ that is linearly ordered by $\ss$.
+      We know that $\ss$ is a partial order on $A$.
+      So let $B$ be any $\ss$-chain of $A$.
+      Then we know that $\bigcup B \in A$, and we also claim that $\bigcup B$ is an upper bound of $B$.
+      To see this, consider any $X \in B$ and any $x \in X$, so that clearly $x \in \bigcup B$.
+      Hence $X \ss B$ since $x$ was arbitrary.
+      This shows that $\bigcup B$ is an upper bound of $B$ since $X$ was arbitrary.
+      Since $B$ was an arbitrary chain, this shows that $(A, \ss)$ is an ordered set where every chain has an upper bound.
+      Thus by Zorn's Lemma there is a $\ss$-maximal element of $A$ as desired.
+    }{
+      Now suppose that $A$ has a $\ss$-maximal element for any system of sets $A$ such that $\bigcup B \in A$ for any $B \ss A$ where $B$ is linearly ordered by  $\ss$.
+      Consider any ordered set $(A, \leq)$ and let $C$ be the set of all chains of $A$.
+      Let $B$ be any subset of $C$ that is linearly ordered by $\ss$, and consider any $x$ and $y$ in $\bigcup B$.
+      Then there are $X$ and $Y$ in $B$ such that $x \in X$ and $y \in Y$.
+      Since $B$ is linearly ordered by $\ss$ we have that either $X \ss Y$ or $Y \ss X$.
+      In the former case we have $x \in X \ss Y$ so that both $x$ and $y$ are in $Y$.
+      Hence $x$ and $y$ are comparable in $\leq$ since $Y \in B \ss C$ so that $Y$ is a $\leq$-chain.
+      A similar argument shows that $x$ and $y$ are comparable if $Y \ss X$.
+      Since $x$ and $y$ were arbitrary this shows that $\bigcup B$ is a $\leq$-chain so that $\bigcup B \in C$.
 
-    $(\leftarrow)$ Now suppose that $A$ has a $\ss$-maximal element for any system of sets $A$ such that $\bigcup B \in A$ for any $B \ss A$ where $B$ is linearly ordered by  $\ss$.
-    Consider any ordered set $(A, \leq)$ and let $C$ be the set of all chains of $A$.
-    Let $B$ be any subset of $C$ that is linearly ordered by $\ss$, and consider any $x$ and $y$ in $\bigcup B$.
-    Then there are $X$ and $Y$ in $B$ such that $x \in X$ and $y \in Y$.
-    Since $B$ is linearly ordered by $\ss$ we have that either $X \ss Y$ or $Y \ss X$.
-    In the former case we have $x \in X \ss Y$ so that both $x$ and $y$ are in $Y$.
-    Hence $x$ and $y$ are comparable in $\leq$ since $Y \in B \ss C$ so that $Y$ is a $\leq$-chain.
-    A similar argument shows that $x$ and $y$ are comparable if $Y \ss X$.
-    Since $x$ and $y$ were arbitrary this shows that $\bigcup B$ is a $\leq$-chain so that $\bigcup B \in C$.
-
-    Thus $C$ is a system of sets that meet the criteria of the initial supposition since $B$ was arbitrary.
-    Hence $C$ has a $\ss$-maximal element.
-    Since $(A, \leq)$ was an arbitrary ordered set and we have shown that the set of all chains of $(A, \leq)$ has a $\ss$-maximal element, Zorn's Lemma follows from Exercise~8.1.4.
+      Thus $C$ is a system of sets that meet the criteria of the initial supposition since $B$ was arbitrary.
+      Hence $C$ has a $\ss$-maximal element.
+      Since $(A, \leq)$ was an arbitrary ordered set and we have shown that the set of all chains of $(A, \leq)$ has a $\ss$-maximal element, Zorn's Lemma follows from Exercise~8.1.4.
+    }
   }
 }
 
@@ -305,33 +309,35 @@
 }
 \sol{
   \qproof{
-    $(\to)$ Suppose Zorn's Lemma and let $A$ be an arbitrary system of sets of finite character.
-    Suppose that $B$ is any subset of $A$ that is linearly ordered by $\ss$ and let $C$ be any finite subset of $\bigcup B$.
-    Now, for each $x \in C$ there is a set $X_x \in B$ such that $x \in X_x$, since $x \in C \ss \bigcup B$.
-    Clearly the set $D = \braces{X_x \where x \in C}$ is a subset of $B$ so that $D$ is also linearly ordered by $\ss$.
-    Also clearly $D$ is finite since $C$ is.
-    Hence $D$ has a $\ss$-greatest element $X$.\
-    Note that the Axiom of Choice is not needed in selecting the set $X_x$ for each $x \in C$ since we are only making a finite number of choices.
-    So consider any $x \in C$ so that $x \in X_x \ss X$.
-    Hence $x \in X$ so that $C \ss X$ since $x$ was arbitrary.
-    We also have that $X \in B \ss A$ so $X \in A$.
-    Therefore $C$ is a finite subset of $X$, which is an element of $A$, so that $C$ is also in $A$ since $A$ has finite character.
-    Since $C$ was an arbitrary finite subset of $\bigcup B$ and $C \in A$ it follows that $\bigcup B \in A$.
-    Hence, since $B$ was an arbitrary linearly ordered (by $\ss$) subset of $A$, we have by Exercise~8.1.5 and Zorn's Lemma that $A$ has a $\ss$-maximal element as desired.
-
-    $(\leftarrow)$ Now suppose that every system of sets of finite character has a $\ss$-maximal element.
-    Let $(A, \leq)$ be any ordered set and let $C$ be the set of all chains of $(A, \leq)$.
-    Now suppose that $X \in C$ and let $Y$ be any finite subset of $X$.
-    Clearly since $X \in C$, it is linearly ordered by $\leq$ so that $Y$ is as well since $Y \ss X$.
-    Hence $Y \in C$.
-    Now let $X'$ be any set such that every finite subset of $X'$ is in $C$.
-    Consider any $x,y \in X'$.
-    Then $\braces{x, y}$ is clearly a finite subset of $X'$ so that it is in $C$ and therefore a $\leq$-chain.
-    Hence $x$ and $y$ are comparable in $\leq$, which shows that $X'$ itself is a $\leq$-chain since $x$ and $y$ were arbitrary.
-    Hence $X' \in C$.
-    Thus we have just shown that $X \in C$ if and only if every finite subset of $X$ is in $C$ so that $C$ has finite character by definition.
-    Therefore, by the initial supposition, $C$ has a $\ss$ maximal element.
-    Since again $C$ is the set of all chains of the arbitrary $(A, \leq)$, Zorn's Lemma follows from Exercise~8.1.4.
+    \bicproof{
+      Suppose Zorn's Lemma and let $A$ be an arbitrary system of sets of finite character.
+      Suppose that $B$ is any subset of $A$ that is linearly ordered by $\ss$ and let $C$ be any finite subset of $\bigcup B$.
+      Now, for each $x \in C$ there is a set $X_x \in B$ such that $x \in X_x$, since $x \in C \ss \bigcup B$.
+      Clearly the set $D = \braces{X_x \where x \in C}$ is a subset of $B$ so that $D$ is also linearly ordered by $\ss$.
+      Also clearly $D$ is finite since $C$ is.
+      Hence $D$ has a $\ss$-greatest element $X$.\
+      Note that the Axiom of Choice is not needed in selecting the set $X_x$ for each $x \in C$ since we are only making a finite number of choices.
+      So consider any $x \in C$ so that $x \in X_x \ss X$.
+      Hence $x \in X$ so that $C \ss X$ since $x$ was arbitrary.
+      We also have that $X \in B \ss A$ so $X \in A$.
+      Therefore $C$ is a finite subset of $X$, which is an element of $A$, so that $C$ is also in $A$ since $A$ has finite character.
+      Since $C$ was an arbitrary finite subset of $\bigcup B$ and $C \in A$ it follows that $\bigcup B \in A$.
+      Hence, since $B$ was an arbitrary linearly ordered (by $\ss$) subset of $A$, we have by Exercise~8.1.5 and Zorn's Lemma that $A$ has a $\ss$-maximal element as desired.
+    }{
+      Now suppose that every system of sets of finite character has a $\ss$-maximal element.
+      Let $(A, \leq)$ be any ordered set and let $C$ be the set of all chains of $(A, \leq)$.
+      Now suppose that $X \in C$ and let $Y$ be any finite subset of $X$.
+      Clearly since $X \in C$, it is linearly ordered by $\leq$ so that $Y$ is as well since $Y \ss X$.
+      Hence $Y \in C$.
+      Now let $X'$ be any set such that every finite subset of $X'$ is in $C$.
+      Consider any $x,y \in X'$.
+      Then $\braces{x, y}$ is clearly a finite subset of $X'$ so that it is in $C$ and therefore a $\leq$-chain.
+      Hence $x$ and $y$ are comparable in $\leq$, which shows that $X'$ itself is a $\leq$-chain since $x$ and $y$ were arbitrary.
+      Hence $X' \in C$.
+      Thus we have just shown that $X \in C$ if and only if every finite subset of $X$ is in $C$ so that $C$ has finite character by definition.
+      Therefore, by the initial supposition, $C$ has a $\ss$ maximal element.
+      Since again $C$ is the set of all chains of the arbitrary $(A, \leq)$, Zorn's Lemma follows from Exercise~8.1.4.
+    }
   }
 }
 
@@ -356,14 +362,16 @@
     for all $x \in A$.
     We claim that $f$ meets the required criteria, so let $x$ be some element of $A$.
 
-    $(\to)$ Suppose that $(x, f(x)) \in E$.
-    Then clearly for $y = f(x)$ we have that $(x, y) = (x, f(x)) \in E$.
-    We note that, if $Y = \es$, then $y = f(x) = a \in A$, and if $Y_x \neq \es$ then $y = f(x) = g(Y_x) \in Y_x$ since $g$ is a choice function so that again $y \in A$ since clearly $Y_x \ss A$.
-
-    $(\leftarrow)$ Now suppose that there is a $y \in A$ such that $(x,y) \in E$.
-    Then clearly by definition we have $y \in Y_x$ so that $Y_x \neq \es$.
-    Thus $f(x) = g(Y_x) \in Y_x$ since $g$ is a choice function.
-    We therefore have $(x, f(x)) \in E$ as desired, again by the definition of $Y_x$.
+    \bicproof{
+      Suppose that $(x, f(x)) \in E$.
+      Then clearly for $y = f(x)$ we have that $(x, y) = (x, f(x)) \in E$.
+      We note that, if $Y = \es$, then $y = f(x) = a \in A$, and if $Y_x \neq \es$ then $y = f(x) = g(Y_x) \in Y_x$ since $g$ is a choice function so that again $y \in A$ since clearly $Y_x \ss A$.
+    }{
+      Now suppose that there is a $y \in A$ such that $(x,y) \in E$.
+      Then clearly by definition we have $y \in Y_x$ so that $Y_x \neq \es$.
+      Thus $f(x) = g(Y_x) \in Y_x$ since $g$ is a choice function.
+      We therefore have $(x, f(x)) \in E$ as desired, again by the definition of $Y_x$.
+    }
   }
 }
 
@@ -402,38 +410,40 @@
 }
 \sol{
   \qproof{
-    $(\to)$ We show the contrapositive of this implication.
-    So suppose that there \emph{is} a decreasing sequence $\angles{a_n \where n \in \w}$ in $A$, and let $X$ be the range of the sequence so that clearly $X \ss A$ and $X \neq \es$.
-    Now consider any $x \in X$ so that there is a $n \in \w$ such that $x = a_n$.
-    We then have that $x = a_n > a_{n+1}$ since the sequence is decreasing, noting that clearly $a_{n+1} \in X$.
-    Since $x$ was arbitrary this shows that $X$ has no least element (since we have shown that $\forall x \in X \exists y \in X (x > y)$ and this is logically equivalent to $\lnot \exists x \in X \forall y \in X (x \leq y)$, noting that $\lnot (x > y)$ is equivalent to $x \leq y$ since the ordering is linear).
-    Thus, since there is a nonempty subset of $A$ that has no least element, it follows that $(A, <)$ is not a well-ordering.
+    \bicproof{
+      We show the contrapositive of this implication.
+      So suppose that there \emph{is} a decreasing sequence $\angles{a_n \where n \in \w}$ in $A$, and let $X$ be the range of the sequence so that clearly $X \ss A$ and $X \neq \es$.
+      Now consider any $x \in X$ so that there is a $n \in \w$ such that $x = a_n$.
+      We then have that $x = a_n > a_{n+1}$ since the sequence is decreasing, noting that clearly $a_{n+1} \in X$.
+      Since $x$ was arbitrary this shows that $X$ has no least element (since we have shown that $\forall x \in X \exists y \in X (x > y)$ and this is logically equivalent to $\lnot \exists x \in X \forall y \in X (x \leq y)$, noting that $\lnot (x > y)$ is equivalent to $x \leq y$ since the ordering is linear).
+      Thus, since there is a nonempty subset of $A$ that has no least element, it follows that $(A, <)$ is not a well-ordering.
+    }{
+      We show the contrapositive of this implication as well.
+      So suppose that $(A, <)$ is \emph{not} a well-ordering.
+      Then there exists a nonempty subset $X$ of $A$ such that $X$ has no least element.
+      By the Axiom of Choice the set $\pset{X}$ has a choice function $g$.
+      For any $x \in X$ we define the set $X_x = \braces{y \in X \where y < x}$.
 
-    $(\leftarrow)$ We show the contrapositive of this implication as well.
-    So suppose that $(A, <)$ is \emph{not} a well-ordering.
-    Then there exists a nonempty subset $X$ of $A$ such that $X$ has no least element.
-    By the Axiom of Choice the set $\pset{X}$ has a choice function $g$.
-    For any $x \in X$ we define the set $X_x = \braces{y \in X \where y < x}$.
+      First we claim that $X_x \neq \es$ for any $x \in X$.
+      Suppose to the contrary that there is some $x \in X$ such that $X_x = \es$.
+      Consider any other $y \in X$.
+      Then it cannot be that $y < x$ for then $y \in X_x$ so that $X_x \neq \es$.
+      So, since the ordering is linear, it has to be that $y \geq x$.
+      But, since $y$ was arbitrary, this would mean that $x$ is the least element of $X$, which we know cannot be since $X$ has no least element!
+      Therefore it has to be that indeed $X_x \neq \es$ for any $x \in X$.
 
-    First we claim that $X_x \neq \es$ for any $x \in X$.
-    Suppose to the contrary that there is some $x \in X$ such that $X_x = \es$.
-    Consider any other $y \in X$.
-    Then it cannot be that $y < x$ for then $y \in X_x$ so that $X_x \neq \es$.
-    So, since the ordering is linear, it has to be that $y \geq x$.
-    But, since $y$ was arbitrary, this would mean that $x$ is the least element of $X$, which we know cannot be since $X$ has no least element!
-    Therefore it has to be that indeed $X_x \neq \es$ for any $x \in X$.
-
-    Now we construct a sequence $\angles{a_n \where n \in \w}$ by recursion:
-    \ali{
-      a_0 &= g(X) \\
-      a_{n+1} &= g(X_{a_n}),
+      Now we construct a sequence $\angles{a_n \where n \in \w}$ by recursion:
+      \ali{
+        a_0 &= g(X) \\
+        a_{n+1} &= g(X_{a_n}),
+      }
+      noting that the recursive step is always valid since $X_{a_n}$ is never empty, as was just shown.
+      It is easy to see that this is a decreasing sequence.
+      Take any $n \in \w$ so that we have that $a_{n+1} = g(X_{a_n})$.
+      Hence $a_{n+1} \in X_{a_n}$ since $g$ is a choice function.
+      By the definition of $X_{a_n}$ it then follows that $a_{n+1} < a_n$, which shows that the sequence is decreasing since $n$ was arbitrary.
+      Hence we have constructed an infinite decreasing sequence in $A$.
     }
-    noting that the recursive step is always valid since $X_{a_n}$ is never empty, as was just shown.
-    It is easy to see that this is a decreasing sequence.
-    Take any $n \in \w$ so that we have that $a_{n+1} = g(X_{a_n})$.
-    Hence $a_{n+1} \in X_{a_n}$ since $g$ is a choice function.
-    By the definition of $X_{a_n}$ it then follows that $a_{n+1} < a_n$, which shows that the sequence is decreasing since $n$ was arbitrary.
-    Hence we have constructed an infinite decreasing sequence in $A$.
   }
 }
 
@@ -460,28 +470,30 @@
     }
     so that we must show that $L = R$.
 
-    $(\ss)$ Consider any $x \in L$.
-    For any $t \in T$, define the set $S_t = \braces{s \in S \where x \in A_{t,s}}$.
-    Since $x \in L$ we have that $x \in \bigcup_{s \in S} A_{t,s}$ for all $t \in T$.
-    Hence, for all $t \in T$, there is an $s \in S$ such that $x \in A_{t,s}$.
-    From this it follows that $S_t \neq \es$ for any $t \in T$.
-    Now, by the Axiom of Choice, the system of sets $\braces{S_t \where t \in T}$ has a choice function $g$.
-    We then define a function $f(t) = g(S_t)$ for any $t \in T$, noting that this is defined for all $t \in T$ since $S_t$ is nonempty.
-    Clearly then we have, for any such $t \in T$, that $f(t) = g(S_t) \in S_t \ss S$ so that $f(t) \in S$.
-    Hence $f$ is a function from $T$ into $S$ so that $f \in S^T$.
+    \seteqproof{
+      Consider any $x \in L$.
+      For any $t \in T$, define the set $S_t = \braces{s \in S \where x \in A_{t,s}}$.
+      Since $x \in L$ we have that $x \in \bigcup_{s \in S} A_{t,s}$ for all $t \in T$.
+      Hence, for all $t \in T$, there is an $s \in S$ such that $x \in A_{t,s}$.
+      From this it follows that $S_t \neq \es$ for any $t \in T$.
+      Now, by the Axiom of Choice, the system of sets $\braces{S_t \where t \in T}$ has a choice function $g$.
+      We then define a function $f(t) = g(S_t)$ for any $t \in T$, noting that this is defined for all $t \in T$ since $S_t$ is nonempty.
+      Clearly then we have, for any such $t \in T$, that $f(t) = g(S_t) \in S_t \ss S$ so that $f(t) \in S$.
+      Hence $f$ is a function from $T$ into $S$ so that $f \in S^T$.
 
-    Now consider any specific $t \in T$ so that $f(t) \in S_t$ and hence $x \in A_{t,f(t)}$ by the definition of $S_t$.
-    Thus since $t$ was arbitrary this shows that $x \in \bigcap_{t \in T} A_{t, f(t)}$.
-    Moreover, since $f \in S^T$ we clearly have that $x \in \FR = R$.
-    Thus, since $x$ was arbitrary, this shows that $L \ss R$.
-
-    $(\supseteq)$ Now consider any $x \in R$ so that there is an $f \in S^T$ such that $x \in \bigcap_{t \in T} A_{t,f(t)}$.
-    Thus we have that $x \in A_{t,f(t)}$ for all $t \in T$.
-    So consider any $t \in T$ and let $s = f(t)$, noting that $s = f(t) \in S$ since $f \in S^T$.
-    Thus we have that $x \in A_{t,f(t)} = A_{t,s}$.
-    Since we have shown that there is an $s \in S$ such that $x \in A_{t,s}$, it follows that $x \in \bigcup_{s \in S} A_{t,s}$.
-    Since $t \in T$ was arbitrary we have $x \in \FL = L$.
-    Hence $R \ss L$ since $x$ was arbitrary.
+      Now consider any specific $t \in T$ so that $f(t) \in S_t$ and hence $x \in A_{t,f(t)}$ by the definition of $S_t$.
+      Thus since $t$ was arbitrary this shows that $x \in \bigcap_{t \in T} A_{t, f(t)}$.
+      Moreover, since $f \in S^T$ we clearly have that $x \in \FR = R$.
+      Thus, since $x$ was arbitrary, this shows that $L \ss R$.
+    }{
+      Now consider any $x \in R$ so that there is an $f \in S^T$ such that $x \in \bigcap_{t \in T} A_{t,f(t)}$.
+      Thus we have that $x \in A_{t,f(t)}$ for all $t \in T$.
+      So consider any $t \in T$ and let $s = f(t)$, noting that $s = f(t) \in S$ since $f \in S^T$.
+      Thus we have that $x \in A_{t,f(t)} = A_{t,s}$.
+      Since we have shown that there is an $s \in S$ such that $x \in A_{t,s}$, it follows that $x \in \bigcup_{s \in S} A_{t,s}$.
+      Since $t \in T$ was arbitrary we have $x \in \FL = L$.
+      Hence $R \ss L$ since $x$ was arbitrary.
+    }
   }
 
   Now we show that
@@ -495,40 +507,42 @@
     }
     so that we must show that $L = R$.
 
-    $(\ss)$ Consider any $x \in L$ so that there is a $t \in T$ such that $x \in \bigcap_{s \in S} A_{t,s}$.
-    Hence we have that $x \in A_{t,s}$ for all $s \in S$.
-    Now consider any $f \in S^T$.
-    Then we have that $f(t) \in S$ so that $x \in A_{t,f(t)}$.
-    Therefore there is a $t \in T$ such that $x \in A_{t,f(t)}$ so that $x \in \bigcup_{t \in T} A_{t,f(t)}$.
-    Moreover, since $f$ was arbitrary, we have that $x \in \SR = R$.
-    This shows that $L \ss R$ since $x$ was arbitrary.
-
-    $(\supseteq)$ We show this by contrapositive.
-    So suppose that $x \notin L$.
-    Hence we have
-    \gath{
-      x \notin \SL \\
-      \lnot \exists t \in T \parens{x \in \bigcap_{s \in S} A_{t,s}} \\
-      \lnot \exists t \in T \forall s \in S \parens{x \in A_{t,s}} \\
-      \forall t \in T \exists s \in S \parens{x \notin A_{t,s}}.
+    \seteqproof{
+      Consider any $x \in L$ so that there is a $t \in T$ such that $x \in \bigcap_{s \in S} A_{t,s}$.
+      Hence we have that $x \in A_{t,s}$ for all $s \in S$.
+      Now consider any $f \in S^T$.
+      Then we have that $f(t) \in S$ so that $x \in A_{t,f(t)}$.
+      Therefore there is a $t \in T$ such that $x \in A_{t,f(t)}$ so that $x \in \bigcup_{t \in T} A_{t,f(t)}$.
+      Moreover, since $f$ was arbitrary, we have that $x \in \SR = R$.
+      This shows that $L \ss R$ since $x$ was arbitrary.
+    }{
+      We show this by contrapositive.
+      So suppose that $x \notin L$.
+      Hence we have
+      \gath{
+        x \notin \SL \\
+        \lnot \exists t \in T \parens{x \in \bigcap_{s \in S} A_{t,s}} \\
+        \lnot \exists t \in T \forall s \in S \parens{x \in A_{t,s}} \\
+        \forall t \in T \exists s \in S \parens{x \notin A_{t,s}}.
+      }
+      Now, let $S_t = \braces{s \in S \where x \notin A_{t,s}}$ for each $t \in T$, noting that $S_t \neq \es$ by the above for any $t \in T$.
+      Then, by the Axiom of Choice, the system of sets $\braces{S_t \where t \in T}$ has a choice function $g$.
+      We then set $f(t) = g(S_t)$ for any $t \in T$.
+      Then clearly $f(t) = g(S_t) \in S_t \ss S$ for any $t \in T$ so that $f(t) \in S$ since $g$ is a choice function.
+      It then follows that $f$ is a function from $T$ into $S$ so that $f \in S^T$.
+      Now consider any $t \in T$ so that $f(t) = g(S_t) \in S_t$.
+      Then, by the definition of $S_t$, we have that $x \notin A_{t,f(t)}$.
+      Since $t \in T$ was arbitrary, we have thus shown that
+      \gath{
+        \exists f \in S^T \forall t \in T \parens{x \notin A_{t,f(t)}} \\
+        \lnot \forall f \in S^T \exists t \in T \parens{x \in A_{t,f(t)}} \\
+        \lnot \forall f \in S^T \parens{x \in \bigcup_{t \in T} A_{t,f(t)}} \\
+        \lnot \squares{x \in \SR} \\
+        x \notin \SR \\
+        x \notin R.
+      }
+      Since $x$ was arbitrary, this shows by contrapositive that $x \in R$ implies $x \in L$ so that $R \ss L$.
     }
-    Now, let $S_t = \braces{s \in S \where x \notin A_{t,s}}$ for each $t \in T$, noting that $S_t \neq \es$ by the above for any $t \in T$.
-    Then, by the Axiom of Choice, the system of sets $\braces{S_t \where t \in T}$ has a choice function $g$.
-    We then set $f(t) = g(S_t)$ for any $t \in T$.
-    Then clearly $f(t) = g(S_t) \in S_t \ss S$ for any $t \in T$ so that $f(t) \in S$ since $g$ is a choice function.
-    It then follows that $f$ is a function from $T$ into $S$ so that $f \in S^T$.
-    Now consider any $t \in T$ so that $f(t) = g(S_t) \in S_t$.
-    Then, by the definition of $S_t$, we have that $x \notin A_{t,f(t)}$.
-    Since $t \in T$ was arbitrary, we have thus shown that
-    \gath{
-      \exists f \in S^T \forall t \in T \parens{x \notin A_{t,f(t)}} \\
-      \lnot \forall f \in S^T \exists t \in T \parens{x \in A_{t,f(t)}} \\
-      \lnot \forall f \in S^T \parens{x \in \bigcup_{t \in T} A_{t,f(t)}} \\
-      \lnot \squares{x \in \SR} \\
-      x \notin \SR \\
-      x \notin R.
-    }
-    Since $x$ was arbitrary, this shows by contrapositive that $x \in R$ implies $x \in L$ so that $R \ss L$.
   }
 }
 
@@ -900,19 +914,21 @@
     It therefore follows from Exercise~7.2.6 that $\abs{\w_\a - f[A]} = \al_\a$.
     We now claim that $f[B - A] = \w_\a - f[A]$.
 
-    $(\ss)$ So consider any $y \in f[B - A]$ so that there is an $x \in B - A$ such that $y = f(x)$.
-    Since clearly $x \in B$, we have that $y = f(x) \in \w_\a$ since $f$ maps $B$ onto $\w_\a$.
-    Now suppose that also $y \in f[A]$ so that there is a $z \in A$ where $y = f(z)$.
-    Then we have that $y = f(x) = f(z)$ so that $x = z$ since $f$ is injective.
-    Hence we have $x = z \in A$ but also $z = x \notin A$ since $z = x \in B - A$, which is a contradiction.
-    So it must be that $y \notin f[A]$ so that indeed $y \in \w_\a - f[A]$.
-    Therefore $f[B - A] \ss \w_\a - f[A]$ since $y$ was arbitrary.
-
-    $(\supseteq)$ Now consider any $y \in \w_\a - f[A]$ so that $y \in \w_\a$ and $y \notin f[A]$.
-    Since $f$ is onto $\w_\a$, there is an $x \in B$ such that $y = f(x)$.
-    Moreover, since $y \notin f[A]$ we can be sure that $x \notin A$.
-    Therefore $x \in B - A$.
-    Since $y = f(x)$ it therefore follows that $y \in f[B - A]$ so that $\w_\a - f[A] \ss f[B - A]$ since $y$ was arbitrary.
+    \seteqproof{
+      So consider any $y \in f[B - A]$ so that there is an $x \in B - A$ such that $y = f(x)$.
+      Since clearly $x \in B$, we have that $y = f(x) \in \w_\a$ since $f$ maps $B$ onto $\w_\a$.
+      Now suppose that also $y \in f[A]$ so that there is a $z \in A$ where $y = f(z)$.
+      Then we have that $y = f(x) = f(z)$ so that $x = z$ since $f$ is injective.
+      Hence we have $x = z \in A$ but also $z = x \notin A$ since $z = x \in B - A$, which is a contradiction.
+      So it must be that $y \notin f[A]$ so that indeed $y \in \w_\a - f[A]$.
+      Therefore $f[B - A] \ss \w_\a - f[A]$ since $y$ was arbitrary.
+    }{
+      Now consider any $y \in \w_\a - f[A]$ so that $y \in \w_\a$ and $y \notin f[A]$.
+      Since $f$ is onto $\w_\a$, there is an $x \in B$ such that $y = f(x)$.
+      Moreover, since $y \notin f[A]$ we can be sure that $x \notin A$.
+      Therefore $x \in B - A$.
+      Since $y = f(x)$ it therefore follows that $y \in f[B - A]$ so that $\w_\a - f[A] \ss f[B - A]$ since $y$ was arbitrary.
+    }
 
     Thus we have shown that $f[B - A] = \w_\a - f[A]$ so that clearly $f$ is a bijection from $B - A$ onto $\w_\a - f[A]$.
     Hence we have that $\abs{B - A} = \abs{\w_\a - f[A]} = \al_\a = \abs{B}$ as desired.

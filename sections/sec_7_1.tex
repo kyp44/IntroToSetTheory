@@ -286,43 +286,45 @@
 \qproof{
 Suppose that $R$ is a well-ordering of $A$.
 
-$(\to)$ Suppose that $f$ is a function from $A$ onto $B$.
-If $A$ is empty then clearly $B$ must be as well or else $f$ could not be onto.
-Thus we have $\abs{B} = \abs{\es} = 0 \leq 0 = \abs{\es} = \abs{A}$.
-So we can assume that $A$ is nonempty so that if $B$ is empty then $\abs{B} = \abs{\es} = 0 < \abs{A}$.
-Hence we can assume that $B$ is nonempty as well.
+\bicproof{
+  Suppose that $f$ is a function from $A$ onto $B$.
+  If $A$ is empty then clearly $B$ must be as well or else $f$ could not be onto.
+  Thus we have $\abs{B} = \abs{\es} = 0 \leq 0 = \abs{\es} = \abs{A}$.
+  So we can assume that $A$ is nonempty so that if $B$ is empty then $\abs{B} = \abs{\es} = 0 < \abs{A}$.
+  Hence we can assume that $B$ is nonempty as well.
 
-Then, for each $b \in B$, define the set $A_b = \braces{a \in A \where f(a) = b}$, which clearly not empty since $f$ is onto.
-Then, since $R$ is a well-ordering of $A$ and $A_b \ss A$, there is a unique least element of $a_b$ of $A_b$ according to $R$.
-We then define $g: B \to A$ by simply setting $g(b)  = a_b$ for any $b \in B$.
+  Then, for each $b \in B$, define the set $A_b = \braces{a \in A \where f(a) = b}$, which clearly not empty since $f$ is onto.
+  Then, since $R$ is a well-ordering of $A$ and $A_b \ss A$, there is a unique least element of $a_b$ of $A_b$ according to $R$.
+  We then define $g: B \to A$ by simply setting $g(b)  = a_b$ for any $b \in B$.
 
-We then claim that $g$ is injective.
-So consider $b_1$ and $b_2$ in $B$ where $b_1 \neq b_2$.
-Then since $a_{b_1} \in A_{b_1}$ clearly $f(a_{b_1}) = b_1$.
-Similarly $f(a_{b_2}) = b_2$ so that clearly $a_{b_1} \neq a_{b_2}$ since $f$ is a function and $b_1 \neq b_2$.
-Hence $g(b_1) = a_{b_1} \neq a_{b_2} = g(b_2)$, which shows that $g$ is injective since $b_1$ and $b_2$ were arbitrary.
-Then by definition $\abs{B} \leq \abs{A}$ as desired.
-
-$(\leftarrow)$ Now suppose that $\abs{B} \leq \abs{A}$ so that there is an injective $f: B \to A$.
-If $B$ is empty then clearly it has to be that $\abs{B} = \abs{\es} = 0 \leq \abs{A}$ regardless of $A$.
-So we can assume that $B$ is nonempty so that there is a $b \in B$.
-Since $f$ is injective, the inverse $\inv{f}$ is a function from $\ran(f)$ onto $B$.
-Now we construct a function $g: A \to B$ by setting
-$$
-  g(x) = \begin{cases}
-    \inv{f}(x) & x \in \ran(f)    \\
-    b          & x \notin \ran(f)
-  \end{cases}
-$$
-for any $x \in A$.
-It should be clear that $g$ maps $A$ onto $B$ since, for any $b \in B$, we have $f(b) \in \ran(f)$ (hence also $f(b) \in A$) so that $g(f(b)) = \inv{f}(f(b)) = b$.
+  We then claim that $g$ is injective.
+  So consider $b_1$ and $b_2$ in $B$ where $b_1 \neq b_2$.
+  Then since $a_{b_1} \in A_{b_1}$ clearly $f(a_{b_1}) = b_1$.
+  Similarly $f(a_{b_2}) = b_2$ so that clearly $a_{b_1} \neq a_{b_2}$ since $f$ is a function and $b_1 \neq b_2$.
+  Hence $g(b_1) = a_{b_1} \neq a_{b_2} = g(b_2)$, which shows that $g$ is injective since $b_1$ and $b_2$ were arbitrary.
+  Then by definition $\abs{B} \leq \abs{A}$ as desired.
+}{
+  Now suppose that $\abs{B} \leq \abs{A}$ so that there is an injective $f: B \to A$.
+  If $B$ is empty then clearly it has to be that $\abs{B} = \abs{\es} = 0 \leq \abs{A}$ regardless of $A$.
+  So we can assume that $B$ is nonempty so that there is a $b \in B$.
+  Since $f$ is injective, the inverse $\inv{f}$ is a function from $\ran(f)$ onto $B$.
+  Now we construct a function $g: A \to B$ by setting
+  $$
+    g(x) = \begin{cases}
+      \inv{f}(x) & x \in \ran(f)    \\
+      b          & x \notin \ran(f)
+    \end{cases}
+  $$
+  for any $x \in A$.
+  It should be clear that $g$ maps $A$ onto $B$ since, for any $b \in B$, we have $f(b) \in \ran(f)$ (hence also $f(b) \in A$) so that $g(f(b)) = \inv{f}(f(b)) = b$.
   }
+}
 
-  \mainprob
+\mainprob
 
-  First we note that presumably $\hs(A)$ for a set $A$ is the least \emph{nonzero} ordinal $\a$ such that there is no function from $A$ onto $\a$.
-  The fact that $\hs(A)$ is nonzero is important since, for a non-empty set $A$, there is no function from $A$ onto $\es = 0$ so that $0$ is actually the least ordinal such that such a function does not exist!
-  We also make note of the fact that, even for $A=\es$, the empty function $f = \es$ is a vacuously a function from $A$ onto $\es = 0$ so that $\hs(A) = 1$ anyway since there is no function from $A = \es$ onto $1 = \braces{0}$.
+First we note that presumably $\hs(A)$ for a set $A$ is the least \emph{nonzero} ordinal $\a$ such that there is no function from $A$ onto $\a$.
+The fact that $\hs(A)$ is nonzero is important since, for a non-empty set $A$, there is no function from $A$ onto $\es = 0$ so that $0$ is actually the least ordinal such that such a function does not exist!
+We also make note of the fact that, even for $A=\es$, the empty function $f = \es$ is a vacuously a function from $A$ onto $\es = 0$ so that $\hs(A) = 1$ anyway since there is no function from $A = \es$ onto $1 = \braces{0}$.
 
 (a)
 \qproof{

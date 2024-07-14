@@ -79,6 +79,16 @@
 \newcommand\gath[1]{\begin{gather*} #1 \end{gather*}}
 \newcommand\ali[1]{\begin{align*} #1 \end{align*}}
 \newcommand\qproof[1]{\begin{proof} #1 \end{proof}}
+\newcommand\bicproof[2]{
+  $(\to)$ #1
+
+  $(\leftarrow)$ #2
+}
+\newcommand\seteqproof[2]{
+  $(\ss)$ #1
+
+  $(\supseteq)$ #2
+}
 
 % Environment for indenting nested paragraphs (useful in case trees)
 \newenvironment{indpar}
