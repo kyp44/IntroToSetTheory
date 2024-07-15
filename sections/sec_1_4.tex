@@ -604,7 +604,19 @@
     (The ``complement'' of $A$ is the set of all $x \notin A$.)
 }
 \sol{
-    TODO
+    \qproof{
+        \def\Ac{\overline{A}}
+        Suppose that the complement of $A$ exist, and denote it by $\Ac$.
+        Then the set $A \cup \Ac$ exists by the Axiom of Union.
+        Furthermore, the set $V = \braces{X \in A \cup \Ac \where \text{$X$ is a set}}$ then uniquely exists by the Axiom Schema of Comprehension.
+
+        Now consider any set $X$ so that either $X \in A$ or $X \notin A$.
+        In the latter case of course $X \in \Ac$ by definition so that, either way, $X \in A \cup \Ac$.
+        Since $X$ is a set, it then follows that $X \in V$.
+        Likewise, clearly any $X \in V$ is also a set, so that $V$ would be exactly the set of all sets.
+        However, it was proven in Exercise~1.3.3a that such a set cannot exist!
+        Hence, it has to be that the complement $\Ac$ also cannot exist.
+    }
 }
 
 \exercise{5}{
@@ -612,21 +624,108 @@
     \begin{enumerate}
         \item[(a)] Set $T_1 = \braces{Y \in \pset{A} \where \text{$Y = A \cap X$ for some $X \in S$}}$, and prove $A \cap \bigcup S = \bigcup T_1$ (generalized distributive law).
         \item[(b)] Set $T_2 = \braces{Y \in \pset{A} \where \text{$Y = A - X$ for some $X \in S$}}$, and prove
-            \gath{
-                A - \bigcup S = \bigcap T_2 \\
-                A - \bigcap S = \bigcup T_2
-            }
-            (generalized De Morgan's laws).
+              \gath{
+                  A - \bigcup S = \bigcap T_2 \\
+                  A - \bigcap S = \bigcup T_2
+              }
+              (generalized De Morgan's laws).
     \end{enumerate}
 }
 \sol{
-    TODO
+    (a) Define $T_1 = \braces{Y \in \pset{A} \where \text{$Y = A \cap X$ for some $X \in S$}}$ as above.
+    \qproof{
+        \seteqproof{
+            Consider any $x \in A \cap \bigcup S$ so that $x \in A$ and there exists an $X \in S$ such that $x \in X$.
+            Set $Y = A \cap X$ so that $x \in Y$ since $x \in A$ and $x \in X$.
+            Since clearly $Y =A \cap X \ss A$ so that $Y \in \pset{A}$, and $X \in S$, it follows that $Y \in T_1$.
+            Hence, $x \in \bigcup T_1$ since $x \in Y$ and $Y \in T_1$.
+            This shows that $A \cap \bigcup S \ss \bigcup T_1$.
+        }{
+            Now consider any $x \in \bigcup T_1$ so that there is a $Y \in T_1$ such that $x \in Y$.
+            Since $Y \in T_1$, it must be that $Y = A \cap X$ for some $X \in S$.
+            And since $x \in Y = A \cap X$, we have that $x \in A$ and $x \in X$.
+            Then, because $X \in S$ and $x \in X$, it must be that $x \in \bigcup S$.
+            Since also $x \in A$ we have that $x \in A \cap \bigcup S$, which suffices to show that $\bigcup T_1 \ss A \cap \bigcup S$ as well.
+        }
+    }
+
+    (b) Define $T_2 = \braces{Y \in \pset{A} \where \text{$Y = A - X$ for some $X \in S$}}$ as above.
+
+    First we show that $A - \bigcup S = \bigcap T_2$.
+    \qproof{
+        \seteqproof{
+            Consider any $x \in A - \bigcup S$ so that $x \in A$ but $x \notin \bigcup S$.
+            It then has to be that $x \notin X$ for every $X \in S$ since otherwise $x$ \emph{would} be a member of $\bigcup S$.
+            Now consider any $Y \in T_2$ so that $Y = A - X$ for some $X \in S$.
+            Since $X \in S$ we know that $x \notin X$ from what has already been established.
+            Since also $x \in A$, it follows that $x \in A - X = Y$.
+            Then, since $Y$ was an arbitrary member of $T_2$, it follows that $x \in \bigcap T_2$, which proves that $A - \bigcup S \ss \bigcap T_2$.
+        }{
+            Next, consider any $x \in \bigcap T_2$ so that $x \in Y$ for every $Y \in T_2$.
+            To digress for a moment, consider any $X \in S$ and set $Y = A - X$.
+            Since any $y \in Y$ is also in $A$ we have $Y \ss A$ and thus $Y \in \pset{A}$.
+            Since also of course $Y = A - X$ where $X \in S$, we have that $Y \in T_2$ by definition so that $x \in Y$ because $x \in \bigcap T_2$.
+            Hence, $x \in A$ but not in $X$ since $Y = A - X$.
+            Then, since $X \in S$ was arbitrary and $x \notin X$, it follows that $x \notin \bigcup S$.
+            As it has been established that also $x \in A$, we have that $x \in A - \bigcup S$.
+            This suffices to show that $\bigcap T_2 \ss A - \bigcup S$ since $x$ was arbitrary.
+        }
+    }
+
+    Lastly, we show that $A - \bigcap S = \bigcup T_2$.
+    \qproof{
+        First we note that $S$ is not empty so that $\bigcap S$ exists (refer to the next exercise).
+
+        \seteqproof{
+            First, suppose any $x \in A - \bigcap S$, implying that $x \in A$ but $x \notin \bigcap S$.
+            It then has to be that there is an $X \in S$ such that $x \notin X$ since otherwise $x$ would be in $\bigcap S$.
+            Set $Y = A - X$, noting that $x \in Y$ since $x \in A$ but $x \notin X$.
+            As before, clearly $Y \in \pset{A}$.
+            Since also $Y = A - X$ and $X \in S$, it is necessary that $Y \in T_2$.
+            From this it follows that $x \in \bigcup T_2$ since we have already shown the $x \in Y$.
+            Therefore, $A - \bigcap S \ss \bigcup T_2$ since $x$ was arbitrary.
+        }{
+            Now consider any $x \in \bigcup T_2$ so that there is a $Y \in T_2$ such that $x \in Y$.
+            Then, by the definition of $T_2$, $Y = A - X$ for some $X \in S$.
+            Then, since $x \in Y = A - X$, we have that $x \in A$ and $x \notin X$.
+            Since $X \in S$ and $x \notin X$, it cannot be that $x$ is a member of $\bigcap S$.
+            Since also $x \in A$, clearly $x \in A - \bigcap S$, and hence $\bigcup T_2 \ss A - \bigcap S$ as desired.
+        }
+    }
 }
 
 \exercise{6}{
     Prove that $\bigcap S$ exists for all $S \neq \es$.
-    Where s the assumption that $S \neq \es$ used in the proof?
+    Where is the assumption that $S \neq \es$ used in the proof?
 }
 \sol{
-    TODO
+    \qproof{
+        Suppose that $S \neq \es$ so that there is a set $X \in S$ (since sets are all that exist by the axioms).
+        We then define the set
+        \gath{
+            \bigcap S = \braces{x \in X \where \text{$x \in A$ for every $A \in S$}},
+        }
+        noting that this exists by the Axiom Schema of Comprehension.
+        The uniqueness of this set follows immediately from the Axiom of Extensionality.
+    }
+    The non-emptiness of $S$ was used to produce a set to which the Axiom Schema of Comprehension could be applied to further limit it.
+    This works because the intersection of all the sets in $S$ (i.e. $\bigcap S$) is a subset of \emph{every} set in $S$.
+    Hence, with this proof, $S$ being nonempty is required in order for $\bigcap S$ to exist.
+
+    Note that we could have defined it and shown its existence differently and a little more generally:
+    \qproof{
+        Suppose that $S$ is any set (which could possibly be empty).
+        By the Axiom of Union, the set $\bigcup S$ exists so that the set
+        \gath{
+            \bigcap S = \braces{x \in \bigcup S \where \text{$x \in A$ for every $A \in S$}},
+        }
+        exists by the Axiom Schema of Comprehension, where its uniqueness again follows immediately from the Axiom Schema of Comprehension.
+    }
+    The intersection $\bigcap S$ defined this way exists even if $S = \es$, and is in fact empty in this case since $\bigcup S$ is empty.
+    Mathematicians have chosen the former definition in which $\bigcap S$ exists only when $S$ nonempty.
+    The reason is that we would like $\bigcap S$ to represent the naive set
+    \gath{
+        \bigcap S = \braces{x \where \text{$x \in A$ for every $A \in S$}},
+    }
+    but this is problematic if $S$ is empty because the defining property is then vacuously true for \emph{any} $x$ so that $\bigcap S$ would therefore contain \emph{every} set, which we know results in a contradiction.
 }
