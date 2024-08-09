@@ -30,7 +30,7 @@
 \newcommand{\propP}[1]{\prop{P}(#1)}
 \def\lxor{\veebar}
 
-% For set-buider notation
+% For set-builder notation
 \def\where{\mid}
 
 % Other stuff
@@ -80,54 +80,54 @@
 \newcommand\ali[1]{\begin{align*} #1 \end{align*}}
 \newcommand\qproof[1]{\begin{proof} #1 \end{proof}}
 \newcommand\bicproof[2]{
-  $(\to)$ #1
+    $(\to)$ #1
 
-  $(\leftarrow)$ #2
+    $(\leftarrow)$ #2
 }
 \newcommand\seteqproof[2]{
-  $(\ss)$ #1
+    $(\ss)$ #1
 
-  $(\supseteq)$ #2
+    $(\supseteq)$ #2
 }
 
 % Environment for indenting nested paragraphs (useful in case trees)
 \newenvironment{indpar}
 {
-  \begin{adjustwidth}{1cm}{}
-    }{
-  \end{adjustwidth}
+    \begin{adjustwidth}{1cm}{}
+        }{
+    \end{adjustwidth}
 }
 
 % Exercise, Theorem, and solution shortcuts
 \newcommand\exercise[2]{{
-      \renewcommand\label[1]{} % Needed to suppress multiply-defined label warning since the same question numbers are used in different sections
-      \setcounter{subsubsection}{#1-1} % Subsubsections are used to that lemmas have the full nested numbering
-      \stepcounter{subsubsection} % Need to increment this so that the lemma counter gets reset
-      \setcounter{question}{#1-1} % Manually set the question number since we always know the exercise number
-      \question{#2} % The actual exam class question
-    }}
+            \renewcommand\label[1]{} % Needed to suppress multiply-defined label warning since the same question numbers are used in different sections
+            \setcounter{subsubsection}{#1-1} % Subsubsections are used to that lemmas have the full nested numbering
+            \stepcounter{subsubsection} % Need to increment this so that the lemma counter gets reset
+            \setcounter{question}{#1-1} % Manually set the question number since we always know the exercise number
+            \question{#2} % The actual exam class question
+        }}
 \newcommand\exerciseapp[3]{
-  \setqf{#2}
-  \exercise{#1}{#3}
-  \setqf{}
+    \setqf{#2}
+    \exercise{#1}{#3}
+    \setqf{}
 }
 \newcommand\theorem[2]{{
-      \renewcommand\label[1]{} % Needed to suppress multiply-defined label warning since the same question numbers are used in different sections
-      \setcounter{subsubsection}{#1-1} % Subsubsections are used to that lemmas have the full nested numbering
-      \stepcounter{subsubsection} % Need to increment this so that the lemma counter gets reset
-      \setcounter{question}{#1-1} % Manually set the question number since we always know the theorem number
-      \question{#2} % The actual exam class question
-    }}
+            \renewcommand\label[1]{} % Needed to suppress multiply-defined label warning since the same question numbers are used in different sections
+            \setcounter{subsubsection}{#1-1} % Subsubsections are used to that lemmas have the full nested numbering
+            \stepcounter{subsubsection} % Need to increment this so that the lemma counter gets reset
+            \setcounter{question}{#1-1} % Manually set the question number since we always know the theorem number
+            \question{#2} % The actual exam class question
+        }}
 \newcommand\theoremapp[3]{
-  \setqf{#2}
-  \theorem{#1}{#3}
-  \setqf{}
+    \setqf{#2}
+    \theorem{#1}{#3}
+    \setqf{}
 }
 \newcommand\sol[1]{
-  \begin{solution}
+    \begin{solution}
 
-    #1
-  \end{solution}
+        #1
+    \end{solution}
 }
 
 % Main problem and theorem labels
@@ -139,7 +139,7 @@
 
 % Book title
 \def\booktitle{
-  Introduction to Set Theory \\
-  Third Edition, Revised and Expanded \\
-  by Karel Hrbacek and Thomas Jech
+    Introduction to Set Theory \\
+    Third Edition, Revised and Expanded \\
+    by Karel Hrbacek and Thomas Jech
 }
