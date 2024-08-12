@@ -6,7 +6,30 @@
     $\cofin{\al_\w} = \cofin{\al_{\w + \w}} = \w$.
 }
 \sol{
-    TODO
+    First we show that $\cofin{\al_\w} = \w$.
+    \qproof{
+        By definition,
+        \gath{
+            \al_\w = \sup\braces{\al_n \where n < \w} = \lim_{n \to \w} \al_n
+        }
+        so that $\cofin{\al_\w} \leq \w$.
+        Moreover, we know that $\cofin{\a}$ is always a limit ordinal, and that $\w$ is the smallest nonzero limit ordinal.
+        As there are no ordinals less than zero, we clearly have
+        \gath{
+            \lim_{n \to 0} \a_n = \sup \braces{\a_n \where n < 0} = \sup \es = \bigcup \es = \es \neq \al_w
+        }
+        so that it must in fact be that $\cofin{\al_\w} = \w$ as desired.
+    }
+
+    Now we show that $\cofin{\al_{\w + \w}} = \w$ as well.
+    \qproof{
+        We we clearly have
+        \gath{
+            \al_{\w + \w} = \lim_{n \to \w} \al_{\w + n},
+        }
+        noting that this is remarked upon following Theorem~9.2.2.
+        Hence, $\cofin{\al_{\w + \w}} \leq \w$ and, by the same argument as above it has to be that $\cofin{\al_{\w + \w}} = \w$ since $\w$ is the smallest nonzero limit ordinal.
+    }
 }
 
 \exercise{2}{
