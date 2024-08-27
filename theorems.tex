@@ -1162,5 +1162,40 @@
     }
   }
 
+  \subsection{Regular and Singular Cardinals}
+
+  \theorem{2}{
+    Let $\k$ be a regular cardinal.
+    \begin{enumerate}
+      \item[(a)] If $X \ss \k$ is such that $\abs{X} < \k$ then $X$ is bounded.
+        Hence every unbounded subset of $\k$ has cardinality $\k$.
+      \item[(b)] If $\l < \k$ and $f: \l \to \k$, then $f[\l]$ is bounded.
+    \end{enumerate}
+  }
+  \sol{
+    (a)
+    \qproof{
+      First, if $X$ has a greatest element $\a$, then clearly $\sup{X} = \a$.
+      Then, since $\a \in X \ss \k$, it follows that $\a \in \k$ and hence we have $\sup{X} = \a < \k$.
+      This shows that $X$ is bounded by definition.
+
+      If $X$ does not have a greatest element, then $\th = \abs{X}$ must be an infinite cardinal and hence a limit ordinal by Lemma~\ref{lem:aleph:initlimit}.
+      Moreover, $X$ can then be fully enumerated as an increasing sequence $\angles{\a_\n \where \n < \th}$, noting that every $\a_\n < \k$ since $\a_n \in X \ss \k$.
+      Since clearly $\th = \abs{X} < \k$, it has to be that
+      \gath{
+        \sup{X} = \sup\braces{\a_\n \where \n < \th} = \lim_{\n \to \th} \a_\n < \k
+      }
+      since $\k$ is regular.
+      Thus, $X$ is bounded by definition.
+    }
+
+    (b)
+    \qproof{
+      First, since $f: \l \to \k$, clearly $f[\l] \ss \k$.
+      We also obviously have that $\abs{f[\l]} \leq \abs{\l} = \l < \k$
+      Therefore, $f[\l]$ is bounded by part (a) above.
+    }
+  }
+
 \end{questions}
 \end{document}
