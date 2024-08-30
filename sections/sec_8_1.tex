@@ -161,13 +161,9 @@
   Then for every $a \in A$, there is a $\leq$-maximal element of $x$ of $A$ such that $a \leq x$.
 }
 \sol{
-  \input{shared/lem_aoc_notin}
-
-  \mainprob
-
   The proof of this is similar to the proof of Zorn's Lemma from the Axiom of Choice (part of Theorem~8.1.13 in the text).
   \qproof{
-    First, by Lemma~\ref{lem:aoc:notin}, there is a $b \notin A$.
+    First, by Exercise~1.3.3b, there is a $b \notin A$.
     Also, by the Axiom of Choice, there is a choice function $g$ on $\pset{A}$.
     Now consider any $a \in A$.
     We then define a transfinite sequence $\angles{a_\a \where \a < h(A)}$ by transfinite recursion as follows.

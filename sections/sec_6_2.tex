@@ -5,13 +5,16 @@
 }
 \sol{
   \qproof{
-    ($\to$) Suppose that $X$ is a transitive set and consider any $x \in X$.
-    Then $x \ss X$ since $X$ is transitive.
-    Thus $x \in \pset{X}$ so that, since $x$ was arbitrary, $X \ss \pset{X}$.
-
-    ($\leftarrow$) Now suppose that $X \ss \pset{X}$ and consider any $x \in X$.
-    Then also $x \in \pset{X}$ so that $x \ss X$.
-    Hence, since $x$ was arbitrary, $X$ is transitive by definition.
+    \bicproof{
+      Suppose that $X$ is a transitive set and consider any $x \in X$.
+      Then $x \ss X$ since $X$ is transitive.
+      Thus $x \in \pset{X}$ so that, since $x$ was arbitrary, $X \ss \pset{X}$.
+    }
+    {
+      Now suppose that $X \ss \pset{X}$ and consider any $x \in X$.
+      Then also $x \in \pset{X}$ so that $x \ss X$.
+      Hence, since $x$ was arbitrary, $X$ is transitive by definition.
+    }
   }
 }
 
@@ -20,17 +23,19 @@
 }
 \sol{
   \qproof{
-    ($\to$) Suppose that $X$ is transitive and consider any $y \in \bigcup X$.
-    Then there is an $x \in X$ such that $y \in x$.
-    Since $X$ is transitive and $x \in X$ we have that $x \ss X$ so that $y \in X$ as well.
-    Since $y$ was arbitrary this shows that $\bigcup X \ss X$.
-
-    ($\leftarrow$) Now suppose that $\bigcup X \ss X$ and consider any $x \in X$.
-    If $x = \es$ then clearly $x \ss X$.
-    So suppose that $x \neq \es$ and consider any $y \in x$.
-    Then since $x \in X$ it follows that $y \in \bigcup X$ so that also $y \in X$.
-    So since $y$ was arbitrary it follows that $x \ss X$.
-    Since $x$ was arbitrary by definition $X$ is transitive.
+    \bicproof{
+      Suppose that $X$ is transitive and consider any $y \in \bigcup X$.
+      Then there is an $x \in X$ such that $y \in x$.
+      Since $X$ is transitive and $x \in X$ we have that $x \ss X$ so that $y \in X$ as well.
+      Since $y$ was arbitrary this shows that $\bigcup X \ss X$.
+    }{
+      Now suppose that $\bigcup X \ss X$ and consider any $x \in X$.
+      If $x = \es$ then clearly $x \ss X$.
+      So suppose that $x \neq \es$ and consider any $y \in x$.
+      Then since $x \in X$ it follows that $y \in \bigcup X$ so that also $y \in X$.
+      So since $y$ was arbitrary it follows that $x \ss X$.
+      Since $x$ was arbitrary by definition $X$ is transitive.
+    }
   }
 }
 
@@ -81,7 +86,7 @@
   (e) If $Y$ is transitive and $S \ss \pset{Y}$, then $Y \cup S$ is transitive.
 }
 \sol{
-  
+
   (a) We claim that this is true.
   \qproof{
     Consider any $x \in X \cup Y$.
@@ -146,18 +151,20 @@
 }
 \sol{
   \qproof{
-    ($\to$) Suppose that $n$ is a natural number and consider any nonempty subset $A$ of $n$.
-    Since $A \ss n$ it follows that $|A| \leq |n| = n$ so that $A$ is finite.
-    Thus $A$ is a finite set of natural numbers and so has a greatest element.
-    This can be proven by a trivial inductive argument.
-
-    ($\leftarrow$) We show this by contrapositive.
-    Suppose that $\a$ is an ordinal such that $\a \notin \nats$.
-    Then $\a \notin \w = \nats$ so that $\a \nless \w$, from which it follows that $\a \geq \w$
-    Hence $\a = \w$ or $\a > \w$, in which case $\w \in \a$ so that $\w \ss \a$ since $\a$ is transitive.
-    Thus in either case $\nats = \w \ss \a$.
-    Clearly $\nats$ has no greatest element (since if $n$ were such a greatest element then $n+1 \in \nats$ but $n < n+1$).
-    Thus there is a nonempty subset $A$ of $\a$ such that $A$ has no greatest element.
+    \bicproof{
+      Suppose that $n$ is a natural number and consider any nonempty subset $A$ of $n$.
+      Since $A \ss n$ it follows that $|A| \leq |n| = n$ so that $A$ is finite.
+      Thus $A$ is a finite set of natural numbers and so has a greatest element.
+      This can be proven by a trivial inductive argument.
+    }{
+      We show this by contrapositive.
+      Suppose that $\a$ is an ordinal such that $\a \notin \nats$.
+      Then $\a \notin \w = \nats$ so that $\a \nless \w$, from which it follows that $\a \geq \w$
+      Hence $\a = \w$ or $\a > \w$, in which case $\w \in \a$ so that $\w \ss \a$ since $\a$ is transitive.
+      Thus in either case $\nats = \w \ss \a$.
+      Clearly $\nats$ has no greatest element (since if $n$ were such a greatest element then $n+1 \in \nats$ but $n < n+1$).
+      Thus there is a nonempty subset $A$ of $\a$ such that $A$ has no greatest element.
+    }
   }
 }
 

@@ -28,14 +28,16 @@
     Ordinal $\a$ is a limit ordinal if and only if $\b+1 < \a$ for every ordinal $\b < \a$.
   \end{lem}
   \qproof{
-    ($\to$) We show this by contrapositive.
-    So suppose that there is a $\b < \a$ such that $\b+1 \geq \a$.
-    Then by Lemma~\ref{lem:ord:ordleq} we have also that $\b+1 \leq \a$, from which it follows that $\a = \b+1$ so that $\a$ is a successor ordinal and not a limit ordinal.
-
-    ($\leftarrow$) Suppose that $\b+1 < \a$ for every $\b < \a$.
-    Suppose also that $\a = \g + 1$ is a successor ordinal.
-    Then clearly $\g < \g+1 = \a$ so that also $\g+1 < \a$, which is an immediate contradiction.
-    Hence it must be that $\a$ is a limit ordinal.
+    \bicproof{
+      We show this by contrapositive.
+      So suppose that there is a $\b < \a$ such that $\b+1 \geq \a$.
+      Then by Lemma~\ref{lem:ord:ordleq} we have also that $\b+1 \leq \a$, from which it follows that $\a = \b+1$ so that $\a$ is a successor ordinal and not a limit ordinal.
+    }{
+      Suppose that $\b+1 < \a$ for every $\b < \a$.
+      Suppose also that $\a = \g + 1$ is a successor ordinal.
+      Then clearly $\g < \g+1 = \a$ so that also $\g+1 < \a$, which is an immediate contradiction.
+      Hence it must be that $\a$ is a limit ordinal.
+    }
 
     Note that the bi-conditional is vacuously true for $\a = 0$.
   }
@@ -308,25 +310,27 @@
   If $\a$ and $\b$ are ordinals and $n$ a natural number then $\a < \b$ if and only if $\a + n < \b + n$.
 \end{lem}
 \qproof{
-  ($\to$) We show this by induction on $n$.
-  So for $n=0$ and any ordinals $\a$ and $\b$ where $\a < \b$ we clearly have
-  $$
-    \a + n = \a + 0 = \a < \b = \b + 0 = \b + n.
-  $$
-  Now suppose that $\a + n < \b + n$ for any ordinals $\a$ and $\b$ where $\a < \b$.
-  Suppose that $\a$ and $\b$ are such ordinals so that by Lemma~\ref{lem:ord:ordleq} we have $\a + 1 \leq \b < \b + 1$.
-  Hence $\a+1$ and $\b+1$ are ordinals such that $\a+1 < \b+1$.
-  It then follows from the induction hypothesis that
-  $$
-    \a + (n+1) = \a + (1+n) = (\a + 1) + n < (\b + 1) + n = \b + (1 + n) = \b + (n+1),
-  $$
-  noting that clearly natural numbers commute with respect to addition.
-  This completes the proof by induction.
-
-  ($\leftarrow$) Suppose that $\a + n < \b + n$ for ordinals $\a$ and $\b$ and natural number $n$.
-  It cannot be that $\b < \a$ for then it would follow that $\b + n < \a + n$ by what was just shown.
-  Nor can it be that $\a = \b$ since then clearly $\a + n = \b + n$.
-  Hence by the linearity of the ordinal ordering it follows that $\a < \b$.
+  \bicproof{
+    We show this by induction on $n$.
+    So for $n=0$ and any ordinals $\a$ and $\b$ where $\a < \b$ we clearly have
+    $$
+      \a + n = \a + 0 = \a < \b = \b + 0 = \b + n.
+    $$
+    Now suppose that $\a + n < \b + n$ for any ordinals $\a$ and $\b$ where $\a < \b$.
+    Suppose that $\a$ and $\b$ are such ordinals so that by Lemma~\ref{lem:ord:ordleq} we have $\a + 1 \leq \b < \b + 1$.
+    Hence $\a+1$ and $\b+1$ are ordinals such that $\a+1 < \b+1$.
+    It then follows from the induction hypothesis that
+    $$
+      \a + (n+1) = \a + (1+n) = (\a + 1) + n < (\b + 1) + n = \b + (1 + n) = \b + (n+1),
+    $$
+    noting that clearly natural numbers commute with respect to addition.
+    This completes the proof by induction.
+  }{
+    Suppose that $\a + n < \b + n$ for ordinals $\a$ and $\b$ and natural number $n$.
+    It cannot be that $\b < \a$ for then it would follow that $\b + n < \a + n$ by what was just shown.
+    Nor can it be that $\a = \b$ since then clearly $\a + n = \b + n$.
+    Hence by the linearity of the ordinal ordering it follows that $\a < \b$.
+  }
 }
 
 \begin{cor}\label{cor:ord:nateq}
@@ -490,50 +494,54 @@ Since this case structure is exhaustive the result follows.
   }
 
   \begin{lem}\label{lem:ord:w2lim}
-    An ordinal  $\a = \w \cdot n$ for a natural number $n$ if and only if $\a$ is a limit ordinal and $\a < \w^2$.
+    An ordinal $\a = \w \cdot n$ for a natural number $n$ if and only if $\a$ is a limit ordinal and $\a < \w^2$.
   \end{lem}
   \qproof{
-    ($\to$) Suppose that $\a = \w \cdot n$ for natural number $n$.
-    Then by Lemma~\ref{lem:ord:multlim:left} $\a$ is a limit ordinal since $\w$ is.
-    Also clearly by Exercise~6.5.7a $\a = \w \cdot n < \w \cdot (n+1) \leq \sup\braces{\w \cdot k \where k < \w} = \w \cdot \w = \w^2$.
+    \bicproof{
+      Suppose that $\a = \w \cdot n$ for natural number $n$.
+      Then by Lemma~\ref{lem:ord:multlim:left} $\a$ is a limit ordinal since $\w$ is.
+      Also clearly by Exercise~6.5.7a $\a = \w \cdot n < \w \cdot (n+1) \leq \sup\braces{\w \cdot k \where k < \w} = \w \cdot \w = \w^2$.
+    }{
+      Now suppose that $\a$ is a limit ordinal and $\a < \w^2$.
+      We have $a < \w^2 = \w \cdot \w = \sup\braces{\w \cdot n \where n < \w}$ so that $\a$ is not an upper bound of $\braces{\w \cdot n \where n < \w}$.
+      Hence there is a $k < \w$ such that $\a < \w \cdot k$.
+      It therefore follows that the set $A = \braces{n \in \w \where \a \leq \w \cdot n}$ is nonempty.
+      Since $A$ is nonempty set of natural numbers (which are well-ordered) it follows that $A$ has a least element $n$.
+      If $n=0$ it follows that $\a = 0 = \w \cdot 0$ since $\a \leq \w \cdot n = \w \cdot 0 = 0$ and $0$ is the only ordinal for which this is true.
+      Then if $n > 0$ we have that $n-1$ is a natural number and moreover it follows that $\w \cdot (n-1) < \a$ since otherwise $n-1$ would have been the least element of $A$.
 
-    ($\leftarrow$) Now suppose that $\a$ is a limit ordinal and $\a < \w^2$.
-    We have $a < \w^2 = \w \cdot \w = \sup\braces{\w \cdot n \where n < \w}$ so that $\a$ is not an upper bound of $\braces{\w \cdot n \where n < \w}$.
-    Hence there is a $k < \w$ such that $\a < \w \cdot k$.
-    It therefore follows that the set $A = \braces{n \in \w \where \a \leq \w \cdot n}$ is nonempty.
-    Since $A$ is nonempty set of natural numbers (which are well-ordered) it follows that $A$ has a least element $n$.
-    If $n=0$ it follows that $\a = 0 = \w \cdot 0$ since $\a \leq \w \cdot n = \w \cdot 0 = 0$ and $0$ is the only ordinal for which this is true.
-    Then if $n > 0$ we have that $n-1$ is a natural number and moreover it follows that $\w \cdot (n-1) < \a$ since otherwise $n-1$ would have been the least element of $A$.
-
-    Thus we have that $\w \cdot (n-1) < \a \leq \w \cdot n$.
-    But since $\w \cdot n = \w \cdot\squares{(n-1) + 1} = \w \cdot (n-1) + \w$ clearly any ordinal $\g$ where $\w \cdot (n-1) + 0 = \w \cdot (n-1) < \g < \w \cdot n = \w \cdot (n-1) + \w$ must have the form $\w \cdot (n-1) + m$ for a natural number $m > 0$.
-    From this it clearly follows that $\g$ is a successor ordinal.
-    Since $\a$ is a limit ordinal it can thus not be such a $\g$ so that it cannot be that $\a < \w \cdot n$.
-    But since we have established that $\a \leq \w \cdot n$ (since $n \in A$) it has to be that $\a = \w \cdot n$.
+      Thus we have that $\w \cdot (n-1) < \a \leq \w \cdot n$.
+      But since $\w \cdot n = \w \cdot\squares{(n-1) + 1} = \w \cdot (n-1) + \w$ clearly any ordinal $\g$ where $\w \cdot (n-1) + 0 = \w \cdot (n-1) < \g < \w \cdot n = \w \cdot (n-1) + \w$ must have the form $\w \cdot (n-1) + m$ for a natural number $m > 0$.
+      From this it clearly follows that $\g$ is a successor ordinal.
+      Since $\a$ is a limit ordinal it can thus not be such a $\g$ so that it cannot be that $\a < \w \cdot n$.
+      But since we have established that $\a \leq \w \cdot n$ (since $n \in A$) it has to be that $\a = \w \cdot n$.
+    }
   }
 
   \begin{lem}\label{lem:ord:w2form}
     An ordinal $\a = \w \cdot n + k$ for natural numbers $n$ and $k$ if and only if $\a < \w^2$.
   \end{lem}
   \qproof{
-    ($\to$) Suppose that $\a = \w \cdot n + k$ for natural numbers $n$ and $k$.
-    We then have
-    \ali{
-      \a &= \w \cdot n + k = (\w \cdot n + k) + 0 \\
-      &< (\w \cdot n + k) + \w & \text{(by Lemma~6.5.4a since $0 < \w$)} \\
-      &= \w \cdot n + (k + \w) & \text{(by the associative property)} \\
-      &= \w \cdot n + \w & \text{(by Lemma~\ref{lem:ord:natplus})} \\
-      &= \w \cdot (n+1) & \text{(by Definition~6.5.6b)} \\
-      &\leq \sup\braces{\w \cdot m \where m < \w} \\
-      &= \w \cdot \w & \text{(Definition~6.5.6c)} \\
-      &= \w^2 & \text{(by Example~6.5.10a)}
+    \bicproof{
+      Suppose that $\a = \w \cdot n + k$ for natural numbers $n$ and $k$.
+      We then have
+      \ali{
+        \a &= \w \cdot n + k = (\w \cdot n + k) + 0 \\
+        &< (\w \cdot n + k) + \w & \text{(by Lemma~6.5.4a since $0 < \w$)} \\
+        &= \w \cdot n + (k + \w) & \text{(by the associative property)} \\
+        &= \w \cdot n + \w & \text{(by Lemma~\ref{lem:ord:natplus})} \\
+        &= \w \cdot (n+1) & \text{(by Definition~6.5.6b)} \\
+        &\leq \sup\braces{\w \cdot m \where m < \w} \\
+        &= \w \cdot \w & \text{(Definition~6.5.6c)} \\
+        &= \w^2 & \text{(by Example~6.5.10a)}
+      }
+      as desired.
+    }{
+      Now suppose that $\a < \w^2$.
+      By Exercise~6.5.4 we have that $\a = \b + k$ for a unique limit ordinal $\b$ and natural number $k$.
+      We also have by Lemma~6.5.4 that $\b + 0 \leq \b + k = \a < \w^2$ since obviously $0 \leq k$.
+      Hence $\b$ is a limit ordinal such that $\b < \w^2$ so that by Lemma~\ref{lem:ord:w2lim} there is a natural number $n$ such that $\b = \w \cdot n$, thereby proving the result since this means that $\a = \b + k = \w \cdot n + k$.
     }
-    as desired.
-
-    ($\leftarrow$) Now suppose that $\a < \w^2$.
-    By Exercise~6.5.4 we have that $\a = \b + k$ for a unique limit ordinal $\b$ and natural number $k$.
-    We also have by Lemma~6.5.4 that $\b + 0 \leq \b + k = \a < \w^2$ since obviously $0 \leq k$.
-    Hence $\b$ is a limit ordinal such that $\b < \w^2$ so that by Lemma~\ref{lem:ord:w2lim} there is a natural number $n$ such that $\b = \w \cdot n$, thereby proving the result since this means that $\a = \b + k = \w \cdot n + k$.
   }
 
   \mainprob
@@ -582,41 +590,45 @@ Since this case structure is exhaustive the result follows.
 \sol{
   (a)
   \qproof{
-    ($\to$) We show this by transfinite induction on $\a_2$.
-    So suppose and that  $\a_1 < \d$ implies that $\b \cdot \a_1 < \b \cdot \d$ for all $\d < \a_2$ and that $\a_1 < \a_2$.
-    If $\a_2$ is a successor ordinal then $\a_2 = \d + 1$ for some ordinal $\d$ where $\a_1 \leq \d$ since $\a_1 < \a_2$.
-    Then we have
-    \ali{
-      \b \cdot \a_1 &\leq \b \cdot \d & \text{(by the induction hypothesis if $\a_1 < \d$ and trivially if $\a_1 = \d$)} \\
-      &< \b \cdot \d + \b & \text{(by Lemma~6.5.4a since $0 < \b$)} \\
-      &= \b \cdot (\d + 1) & \text{(by Definition~6.5.6b)} \\
-      &= \b \cdot \a_2.
+    \bicproof{
+      We show this by transfinite induction on $\a_2$.
+      So suppose and that  $\a_1 < \d$ implies that $\b \cdot \a_1 < \b \cdot \d$ for all $\d < \a_2$ and that $\a_1 < \a_2$.
+      If $\a_2$ is a successor ordinal then $\a_2 = \d + 1$ for some ordinal $\d$ where $\a_1 \leq \d$ since $\a_1 < \a_2$.
+      Then we have
+      \ali{
+        \b \cdot \a_1 &\leq \b \cdot \d & \text{(by the induction hypothesis if $\a_1 < \d$ and trivially if $\a_1 = \d$)} \\
+        &< \b \cdot \d + \b & \text{(by Lemma~6.5.4a since $0 < \b$)} \\
+        &= \b \cdot (\d + 1) & \text{(by Definition~6.5.6b)} \\
+        &= \b \cdot \a_2.
+      }
+      On the other hand if $\a_2$ is a limit ordinal then $\a_1 + 1 < \a_2$ since $\a_1 < \a_2$.
+      Then we have that
+      \ali{
+        \b \cdot \a_1 &< \b \cdot (\a_1 + 1) & \text{(by the induction hypothesis since $\a_1 < \a_1 +1 < \a_2$)} \\
+        &\leq \sup_{\d < \a_2} \b \cdot \d & \text{(since the supremum is an upper bound)} \\
+        &= \b \cdot \a_2. & \text{(by Definition~6.5.6c)}
+      }
+      This completes the inductive proof.
+    }{
+      For this we assume that $\b \cdot \a_1 < \b \cdot \a_2$.
+      If it were the case that $\a_1 > \a_2$ than it would follow by the implication already shown that $\b \cdot \a_1 > \b \cdot \a_2$, which is a contradiction.
+      Similarly if $\a_1 = \a_2$ then $\b \cdot \a_1 = \b \cdot \a_2$, another contradiction.
+      Hence by the linearity of the order $<$ it must be that $\a_1 < \a_2$ as desired.
     }
-    On the other hand if $\a_2$ is a limit ordinal then $\a_1 + 1 < \a_2$ since $\a_1 < \a_2$.
-    Then we have that
-    \ali{
-      \b \cdot \a_1 &< \b \cdot (\a_1 + 1) & \text{(by the induction hypothesis since $\a_1 < \a_1 +1 < \a_2$)} \\
-      &\leq \sup_{\d < \a_2} \b \cdot \d & \text{(since the supremum is an upper bound)} \\
-      &= \b \cdot \a_2. & \text{(by Definition~6.5.6c)}
-    }
-    This completes the inductive proof.
-
-    ($\leftarrow$) For this we assume that $\b \cdot \a_1 < \b \cdot \a_2$.
-    If it were the case that $\a_1 > \a_2$ than it would follow by the implication already shown that $\b \cdot \a_1 > \b \cdot \a_2$, which is a contradiction.
-    Similarly if $\a_1 = \a_2$ then $\b \cdot \a_1 = \b \cdot \a_2$, another contradiction.
-    Hence by the linearity of the order $<$ it must be that $\a_1 < \a_2$ as desired.
   }
 
   (b)
   \qproof{
     This follows from part (a) in the same way as the proof of Lemma~6.5.4b but is repeated for completeness.
 
-    ($\to$) We prove this part by contrapositive, so suppose that $\a_1 \neq \a_2$.
-    Then either $\a_1 < \a_2$ or $\a_1 > \a_2$.
-    In the former case then part (a) implies that $\b \cdot \a_1 < \b \cdot \a_2$ so that $\b \cdot \a_1 \neq \b \cdot \a_2$.
-    In the latter case part (a) similarly implies that $\b \cdot \a_1 > \b \cdot \a_2$ so that again $\b \cdot \a_1 \neq \b \cdot \a_2$.
-
-    ($\leftarrow$) If $\a_1 = \a_2$ then we trivially have $\b \cdot \a_1 = \b \cdot \a_2$.
+    \bicproof{
+      We prove this part by contrapositive, so suppose that $\a_1 \neq \a_2$.
+      Then either $\a_1 < \a_2$ or $\a_1 > \a_2$.
+      In the former case then part (a) implies that $\b \cdot \a_1 < \b \cdot \a_2$ so that $\b \cdot \a_1 \neq \b \cdot \a_2$.
+      In the latter case part (a) similarly implies that $\b \cdot \a_1 > \b \cdot \a_2$ so that again $\b \cdot \a_1 \neq \b \cdot \a_2$.
+    }{
+      If $\a_1 = \a_2$ then we trivially have $\b \cdot \a_1 = \b \cdot \a_2$.
+    }
   }
 }
 
@@ -773,38 +785,40 @@ Since this case structure is exhaustive the result follows.
 
   \mainprob
   \qproof{
-    ($\to$) Suppose to the contrary that not every limit ordinal is equal to $\w \cdot \b$ for some $\b$.
-    Then let $\a$ be a limit ordinal such that $\a \neq \w \cdot \g$ for every ordinal $\g$.
-    Now let $\b$ be the set of ordinals $\d$ such that $\w \cdot \d < \a$, noting that it could potentially be the empty set.
-    We claim that $\b$ is an ordinal number and that moreover it is a limit ordinal.
+    \bicproof{
+      Suppose to the contrary that not every limit ordinal is equal to $\w \cdot \b$ for some $\b$.
+      Then let $\a$ be a limit ordinal such that $\a \neq \w \cdot \g$ for every ordinal $\g$.
+      Now let $\b$ be the set of ordinals $\d$ such that $\w \cdot \d < \a$, noting that it could potentially be the empty set.
+      We claim that $\b$ is an ordinal number and that moreover it is a limit ordinal.
 
-    Clearly if $\b = \es = 0$ then it is a limit ordinal, so assume that $\b \neq \es$.
-    Then consider any $\d \in \b$ so that $\w \cdot \d < \a$.
-    Also consider any $x \in \d$ so that $x$ is also an ordinal number by Lemma~6.2.8 and moreover that $x < \d$.
-    It then follows from Exercise~6.5.7a that $\w \cdot x < \w \cdot \d < \a$.
-    Hence we have that $x \in \b$ so that $\d \ss \b$ since $x$ was arbitrary.
-    Since $\d$ was also arbitrary this shows that $\b$ is transitive.
-    Also since $\b$ is nonempty set of ordinals it follows from Theorem~6.2.6d that $\b$ is well-ordered.
-    Thus by definition $\b$ is an ordinal number.
+      Clearly if $\b = \es = 0$ then it is a limit ordinal, so assume that $\b \neq \es$.
+      Then consider any $\d \in \b$ so that $\w \cdot \d < \a$.
+      Also consider any $x \in \d$ so that $x$ is also an ordinal number by Lemma~6.2.8 and moreover that $x < \d$.
+      It then follows from Exercise~6.5.7a that $\w \cdot x < \w \cdot \d < \a$.
+      Hence we have that $x \in \b$ so that $\d \ss \b$ since $x$ was arbitrary.
+      Since $\d$ was also arbitrary this shows that $\b$ is transitive.
+      Also since $\b$ is nonempty set of ordinals it follows from Theorem~6.2.6d that $\b$ is well-ordered.
+      Thus by definition $\b$ is an ordinal number.
 
-    Now consider any $\d < \b$ so that $\d \in \b$ so that $\w \cdot \d < \a$.
-    By Lemma~\ref{lem:ord:nextlim} we have that $\w \cdot \d + \w = \w \cdot (\d + 1)$ is the next limit ordinal after $\w \cdot \d$ (i.e. there are no limit ordinals between them) so it has to be that $\w \cdot (\d + 1) \leq \a$ since otherwise $\a$ would be a limit ordinal between $\w \cdot \d$ and $\w \cdot (\d + 1)$.
-    But since $\a \neq \w \cdot \g$ for all ordinals $\g$ it cannot be that $\a = \w \cdot (\d + 1)$.
-    Thus it must be that $\w \cdot (\d + 1) < \a$ so that $\d + 1 \in \b$ so that $\d + 1 < \b$.
-    This shows that $\b$ is a limit ordinal by Lemma~\ref{lem:ord:limsucc}.
+      Now consider any $\d < \b$ so that $\d \in \b$ so that $\w \cdot \d < \a$.
+      By Lemma~\ref{lem:ord:nextlim} we have that $\w \cdot \d + \w = \w \cdot (\d + 1)$ is the next limit ordinal after $\w \cdot \d$ (i.e. there are no limit ordinals between them) so it has to be that $\w \cdot (\d + 1) \leq \a$ since otherwise $\a$ would be a limit ordinal between $\w \cdot \d$ and $\w \cdot (\d + 1)$.
+      But since $\a \neq \w \cdot \g$ for all ordinals $\g$ it cannot be that $\a = \w \cdot (\d + 1)$.
+      Thus it must be that $\w \cdot (\d + 1) < \a$ so that $\d + 1 \in \b$ so that $\d + 1 < \b$.
+      This shows that $\b$ is a limit ordinal by Lemma~\ref{lem:ord:limsucc}.
 
-    Now we claim that $\w \cdot \b = \a$, which is of course is a contradiction that proves the desired result.
-    To see this let $A = \braces{\w \cdot \d \where \d < \b}$ so that by Definition~6.5.6c we have that $\w \cdot \b = \sup{A}$ since $\b$ is a limit ordinal.
-    Now since $\d < \b$ means that $\d \in \b$ so that $\w \cdot \d < \a$ by the definition of $\b$, clearly $\a$ is an upper bound of $A$ so that $\w \cdot \b = \sup{A} \leq \a$.
-    However, if it were the case that $\w \cdot \b < \a$ then we would have by definition that $\b \in \b$ which contradicts Lemma~6.2.7 since we have shown that $\b$ is an ordinal.
-    Thus the only possibility is that $\w \cdot \b = \a$, which gives rise to the contradiction.
+      Now we claim that $\w \cdot \b = \a$, which is of course is a contradiction that proves the desired result.
+      To see this let $A = \braces{\w \cdot \d \where \d < \b}$ so that by Definition~6.5.6c we have that $\w \cdot \b = \sup{A}$ since $\b$ is a limit ordinal.
+      Now since $\d < \b$ means that $\d \in \b$ so that $\w \cdot \d < \a$ by the definition of $\b$, clearly $\a$ is an upper bound of $A$ so that $\w \cdot \b = \sup{A} \leq \a$.
+      However, if it were the case that $\w \cdot \b < \a$ then we would have by definition that $\b \in \b$ which contradicts Lemma~6.2.7 since we have shown that $\b$ is an ordinal.
+      Thus the only possibility is that $\w \cdot \b = \a$, which gives rise to the contradiction.
 
-    Moreover, we can show that $\b$ is unique.
-    To see this, consider $\b_1$ and $\b_2$ where $\a = \w \cdot \b_1$ and $\a = \w \cdot \b_2$.
-    Then clearly $\w \cdot \b_1 = \w \cdot \b_2$ so that $\b_1 = \b_2$ by Exercise~6.5.7b since clearly $\w \neq 0$.
-
-    ($\leftarrow$) Suppose that $\a = \w \cdot \b$ for some ordinal $\b$.
-    Then the result that $\a$ is a limit ordinal follows immediately from Lemma~\ref{lem:ord:multlim:left} since $\w$ is a limit ordinal.
+      Moreover, we can show that $\b$ is unique.
+      To see this, consider $\b_1$ and $\b_2$ where $\a = \w \cdot \b_1$ and $\a = \w \cdot \b_2$.
+      Then clearly $\w \cdot \b_1 = \w \cdot \b_2$ so that $\b_1 = \b_2$ by Exercise~6.5.7b since clearly $\w \neq 0$.
+    }{
+      Suppose that $\a = \w \cdot \b$ for some ordinal $\b$.
+      Then the result that $\a$ is a limit ordinal follows immediately from Lemma~\ref{lem:ord:multlim:left} since $\w$ is a limit ordinal.
+    }
   }
 }
 
@@ -832,23 +846,25 @@ Since this case structure is exhaustive the result follows.
       An ordinal $\a$ has a greatest element if and only if it is a successor ordinal.
     \end{lem}
     \qproof{
-      ($\to$) Suppose that $\a$ has a greatest element $\b$.
-      We claim that $\a = \b \cup \braces{\b} = \b+1$.
-      So first consider any $x \in \a$ so that $x \leq \b$ since $\b$ is the greatest element.
-      If $x = \b$ then clearly $x \in \b \cup \braces{\b}$ so assume that $x < \b$.
-      Then $x \in \b$ so that also clearly $x \in \b \cup \braces{\b}$.
-      Hence in either case $x \in \b \cup \braces{\b}$ so that $\a \ss \b \cup \braces{\b}$ since $x$ was arbitrary.
-      Now consider any $y \in \b \cup \braces{\b}$.
-      If $y = \b$ then clearly $y = \b \in \a$ since $\b$ is the greatest element of $\a$.
-      On the other hand if $y \in \b$ then since $\a$ is transitive (since it is an ordinal) and $\b \in \a$ it follows that $y \in \a$ as well.
-      Thus in either case $y \in \a$ so that $\b \cup \braces{\b} \ss \a$ since $y$ was arbitrary.
-      This shows that $\a = \b \cup \braces{\b} = \b+1$ and hence is a successor ordinal.
-
-      ($\leftarrow$) Suppose that $\a$ is a successor ordinal, in  particular that $\a = \b+1 = \b \cup \braces{\b}$ for an ordinal $\b$.
-      Consider any $x \in \a$.
-      Then either $x \in \b$ so that $x < \b$ or $x = \b$.
-      Hence in either case $x \leq \b$.
-      Since $x$ was arbitrary this shows that $\b$ is the greatest element of $\a$.
+      \bicproof{
+        Suppose that $\a$ has a greatest element $\b$.
+        We claim that $\a = \b \cup \braces{\b} = \b+1$.
+        So first consider any $x \in \a$ so that $x \leq \b$ since $\b$ is the greatest element.
+        If $x = \b$ then clearly $x \in \b \cup \braces{\b}$ so assume that $x < \b$.
+        Then $x \in \b$ so that also clearly $x \in \b \cup \braces{\b}$.
+        Hence in either case $x \in \b \cup \braces{\b}$ so that $\a \ss \b \cup \braces{\b}$ since $x$ was arbitrary.
+        Now consider any $y \in \b \cup \braces{\b}$.
+        If $y = \b$ then clearly $y = \b \in \a$ since $\b$ is the greatest element of $\a$.
+        On the other hand if $y \in \b$ then since $\a$ is transitive (since it is an ordinal) and $\b \in \a$ it follows that $y \in \a$ as well.
+        Thus in either case $y \in \a$ so that $\b \cup \braces{\b} \ss \a$ since $y$ was arbitrary.
+        This shows that $\a = \b \cup \braces{\b} = \b+1$ and hence is a successor ordinal.
+      }{
+        Suppose that $\a$ is a successor ordinal, in  particular that $\a = \b+1 = \b \cup \braces{\b}$ for an ordinal $\b$.
+        Consider any $x \in \a$.
+        Then either $x \in \b$ so that $x < \b$ or $x = \b$.
+        Hence in either case $x \leq \b$.
+        Since $x$ was arbitrary this shows that $\b$ is the greatest element of $\a$.
+      }
     }
   \fi
 

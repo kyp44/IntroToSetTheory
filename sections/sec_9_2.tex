@@ -1,34 +1,66 @@
 \subsection{Regular and Singular Cardinals}
 
-\newcommand\cofin[1]{\mathrm{cf}(#1)}
-
 \exercise{1}{
     $\cofin{\al_\w} = \cofin{\al_{\w + \w}} = \w$.
 }
 \sol{
+    \begin{lem} \label{lem:regsin:cardbounds}
+        For any infinite ordinal $\a$, there is unique ordinal $\b$ such that $\abs{\a} = \al_\b = \w_\b$ and
+        \gath{
+            \w_\b \leq \a < \w_{\b+1}.
+        }
+        Moreover, $\abs{\a} = \al_\b$ is the greatest cardinal number such that $\al_\b = \w_\b \leq \a$.
+    \end{lem}
+    \qproof{
+        Suppose that $\a$ is an infinite ordinal, which is of course well-ordered.
+        Hence, $\a$ is equipotent to a unique initial ordinal $\W$ by Theorem~7.1.3, which is infinite since $\a$ is infinite.
+        Then $\W = \w_\b$ for some ordinal $\b$ by Theorem~7.1.9b so that $\abs{\a} = \W = \w_\b = \al_\b$.
+
+        Now, if there is an ordinal $\g$ such that $\W = \w_\g$ but $\g \neq \b$, then it must be that either $\g < \b$ or $\b < \g$, which is a consequence of Theorem~6.2.6c.
+        But then, either $\w_\g < \w_\b$ or $\w_\b < \w_\g$ by the remarks following Definition~7.1.8 so that $\W = \w_\b \neq \w_\g = \W$, which cannot be true.
+        Therefore, $\g = \b$ so that $\b$ is unique.
+
+        Also, since $\W$ is an initial ordinal, it is the \emph{least} ordinal equipotent to $\a$, so it must be that $\W = \w_\b \leq \a$ since obviously $\a$ is equipotent to itself.
+        Moreover, clearly we have $\w_\b < \w_{\b+1}$ so that, if it were the case that $\a \geq \w_{\b+1}$, we would have $\a \geq \w_{\b+1} > \w_\b$, which we have just shown to be false since $\w_\b \leq \a$.
+        Thus, it has to be that
+        \gath{
+            \w_\b \leq \a < \w_{\b+1}
+        }
+        as desired.
+        Lastly, of course $\al_\b$ is the greatest cardinal number such that $\al_\b = \w_\b \leq \a$ since $\al_{\b+1} = \w_{\b+1}$ is the next cardinal by definition, and we have just shown that $\w_{\b+1} > \a$.
+    }
+
+    \begin{lem} \label{lem:regsin:cfalg}
+        For any nonzero limit ordinal $\g$, $\cofin{\w_\g} \leq \abs{\g} \leq \g$.
+    \end{lem}
+    Note that, though we seem to be mixing cardinal and ordinal numbers here, the meaning of this inequality is not really ambiguous since cardinal and ordinal orderings coincide per the remarks after Theorem~7.1.9.
+    \qproof{
+        By definition, we have
+        \gath{
+            \w_\g = \sup \braces{\w_\a \where \a < \g} = \lim_{\a \to \g} \w_\a
+        }
+        so that of course $\cofin{\w_\g} \leq \g$.
+        By Corollary~9.2.10, we also know that $\cofin{\w_\g}$ must be a regular cardinal since $\w_\g$ is a limit ordinal.
+        It then follows from Lemma~\ref{lem:regsin:cardbounds} that $\cofin{\w_\g} \leq \abs{\g} \leq \g$ as desired since $\abs{\g}$ is the greatest cardinal no larger than $\g$, noting that the lemma applies since all nonzero limit ordinals are infinite.
+    }
+
+    \mainprob
+
     First we show that $\cofin{\al_\w} = \w$.
     \qproof{
-        By definition,
-        \gath{
-            \al_\w = \sup\braces{\al_n \where n < \w} = \lim_{n \to \w} \al_n
-        }
-        so that $\cofin{\al_\w} \leq \w$.
+        It follows from Lemma~\ref{lem:regsin:cfalg} that $\cofin{\al_\w} \leq \abs{\w} = \al_0 = \w$.
         Moreover, we know that $\cofin{\a}$ is always a limit ordinal, and that $\w$ is the smallest nonzero limit ordinal.
         As there are no ordinals less than zero, we clearly have
         \gath{
-            \lim_{n \to 0} \a_n = \sup \braces{\a_n \where n < 0} = \sup \es = \bigcup \es = \es \neq \al_w
+            \lim_{n \to 0} \a_n = \sup \braces{\a_n \where n < 0} = \sup \es = \bigcup \es = \es = 0 \neq \al_w
         }
         so that it must in fact be that $\cofin{\al_\w} = \w$ as desired.
     }
 
     Now we show that $\cofin{\al_{\w + \w}} = \w$ as well.
     \qproof{
-        We we clearly have
-        \gath{
-            \al_{\w + \w} = \lim_{n \to \w} \al_{\w + n},
-        }
-        noting that this is remarked upon following Theorem~9.2.2.
-        Hence, $\cofin{\al_{\w + \w}} \leq \w$ and, by the same argument as above it has to be that $\cofin{\al_{\w + \w}} = \w$ since $\w$ is the smallest nonzero limit ordinal.
+        We again have that $\cofin{\al_{\w+\w}} \leq \abs{\w+\w} = \al_0 = \w$ by Lemma~\ref{lem:regsin:cfalg}.
+        By the same argument as above it then has to be that $\cofin{\al_{\w + \w}} = \w$ since $\w$ is the smallest nonzero limit ordinal.
     }
 }
 
@@ -36,7 +68,78 @@
     $\cofin{\al_{\w_1}} = \w_1$, $\cofin{\al_{\w_2}} = \w_2$.
 }
 \sol{
-    TODO
+    \begin{defin}
+        If $\g$ and $\th$ are nonzero limit ordinals and $f = \angles{\a_\n \where \n < \th}$ is an increasing sequence of ordinals, we say that $f$ is \emph{cofinal} or \emph{unbounded} in $\g$ if
+        \gath{
+            \lim_{\n \to \th} \a_\n = \sup \braces{\a_\n \where \n < \th} = \g.
+        }
+    \end{defin}
+
+    \begin{lem} \label{lem:regsin:gtcof}
+        Suppose that $\g$ and $\th$ are nonzero limit ordinals and that $\angles{\a_\n \where \n < \th}$ is an increasing sequence of ordinals.
+        If any $\a_\n \geq \g$ then the sequence cannot be cofinal in $\g$.
+        More specifically, in this case
+        \gath{
+            \lim_{\n \to \th} \a_\n > \g.
+        }
+    \end{lem}
+    \qproof{
+        Set
+        \gath{
+            \a = \lim_{\n \to \th} \a_v = \sup \braces{\a_\n \where \n < \th}
+        }
+        so that we need to show that $\a > \g$.
+        Suppose that $\mu < \th$ is an ordinal such that $\a_\mu \geq \g$.
+        Then $\mu + 1 < \th$ as well since $\th$ is a limit ordinal, thus $\a_\mu < \a_{\mu+1}$ since the sequence is increasing and obviously $\mu < \mu + 1 < \th$.
+        Lastly, since $\a$ is the least upper bound of the sequence by Lemma~\ref{lem:ord:lub}, we have
+        \gath{
+            \g \leq \a_\mu < \a_{\mu+1} \leq \a
+        }
+        as desired.
+    }
+
+    \begin{lem} \label{lem:regsin:seqcofin}
+        Suppose that $\g$ and $\th$ are nonzero limit ordinals, and that there is an increasing sequence of ordinals of length $\th$ cofinal in $\w_\g$.
+        Then there is also an increasing sequence of ordinals of length $\th$ that is cofinal in $\g$.
+    \end{lem}
+    \qproof{
+        TODO
+    }
+
+    \begin{lem} \label{lem:regsin:cfawn}
+        For any successor ordinal $\b$, $\cofin{\al_{\w_\b}} = \w_\b$.
+    \end{lem}
+    \qproof{
+        Let $\b = \a + 1$ be a successor ordinal.
+        By Lemma~\ref{lem:regsin:cfalg}, we have $\cofin{\al_{\w_\b}} \leq \w_\b$.
+        We intend to show that $\cofin{\al_{\w_\b}}$ cannot be strictly less than $\w_\b$, which of course proves our result.
+
+        To this end, consider any cardinal number $\k < \al_\b$.
+        The next smallest cardinality is of course $\al_\a$ since $\a$ is the immediate predecessor of $\b$, and thus $\k \leq \al_\a$.
+        Now suppose that $\angles{\a_\n \where \n \in \k}$ is any increasing sequence of ordinals.
+        We aim to show that this arbitrary sequence cannot be cofinal in $\w_\b$.
+
+        First, if any $\a_\n \geq \w_\b$, then the sequence cannot be cofinal in $\w_\b$ by Lemma~\ref{lem:regsin:gtcof}, so assume that each $\a_\n < \w_\b$.
+        It then follows that $\abs{\a_\n} < \al_\b$ so that again $\abs{\a_\n} \leq \al_\a$ for every $\n \in \k$.
+        Then we have
+        \ali{
+            \abs{\lim_{\n \to \k} \a_\n} = \abs{\bigcup_{\n \in \k} \a_\n} &\leq \sum_{\n \in \k} \abs{\a_\n} & \text{(by Exercise~9.1.6)} \\
+            &\leq \sum_{\n \in \k} \al_\a & \text{(by Exercise~9.1.2)} \\
+            &= \k \cdot \al_\a & \text{(by Exercise~9.1.4)} \\
+            &\leq \al_\a \cdot \al_\a & \text{(follows from Exercise~9.1.8)} \\
+            &= \al_\a. & \text{(by Theorem~7.2.1)}
+        }
+        So, since $\abs{\lim_{\n \to \k} \a_\n} \leq \al_\a < \al_\b$, it cannot be that $\lim_{\n \to \k} \a_\n = \w_\b$ since $\w_\b$ is an initial ordinal.
+        Hence, the increasing sequence $\angles{\a_\n \where \n \in \k}$ cannot be cofinal in $\w_\b$.
+        Moreover, since the sequence was arbitrary, it means that \emph{no} increasing sequence of length $\k$ can be cofinal in $\w_\b$.
+
+        Then, by the contrapositive of Lemma~\ref{lem:regsin:seqcofin} in which $\g = \w_\b$, this implies that there can be no increasing sequence of ordinals of length $\k$ that is cofinal in $\al_{\w_\b}$.
+        Since $\k < \al_\b$ was arbitrary, it follows that the $\cofin{\al_{\w_\b}} \geq \w_\b$ as desired.
+    }
+
+    \mainprob
+
+    Both results follow immediately from Lemma~\ref{lem:regsin:cfawn} since $1$ and $2$ are both successor ordinals.
 }
 
 \exercise{3}{

@@ -164,22 +164,24 @@
 
     To show (b) consider any ordinal $n$ and set $x$.
 
-    ($\to$) Suppose that $n > 0$ and $\F(x,n+1) = 0$ so that clearly $(3)$ above cannot be the case.
-    Also $(1)$ cannot be the case since $\F(x,n+1) = \G(x, \F_x \rest n+1)$ and $\dom(\F_x \rest n+1) = n + 1 > 1$.
-    Hence (2) is the case so that there are $y$ and $z$ such that $x = (y,z)$ and $(\F_y \rest n+1)(n) = 0$.
-    Hence it follows that $F(y,n) = 0$.
+    \bicproof{
+      Suppose that $n > 0$ and $\F(x,n+1) = 0$ so that clearly $(3)$ above cannot be the case.
+      Also $(1)$ cannot be the case since $\F(x,n+1) = \G(x, \F_x \rest n+1)$ and $\dom(\F_x \rest n+1) = n + 1 > 1$.
+      Hence (2) is the case so that there are $y$ and $z$ such that $x = (y,z)$ and $(\F_y \rest n+1)(n) = 0$.
+      Hence it follows that $F(y,n) = 0$.
+    }{
+      Now suppose that there are $y$ and $z$ such that $x = (y,z)$ and $F(y,n) = 0$.
+      Then $F(y,n) = G(y, \F_y \rest n) = 0$.
 
-    ($\leftarrow$) Now suppose that there are $y$ and $z$ such that $x = (y,z)$ and $F(y,n) = 0$.
-    Then $F(y,n) = G(y, \F_y \rest n) = 0$.
+      So if $n=0$ then $\dom(\F_y \rest n) = \dom(\F_y \rest 0) = 0 \neq 1$ so (1) cannot be the case.
+      Also since $0$ is not a successor ordinal (2) cannot be the case either (since $\dom(\F_y \rest 0) \neq \a+1$ for any ordinal $\a$).
+      Hence (3) must be the case, but this implies that $F(y,n) = 1$, which is a contradiction.
+      So we must have that $n \neq 0$ so $n > 0$.
 
-    So if $n=0$ then $\dom(\F_y \rest n) = \dom(\F_y \rest 0) = 0 \neq 1$ so (1) cannot be the case.
-    Also since $0$ is not a successor ordinal (2) cannot be the case either (since $\dom(\F_y \rest 0) \neq \a+1$ for any ordinal $\a$).
-    Hence (3) must be the case, but this implies that $F(y,n) = 1$, which is a contradiction.
-    So we must have that $n \neq 0$ so $n > 0$.
-
-    Since $\F(y, n) = 0$ clearly we have that $(\F_y \rest n+1)(n) = 0$.
-    Since also $\dom(\F_x \rest n+1) = n+1$ we find that (2) holds for $\G(x, \F_x \rest n+1)$.
-    From this it follows that $\F(x,n+1) = \G(x, \F_x \rest n+1) = 0$.
+      Since $\F(y, n) = 0$ clearly we have that $(\F_y \rest n+1)(n) = 0$.
+      Since also $\dom(\F_x \rest n+1) = n+1$ we find that (2) holds for $\G(x, \F_x \rest n+1)$.
+      From this it follows that $\F(x,n+1) = \G(x, \F_x \rest n+1) = 0$.
+    }
 
     This completes the proof.
   }

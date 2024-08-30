@@ -579,9 +579,6 @@
     (c) (Zorn's Lemma) If every chain in a partially ordered set has an upper bound, then the partially ordered set has a maximal element.
   }
   \sol{
-    \input{shared/lem_aoc_notin}
-
-    \mainthrm
     \def\fb{\overline{f}}
     \def\fbb{\bar{\bar{f}}}
     \qproof{
@@ -589,7 +586,7 @@
 
       \emph{(a) implies (c).}
       Suppose that $(A \prece)$ is a partially ordered set in which every chain has an upper bound.
-      Then by Lemma~\ref{lem:aoc:notin} there is a $b \notin A$, and by (a) there is a choice function $g$ on $\pset{A}$.
+      Then by Exercise~1.3.3b there is a $b \notin A$, and by (a) there is a choice function $g$ on $\pset{A}$.
       We then define a transfinite sequence $\angles{a_\a \where \a < h(A)}$ by transfinite recursion.
       Given the transfinite sequence $\angles{a_\x \where \x < \a}$ for an $\a < h(A)$ we define the set $A_\a = \braces{a \in A \where a_\x \prec a \text{ for all } \x < \a}$.
       We then set
@@ -866,9 +863,9 @@
       \item[\ilab{0}] $\mu([a,b]) = b - a$ for any $a$ and $b$ in $\reals$ where $a < b$.
       \item[\ilab{i}] $\mu(\es) = 0$ and $\mu(\reals) = \infty$.
       \item[\ilab{ii}] If $\braces{A_n}_{n=0}^\infty$ is a collection of mutually disjoint subsets of $\reals$, then
-        \gath{
-          \mu\parens{\bigcup_{n=0}^\infty A_n} = \sum_{n=0}^\infty \mu(A_n).
-        }
+            \gath{
+              \mu\parens{\bigcup_{n=0}^\infty A_n} = \sum_{n=0}^\infty \mu(A_n).
+            }
       \item[\ilab{iii}] If $a \in \reals$, $A \ss \reals$, and $A + a = \braces{x + a \where x \in A}$, then $\mu(A + a) = \mu(A)$.
       \item[\ilab{iv}] If $A \cap B = \es$ then $\mu(A \cup B) = \mu(A) + \mu(B)$.
       \item[\ilab{v}] If $A \ss B$ then $\mu(A) \leq \mu(B)$.
@@ -1168,7 +1165,7 @@
     Let $\k$ be a regular cardinal.
     \begin{enumerate}
       \item[(a)] If $X \ss \k$ is such that $\abs{X} < \k$ then $X$ is bounded.
-        Hence every unbounded subset of $\k$ has cardinality $\k$.
+            Hence every unbounded subset of $\k$ has cardinality $\k$.
       \item[(b)] If $\l < \k$ and $f: \l \to \k$, then $f[\l]$ is bounded.
     \end{enumerate}
   }

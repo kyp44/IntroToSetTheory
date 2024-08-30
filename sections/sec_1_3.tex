@@ -104,18 +104,19 @@
 		By the Axiom of Pair, the sets $D = \braces{A, B}$ and $E = \braces{C}$ uniquely exist.
 		Then, by the Axiom of Union the set $P = D \cup E$ uniquely exists, which we claim is exactly the set we seek.
 
-		($\to$) Suppose that $x \in P = D \cup E$ so that $x \in D$ or $x \in E$.
-		If $x \in D = \braces{A, B}$ then either $x = A$ or $x = B$.
-		On the other hand, if $x \in E = \braces{C}$ then it must be that $x = C$.
-		So in all cases it is true that $x = A$ or $x = B$ or $x = C$ as desired.
+		\bicproof{
+			Suppose that $x \in P = D \cup E$ so that $x \in D$ or $x \in E$.
+			If $x \in D = \braces{A, B}$ then either $x = A$ or $x = B$.
+			On the other hand, if $x \in E = \braces{C}$ then it must be that $x = C$.
+			So in all cases it is true that $x = A$ or $x = B$ or $x = C$ as desired.
+		}{
+			Suppose that $x = A$ or $x = B$ or $x = C$.
+			In the first two cases clearly $x \in D = \braces{A, B}$ so that $x \in D \cup E = P$.
+			In the last case $x = C$ so that clearly $x \in E = \braces{C}$ so that again $x \in D \cup E = P$.
+			Note that $x \in P$ in both cases.
 
-
-		($\leftarrow$) Suppose that $x = A$ or $x = B$ or $x = C$.
-		In the first two cases clearly $x \in D = \braces{A, B}$ so that $x \in D \cup E = P$.
-		In the last case $x = C$ so that clearly $x \in E = \braces{C}$ so that again $x \in D \cup E = P$.
-		Note that $x \in P$ in both cases.
-
-		This proves the results, and we can denote our set $P$ by $\braces{A, B, C}$.
+			This proves the results, and we can denote our set $P$ by $\braces{A, B, C}$.
+		}
 	}
 
 	(b) \qproof{
